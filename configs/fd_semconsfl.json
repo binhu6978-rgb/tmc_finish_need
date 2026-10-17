@@ -1,0 +1,18 @@
+{
+  "num_classes": 100,
+  "temperature": 1.0,
+  "measurement_batch_size": 50,
+  "min_class_samples": 5,
+  "min_error_mass": 0.000001,
+  "confidence_tolerance": 0.0000001,
+  "anchor_decay": 0.9,
+  "min_anchor_clients": 2,
+  "max_age_rounds": 100,
+  "profile_capacity": 200,
+  "min_profile_records": 10,
+  "iqr_floor": 0.000001,
+  "client_capacity": 5,
+  "min_client_records": 2,
+  "shrinkage": 2.0,
+  "gate_strength": 0.25
+}

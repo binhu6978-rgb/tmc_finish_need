@@ -1,0 +1,8 @@
+# New experiment artifacts only. Existing tracked baseline files stay intact.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+/runs/
+/tmp/
+/data/cifar100/
+*.pt
