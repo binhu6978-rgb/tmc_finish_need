@@ -1,5 +1,9 @@
 # FD-SemConsFL implementation and review guide
 
+Latest follow-up: [minimal diagnostic cross-review](FD_SEMCONSFL_CROSS_REVIEW.md),
+including 49 passing synthetic checks and an exact in-memory original-partition replay.
+The initial implementation/audit record below is retained for provenance.
+
 This branch adds the finalized four-stage method to commit
 `d6354d073ff4d5614a4e6b25fb542a9b43e0dfa8`. It does not edit any existing
 Python source or partition. No CIFAR100 training or performance tuning was run.

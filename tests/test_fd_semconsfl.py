@@ -454,3 +454,206 @@ def test_measurement_detects_same_counts_but_changed_class_correspondence():
     assert torch.equal(pre.counts, post.counts)
     with pytest.raises(ValueError, match="Pre/post"):
         SemanticMemory(configuration).score(pre, post, 1, {})
+
+
+def diagnostic_slot(client, profile, records, anomaly, **decision):
+    result = {"client": client, "profile": profile, "gamma": 1., "r": 0., "risk": 0.,
+              "z": None, "reason": "missing_anomaly", "decision_reason": "missing_anomaly",
+              "evidence": {"classes": records, "anomaly": anomaly}}
+    result.update(decision)
+    return result
+
+
+def evidence_class(class_id, drift, change, count=10, candidate=None, reason="valid"):
+    return {"class": class_id, "count": count, "pre_validity": "valid", "post_validity": "valid",
+            "reason": reason, "signed_drift": drift, "confidence_change": change,
+            "candidate": (max(drift, 0.) if change <= 1e-7 else 0.) if candidate is None else candidate}
+
+
+def test_diagnostic_counts_weighted_alternatives_and_physical_client_denominators():
+    from semconsfl.diagnostics import summarize_round
+    records = [evidence_class(0, .4, .1, count=10),
+               evidence_class(1, -.2, 0., count=30),
+               evidence_class(2, .2, 0., count=10)]
+    slots = [diagnostic_slot(42, 6, records, .04, z=1., r=.4, risk=.4, gamma=.9,
+                             profile_iqr_raw=0., iqr_floor_hit=True, decision_reason="valid"),
+             diagnostic_slot(42, 0, [evidence_class(0, -.1, 0.)], 0., z=0.,
+                             iqr_floor_hit=False, decision_reason="insufficient_client_history"),
+             diagnostic_slot(99, 1, [dict(evidence_class(0, 0., 0.), reason="no_anchor")], None)]
+    state = capture_rng()
+    original = copy.deepcopy(slots)
+    anchors = {0: (2, torch.tensor([.5, .5]))}
+    summary = summarize_round(slots, cfg(num_classes=3), anchors, 3, 7)
+    assert slots == original
+    equal_rng(state, capture_rng())
+    classes = summary["class_pairs"]
+    assert classes["valid_ba"] == 5 and classes["comparable_old_anchor"] == 4
+    assert classes["positive_drift_fraction"] == .5
+    assert classes["negative_drift_fraction"] == .5
+    assert classes["protected_fraction_of_positive"] == .5
+    assert classes["confidence_increased_fraction_of_comparable"] == .25
+    clients = summary["physical_clients"]
+    assert clients["total"] == 2 and clients["with_valid_anomaly"] == 1
+    assert clients["positive_fraction_of_valid"] == 1 and clients["missing_anomaly"] == 1
+    comparison = summary["anomaly_comparison"]
+    assert comparison["formal"]["coverage"] == pytest.approx(2 / 3)
+    assert comparison["formal"]["max"] == .04
+    assert comparison["positive_without_confidence_guard"]["max"] == pytest.approx(.12)
+    assert comparison["signed_mean"]["max"] == pytest.approx(0.)
+    assert comparison["signed_mean"]["min"] == -.1
+    assert summary["insufficient_client_slots"] == 1
+    assert summary["iqr_floor"]["hit_fraction"] == .5
+    assert summary["z"]["zero_fraction"] == summary["z"]["one_fraction"] == .5
+    assert summary["nonneutral_gate_slots"] == 1
+    assert summary["profiles"]["6"]["gamma"]["min"] == .9
+
+
+@pytest.mark.parametrize("missing_case", ["no_observer", "no_anchor", "no_support", "zero"])
+def test_diagnostics_missing_zero_and_anchor_warmup_are_json_finite(missing_case):
+    from semconsfl.diagnostics import summarize_round
+    records = [evidence_class(0, 0., 0.)]
+    if missing_case == "no_anchor": records[0]["reason"] = "no_anchor"
+    if missing_case == "no_support":
+        records[0].update(count=0, reason="invalid_class", pre_validity="insufficient_class_samples",
+                          post_validity="insufficient_class_samples")
+    slot = diagnostic_slot(0, 0, records, 0. if missing_case == "zero" else None)
+    if missing_case == "no_observer": slot.pop("evidence")
+    summary = summarize_round([slot], cfg(), {}, 0, 7)
+    json.dumps(summary, allow_nan=False)
+    assert summary["nonneutral_gate_slots"] == 0
+    assert summary["old_anchor_classes"]["valid"] == 0
+    assert summary["iqr_floor"]["hit_fraction"] is None
+    if missing_case == "zero":
+        assert summary["anomaly_comparison"]["formal"]["zero_fraction"] == 1.
+        assert summary["anomaly_comparison"]["signed_vs_formal_ranks"]["spearman"] is None
+    else:
+        assert summary["anomaly_comparison"]["formal"]["zero_fraction"] is None
+
+
+def test_diagnostic_ranking_preserves_ties_and_reports_strict_reversals():
+    from semconsfl.diagnostics import midranks, rank_difference
+    assert np.array_equal(midranks([0., 0., 2.]), [1.5, 1.5, 3.])
+    result = rank_difference([0., 1., 2.], [2., 1., 0.])
+    assert result["spearman"] == -1. and result["strict_order_reversals"] == 3
+    ties = rank_difference([0., 0.], [0., 1.])
+    assert ties["changed_tie_pairs"] == 1 and ties["spearman"] is None
+
+
+def assert_nested_equal(left, right):
+    if isinstance(left, torch.Tensor):
+        assert torch.equal(left, right)
+    elif isinstance(left, dict):
+        assert left.keys() == right.keys()
+        for key in left: assert_nested_equal(left[key], right[key])
+    elif isinstance(left, (tuple, list)):
+        assert len(left) == len(right)
+        for a, b in zip(left, right): assert_nested_equal(a, b)
+    else:
+        assert left == right
+
+
+@pytest.mark.parametrize("mode", ["A0", "A1", "A2"])
+def test_diagnostics_enabled_disabled_have_identical_models_memories_gates_rng_and_forwards(monkeypatch, mode):
+    import semconsfl.trainer as trainer
+    from semconsfl.diagnostics import summarize_round
+    outcomes = []
+    original_forward, calls = TinyNet.forward, [0]
+    def counted_forward(self, x):
+        calls[0] += 1
+        return original_forward(self, x)
+    monkeypatch.setattr(TinyNet, "forward", counted_forward)
+    for enabled in (False, True):
+        calls[0] = 0
+        monkeypatch.setattr(trainer, "summarize_round", summarize_round if enabled else lambda *args: {})
+        set_random_seed(34)
+        models = [TinyNet(width) for width in range(2, 9)]
+        masks, _ = coverage(models)
+        memories = Memories(cfg(measurement_batch_size=4))
+        memories.last_round = 2
+        memories.reliability = history_ready(memories.semantic.config)
+        memories.reliability.profiles[6] = memories.reliability.profiles[0]
+        pre = torch.zeros(100, 100, dtype=torch.float64)
+        pre[0, :3] = torch.tensor([.2, .7, .1])
+        post = pre.clone()
+        post[0, :3] = torch.tensor([.2, .1, .7])
+        counts = torch.zeros(100, dtype=torch.long)
+        counts[0] = 12
+        memories.semantic.anchors[0] = (2, pre[0, 1:] / pre[0, 1:].sum())
+        measurements = iter([Signature(pre, counts, {"same": True}),
+                             Signature(post, counts.clone(), {"same": True})])
+        monkeypatch.setattr(trainer, "measure", lambda *args: next(measurements))
+        report = run_round(models, data(), {42: list(range(12))}, [(42, 6)], train_args(),
+                           memories.semantic.config, memories, mode, 3, masks)
+        outcomes.append((copy.deepcopy(models[-1].state_dict()), memories.state_dict(),
+                         report["slots"], capture_rng(), [list(model.trace) for model in models], calls[0]))
+        assert calls[0] == 6  # only original SGD; this test mocks both measurements
+        if mode == "A2": assert report["gate_min"] < 1.
+    a, b = outcomes
+    for i in (0, 1, 2, 4, 5): assert_nested_equal(a[i], b[i])
+    equal_rng(a[3], b[3])
+
+
+def test_reliability_telemetry_does_not_change_reference_commit_decisions():
+    configuration = cfg()
+    current = history_ready(configuration)
+    # Captured from the actual ce7e249 class, before modifying telemetry. Stored
+    # numeric golden outputs keep these synthetic tests usable in shallow clones.
+    neutral = {"z": None, "r": 0., "risk": 0., "gamma": 1.,
+               "profile_records": 0, "client_records": 0}
+    expected_values = [
+        {"z": 1., "r": .35, "risk": .35, "gamma": .9125, "profile_records": 10,
+         "client_records": 2, "profile_median": 0., "profile_iqr": 1e-6, "reason": "valid"},
+        {"z": 0., "r": .35, "risk": 0., "gamma": 1., "profile_records": 10,
+         "client_records": 2, "profile_median": .4, "profile_iqr": 1e-6, "reason": "valid"},
+        {"z": 1., "r": 0., "risk": 0., "gamma": 1., "profile_records": 10,
+         "client_records": 0, "profile_median": 0., "profile_iqr": 1e-6, "reason": "insufficient_client_history"},
+        dict(neutral, reason="insufficient_profile_history"),
+        dict(neutral, reason="missing_anomaly"),
+        dict(neutral, reason="insufficient_profile_history"),
+    ]
+    cases = ((42, 0, .2, 3), (42, 1, 0., 3), (99, 0, .2, 3),
+             (42, 2, .2, 3), (42, 0, None, 3), (42, 0, .2, 200))
+    for (client, profile, anomaly, t), expected in zip(cases, expected_values):
+        actual = current.decide(client, profile, anomaly, t, current.snapshot())
+        assert {k: v for k, v in actual.items() if k not in ("profile_iqr_raw", "iqr_floor_hit")} == expected
+        if actual.get("z") is not None:
+            assert actual["profile_iqr_raw"] == 0. and actual["iqr_floor_hit"]
+
+
+def test_partition_comparison_distinguishes_sequence_set_and_assignment_changes():
+    from experiments.check_partition import compare_partitions
+    cached = {0: [0, 1], 1: [2, 3]}
+    result = compare_partitions(cached, {0: [1, 0], 1: [2, 3]})
+    assert not result["all_sequences_equal"] and result["all_sets_equal"]
+    assert result["cached_ordered_sha256"] != result["regenerated_ordered_sha256"]
+    assert result["cached_sets_sha256"] == result["regenerated_sets_sha256"]
+    different = compare_partitions(cached, {0: [0, 2], 1: [1, 3]})
+    assert not different["all_sets_equal"]
+
+
+def test_signed_js_extremes_and_confidence_guard_remain_the_frozen_definition():
+    from semconsfl.diagnostics import summarize_round
+    configuration = cfg(num_classes=3)
+    memory = SemanticMemory(configuration)
+    memory.anchors = {0: (1, torch.tensor([1., 0.], dtype=torch.float64))}
+    pre, post = signature((.2, .8, 0.)), signature((.2, 0., .8))
+    positive = memory.score(pre, post, 2, memory.snapshot())
+    negative = memory.score(post, pre, 2, memory.snapshot())
+    assert positive["anomaly"] == pytest.approx(math.log(2))
+    assert negative["anomaly"] == 0.
+    assert negative["classes"][0]["signed_drift"] == pytest.approx(-math.log(2))
+    improved = memory.score(pre, signature((.3, 0., .7)), 2, memory.snapshot())
+    assert improved["anomaly"] == 0.
+    slot = diagnostic_slot(0, 0, improved["classes"], improved["anomaly"])
+    result = summarize_round([slot], configuration, memory.snapshot(), 2, 7)
+    assert result["anomaly_comparison"]["positive_without_confidence_guard"]["mean"] == pytest.approx(math.log(2))
+    assert result["class_pairs"]["protected_fraction_of_positive"] == 1.
+
+
+def test_frozen_gate_dynamic_range_with_five_old_events_and_nu_two():
+    memory = history_ready(cfg())
+    memory.clients[42] = [(t, 1.) for t in range(1, 6)]
+    decision = memory.decide(42, 0, .2, 6, memory.snapshot())
+    assert decision["z"] == 1.
+    assert decision["r"] == pytest.approx(5 / 7)
+    assert decision["gamma"] == pytest.approx(23 / 28)

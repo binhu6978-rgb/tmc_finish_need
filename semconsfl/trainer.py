@@ -7,6 +7,7 @@ import torch
 from models.Fed import Aggregation_AdaptiveFL, split_model
 from models.Update import LocalUpdate_AdaptiveFL
 from semconsfl.aggregation import aggregate, update_diagnostics
+from semconsfl.diagnostics import summarize_round
 from semconsfl.measurement import measure
 from semconsfl.reliability_memory import ReliabilityMemory
 from semconsfl.semantic_memory import SemanticMemory
@@ -79,6 +80,7 @@ def run_round(models, dataset, users, slots, args, config, memories, mode, round
             decision = memories.reliability.decide(client, profile, evidence["anomaly"], round_id, old_history)
             timings["server_score_seconds"] += time.perf_counter() - score_started
             log.update(decision)
+            log["decision_reason"] = decision["reason"]
             log.update(evidence=evidence, pre=pre.to_dict(config.min_class_samples),
                        post=post.to_dict(config.min_class_samples))
             if round_id == 0:
@@ -107,8 +109,12 @@ def run_round(models, dataset, users, slots, args, config, memories, mode, round
     synchronize_device(args.device)
     timings["aggregation_and_memory_seconds"] = time.perf_counter() - server_started
     timings["server_seconds"] = timings["aggregation_and_memory_seconds"] + timings["server_score_seconds"]
+    diagnostics_started = time.perf_counter()
+    gate_diagnostics = summarize_round(logs, config, old_anchor, round_id, len(models))
+    timings["gate_diagnostics_seconds"] = time.perf_counter() - diagnostics_started
     return {"round": round_id, "mode": mode, "slots": logs,
             "duplicate_slots": len(slots) - len(set(client for client, _ in slots)),
             "full_slots": sum(profile == len(models) - 1 for _, profile in slots),
             "gate_min": min(gates), "gate_mean": sum(gates) / len(gates),
-            "coverage_update_diagnostics": diagnostics, "timings": timings}
+            "coverage_update_diagnostics": diagnostics, "gating_diagnostics": gate_diagnostics,
+            "timings": timings}

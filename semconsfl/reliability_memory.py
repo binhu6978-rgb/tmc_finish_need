@@ -34,9 +34,11 @@ class ReliabilityMemory:
             return dict(result, reason="insufficient_profile_history")
         values = [v for _, _, v in pool]
         q25, b, q75 = np.quantile(values, [0.25, 0.5, 0.75])
-        h = max(float(q75 - q25), self.config.iqr_floor)
+        raw_iqr = float(q75 - q25)
+        h = max(raw_iqr, self.config.iqr_floor)
         z = float(np.clip((anomaly - b) / h, 0, 1))
-        result.update(z=z, profile_median=float(b), profile_iqr=h)
+        result.update(z=z, profile_median=float(b), profile_iqr=h,
+                      profile_iqr_raw=raw_iqr, iqr_floor_hit=raw_iqr <= self.config.iqr_floor)
         past = self.recent(clients.get(client, []), round_id)
         m = len(past)
         result["client_records"] = m
