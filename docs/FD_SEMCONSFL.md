@@ -18,6 +18,7 @@ All changes are additions. No pre-existing tracked file is modified.
 
 ```text
 .gitignore
+.gitattributes
 configs/fd_semconsfl.json
 docs/FD_SEMCONSFL.md
 docs/baseline_audit/baseline_manifest.json
@@ -158,6 +159,9 @@ initial model hashes, actual seven-profile coverage, and 1000 rounds of original
 scheduling. Audit initialized models and inspected labels, but did not perform
 SGD or report accuracy. No private research documents or raw CIFAR files are
 included in this branch.
+
+Git attributes preserve stored file bytes across Windows/Linux checkouts, so
+line-ending conversion cannot invalidate the audited source hashes.
 
 ## Logging and recovery
 
