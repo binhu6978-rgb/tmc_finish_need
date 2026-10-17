@@ -13,13 +13,14 @@ from tqdm import tqdm
 
 from Algorithm.Training_AdaptiveFL import Aggregation_AdaptiveFL, split_model
 from models import ResNet18_cifar, MobileNetV2
-from models import ResNet18_widar
 from models.Fed import get_model_list, select_clients
 from models.vgg import vgg_16_bn
 from utils.Clients import Clients
 from utils.utils import save_result, my_save_result, get_final_acc
 from models.test import test_img, test
 from models.Update import DatasetSplit, LocalUpdate_FedAvg
+from optimizer.Adabelief import AdaBelief
+
 
 
 def HeteroFL(args, dataset_train, dataset_test, dict_users):
@@ -58,9 +59,9 @@ def HeteroFL(args, dataset_train, dataset_test, dict_users):
 
         for idx, net in enumerate(net_glob_list):
             net.load_state_dict(split_model(w_glob, net.state_dict()))
+            # if idx == len(net_glob_list) - 1:
             print(net_slim_info[idx])
             acc_list[idx].append(test(net, dataset_test, args))
-
     for id, acc in enumerate(acc_list):
         file = my_save_result(acc, str(net_slim_info[id]), 'acc', args)
     get_final_acc(file)

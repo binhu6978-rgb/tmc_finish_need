@@ -12,13 +12,14 @@ import numpy as np
 from tqdm import tqdm
 
 from models import ResNet18_cifar
-from models import ResNet18_widar
 from models.Fed import Aggregation, get_model_list
 from models.vgg import vgg_16_bn
 from utils.Clients import Clients
 from utils.utils import save_result, my_save_result, get_final_acc
 from models.test import test_img, test
 from models.Update import DatasetSplit, LocalUpdate_FedAvg
+from optimizer.Adabelief import AdaBelief
+
 
 def Decoupled(args, dataset_train, dataset_test, dict_users):
     net_glob_list, net_slim_info = get_model_list(args)
@@ -58,9 +59,10 @@ def Decoupled(args, dataset_train, dataset_test, dict_users):
             # update global weights
             w_glob = Aggregation(w_locals[id], lens[id])
             net_glob_list[id].load_state_dict(w_glob)
-            if id == len(net_glob_list) - 1:
-                print(net_slim_info[id])
-                acc_list[id].append(test(net_glob_list[id], dataset_test, args))
+
+            # if id == len(net_glob_list) - 1:
+            print(net_slim_info[id])
+            acc_list[id].append(test(net_glob_list[id], dataset_test, args))
 
     for id, acc in enumerate(acc_list):
         file = my_save_result(acc, str(net_slim_info[id]), 'acc', args)

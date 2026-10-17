@@ -7,21 +7,14 @@ import os
 def save_result(data, ylabel, args):
     data = {'base': data}
 
-    output_root = getattr(args, 'output_dir', './output')
-    path = os.path.join(output_root, str(args.noniid_case))
+    path = './result_sensitivity'
 
-    run_stamp = getattr(args, 'run_stamp', None)
-    if run_stamp:
-        setting = 'iid' if bool(args.iid) else f'beta{args.data_beta}'
-        file = (f'{args.dataset}_{args.algorithm}_{args.model}_{setting}_'
-                f'seed{args.seed}_{ylabel}_{args.epochs}_lr_{args.lr}_'
-                f'{run_stamp}.txt')
-    elif args.noniid_case != 5:
-        file = '{}_{}_{}_{}_{}_lr_{}_{}.txt'.format(args.dataset, args.algorithm, args.model,
+    if args.noniid_case != 5:
+        file = '{}_{}_{}_{}_{}_{}_lr_{}_{}.txt'.format(str(args.data_beta), args.dataset, args.algorithm, args.model,
                                                     ylabel, args.epochs, args.lr, datetime.datetime.now().strftime(
                 "%Y_%m_%d_%H_%M_%S"))
     else:
-        path = os.path.join(path, str(args.data_beta))
+        path += '/{}'.format(args.data_beta)
         file = '{}_{}_{}_{}_{}_lr_{}_{}.txt'.format(args.dataset, args.algorithm, args.model,
                                                     ylabel, args.epochs, args.lr,
                                                     datetime.datetime.now().strftime(
@@ -46,19 +39,12 @@ def save_result(data, ylabel, args):
 def my_save_result(data, label, ylabel, args):  # label 这一行对应的模型配置
     data = {label: data}
 
-    output_root = getattr(args, 'output_dir', './output')
-    path = os.path.join(output_root, str(args.noniid_case))
+    path = './result_sensitivity'
 
-    run_stamp = getattr(args, 'run_stamp', None)
-    if run_stamp:
-        setting = 'iid' if bool(args.iid) else f'beta{args.data_beta}'
-        file = (f'{args.dataset}_{args.algorithm}_{args.model}_'
-                f'{args.client_hetero_ration.replace(":", "")}_{setting}_'
-                f'seed{args.seed}_{ylabel}_{run_stamp}.txt')
-    elif args.noniid_case != 5:  # iid
-        file = f'{args.dataset}_{args.algorithm}_{args.model}_{args.client_hetero_ration.replace(":", "")}_{ylabel}_{datetime.datetime.now().strftime("%m_%d")}.txt'
+    if args.noniid_case != 5:  # iid
+        file = f'{str(args.data_beta)}_{args.dataset}_{args.algorithm}_{args.model}_{args.client_hetero_ration.replace(":", "")}_{ylabel}_{datetime.datetime.now().strftime("%m_%d")}.txt'
     else:  # Non-iid
-        path = os.path.join(path, str(args.data_beta))
+        path += '/{}'.format(args.data_beta)
         file = f'{args.dataset}_{args.algorithm}_{args.model}_{args.client_hetero_ration.replace(":", "")}_{ylabel}_{datetime.datetime.now().strftime("%m_%d")}.txt'
 
     if not os.path.exists(path):

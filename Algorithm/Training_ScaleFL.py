@@ -32,7 +32,7 @@ def ScaleFL(args, dataset_train, dataset_test, dict_users):
         net.train()
         print("==" * 50)
         print('【model config】  model_name:{}, width:{} , param:{}MB'.format(args.model, i, total * 4 / 1e6))
-        print(net)
+        # print(net)
         net_glob_list.append(net)
         net_slim_info.append((i, total * 4 / 1e6))  # 宽度 深度 参数量
 
@@ -71,6 +71,8 @@ def ScaleFL(args, dataset_train, dataset_test, dict_users):
 
         for idx, net in enumerate(net_glob_list):
             net.load_state_dict(split_model(w_glob, net.state_dict()))
+
+            # if idx == len(net_glob_list) - 1:
             print(net_slim_info[idx])
             acc_list[idx].append(test_scaleFL(net, dataset_test, args, ee=idx + 1))
 
@@ -85,32 +87,68 @@ def test_scaleFL(net_glob, dataset_test, args, ee):
 
     print("Testing accuracy: {:.2f}".format(acc_test))
 
-    return acc_test.item()
+    return acc_test
 
 
 def test_img_scaleFL(net_g, datatest, args, ee):
     net_g.eval()
-    # testing
-    test_loss = 0
-    correct = 0
-    data_loader = DataLoader(datatest, batch_size=args.bs)
-    l = len(data_loader)
+
+    use_cuda = (args.gpu != -1) and torch.cuda.is_available()
+    device = args.device if use_cuda else torch.device("cpu")
+
+    data_loader = DataLoader(
+        datatest,
+        batch_size=getattr(args, "test_bs", args.bs),
+        shuffle=False,
+        num_workers=0,
+        pin_memory=use_cuda
+    )
+
+    if use_cuda:
+        test_loss = torch.zeros(1, device=device)
+        correct = torch.zeros(1, device=device)
+    else:
+        test_loss = 0.0
+        correct = 0
+
     with torch.no_grad():
         for idx, (data, target) in enumerate(data_loader):
-            if args.gpu != -1:
-                data, target = data.to(args.device), target.to(args.device)
-            if args.dataset == 'widar':
-                target = target.long()
-            log_probs = net_g(data, ee)[-1]['output']
-            # sum up batch loss
-            test_loss += F.cross_entropy(log_probs, target, reduction='sum').item()
-            # get the index of the max log-probability
-            y_pred = log_probs.data.max(1, keepdim=True)[1]
-            correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
+            if not torch.is_tensor(target):
+                target = torch.as_tensor(target)
 
-    test_loss /= len(data_loader.dataset)
-    accuracy = 100.00 * correct / len(data_loader.dataset)
+            if target.dim() == 0:
+                target = target.unsqueeze(0)
+
+            target = target.long()
+
+            if use_cuda:
+                if not torch.is_tensor(data):
+                    data = torch.as_tensor(data)
+                data = data.to(device, non_blocking=True)
+                target = target.to(device, non_blocking=True)
+
+            log_probs = net_g(data, ee)[-1]['output']
+
+            if use_cuda:
+                test_loss += F.cross_entropy(log_probs, target, reduction='sum')
+                y_pred = log_probs.argmax(dim=1)
+                correct += (y_pred == target).sum()
+            else:
+                test_loss += F.cross_entropy(log_probs, target, reduction='sum').item()
+                y_pred = log_probs.argmax(dim=1)
+                correct += (y_pred == target).sum().item()
+
+    if use_cuda:
+        test_loss = (test_loss / len(data_loader.dataset)).item()
+        accuracy = (100.00 * correct / len(data_loader.dataset)).item()
+        correct_num = int(correct.item())
+    else:
+        test_loss /= len(data_loader.dataset)
+        accuracy = 100.00 * correct / len(data_loader.dataset)
+        correct_num = int(correct)
+
     if args.verbose:
         print('\nTest set: Average loss: {:.4f} \nAccuracy: {}/{} ({:.2f}%)\n'.format(
-            test_loss, correct, len(data_loader.dataset), accuracy))
+            test_loss, correct_num, len(data_loader.dataset), accuracy))
+
     return accuracy, test_loss

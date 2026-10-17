@@ -4,6 +4,8 @@
     https://arxiv.org/abs/1409.1556v6
 """
 import torch
+from thop import profile
+from torchinfo import summary
 
 '''VGG11/13/16/19 in Pytorch.'''
 
@@ -88,9 +90,6 @@ def vgg_16_bn(num_classes, track_running_stats=True, num_channels=3, slim_idx=0,
 
 
 if __name__ == '__main__':
-    from thop import profile
-    from torchinfo import summary
-
     net = vgg_16_bn(10, False, 3, 8, 0.40)
 
     summary(net, (50, 3, 32, 32))
