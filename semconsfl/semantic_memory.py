@@ -27,7 +27,7 @@ class SemanticMemory:
     def snapshot(self):
         return copy.deepcopy(self.anchors)
 
-    def score(self, pre, post, round_id, snapshot):
+    def score(self, pre, post, round_id, snapshot, *, confidence_guard=True):
         if pre.metadata != post.metadata or not torch.equal(pre.counts, post.counts):
             raise ValueError("Pre/post indices, batches and class counts must match")
         if pre.probabilities.shape != (self.config.num_classes, self.config.num_classes) or post.probabilities.shape != pre.probabilities.shape:
@@ -54,7 +54,7 @@ class SemanticMemory:
             else:
                 anchor = snapshot[c][1]
                 drift = js_divergence(a[0], anchor) - js_divergence(b[0], anchor)
-                candidate = max(0.0, drift) if a[1] <= b[1] + self.config.confidence_tolerance else 0.0
+                candidate = max(0.0, drift) if (not confidence_guard or a[1] <= b[1] + self.config.confidence_tolerance) else 0.0
                 record.update(reason="valid", signed_drift=drift,
                               confidence_change=a[1] - b[1], candidate=candidate)
                 weighted += candidate * record["count"]

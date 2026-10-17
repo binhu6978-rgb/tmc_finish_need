@@ -657,3 +657,103 @@ def test_frozen_gate_dynamic_range_with_five_old_events_and_nu_two():
     assert decision["z"] == 1.
     assert decision["r"] == pytest.approx(5 / 7)
     assert decision["gamma"] == pytest.approx(23 / 28)
+
+
+def legacy_namespace(path):
+    import subprocess
+    source = subprocess.check_output(["git", "show", "8aeb65a4af5d6320b8db7d6046db5a8b4d18c417:" + path], text=True, encoding="utf-8")
+    namespace = {"__name__": "legacy_regression"}
+    exec(compile(source, "legacy:" + path, "exec"), namespace)
+    return namespace
+
+
+def test_default_semantic_score_matches_reference_commit_and_a3_changes_only_guard():
+    configuration = cfg(num_classes=3)
+    memory = SemanticMemory(configuration)
+    legacy = legacy_namespace("semconsfl/semantic_memory.py")["SemanticMemory"](configuration)
+    anchors = {0: (1, torch.tensor([1., 0.], dtype=torch.float64))}
+    memory.anchors = copy.deepcopy(anchors)
+    pre = signature((.2, .8, 0.))
+    for row in ((.3, 0., .7), (.2, 0., .8), (.1, 0., .9), (.3, .7, 0.)):
+        post = signature(row)
+        original = legacy.score(pre, post, 2, anchors)
+        current = memory.score(pre, post, 2, anchors)
+        assert current == original == memory.score(pre, post, 2, anchors, confidence_guard=True)
+        a3 = memory.score(pre, post, 2, anchors, confidence_guard=False)
+        assert a3["support"] == current["support"]
+        for old, new in zip(current["classes"], a3["classes"]):
+            assert {k: v for k, v in old.items() if k != "candidate"} == {k: v for k, v in new.items() if k != "candidate"}
+            if new["reason"] == "valid":
+                assert new["candidate"] == max(0., new["signed_drift"])
+        assert a3["anomaly"] == pytest.approx(max(0., a3["classes"][0]["signed_drift"]))
+    assert_nested_equal(memory.snapshot(), anchors)
+
+
+@pytest.mark.parametrize("mode", ["A0", "A1", "A2"])
+def test_original_modes_match_reference_round_trajectory(mode):
+    legacy_round = legacy_namespace("semconsfl/trainer.py")["run_round"]
+    results = []
+    for function in (legacy_round, run_round):
+        set_random_seed(19)
+        models = [TinyNet(width) for width in range(2, 9)]
+        masks, _ = coverage(models)
+        memory = Memories(cfg(min_class_samples=1, measurement_batch_size=4))
+        reports = []
+        for t in range(3):
+            report = function(models, data(), {0: list(range(12)), 1: list(range(12, 24))},
+                              [(0, 0), (1, 6), (0, 3)], train_args(), memory.semantic.config,
+                              memory, mode, t, masks)
+            report.pop("timings")
+            reports.append(report)
+        results.append((copy.deepcopy(models[-1].state_dict()), memory.state_dict(), reports, capture_rng()))
+    equal_states(results[0][0], results[1][0])
+    assert_nested_equal(results[0][1:3], results[1][1:3])
+    equal_rng(results[0][3], results[1][3])
+
+
+def test_a3_only_disables_guard_and_uses_original_memory_gate_and_aggregation(monkeypatch):
+    import semconsfl.trainer as trainer
+    configuration = cfg(measurement_batch_size=4)
+    set_random_seed(9)
+    initial = [TinyNet(width) for width in range(2, 9)]
+    pre = torch.zeros(100, 100, dtype=torch.float64)
+    pre[0, :3] = torch.tensor([.2, .7, .1])
+    post = pre.clone()
+    post[0, :3] = torch.tensor([.3, .1, .6])
+    counts = torch.zeros(100, dtype=torch.long)
+    counts[0] = 12
+    start_rng = capture_rng()
+    for mode in ("A2", "A3"):
+        restore_rng(start_rng)
+        models = copy.deepcopy(initial)
+        masks, _ = coverage(models)
+        old = copy.deepcopy(models[-1].state_dict())
+        memory = Memories(configuration)
+        memory.last_round = 2
+        memory.reliability = history_ready(configuration)
+        memory.reliability.profiles[6] = copy.deepcopy(memory.reliability.profiles[0])
+        memory.semantic.anchors[0] = (2, pre[0, 1:] / pre[0, 1:].sum())
+        signatures = iter([Signature(pre, counts, {}), Signature(post, counts.clone(), {})])
+        monkeypatch.setattr(trainer, "measure", lambda *a, **kw: next(signatures))
+        uploads = []
+        original = LocalUpdate_AdaptiveFL.train
+        def record_train(self, round, net):
+            result = original(self, round, net)
+            uploads.append(copy.deepcopy(result))
+            return result
+        with monkeypatch.context() as patch:
+            patch.setattr(LocalUpdate_AdaptiveFL, "train", record_train)
+            report = run_round(models, data(), {42: list(range(12))}, [(42, 6)], train_args(),
+                               configuration, memory, mode, 3, masks)
+        gate = report["slots"][0]["gamma"]
+        assert gate == pytest.approx(1. if mode == "A2" else 1 - .25 * .35)
+        equal_states(models[-1].state_dict(), aggregate(old, uploads, [12], [gate], 3))
+        assert len(memory.reliability.clients[42]) == 3
+        if mode == "A3":
+            assert report["gating_diagnostics"]["class_pairs"]["confidence_protected"] == 0
+            assert report["gating_diagnostics"]["class_pairs"]["confidence_would_protect"] == 1
+
+
+def test_a3_cli_is_separate_and_default_remains_a2():
+    assert parse_args(["--gpu", "-1"])[1].mode == "A2"
+    assert parse_args(["--gpu", "-1", "--mode", "A3"])[1].mode == "A3"

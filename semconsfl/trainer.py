@@ -39,7 +39,7 @@ def synchronize_device(device):
 
 
 def run_round(models, dataset, users, slots, args, config, memories, mode, round_id, masks):
-    if mode not in ("A0", "A1", "A2"):
+    if mode not in ("A0", "A1", "A2", "A3"):
         raise ValueError("Unknown experiment arm")
     if round_id != memories.last_round + 1:
         raise ValueError("Round boundary/memory mismatch")
@@ -76,7 +76,11 @@ def run_round(models, dataset, users, slots, args, config, memories, mode, round
                "gamma": 1.0, "reason": "baseline", "risk": 0.0}
         if pre is not None:
             score_started = time.perf_counter()
-            evidence = memories.semantic.score(pre, post, round_id, old_anchor)
+            # A3 is a research ablation only; the default A0/A1/A2 path is intact.
+            if mode == "A3":
+                evidence = memories.semantic.score(pre, post, round_id, old_anchor, confidence_guard=False)
+            else:
+                evidence = memories.semantic.score(pre, post, round_id, old_anchor)
             decision = memories.reliability.decide(client, profile, evidence["anomaly"], round_id, old_history)
             timings["server_score_seconds"] += time.perf_counter() - score_started
             log.update(decision)
@@ -110,7 +114,10 @@ def run_round(models, dataset, users, slots, args, config, memories, mode, round
     timings["aggregation_and_memory_seconds"] = time.perf_counter() - server_started
     timings["server_seconds"] = timings["aggregation_and_memory_seconds"] + timings["server_score_seconds"]
     diagnostics_started = time.perf_counter()
-    gate_diagnostics = summarize_round(logs, config, old_anchor, round_id, len(models))
+    if mode == "A3":
+        gate_diagnostics = summarize_round(logs, config, old_anchor, round_id, len(models), confidence_guard=False)
+    else:
+        gate_diagnostics = summarize_round(logs, config, old_anchor, round_id, len(models))
     timings["gate_diagnostics_seconds"] = time.perf_counter() - diagnostics_started
     return {"round": round_id, "mode": mode, "slots": logs,
             "duplicate_slots": len(slots) - len(set(client for client, _ in slots)),

@@ -50,7 +50,7 @@ def write_json_new(path, value):
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument("--mode", choices=["A0", "A1", "A2"], default="A2")
+    parser.add_argument("--mode", choices=["A0", "A1", "A2", "A3"], default="A2")
     parser.add_argument("--dataset-root", default="/home/hh/ICML_finish/data")
     parser.add_argument("--partition-path")
     parser.add_argument("--output-dir", required=False)

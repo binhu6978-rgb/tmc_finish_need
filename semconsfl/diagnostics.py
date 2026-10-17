@@ -71,7 +71,7 @@ def rank_difference(formal, candidate):
             "strict_order_reversals": reversals, "changed_tie_pairs": changed_ties}
 
 
-def summarize_round(slots, config, old_anchors, round_id, num_profiles):
+def summarize_round(slots, config, old_anchors, round_id, num_profiles, *, confidence_guard=True):
     """Observe logs and the old snapshot without writes, forward passes or RNG calls."""
     observed = [slot for slot in slots if "evidence" in slot]
     records = [record for slot in observed for record in slot["evidence"]["classes"]]
@@ -81,7 +81,8 @@ def summarize_round(slots, config, old_anchors, round_id, num_profiles):
     comparable = [record for record in records if record["reason"] == "valid"]
     positive = [record for record in comparable if record["signed_drift"] > 0]
     improved = [record for record in positive if record["confidence_change"] > 0]
-    protected = [record for record in positive if record["confidence_change"] > config.confidence_tolerance]
+    would_protect = [record for record in positive if record["confidence_change"] > config.confidence_tolerance]
+    protected = would_protect if confidence_guard else []
     # Positive drift alone and signed mean are diagnostics on the SAME comparable
     # classes/counts as formal anomaly. They never become a calibration/Gate input.
     formal, unprotected, signed = [], [], []
@@ -159,4 +160,7 @@ def summarize_round(slots, config, old_anchors, round_id, num_profiles):
         result["profiles"][str(profile)] = {"slots": len(rows),
                                            "nonneutral_gate_slots": sum(r["gamma"] < 1 for r in rows),
                                            "gamma": distribution(r["gamma"] for r in rows)}
+    if not confidence_guard:
+        result["confidence_guard_enabled"] = False
+        result["class_pairs"]["confidence_would_protect"] = len(would_protect)
     return result

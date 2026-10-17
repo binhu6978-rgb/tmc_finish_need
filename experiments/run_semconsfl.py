@@ -54,6 +54,8 @@ def main(argv=None):
     manifest = audit(args, config, partition)
     manifest["implementation_sha256"] = source_hashes()
     manifest["mode"] = extra.mode
+    if extra.mode == "A3":
+        manifest["ablation"] = "Only disable true-class confidence guard: candidate=max(0,signed_drift); all other formulas unchanged"
     manifest["git_head"] = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     # HEAD may acquire a documentation-only commit: source bytes, not git ancestry,
     # determine resume compatibility. Dataset paths do not affect paired settings.
