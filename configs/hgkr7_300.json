@@ -1,0 +1,9 @@
+{
+  "reset_fraction": 0.01,
+  "history_window": 5,
+  "min_history": 3,
+  "max_age": 20,
+  "norm_epsilon": 1e-12,
+  "budget_fraction": 0.8,
+  "budget_match_tolerance": 0.02
+}
