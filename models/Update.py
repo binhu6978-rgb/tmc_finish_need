@@ -211,9 +211,10 @@ class LocalUpdate_AdaptiveFL(object):
         net.train()
         prox_setup = getattr(self, 'adapterfl_prox', None)
         if prox_setup is not None:
-            from adapterfl_methods import prepare_prox, prox_loss
+            from adapterfl_methods import prepare_prox, prox_loss, prox_gradient_diagnostics
             prox_targets, prox_count, prox_strength = prepare_prox(net, prox_setup)
             task_sum, prox_sum, steps = 0.0, 0.0, 0
+            prox_samples, ratio_sum = [], 0.0
         if self.args.optimizer == 'sgd':
             optimizer = torch.optim.SGD(
                 net.parameters(),
@@ -243,6 +244,9 @@ class LocalUpdate_AdaptiveFL(object):
                     task_sum += float(loss.detach())
                     prox_sum += float(regularizer.detach())
                     steps += 1
+                    ratio_sum += float((prox_strength * regularizer.detach()) / loss.detach().clamp_min(1e-12))
+                    if steps <= getattr(self, 'adapterfl_prox_diagnostic_steps', 2):
+                        prox_samples.append(dict(prox_gradient_diagnostics(net,loss,regularizer,prox_targets,prox_count,prox_strength),step=steps))
                     loss = loss + prox_strength * regularizer
                 loss.backward()
                 optimizer.step()
@@ -257,7 +261,14 @@ class LocalUpdate_AdaptiveFL(object):
                                      'prox_loss_mean': prox_sum / max(steps, 1),
                                      'lambda_prox': prox_strength, 'target_parameters': prox_count,
                                      'effective_coefficient_per_parameter': prox_strength / prox_count,
+                                     'weighted_prox_loss_mean': prox_strength * prox_sum / max(steps, 1),
+                                     'weighted_prox_to_task_loss_ratio_mean': ratio_sum / max(steps, 1),
+                                     'gradient_samples': prox_samples,
+                                     'diagnostic_extra_task_backwards': len(prox_samples),
                                      'steps': steps}
+            valid = [r['weighted_prox_to_task_shared_gradient_ratio'] for r in prox_samples
+                     if r['proximal_gradient_l2'] > 0 and r['weighted_prox_to_task_shared_gradient_ratio'] is not None]
+            self.adapterfl_metrics['warning_codes'] = ['PROX_GRADIENT_BELOW_1E_4_OF_TASK_SHARED_GRADIENT'] if valid and max(valid)<1e-4 else []
         return net.state_dict()
 
     # ======== 新增：SemanticFL 本地训练（与 client.py 同逻辑）========

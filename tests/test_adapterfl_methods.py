@@ -380,3 +380,84 @@ def test_all_hooks_real_seven_profile_shapes_on_cpu(method):
         mapped=split_model(output,model.state_dict())
         model.load_state_dict(mapped,strict=True)
         assert all(torch.isfinite(v).all() for v in model.state_dict().values())
+
+
+def test_review_m2_common_fraction_and_exclusive_weight_cancellation():
+    models=tiny_models();hooks=methods.MethodHooks(args_for('m2'),models)
+    old=filled(models[-1],5.)
+    profiles=(0,0,6)
+    sent=[filled(models[p],10.) for p in profiles]
+    uploads=[filled(models[p],v) for p,v in zip(profiles,(11.,12.,9.))]
+    base=Aggregation_AdaptiveFL(uploads,[1,1,1],old)
+    actual=hooks.aggregate(uploads,[1,1,1],old,sent)
+    diag=hooks.round_diagnostics
+    assert diag['common_support_fraction_full']==pytest.approx(sum(v.numel() for v in sent[0].values())/sum(v.numel() for v in old.values()))
+    assert diag['exclusive_coordinates_per_slot'][:2]==[0,0]
+    assert diag['exclusive_coordinates_per_slot'][2]>0
+    assert diag['weight_distribution']['min']<1 and diag['negative_fraction']>0
+    assert not torch.equal(actual['features.0.weight'][0],base['features.0.weight'][0])
+    # Full-only holder has a negative shared direction, but its normalized
+    # exclusive-region coefficient remains exactly one mathematically.
+    assert torch.allclose(actual['features.0.weight'][1:],uploads[2]['features.0.weight'][1:],atol=2e-6)
+
+
+def test_review_m4_gradient_measurements_and_diagnostics_do_not_change_update():
+    models=tiny_models();hooks=methods.MethodHooks(args_for('m4'),models)
+    net=copy.deepcopy(models[-1]);targets,count,mu=methods.prepare_prox(net,(hooks.shared_shapes,1.))
+    with torch.no_grad():
+        for p in net.parameters():p.add_(.01)
+    ce=nn.functional.cross_entropy(net(torch.randn(2,3,4,4))['output'],torch.tensor([0,1]))
+    penalty=methods.prox_loss(net,targets,count)
+    sample=methods.prox_gradient_diagnostics(net,ce,penalty,targets,count,mu)
+    prox_grad=torch.autograd.grad(penalty,list(net.parameters()),retain_graph=True)
+    assert sample['proximal_gradient_l2']==pytest.approx(sum(float(g.double().square().sum()) for g in prox_grad)**.5,rel=1e-6)
+    assert sample['weighted_prox_to_task_loss_ratio']==pytest.approx(float(penalty.detach()/ce.detach()))
+    assert all(p.grad is None for p in net.parameters())
+    data=torch.utils.data.TensorDataset(torch.randn(4,3,4,4),torch.tensor([0,1,1,0]))
+    states=[];rngs=[]
+    for diagnostic_steps in (0,2):
+        set_random_seed(11)
+        local=LocalUpdate_AdaptiveFL(args_for('m4'),data,range(4));hooks.configure_local(local)
+        local.adapterfl_prox_diagnostic_steps=diagnostic_steps
+        states.append(local.train(0,copy.deepcopy(models[-1])));rngs.append(methods.rng_state())
+    assert_states(states[0],states[1]);assert_rng(rngs[0],rngs[1])
+
+
+def test_review_m5_nonactivation_warning_and_fallback_survive_checkpoint(tmp_path):
+    models=tiny_models();args=args_for('m5');hooks=methods.MethodHooks(args,models)
+    old=filled(models[-1],5.);profiles=(0,2,4)
+    sent=[filled(models[p],0.) for p in profiles]
+    uploads=[filled(models[p],1.) for p in profiles]
+    for _ in range(2):hooks.aggregate(uploads,[1,1,1],old,sent)
+    torch.save(hooks.state_dict(),tmp_path/'state.pt')
+    restored=methods.MethodHooks(args,models)
+    restored.load_state_dict(torch.load(tmp_path/'state.pt',weights_only=True),old)
+    actual=restored.aggregate(uploads,[1,1,1],old,sent)
+    assert_states(actual,Aggregation_AdaptiveFL(uploads,[1,1,1],old))
+    diag=restored.round_diagnostics
+    assert diag['partition_totals']['shared']['actual_clip_rate']==0
+    assert diag['partition_totals']['remainder']['insufficient_slots_fallback_fraction']==1
+    assert 'NO_ACTUAL_CLIPPING_FOR_AT_LEAST_3_ROUNDS' in diag['warning_codes']
+    assert diag['rounds_without_actual_clip']==3
+    uploads[-1]=filled(models[4],100.)
+    restored.aggregate(uploads,[1,1,1],old,sent)
+    assert restored.round_diagnostics['actual_changed_upload_slot_fraction']==pytest.approx(1/3)
+    assert not restored.round_diagnostics['warning_codes']
+
+
+def test_review_m6_initial_delta_and_beta_component_magnitude():
+    models=tiny_models();hooks=methods.MethodHooks(args_for('m6'),models)
+    old=filled(models[-1],0.)
+    first=hooks.aggregate([filled(models[-1],10.)],[1],old)
+    initial=hooks.round_diagnostics['first_round_initialization_delta_l2']
+    assert hooks.round_diagnostics['first_observation']
+    assert hooks.round_diagnostics['history_component_l2']==0
+    assert hooks.round_diagnostics['difference_from_native_aggregate_l2']==0
+    local={k:v+1 for k,v in first.items()}
+    hooks.aggregate([local],[1],first)
+    diag=hooks.round_diagnostics
+    assert not diag['first_observation']
+    assert diag['first_round_initialization_delta_l2']==initial
+    assert diag['history_to_current_component_ratio']==pytest.approx(90.,rel=1e-6)
+    assert diag['applied_to_raw_update_ratio']==pytest.approx(9.1,rel=1e-6)
+    assert diag['difference_from_native_aggregate_l2']>0

@@ -79,12 +79,13 @@ class MethodHooks:
             self.shared_shapes[key] = shape
         self.velocity, self.previous_active = {}, {}
         self.previous_norms = {}
+        self.diagnostic_state = {}
         self.round_diagnostics = {}
 
     def state_dict(self):
         return cpu_copy({'method':self.method,'config':self.config,'shared_shapes':self.shared_shapes,
                          'velocity':self.velocity,'previous_active':self.previous_active,
-                         'previous_norms':self.previous_norms})
+                         'previous_norms':self.previous_norms,'diagnostic_state':self.diagnostic_state})
 
     def load_state_dict(self, state, full):
         if (state['method'] != self.method or state['config'] != self.config
@@ -106,6 +107,7 @@ class MethodHooks:
         if bool(self.velocity) != bool(self.previous_active):
             raise ValueError('Velocity and active-mask history must be paired')
         self.previous_norms = dict(state['previous_norms'])
+        self.diagnostic_state = copy.deepcopy(state.get('diagnostic_state',{}))
 
     def region(self, key, tensor, name):
         mask = torch.zeros_like(tensor,dtype=torch.bool)
@@ -116,6 +118,7 @@ class MethodHooks:
     def configure_local(self, local):
         if self.method=='m4' and self.config['shared_prox_lambda'] > 0:
             local.adapterfl_prox = (self.shared_shapes,self.config['shared_prox_lambda'])
+            local.adapterfl_prox_diagnostic_steps = 2
 
     @torch.no_grad()
     def aggregate(self, uploads, lens, previous, dispatched=None):
@@ -196,15 +199,20 @@ class MethodHooks:
         if self.method!='m6':
             raise ValueError('Unknown method; combinations are unsupported')
         result, dot, old_square, current_square, applied_square = {},0.,0.,0.,0.
-        reactivated, covered_count = 0,0
+        reactivated, covered_count, consecutive_count = 0,0,0
+        history_square, current_component_square, fresh_square, effect_square = 0.,0.,0.,0.
+        first_observation = not self.velocity
         beta = self.config['history_beta']
         for k,old in previous.items():
             active = counts[k]>0
             prior = self.previous_active.get(k,torch.zeros_like(active))
             both = active & prior
+            consecutive_count += int(both.sum())
             delta = base[k]-old
             velocity = torch.zeros_like(old)
             velocity[active] = delta[active]  # First observation or after a gap.
+            fresh_square += float(delta[active & ~prior].double().square().sum())
+            current_component_square += float(delta[active & ~prior].double().square().sum())
             if k in self.velocity:
                 prev = self.velocity[k]
                 dot += float((delta[both].double()*prev[both].double()).sum())
@@ -212,6 +220,8 @@ class MethodHooks:
                 current_square += float(delta[both].double().square().sum())
                 if beta:
                     velocity[both] = beta*prev[both]+(1-beta)*delta[both]
+                history_square += float((beta*prev[both]).double().square().sum())
+            current_component_square += float(((1-beta)*delta[both]).double().square().sum())
             result[k] = base[k].clone()
             if beta and torch.any(both):
                 result[k][both] = old[both]+velocity[both]
@@ -219,16 +229,30 @@ class MethodHooks:
             self.velocity[k],self.previous_active[k] = velocity,active.clone()
             covered_count += int(active.sum()); reactivated += int((active & ~prior).sum())
             applied_square += float(velocity.double().square().sum())
+            effect_square += float((result[k]-base[k]).double().square().sum())
         raw = math.sqrt(sum(float((base[k]-v).double().square().sum()) for k,v in previous.items()))
+        if first_observation:
+            self.diagnostic_state['m6_initial_update_l2'] = raw
+        self.diagnostic_state['m6_rounds'] = self.diagnostic_state.get('m6_rounds',0)+1
+        current_component_norm = math.sqrt(current_component_square)
         self.round_diagnostics = {'raw_update_l2':raw,'smoothed_update_l2':math.sqrt(applied_square),
             'delta_vs_previous_velocity_cosine':dot/math.sqrt(old_square*current_square) if min(old_square,current_square)>EPS**2 else None,
-            'fresh_or_reactivated_coordinates':reactivated,'covered_coordinates':covered_count,'beta':beta}
+            'fresh_or_reactivated_coordinates':reactivated,'covered_coordinates':covered_count,'beta':beta,
+            'first_observation':first_observation,'first_round_initialization_delta_l2':self.diagnostic_state['m6_initial_update_l2'],
+            'fresh_or_reactivated_delta_l2':math.sqrt(fresh_square),'consecutive_covered_coordinates':consecutive_count,
+            'history_component_l2':math.sqrt(history_square),'current_component_l2':current_component_norm,
+            'history_to_current_component_ratio':math.sqrt(history_square)/current_component_norm if current_component_norm>EPS else None,
+            'applied_to_raw_update_ratio':math.sqrt(applied_square)/raw if raw>EPS else None,
+            'difference_from_native_aggregate_l2':math.sqrt(effect_square),
+            'initialization_note':'First delta includes independent submodel initialization reconciliation; formula unchanged'}
         return result
 
     def conflict(self, uploads, lens, previous, dispatched):
         strength = self.config['conflict_lambda']
+        geometry = conflict_support_diagnostics(uploads,previous)
         if len(uploads)<2 or strength==0:
-            self.round_diagnostics = {'fallback':'single_slot_or_zero_strength'}
+            self.round_diagnostics = dict(geometry,fallback='single_slot_or_zero_strength',
+                                         conflict_weights=[1.]*len(uploads),weight_distribution=stats([1.]*len(uploads)))
             return Aggregation_AdaptiveFL(uploads,lens,previous)
         # For each key, intersect ALL currently uploaded supports; align the same
         # semantic coordinates before accumulating global dot products/norms.
@@ -249,11 +273,12 @@ class MethodHooks:
         # A common multiplier cancels in coordinate-wise weight normalization.
         # Subtract the maximum to avoid all sample weights underflowing to zero.
         weights=[math.exp(max(-80.,x-max(logits))) for x in logits]
-        self.round_diagnostics = {'cosine':similarities,'conflict_weights':weights,
-            'unnormalized_log_weights':logits,
-            'negative_fraction':sum(s is not None and s<0 for s in similarities)/len(similarities),
-            'common_coordinates':sum(d.numel() for d in deltas[0].values()),
-            'fallback_slots':sum(s is None for s in similarities)}
+        self.round_diagnostics = dict(geometry,cosine=similarities,conflict_weights=weights,
+            weight_distribution=dict(stats(weights),std_population=statistics.pstdev(weights)),
+            valid_cosine_negative_fraction=sum(s is not None and s<0 for s in similarities)/max(1,sum(s is not None for s in similarities)),
+            unnormalized_log_weights=logits,
+            negative_fraction=sum(s is not None and s<0 for s in similarities)/len(similarities),
+            fallback_slots=sum(s is None for s in similarities))
         if all(w==1 for w in weights):
             return Aggregation_AdaptiveFL(uploads,lens,previous)
         return Aggregation_AdaptiveFL(uploads,[n*w for n,w in zip(lens,weights)],previous)
@@ -270,6 +295,10 @@ class MethodHooks:
                                    if region=='shared' else tuple(v.shape)) for k,v in s.items())
                 groups.setdefault(signature,[]).append(i)
             for group in groups.values():
+                signature = tuple((k,tuple(min(a,b) for a,b in zip(v.shape,self.shared_shapes[k]))
+                                   if region=='shared' else tuple(v.shape)) for k,v in uploads[group[0]].items())
+                support_id = hashlib.sha256(json.dumps(signature).encode()).hexdigest()[:16]
+                target_coordinates = sum(int(self.region(k,v,region).sum()) for k,v in uploads[group[0]].items())
                 norms=[]
                 for i in group:
                     square=0.
@@ -280,20 +309,75 @@ class MethodHooks:
                 enough=len(group)>=self.config['partition_norm_min_clients']
                 threshold=statistics.median(norms)*self.config['partition_norm_multiplier'] if enough else None
                 factors=[min(1.,threshold/(n+EPS)) if threshold is not None and n>EPS and n>threshold else 1. for n in norms]
+                actual_changes, adjustment_square, actual_slot_ids = 0,0.,[]
                 for i,factor in zip(group,factors):
                     if factor==1:
                         continue
                     if changed[i] is uploads[i]:
                         changed[i]={k:v.clone() for k,v in uploads[i].items()}
+                    changed_coordinates = 0
                     for k,v in uploads[i].items():
                         mask=self.region(k,v,region)
                         sent=dispatched[i][k]
                         changed[i][k][mask]=sent[mask]+factor*(v[mask]-sent[mask])
+                        difference=changed[i][k][mask]-v[mask]
+                        adjustment_square+=float(difference.double().square().sum())
+                        changed_coordinates+=int(torch.count_nonzero(difference))
+                    actual_changes+=changed_coordinates>0
+                    if changed_coordinates:
+                        actual_slot_ids.append(i)
                 diagnostics.append({'partition':region,'slots':group,'norms_before':norms,
                     'threshold':threshold,'factors':factors,'clipped_fraction':sum(f<1 for f in factors)/len(factors),
-                    'norms_after':[n*f for n,f in zip(norms,factors)],'fallback':None if enough else 'insufficient_equal_support_slots'})
-        self.round_diagnostics={'groups':diagnostics}
+                    'norms_after':[n*f for n,f in zip(norms,factors)],'fallback':None if enough else 'insufficient_equal_support_slots',
+                    'support_id':support_id,'slot_count':len(group),'target_coordinates_per_slot':target_coordinates,
+                    'clip_triggered_slots':sum(f<1 for f in factors),'actually_changed_slots':actual_changes,
+                    'actually_changed_slot_ids':actual_slot_ids,
+                    'upload_adjustment_l2':math.sqrt(adjustment_square)})
+        totals = {}
+        for region in ('shared','remainder'):
+            groups=[g for g in diagnostics if g['partition']==region and g['target_coordinates_per_slot']>0]
+            slots=sum(g['slot_count'] for g in groups)
+            fallback=sum(g['slot_count'] for g in groups if g['fallback'])
+            clipped=sum(g['actually_changed_slots'] for g in groups)
+            totals[region]={'nonempty_slot_regions':slots,'actually_changed_slot_regions':clipped,
+                'actual_clip_rate':clipped/slots if slots else 0.,
+                'insufficient_slots_fallback_count':fallback,'insufficient_slots_fallback_fraction':fallback/slots if slots else 0.,
+                'group_slot_counts':[g['slot_count'] for g in groups],
+                'upload_adjustment_l2':math.sqrt(sum(g['upload_adjustment_l2']**2 for g in groups))}
+        changed_slots={i for g in diagnostics for i in g['actually_changed_slot_ids']}
+        rounds=self.diagnostic_state.get('m5_rounds',0)+1
+        idle=0 if changed_slots else self.diagnostic_state.get('m5_rounds_without_actual_clip',0)+1
+        self.diagnostic_state.update(m5_rounds=rounds,m5_rounds_without_actual_clip=idle)
+        self.diagnostic_state['m5_rounds_with_actual_clip']=self.diagnostic_state.get('m5_rounds_with_actual_clip',0)+bool(changed_slots)
+        warnings=[] if changed_slots else ['NO_ACTUAL_CLIPPING_THIS_ROUND']
+        if idle>=3:
+            warnings.append('NO_ACTUAL_CLIPPING_FOR_AT_LEAST_3_ROUNDS')
+        self.round_diagnostics={'groups':diagnostics,'partition_totals':totals,
+            'actual_changed_upload_slot_fraction':len(changed_slots)/len(uploads),
+            'rounds_without_actual_clip':idle,'rounds_with_actual_clip':self.diagnostic_state['m5_rounds_with_actual_clip'],
+            'warning_codes':warnings}
         return Aggregation_AdaptiveFL(changed,lens,previous)
+
+
+def conflict_support_diagnostics(uploads,previous):
+    """Geometry only: a single-holder weight cancels in native normalization."""
+    full=sum(v.numel() for v in previous.values())
+    common,exclusive,uncovered=0,0,0
+    exclusive_per_slot=[0]*len(uploads)
+    for k,v in previous.items():
+        shape=tuple(min(s[k].shape[d] for s in uploads) for d in range(v.ndim))
+        common+=math.prod(shape)
+        counts=torch.zeros_like(v,dtype=torch.int32)
+        for s in uploads:
+            counts[prefix(v,s[k])]+=1
+        exclusive+=int((counts==1).sum());uncovered+=int((counts==0).sum())
+        for i,s in enumerate(uploads):
+            exclusive_per_slot[i]+=int((counts[prefix(v,s[k])]==1).sum())
+    return {'common_coordinates':common,'full_coordinates':full,'common_support_fraction_full':common/full,
+            'common_support_fraction_per_upload':[common/sum(v.numel() for v in s.values()) for s in uploads],
+            'exclusive_coordinates':exclusive,'exclusive_coordinates_per_slot':exclusive_per_slot,
+            'uncovered_coordinates':uncovered,
+            'exclusive_region_weight_effect':'One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed'}
 
 
 def prepare_prox(net, setup):
@@ -312,6 +396,35 @@ def prox_loss(net, targets, count):
         sl,initial=targets[k]
         result=result+(p[sl]-initial).square().sum()
     return .5*result/count
+
+
+def prox_gradient_diagnostics(net,task_loss,regularizer,targets,count,strength):
+    """Sampled diagnostic only: autograd.grad does not populate parameter .grad.
+
+    The proximal gradient is analytic, lambda*(theta-theta_initial)/N.
+    No second forward, optimizer step, random draw or automatic lambda change.
+    """
+    params=list(net.named_parameters())
+    gradients=torch.autograd.grad(task_loss,[p for _,p in params],retain_graph=True,allow_unused=True)
+    task_square,task_shared_square,prox_square=0.,0.,0.
+    for (key,p),g in zip(params,gradients):
+        sl,initial=targets[key]
+        if g is not None:
+            task_square+=float(g.detach().double().square().sum())
+            task_shared_square+=float(g[sl].detach().double().square().sum())
+        prox_square+=float((p[sl].detach().double()-initial.double()).square().sum())/count**2
+    task_shared=math.sqrt(task_shared_square)
+    proximal=math.sqrt(prox_square)
+    ce=float(task_loss.detach());penalty=float(regularizer.detach())
+    return {'task_ce':ce,'prox_loss':penalty,'weighted_prox_loss':strength*penalty,
+            'prox_to_task_loss_ratio':penalty/max(abs(ce),EPS),
+            'weighted_prox_to_task_loss_ratio':strength*penalty/max(abs(ce),EPS),
+            'task_gradient_l2':math.sqrt(task_square),'task_shared_gradient_l2':task_shared,
+            'proximal_gradient_l2':proximal,'weighted_proximal_gradient_l2':strength*proximal,
+            'weighted_prox_to_task_shared_gradient_ratio':strength*proximal/task_shared if task_shared>EPS else None,
+            'lambda_for_reference_1percent_shared_gradient_ratio':.01*task_shared/proximal if proximal>EPS else None,
+            'shared_parameters':count,'equivalent_unnormalized_prox_coefficient':strength/count,
+            'calibration_note':'1 percent is a dimensional reference only; no lambda is changed'}
 
 
 def prepare_output(args):
@@ -386,6 +499,7 @@ class RunLog:
         else:
             manifest={'identity':self.identity,'command':sys.argv,'torch':torch.__version__,
                       'python':sys.version,'device':str(args.device),'profiles':[(w,d) for w in args.width_ration for d in args.depth_saved if w!=1 or d==args.depth_saved[0]],
+                      'initial_state_sha256':[hashlib.sha256(b''.join(k.encode()+v.detach().cpu().contiguous().numpy().tobytes() for k,v in m.state_dict().items())).hexdigest() for m in models],
                       'partition_definition':'intersection of all seven actual parameter prefixes vs complement; no original fixed two-part topology',
                       'checkpoint_selection':'latest round only; never selected on official test accuracy'}
             (self.path/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
@@ -408,6 +522,8 @@ class RunLog:
                 self.accuracy_writer.writeheader()
         self.accuracy_writer.writerow(row);self.accuracy.flush()
         metrics={'server':self.hooks.round_diagnostics,'clients':local_logs,'slots':slots}
+        for warning in self.hooks.round_diagnostics.get('warning_codes',[]):
+            print(f'METHOD_DIAGNOSTIC_WARNING method={self.args.method} round={round_index+1} code={warning}',flush=True)
         self.diagnostic_writer.writerow({'round':round_index+1,'method':self.args.method,'metrics_json':json.dumps(metrics,allow_nan=False)})
         self.diagnostics.flush()
         self.rows.append(row);self.total_time=total_time;self.next_round=round_index+1
