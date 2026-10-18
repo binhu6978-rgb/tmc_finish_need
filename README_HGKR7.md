@@ -4,12 +4,12 @@
 
 ## 上传和安装（首次一次）
 
-将新版完整源码包 `hgkr7_300_full_project_server.tar.gz` 上传到目标Linux机器，解压：
+将新版完整源码包 `hgkr7_300_full_project_gpu0_server.tar.gz` 上传到目标Linux机器，解压：
 
 ```bash
-scp hgkr7_300_full_project_server.tar.gz USER@HOST:~/
+scp hgkr7_300_full_project_gpu0_server.tar.gz USER@HOST:~/
 # 在服务器上：
-tar -xzf hgkr7_300_full_project_server.tar.gz
+tar -xzf hgkr7_300_full_project_gpu0_server.tar.gz
 cd AAAITMC_finish_need_code
 ```
 
@@ -46,7 +46,7 @@ data/cifar100/cifar-100-python/meta
 bash run_7tier_300.sh
 ```
 
-默认使用当前环境的python3；需要时先 `export PYTHON=python`。默认有两个可见GPU时各占一张（0/1），只有一张时两进程共用GPU0；可事先设置 `export GPUS=0,0` 或 `export GPUS=0,1`。索引相对于CUDA_VISIBLE_DEVICES。
+默认使用当前环境的python3；需要时先 `export PYTHON=python`。**固定仅使用GPU 0**：所有批次的两个进程均传入 `--gpu 0`，即使服务器有多张卡也不切换到GPU 1。GPU索引相对于CUDA_VISIBLE_DEVICES；脚本不再读取GPUS覆盖设置。双进程共用GPU 0，仍先做显存检查。
 
 脚本首先做一次真实双进程显存/短程SGD检查：每个进程创建七档模型，模拟10个Full槽位，batch50、本地5epoch和锚定聚合，另检查P6的batch128前向。两个进程保留分配器缓存直到对方也完成，测试当前设备能否共存。失败（含OOM）立即停止并保留stderr，不降低batch或模型，不串行替代、不自动重试。
 

@@ -57,5 +57,5 @@ def build(destination):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--output',default='runs/hgkr7_full_project_delivery/hgkr7_300_full_project_server.tar.gz')
+    p=argparse.ArgumentParser(); p.add_argument('--output',default='runs/hgkr7_gpu0_delivery/hgkr7_300_full_project_gpu0_server.tar.gz')
     build(p.parse_args().output)

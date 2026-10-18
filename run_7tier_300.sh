@@ -27,15 +27,9 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 
 if [[ -f BUNDLE_MANIFEST.json ]]; then "$PYTHON" tools/verify_hgkr7_package.py; fi
-count=$("$PYTHON" -c 'import torch; n=torch.cuda.device_count(); assert n>0,"No CUDA GPU available"; print(n)')
-if [[ -n "${GPUS:-}" ]]; then
-  IFS=',' read -r gpu1 gpu2 <<< "$GPUS"
-  gpu2="${gpu2:-$gpu1}"
-elif (( count >= 2 )); then gpu1=0; gpu2=1
-else gpu1=0; gpu2=0
-fi
-[[ "$gpu1" =~ ^[0-9]+$ && "$gpu2" =~ ^[0-9]+$ ]] || { printf 'GPUS must be 0 or 0,1\n' >&2; exit 2; }
-(( gpu1 < count && gpu2 < count )) || { printf 'GPU index out of range\n' >&2; exit 2; }
+"$PYTHON" -c 'import torch; assert torch.cuda.device_count()>0,"No CUDA GPU available"'
+# User requested GPU 0 only, including when more GPUs are visible.
+gpu1=0; gpu2=0
 printf 'Batch GPU assignment: %s / %s\n' "$gpu1" "$gpu2" | tee "$OUTPUT_ROOT/gpu_assignment.log"
 
 finish_pair() {
