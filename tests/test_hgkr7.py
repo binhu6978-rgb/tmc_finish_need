@@ -13,7 +13,7 @@ import torch
 from torch.utils.data import TensorDataset
 
 from experiments.baseline import content_hash, state_hash
-from experiments.run_hgkr7 import parse
+from experiments.run_hgkr7 import evaluate_full, parse
 from experiments.summarize_hgkr7 import load_suite, summarize
 from hgkr.core import Config, KernelHistory, anchored_aggregate, clone_state, reset_copy
 from hgkr.protocol import allocation_cost, model_costs
@@ -154,7 +154,7 @@ def test_summary_peak_and_tail_metrics_without_training(monkeypatch,tmp_path):
     for i,mode in enumerate(MODES):
         rows=[]
         for r in range(300):
-            rows.append({'official_test':[dict(accuracy=float(r+i),ce=1.) for _ in range(7)],
+            rows.append({'full_test':dict(profile='P6',accuracy=float(r+i),ce=1.),
                 'profile_slots':[0]*6+[10], 'allocation':{'random_cost':[100,100],'priority_cost':[100,100]},
                 'slots':[{'client':70,'profile':6,'learning_delta_l2':1.,'kernels':{}}],
                 'reset_total':0,'reset_unique_segments':0,'round':r,
@@ -163,8 +163,67 @@ def test_summary_peak_and_tail_metrics_without_training(monkeypatch,tmp_path):
         fake[mode]={'rows':rows,'manifest':{'protocol':{}},'completed':{'elapsed_seconds':300}}
     monkeypatch.setattr(module,'load_suite',lambda root:fake)
     obj=summarize(tmp_path)
-    assert obj['arms']['C0']['profiles']['P6']==dict(test_oracle_peak=299.,peak_round=300,round300=299.,last20_mean=289.5,last50_mean=274.5)
+    assert obj['arms']['C0']['full']==dict(test_oracle_peak=299.,peak_round=300,round300=299.,last20_mean=289.5,last50_mean=274.5)
+    assert obj['arms']['C0']['Full_evaluation_count']==300
+    assert all('profiles' not in a for a in obj['arms'].values())
+    assert not (tmp_path/'profile_accuracy.csv').exists()
+    assert len((tmp_path/'full_accuracy_each_round.csv').read_text().splitlines())==1801
     assert 'test-oracle peak' in (tmp_path/'report.md').read_text(encoding='utf-8')
+
+
+def test_original_Full_test_only_no_grad_and_rng_isolated(models):
+    from experiments.baseline import state_hash
+    dataset=TensorDataset(torch.randn(4,3,32,32),torch.arange(4))
+    a=args(); a.gpu=-1; a.bs=128; a.verbose=False
+    modes=[m.training for m in models]; hashes=[state_hash(m.state_dict()) for m in models]
+    calls=[]; handles=[]
+    for p,m in enumerate(models):
+        handles.append(m.register_forward_hook(lambda m,x,y,p=p:calls.append((p,len(x[0]),m.training,torch.is_grad_enabled()))))
+    before=capture_rng()
+    try: result=evaluate_full(models,dataset,a)
+    finally:
+        for h in handles: h.remove()
+    after=capture_rng()
+    assert result['profile']=='P6' and set(result)=={'profile','accuracy','ce'}
+    assert calls==[(6,4,False,False)]
+    assert [m.training for m in models]==modes
+    assert torch.equal(before['torch'],after['torch']) and before['python']==after['python']
+    assert all(state_hash(m.state_dict())==h for m,h in zip(models,hashes))
+
+
+@pytest.mark.parametrize('mode',MODES)
+def test_formal_control_loop_exactly_300_Full_tests(monkeypatch,tmp_path,mode):
+    # A synthetic control-flow test, not 300 rounds of performance training.
+    import experiments.run_hgkr7 as module
+    a=args(); a.gpu=-1; a.epochs=300
+    opt=SimpleNamespace(mode=mode,prepare=False,plan=None,smoke_rounds=None,
+                        output_dir=str(tmp_path/mode),dataset_root='unused')
+    group=[torch.nn.Linear(1,1) for _ in range(7)]
+    plan={'schedule':[{'round':r} for r in range(300)],
+          'evaluation':{'profiles':['P6'],'frequency':'every_round','batch_size':128,'rng':'isolated_from_training'}}
+    monkeypatch.setattr(module,'parse',lambda argv:(opt,a,Config()))
+    monkeypatch.setattr(module,'load_data',lambda root:(SimpleNamespace(targets=[]),None))
+    monkeypatch.setattr(module,'load_partition',lambda *args:({},{}))
+    monkeypatch.setattr(module,'initialize_models',lambda args:(group,[]))
+    monkeypatch.setattr(module,'prepare',lambda *args:plan)
+    monkeypatch.setattr(module,'shared_specs',lambda models:{})
+    monkeypatch.setattr(module,'coverage',lambda models:({},{}))
+    training_calls=[]; test_calls=[]
+    def round_stub(models,train,users,entry,*args):
+        assert len(models)==7
+        training_calls.append(entry['round'])
+        return {'round':entry['round'],'timings':{},'reset_total':0}
+    def test_stub(model,data,args):
+        assert model is group[6]
+        test_calls.append(model)
+        return len(test_calls)/10,1.
+    monkeypatch.setattr(module,'run_round',round_stub)
+    monkeypatch.setattr(module,'test_img',test_stub)
+    monkeypatch.setattr(module,'save_weights',lambda *args:None)
+    module.main([])
+    rows=[json.loads(x) for x in (tmp_path/mode/'rounds.jsonl').read_text().splitlines()]
+    assert training_calls==list(range(300)) and len(test_calls)==300
+    assert all('official_test' not in r and r['full_test']['profile']=='P6' for r in rows)
 
 
 def test_shell_stops_on_failed_arm_and_never_runs_next_batch(tmp_path):

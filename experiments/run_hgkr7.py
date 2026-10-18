@@ -18,6 +18,7 @@ from hgkr.protocol import model_costs
 from hgkr.seven import MODES, initialize_models, make_schedule, run_round, shared_specs
 from models.test import test_img
 from semconsfl.aggregation import coverage
+from semconsfl.measurement import isolated_rng
 from utils.options import args_parser
 from utils.set_seed import set_random_seed
 
@@ -79,7 +80,7 @@ def version():
 def prepare(args, config, opt, train, users, partition, models, profiles):
     costs=model_costs(models)
     _,region=coverage(models)
-    return {'protocol':'HGKR7-300-v1','epochs':args.epochs,'seed':1,'config':vars(config),
+    return {'protocol':'HGKR7-300-full-eval-v2','epochs':args.epochs,'seed':1,'config':vars(config),
             'partition':partition,'profiles':profiles,'costs':costs,'coverage':region,
             'shared_kernel_shapes':shared_specs(models),
             'initial_state_sha256':[state_hash(m.state_dict()) for m in models],
@@ -87,12 +88,26 @@ def prepare(args, config, opt, train, users, partition, models, profiles):
             'dataset_sha256':{n:sha256(Path(opt.dataset_root)/'cifar-100-python'/n) for n in ('train','test','meta')},
             'source_sha256':sources(),'version':version(),
             'training_args':{k:str(v) if isinstance(v,torch.device) else v for k,v in vars(args).items() if k not in ('device','gpu')},
-            'test_protocol':'Original official test each round, all 7 profiles; Full peak is test-oracle peak'}
+            'evaluation':{'profiles':['P6'],'frequency':'every_round','batch_size':args.bs,
+                          'rng':'isolated_from_training'},
+            'test_protocol':'Original official test once per round, P6 Full only; peak is test-oracle peak'}
+
+
+def evaluate_full(models, dataset, args):
+    """One original P6 test, isolated from future SGD RNG and model mode state."""
+    full=models[6]
+    modes=[(module,module.training) for module in full.modules()]
+    with isolated_rng():
+        try:
+            accuracy,ce=test_img(full,dataset,args)
+        finally:
+            for module,training in modes: module.training=training
+    return {'profile':'P6','accuracy':accuracy,'ce':ce}
 
 
 def save_weights(path, model, round_id, accuracy):
     temporary=Path(str(path)+'.pending')
-    torch.save({'round_1based':round_id+1,'official_test':accuracy,
+    torch.save({'round_1based':round_id+1,'full_test':accuracy,
                 'global_full':{k:v.detach().cpu().clone() for k,v in model.state_dict().items()}},temporary)
     os.replace(temporary,path)
 
@@ -117,6 +132,9 @@ def main(argv=None):
         plan=prepare(args,config,opt,train,users,partition,models,profiles)
     if len(plan['schedule'])!=args.epochs or [x['round'] for x in plan['schedule']]!=list(range(args.epochs)):
         raise ValueError('Plan does not contain exactly the requested communication rounds')
+    if plan.get('evaluation')!={'profiles':['P6'],'frequency':'every_round','batch_size':128,
+                               'rng':'isolated_from_training'}:
+        raise ValueError('Expected Full-only per-round evaluation protocol')
     output=Path(opt.output_dir); output.mkdir(parents=True,exist_ok=False)
     if opt.prepare:
         write_json(output/'protocol.json',plan); print(output/'protocol.json'); return
@@ -134,16 +152,16 @@ def main(argv=None):
         for r,entry in enumerate(plan['schedule']):
             wall=time.perf_counter(); row=run_round(models,train,users,entry,args,config,history,opt.mode,masks)
             begin=time.perf_counter()
-            row['official_test']=[dict(zip(('accuracy','ce'),test_img(m,test,args))) for m in models]
+            row['full_test']=evaluate_full(models,test,args)
             row['timings']['test_seconds']=time.perf_counter()-begin
             row['timings']['wall_seconds']=time.perf_counter()-wall
             with (output/'rounds.jsonl').open('a',encoding='utf-8') as f:
                 f.write(json.dumps(row,allow_nan=False)+'\n'); f.flush(); os.fsync(f.fileno())
-            full=row['official_test'][6]['accuracy']
+            full=row['full_test']['accuracy']
             if full>best:
-                best=full; save_weights(output/'best_full.pt',models[-1],r,row['official_test'])
+                best=full; save_weights(output/'best_full.pt',models[-1],r,row['full_test'])
             print(f'{opt.mode} round={r+1}/{args.epochs} Full={full:.4f} test-oracle-peak={best:.4f} resets={row["reset_total"]}',flush=True)
-        save_weights(output/'final_full.pt',models[-1],args.epochs-1,row['official_test'])
+        save_weights(output/'final_full.pt',models[-1],args.epochs-1,row['full_test'])
         write_json(output/'completed.json',{'mode':opt.mode,'rounds_completed':r+1,
                    'formal_300_complete':r+1==300 and not bool(opt.smoke_rounds),'elapsed_seconds':time.perf_counter()-started,
                    'ended_utc':datetime.now(timezone.utc).isoformat(),'final_source_sha256':sources()})

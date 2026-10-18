@@ -20,7 +20,7 @@ def build(destination):
     commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
     # Capture source bytes independently, so archive integrity never depends on a .git checkout.
     version={'git_commit':commit,'branch':'feature/hgkr-fl-seven-tier-300',
-             'protocol':'HGKR7-300-v1','source_sha256':{p:hashlib.sha256(contents[p]).hexdigest() for p in CODE_FILES}}
+             'protocol':'HGKR7-300-full-eval-v2','source_sha256':{p:hashlib.sha256(contents[p]).hexdigest() for p in CODE_FILES}}
     contents['VERSION.json']=json.dumps(version,indent=2).encode()
     manifest={'sha256':{p:hashlib.sha256(b).hexdigest() for p,b in contents.items()},
               'formal_results_included':False,'CIFAR_raw_data_included':False}
@@ -40,5 +40,5 @@ def build(destination):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--output',default='runs/hgkr7_delivery/hgkr7_300_server.tar.gz')
+    p=argparse.ArgumentParser(); p.add_argument('--output',default='runs/hgkr7_full_eval_delivery/hgkr7_300_full_eval_server.tar.gz')
     build(p.parse_args().output)

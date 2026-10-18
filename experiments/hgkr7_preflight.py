@@ -35,11 +35,11 @@ def probe(gpu, output, peer_output=None):
     masks,_=coverage(models)
     row=run_round(models,dataset,users,{'round':1,'clients':clients,'random':[6]*10,'priority':[6]*10},
                   args,Config(),history,'C1',masks)
-    # Also evaluate all seven real networks on a test-sized batch while uploads were tested above.
+    # Only P6 is evaluated on a test-sized batch; all seven remain in training.
     with torch.no_grad():
-        for model in models:
-            model.eval(); result=model(torch.zeros(128,3,32,32,device=args.device))['output']
-            if not torch.isfinite(result).all(): raise ValueError('Nonfinite forward')
+        models[6].eval()
+        result=models[6](torch.zeros(128,3,32,32,device=args.device))['output']
+        if not torch.isfinite(result).all(): raise ValueError('Nonfinite forward')
     result={'passed':True,'gpu':gpu,'synthetic_only':True,'full_slots':len(row['slots']),
             'peak_reserved_bytes':torch.cuda.max_memory_reserved(gpu),
             'peak_allocated_bytes':torch.cuda.max_memory_allocated(gpu),

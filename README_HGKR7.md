@@ -1,15 +1,15 @@
-# HGKR-FL 七档六组300轮 Linux GPU 运行包
+# HGKR-FL 七档训练、仅Full测试：六组300轮 Linux GPU 运行包
 
 本包准备六组固定实验，不含已完成的300轮性能结果。没有服务器地址或可用连接时，只交付本包；不能把本地正确性测试说成已经在服务器部署。
 
 ## 上传和安装（首次一次）
 
-将 `hgkr7_300_server.tar.gz` 上传到目标Linux机器，解压：
+将新版 `hgkr7_300_full_eval_server.tar.gz` 上传到目标Linux机器，解压：
 
 ```bash
-scp hgkr7_300_server.tar.gz USER@HOST:~/
+scp hgkr7_300_full_eval_server.tar.gz USER@HOST:~/
 # 在服务器上：
-tar -xzf hgkr7_300_server.tar.gz
+tar -xzf hgkr7_300_full_eval_server.tar.gz
 cd hgkr7_300
 ```
 
@@ -44,7 +44,7 @@ bash run_7tier_300.sh
 
 默认使用当前环境的python3；需要时先 `export PYTHON=python`。默认有两个可见GPU时各占一张（0/1），只有一张时两进程共用GPU0；可事先设置 `export GPUS=0,0` 或 `export GPUS=0,1`。索引相对于CUDA_VISIBLE_DEVICES。
 
-脚本首先做一次真实双进程显存/短程SGD检查：每个进程创建七档模型，模拟10个Full槽位，batch50、本地5epoch和锚定聚合，另检查七档batch128前向。两个进程保留分配器缓存直到对方也完成，测试当前设备能否共存。失败（含OOM）立即停止并保留stderr，不降低batch或模型，不串行替代、不自动重试。
+脚本首先做一次真实双进程显存/短程SGD检查：每个进程创建七档模型，模拟10个Full槽位，batch50、本地5epoch和锚定聚合，另检查P6的batch128前向。两个进程保留分配器缓存直到对方也完成，测试当前设备能否共存。失败（含OOM）立即停止并保留stderr，不降低batch或模型，不串行替代、不自动重试。
 
 预检查通过后只准备一次客户端/模型分配，然后依次运行：
 
@@ -67,7 +67,9 @@ bash run_7tier_300.sh
 
 七档实际调用原始get_model_list/ResNet18_cifar：P0(.4,2)、P1(.4,3)、P2(.4,4)、P3(.66,2)、P4(.66,3)、P5(.66,4)、P6(1,2)。slim_idx控制开始缩窄的段，不删除层。共享片段逐层按七份真实形状求共同输入/输出前缀；本模型实测交集与P0形状一致，代码不以该巧合作为假定。Full-only区域由七档实际覆盖计数识别，不能沿用三档区域统计。
 
-原始协议：seed1、100客户端、4:3:3能力、每轮10个不重复参与客户端，5本地epoch、batch50/drop_last、原始CE、SGD .01×.998^round、momentum.5、weight_decay1e-4；原始ToTensor+Normalize，不增强或增设验证集；原始官方test每轮测试七档，batch128。新调度是client-first，明确不同于旧AdaptiveFL的model-first available。设备ID0–39能P0–P2，40–69能P0–P5，70–99能P0–P6。
+训练协议：seed1、100客户端、4:3:3能力、每轮10个不重复参与客户端，5本地epoch、batch50/drop_last、原始CE、SGD .01×.998^round、momentum.5、weight_decay1e-4；原始ToTensor+Normalize，不增强或增设验证集。全部七档仍参与模型分配、本地训练、历史与覆盖聚合。新调度是client-first，明确不同于旧AdaptiveFL的model-first available。设备ID0–39能P0–P2，40–69能P0–P5，70–99能P0–P6。
+
+**仅在新HGKR7入口改变评估范围：每轮聚合后仅对P6 Full调用原始test_img一次，300轮共300次；不调用P0–P5的CIFAR-100测试。** 保持原测试集、batch128、eval/no_grad和准确率/CE计算。评估包在隔离的Python/NumPy/Torch CPU/CUDA RNG上下文中运行，并恢复P6调用前的模式，避免测试DataLoader的随机数消耗影响后续SGD；六组采用完全相同规则。原始Algorithm/Training_AdaptiveFL.py及models/test.py没有修改。此更新不调整分配、训练、Kernel History、重置或聚合。
 
 复用三档已冻结的80%计算/通信双预算及±2%成本匹配容差。依据真实profile MAC和样本数计算成本，不假定profile编号与MAC单调：P2的MAC高于P3。Full-priority只枚举本轮高能力客户端的Full子集（至多2^10），优先Full次数，再优先过去Full机会较少者；随后用剩余预算作简单贪心可行分配。C0用固定128次可行随机分配抽样，保留实际双成本接近C1的候选，再随机选；没有匹配候选时透明回退同一分配。所有选择均在训练前冻结，不使用标签偏好、损失或test成绩。实际差额、退化回退和相同分配轮数记录protocol.json；不将近似预算匹配说成严格相等。
 
@@ -84,12 +86,12 @@ bash run_7tier_300.sh
 每组目录 `C0/` ... `C5/`：
 
 - manifest.json：环境、同一冻结protocol及哈希；
-- rounds.jsonl：全部300轮七档准确率、槽位、重置、覆盖更新、时间；
-- best_full.pt：Full test-oracle peak对应的Full模型，附同轮七档测试结果；
+- rounds.jsonl：全部300轮full_test（仅P6准确率/CE）、七档训练槽位、重置、覆盖更新、时间；
+- best_full.pt：Full test-oracle peak对应的Full模型，附同轮Full测试结果；
 - final_full.pt：第300轮Full；
 - completed.json：真实完成轮数；失败时failed.json及组别stderr。
 
-根目录保留各组stdout/stderr、GPU分配、两份显存检查结果、protocol/protocol.json。最终自动输出 `report.md`、`summary.json`、`profile_accuracy.csv`：Full峰值/轮次、第300轮、末20/50轮均值、七档结果、Full参与、计算和通信、重置及选择效果，以及C1−C0、C2−C1、C3−C2、C4/C5−C3等比较。
+根目录保留各组stdout/stderr、GPU分配、两份显存检查结果、protocol/protocol.json。最终自动输出 `report.md`、`summary.json`、`full_accuracy_summary.csv`、`full_accuracy_each_round.csv`：仅Full的test-oracle peak/轮次、第300轮、末20/50轮均值和每轮记录，另外保留Full训练次数、七档训练槽位、计算和通信、重置及选择效果，以及C1−C0、C2−C1、C3−C2、C4/C5−C3等比较。不存储、计算或报告P0–P5测试准确率或峰值。完成检查会拒绝把旧的七档测试日志混入本版Full-only结果。
 
 Full峰值统一标为 **test-oracle peak**；每轮暴露官方测试，不是独立验证选择的无偏性能。不会根据test自动修改比例、预算、排序方向或增加模块。C4不如C3时汇总会直接说明。单seed、并行CUDA非确定性和计算代理估算限制因果结论；本任务只做300轮。
 
