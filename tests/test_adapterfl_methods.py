@@ -247,7 +247,8 @@ def test_m5_clips_only_matched_support_and_preserves_normal_updates():
 
 
 def test_m6_gap_and_roundtrip_state(tmp_path):
-    models=tiny_models();hooks=methods.MethodHooks(args_for('m6'),models)
+    # Explicit legacy warmup=0 still retains the old EMA algebra.
+    models=tiny_models();hooks=methods.MethodHooks(args_for('m6',history_warmup_rounds=0),models)
     old=filled(models[-1],0.)
     first=hooks.aggregate([filled(models[-1],1.)],[1],old)
     assert_states(first,filled(models[-1],1.))
@@ -258,7 +259,7 @@ def test_m6_gap_and_roundtrip_state(tmp_path):
         assert torch.allclose(second[k][shared],torch.full_like(v[shared],2.1))
         assert torch.equal(second[k][~shared],v[~shared])
     torch.save(hooks.state_dict(),tmp_path/'state.pt')
-    restored=methods.MethodHooks(args_for('m6'),models)
+    restored=methods.MethodHooks(args_for('m6',history_warmup_rounds=0),models)
     restored.load_state_dict(torch.load(tmp_path/'state.pt',weights_only=True),second)
     local={k:v+3. for k,v in second.items()}
     a=hooks.aggregate([local],[1],second);b=restored.aggregate([local],[1],second)
@@ -345,7 +346,7 @@ def test_m6_original_loop_checkpoint_resume_matches_uninterrupted(tmp_path,monke
 def test_invalid_combinations_and_history_rejected():
     models=tiny_models()
     with pytest.raises(ValueError):methods.MethodHooks(args_for('m1+m6'),models)
-    hooks=methods.MethodHooks(args_for('m6'),models)
+    hooks=methods.MethodHooks(args_for('m6',history_warmup_rounds=0),models)
     hooks.aggregate([filled(models[-1],1.)],[1],filled(models[-1],0.))
     state=hooks.state_dict();state['velocity']['features.0.weight']=torch.zeros(1)
     with pytest.raises(ValueError):hooks.load_state_dict(state,models[-1].state_dict())
@@ -446,7 +447,7 @@ def test_review_m5_nonactivation_warning_and_fallback_survive_checkpoint(tmp_pat
 
 
 def test_review_m6_initial_delta_and_beta_component_magnitude():
-    models=tiny_models();hooks=methods.MethodHooks(args_for('m6'),models)
+    models=tiny_models();hooks=methods.MethodHooks(args_for('m6',history_warmup_rounds=0),models)
     old=filled(models[-1],0.)
     first=hooks.aggregate([filled(models[-1],10.)],[1],old)
     initial=hooks.round_diagnostics['first_round_initialization_delta_l2']
@@ -461,3 +462,99 @@ def test_review_m6_initial_delta_and_beta_component_magnitude():
     assert diag['history_to_current_component_ratio']==pytest.approx(90.,rel=1e-6)
     assert diag['applied_to_raw_update_ratio']==pytest.approx(9.1,rel=1e-6)
     assert diag['difference_from_native_aggregate_l2']>0
+
+
+@pytest.mark.parametrize('warmup',[0,1,2])
+def test_third_m6_warmup_and_effective_history_checkpoint(warmup,tmp_path):
+    models=tiny_models();args=args_for('m6',history_warmup_rounds=warmup)
+    hooks=methods.MethodHooks(args,models);current=filled(models[-1],0.)
+    for r in range(warmup):
+        uploaded={k:v+100. for k,v in current.items()}
+        current=hooks.aggregate([uploaded],[1],current)
+        assert_states(current,uploaded)
+        assert hooks.velocity==hooks.previous_active=={}
+        assert hooks.round_diagnostics['phase']=='warmup_passthrough'
+    torch.save(hooks.state_dict(),tmp_path/'warmup.pt')
+    recovered=methods.MethodHooks(args,models)
+    recovered.load_state_dict(torch.load(tmp_path/'warmup.pt',weights_only=True),current)
+    uploaded={k:v+1. for k,v in current.items()}
+    effective=hooks.aggregate([uploaded],[1],current)
+    assert_states(effective,uploaded)
+    assert_states(recovered.aggregate([uploaded],[1],current),effective)
+    assert all(torch.allclose(v,torch.ones_like(v)) for v in hooks.velocity.values())
+    assert hooks.round_diagnostics['difference_from_native_aggregate_l2']==0
+    assert hooks.round_diagnostics['phase']=='history_initialization'
+    torch.save(hooks.state_dict(),tmp_path/'effective.pt')
+    recovered=methods.MethodHooks(args,models)
+    recovered.load_state_dict(torch.load(tmp_path/'effective.pt',weights_only=True),effective)
+    uploaded={k:v+2. for k,v in effective.items()}
+    smoothed=hooks.aggregate([uploaded],[1],effective)
+    assert_states(smoothed,recovered.aggregate([uploaded],[1],effective))
+    for k,v in smoothed.items():
+        assert torch.allclose(v-effective[k],torch.full_like(v,1.1),atol=2e-5)
+
+
+def test_third_m6_default_second_round_never_uses_initial_giant_delta_and_gaps():
+    models=tiny_models();hooks=methods.MethodHooks(args_for('m6'),models)
+    first=hooks.aggregate([filled(models[-1],100.)],[1],filled(models[-1],0.))
+    small={k:v+1. for k,v in split_model(first,models[0].state_dict()).items()}
+    second=hooks.aggregate([small],[1],first)
+    for k,v in second.items():
+        core=hooks.region(k,v,'shared')
+        assert torch.equal(v[core],first[k][core]+1.)
+        assert torch.equal(v[~core],first[k][~core])
+        assert torch.all(hooks.velocity[k][~core]==0.)
+    third=hooks.aggregate([{k:v+2. for k,v in second.items()}],[1],second)
+    for k,v in third.items():
+        core=hooks.region(k,v,'shared')
+        assert torch.allclose(v[core]-second[k][core],torch.full_like(v[core],1.1),atol=2e-5)
+        assert torch.equal(v[~core]-second[k][~core],torch.full_like(v[~core],2.))
+    small=split_model(third,models[0].state_dict())
+    fourth=hooks.aggregate([small],[1],third)
+    fifth=hooks.aggregate([{k:v+3. for k,v in fourth.items()}],[1],fourth)
+    for k,v in fifth.items():
+        tail=hooks.region(k,v,'remainder')
+        assert torch.equal(v[tail]-fourth[k][tail],torch.full_like(v[tail],3.))
+
+
+@pytest.mark.parametrize('option',[{'shared_prox_mu':0.},{'shared_prox_lambda':0.}])
+def test_third_m4_zero_mu_and_legacy_zero_lambda_match_frozen_original(option):
+    original=load_original();args=args_for('m4',**option);models=tiny_models()
+    data=torch.utils.data.TensorDataset(torch.randn(4,3,4,4),torch.tensor([0,1,1,0]))
+    set_random_seed(9);local=LocalUpdate_AdaptiveFL(args,data,range(4))
+    expected=original.original_local_train(local,0,copy.deepcopy(models[-1]));rng=methods.rng_state()
+    set_random_seed(9);local=LocalUpdate_AdaptiveFL(args,data,range(4))
+    methods.MethodHooks(args,models).configure_local(local)
+    actual=local.train(0,copy.deepcopy(models[-1]))
+    assert not hasattr(local,'adapterfl_prox')
+    assert_states(expected,actual);assert_rng(rng,methods.rng_state())
+
+
+def test_third_m4_mu_controls_curvature_without_shared_parameter_count_divisor():
+    models=tiny_models();args=args_for('m4');hooks=methods.MethodHooks(args,models)
+    local=LocalUpdate_AdaptiveFL(args,torch.utils.data.TensorDataset(torch.zeros(2,3,4,4),torch.zeros(2,dtype=torch.long)),[0,1])
+    hooks.configure_local(local)
+    assert local.adapterfl_prox[1:]==(.01,'sum')
+    net=copy.deepcopy(models[-1]);targets,count,mu=methods.prepare_prox(net,local.adapterfl_prox)
+    with torch.no_grad():
+        for p in net.parameters():p.add_(.1)
+    loss=mu*methods.prox_loss(net,targets,count,'sum');loss.backward()
+    for k,p in net.named_parameters():
+        core=hooks.region(k,p,'shared')
+        assert torch.allclose(p.grad[core],torch.full_like(p.grad[core],.001),atol=1e-8)
+        assert torch.all(p.grad[~core]==0)
+
+
+def test_third_m1_actual_difference_norm_and_m5_no_forced_clipping():
+    models=tiny_models();old=filled(models[-1],5.)
+    uploads=[filled(models[0],1.),filled(models[2],3.)]
+    hooks=methods.MethodHooks(args_for('m1'),models)
+    base=Aggregation_AdaptiveFL(uploads,[2,6],old);out=hooks.aggregate(uploads,[2,6],old)
+    measured=sum(float((out[k]-v).double().square().sum()) for k,v in base.items())**.5
+    assert hooks.round_diagnostics['__summary__']['difference_from_native_aggregate_l2']==pytest.approx(measured)
+    hooks=methods.MethodHooks(args_for('m5'),models)
+    sent=[filled(models[2],0.) for _ in range(3)];uploads=[filled(models[2],v) for v in (1.,1.1,1.2)]
+    out=hooks.aggregate(uploads,[1]*3,old,sent)
+    assert_states(out,Aggregation_AdaptiveFL(uploads,[1]*3,old))
+    assert all(g['nonactivation_reason']=='within_fixed_threshold' for g in hooks.round_diagnostics['groups'])
+    assert all(g['max_to_median_norm_ratio']<2 for g in hooks.round_diagnostics['groups'])

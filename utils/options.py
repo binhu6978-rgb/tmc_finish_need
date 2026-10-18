@@ -33,10 +33,16 @@ def args_parser():
     parser.add_argument('--conflict-lambda', type=float, default=1.0)
     parser.add_argument('--partition-alpha-shared', type=float, default=1.0)
     parser.add_argument('--partition-alpha-remainder', type=float, default=0.9)
-    parser.add_argument('--shared-prox-lambda', type=float, default=1.0)
+    prox_options = parser.add_mutually_exclusive_group()
+    prox_options.add_argument('--shared-prox-mu', type=float, default=0.01,
+                              help='M4 direct shared-parameter proximal curvature: mu/2 * sum squared drift')
+    prox_options.add_argument('--shared-prox-lambda', type=float, default=None,
+                              help='Legacy M4 mean-normalized lambda; explicit 0 disables M4')
     parser.add_argument('--partition-norm-multiplier', type=float, default=2.0)
     parser.add_argument('--partition-norm-min-clients', type=int, default=3)
     parser.add_argument('--history-beta', type=float, default=0.9)
+    parser.add_argument('--history-warmup-rounds', type=int, default=1,
+                        help='M6 native-aggregation rounds excluded from velocity history; 0 reproduces legacy initialization')
 
     # model arguments
     parser.add_argument('--model', type=str, default='mobilenet', help='model name')

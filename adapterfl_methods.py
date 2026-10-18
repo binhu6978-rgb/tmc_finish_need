@@ -23,8 +23,8 @@ from models.Fed import Aggregation_AdaptiveFL, split_model
 
 EPS = 1e-12
 OPTIONS = ('coverage_gamma','coverage_eta_min','coverage_eta_max','conflict_lambda',
-           'partition_alpha_shared','partition_alpha_remainder','shared_prox_lambda',
-           'partition_norm_multiplier','partition_norm_min_clients','history_beta')
+           'partition_alpha_shared','partition_alpha_remainder','shared_prox_lambda','shared_prox_mu',
+           'partition_norm_multiplier','partition_norm_min_clients','history_beta','history_warmup_rounds')
 
 
 def prefix(full, local):
@@ -60,12 +60,14 @@ class MethodHooks:
             raise ValueError('Choose one method; combinations are unsupported')
         self.config = {name:getattr(args,name) for name in OPTIONS}
         c = self.config
-        if any(not math.isfinite(float(v)) for v in c.values()):
+        if any(not math.isfinite(float(v)) for v in c.values() if v is not None):
             raise ValueError('Method options must be finite')
         if (c['coverage_gamma'] < 0 or not 0 < c['coverage_eta_min'] <= 1 <= c['coverage_eta_max']
-                or min(c['conflict_lambda'],c['shared_prox_lambda'],c['partition_alpha_shared'],c['partition_alpha_remainder']) < 0
+                or min(c['conflict_lambda'],c['shared_prox_mu'],c['partition_alpha_shared'],c['partition_alpha_remainder']) < 0
+                or (c['shared_prox_lambda'] is not None and c['shared_prox_lambda']<0)
                 or c['partition_norm_multiplier'] <= 0 or c['partition_norm_min_clients'] < 2
-                or not 0 <= c['history_beta'] < 1):
+                or not 0 <= c['history_beta'] < 1 or not isinstance(c['history_warmup_rounds'],int)
+                or c['history_warmup_rounds']<0):
             raise ValueError('Invalid method option range')
         states = [m.state_dict() for m in models]
         full = states[-1]
@@ -80,12 +82,14 @@ class MethodHooks:
         self.velocity, self.previous_active = {}, {}
         self.previous_norms = {}
         self.diagnostic_state = {}
+        self.history_rounds_seen = 0
         self.round_diagnostics = {}
 
     def state_dict(self):
         return cpu_copy({'method':self.method,'config':self.config,'shared_shapes':self.shared_shapes,
                          'velocity':self.velocity,'previous_active':self.previous_active,
-                         'previous_norms':self.previous_norms,'diagnostic_state':self.diagnostic_state})
+                         'previous_norms':self.previous_norms,'diagnostic_state':self.diagnostic_state,
+                         'history_rounds_seen':self.history_rounds_seen})
 
     def load_state_dict(self, state, full):
         if (state['method'] != self.method or state['config'] != self.config
@@ -108,6 +112,11 @@ class MethodHooks:
             raise ValueError('Velocity and active-mask history must be paired')
         self.previous_norms = dict(state['previous_norms'])
         self.diagnostic_state = copy.deepcopy(state.get('diagnostic_state',{}))
+        self.history_rounds_seen = state['history_rounds_seen']
+        if not isinstance(self.history_rounds_seen,int) or self.history_rounds_seen<0:
+            raise ValueError('Invalid warmup progress')
+        if self.velocity and self.history_rounds_seen<=self.config['history_warmup_rounds']:
+            raise ValueError('Warmup checkpoint cannot contain momentum history')
 
     def region(self, key, tensor, name):
         mask = torch.zeros_like(tensor,dtype=torch.bool)
@@ -116,8 +125,10 @@ class MethodHooks:
         return mask if name=='shared' else ~mask
 
     def configure_local(self, local):
-        if self.method=='m4' and self.config['shared_prox_lambda'] > 0:
-            local.adapterfl_prox = (self.shared_shapes,self.config['shared_prox_lambda'])
+        legacy=self.config['shared_prox_lambda']
+        strength=legacy if legacy is not None else self.config['shared_prox_mu']
+        if self.method=='m4' and strength>0:
+            local.adapterfl_prox = (self.shared_shapes,strength,'mean' if legacy is not None else 'sum')
             local.adapterfl_prox_diagnostic_steps = 2
 
     @torch.no_grad()
@@ -171,11 +182,14 @@ class MethodHooks:
                         label = f'{coefficient:.8g}'
                         eta_histogram[label] = eta_histogram.get(label,0)+number
                 self.round_diagnostics[k] = {'coverage_reference':float(reference),
+                    'difference_from_native_aggregate_l2':float((result[k]-base[k]).double().square().sum().sqrt()),
                     'covered_fraction':float(covered.float().mean()),
                     'slot_coverage':{'min':float(counts[k][covered].min()),'mean':float(reference),
                                      'max':float(counts[k].max())},
                     'coverage_histogram':coverage_histogram,
                     'eta':{'min':float(eta.min()),'mean':float(eta.mean()),'max':float(eta.max()),'histogram':eta_histogram}}
+            self.round_diagnostics['__summary__']={'difference_from_native_aggregate_l2':math.sqrt(sum(
+                d['difference_from_native_aggregate_l2']**2 for d in self.round_diagnostics.values()))}
             return result
         if self.method=='m3':
             result = {k:v.clone() for k,v in base.items()}
@@ -198,6 +212,25 @@ class MethodHooks:
             return result
         if self.method!='m6':
             raise ValueError('Unknown method; combinations are unsupported')
+        raw = math.sqrt(sum(float((base[k]-v).double().square().sum()) for k,v in previous.items()))
+        self.history_rounds_seen += 1
+        self.diagnostic_state['m6_rounds'] = self.history_rounds_seen
+        self.diagnostic_state.setdefault('m6_initial_update_l2',raw)
+        warmup = self.config['history_warmup_rounds']
+        if self.history_rounds_seen<=warmup:
+            # Never retain the independent-initialization reconciliation in EMA.
+            # Returning base itself preserves native float32 aggregation exactly.
+            self.velocity,self.previous_active = {},{}
+            self.round_diagnostics = {'phase':'warmup_passthrough','rounds_seen':self.history_rounds_seen,
+                'warmup_rounds':warmup,'warmup_complete':self.history_rounds_seen>=warmup,
+                'raw_update_l2':raw,'smoothed_update_l2':raw,'history_component_l2':0.,
+                'current_component_l2':raw,'history_to_current_component_ratio':0. if raw>EPS else None,
+                'applied_to_raw_update_ratio':1. if raw>EPS else None,'difference_from_native_aggregate_l2':0.,
+                'first_round_initialization_delta_l2':self.diagnostic_state['m6_initial_update_l2'],
+                'history_initialized':False,'effective_history_initialization_delta_l2':None,
+                'covered_coordinates':sum(int((c>0).sum()) for c in counts.values()),
+                'beta':self.config['history_beta'],'initialization_note':'Native initialization delta excluded from all future velocity; metadata only'}
+            return base
         result, dot, old_square, current_square, applied_square = {},0.,0.,0.,0.
         reactivated, covered_count, consecutive_count = 0,0,0
         history_square, current_component_square, fresh_square, effect_square = 0.,0.,0.,0.
@@ -230,12 +263,13 @@ class MethodHooks:
             covered_count += int(active.sum()); reactivated += int((active & ~prior).sum())
             applied_square += float(velocity.double().square().sum())
             effect_square += float((result[k]-base[k]).double().square().sum())
-        raw = math.sqrt(sum(float((base[k]-v).double().square().sum()) for k,v in previous.items()))
         if first_observation:
-            self.diagnostic_state['m6_initial_update_l2'] = raw
-        self.diagnostic_state['m6_rounds'] = self.diagnostic_state.get('m6_rounds',0)+1
+            self.diagnostic_state['m6_first_effective_update_l2'] = raw
         current_component_norm = math.sqrt(current_component_square)
-        self.round_diagnostics = {'raw_update_l2':raw,'smoothed_update_l2':math.sqrt(applied_square),
+        self.round_diagnostics = {'phase':'history_initialization' if first_observation else 'history_smoothing',
+            'rounds_seen':self.history_rounds_seen,'warmup_rounds':warmup,'warmup_complete':True,
+            'history_initialized':True,'effective_history_initialization_delta_l2':self.diagnostic_state['m6_first_effective_update_l2'],
+            'raw_update_l2':raw,'smoothed_update_l2':math.sqrt(applied_square),
             'delta_vs_previous_velocity_cosine':dot/math.sqrt(old_square*current_square) if min(old_square,current_square)>EPS**2 else None,
             'fresh_or_reactivated_coordinates':reactivated,'covered_coordinates':covered_count,'beta':beta,
             'first_observation':first_observation,'first_round_initialization_delta_l2':self.diagnostic_state['m6_initial_update_l2'],
@@ -244,7 +278,7 @@ class MethodHooks:
             'history_to_current_component_ratio':math.sqrt(history_square)/current_component_norm if current_component_norm>EPS else None,
             'applied_to_raw_update_ratio':math.sqrt(applied_square)/raw if raw>EPS else None,
             'difference_from_native_aggregate_l2':math.sqrt(effect_square),
-            'initialization_note':'First delta includes independent submodel initialization reconciliation; formula unchanged'}
+            'initialization_note':'Velocity starts after configured warmup; gaps reset covered coordinates to current delta'}
         return result
 
     def conflict(self, uploads, lens, previous, dispatched):
@@ -327,6 +361,10 @@ class MethodHooks:
                     if changed_coordinates:
                         actual_slot_ids.append(i)
                 diagnostics.append({'partition':region,'slots':group,'norms_before':norms,
+                    'median_norm':statistics.median(norms),'max_norm':max(norms),
+                    'max_to_median_norm_ratio':max(norms)/statistics.median(norms) if statistics.median(norms)>EPS else None,
+                    'nonactivation_reason':('empty_region' if not target_coordinates else 'insufficient_equal_support_slots'
+                        if not enough else 'within_fixed_threshold' if not actual_changes else None),
                     'threshold':threshold,'factors':factors,'clipped_fraction':sum(f<1 for f in factors)/len(factors),
                     'norms_after':[n*f for n,f in zip(norms,factors)],'fallback':None if enough else 'insufficient_equal_support_slots',
                     'support_id':support_id,'slot_count':len(group),'target_coordinates_per_slot':target_coordinates,
@@ -382,7 +420,9 @@ def conflict_support_diagnostics(uploads,previous):
 
 def prepare_prox(net, setup):
     """Detached actual-dispatch snapshot of shared PARAMETER prefixes only."""
-    shapes,strength=setup
+    shapes,strength=setup[:2]
+    if len(setup)>2 and setup[2] not in ('mean','sum'):
+        raise ValueError('Unknown proximal normalization')
     targets={}
     for k,p in net.named_parameters():
         sl=tuple(slice(0,d) for d in shapes[k])
@@ -390,21 +430,22 @@ def prepare_prox(net, setup):
     return targets,sum(v.numel() for _,v in targets.values()),strength
 
 
-def prox_loss(net, targets, count):
+def prox_loss(net, targets, count, normalization='mean'):
     result=next(net.parameters()).new_zeros(())
     for k,p in net.named_parameters():
         sl,initial=targets[k]
         result=result+(p[sl]-initial).square().sum()
-    return .5*result/count
+    return .5*result/(count if normalization=='mean' else 1)
 
 
-def prox_gradient_diagnostics(net,task_loss,regularizer,targets,count,strength):
+def prox_gradient_diagnostics(net,task_loss,regularizer,targets,count,strength,normalization='mean'):
     """Sampled diagnostic only: autograd.grad does not populate parameter .grad.
 
-    The proximal gradient is analytic, lambda*(theta-theta_initial)/N.
+    Analytic gradient is mu*drift (sum) or legacy lambda*drift/N (mean).
     No second forward, optimizer step, random draw or automatic lambda change.
     """
     params=list(net.named_parameters())
+    denominator=count if normalization=='mean' else 1
     gradients=torch.autograd.grad(task_loss,[p for _,p in params],retain_graph=True,allow_unused=True)
     task_square,task_shared_square,prox_square=0.,0.,0.
     for (key,p),g in zip(params,gradients):
@@ -412,7 +453,7 @@ def prox_gradient_diagnostics(net,task_loss,regularizer,targets,count,strength):
         if g is not None:
             task_square+=float(g.detach().double().square().sum())
             task_shared_square+=float(g[sl].detach().double().square().sum())
-        prox_square+=float((p[sl].detach().double()-initial.double()).square().sum())/count**2
+        prox_square+=float((p[sl].detach().double()-initial.double()).square().sum())/denominator**2
     task_shared=math.sqrt(task_shared_square)
     proximal=math.sqrt(prox_square)
     ce=float(task_loss.detach());penalty=float(regularizer.detach())
@@ -423,7 +464,8 @@ def prox_gradient_diagnostics(net,task_loss,regularizer,targets,count,strength):
             'proximal_gradient_l2':proximal,'weighted_proximal_gradient_l2':strength*proximal,
             'weighted_prox_to_task_shared_gradient_ratio':strength*proximal/task_shared if task_shared>EPS else None,
             'lambda_for_reference_1percent_shared_gradient_ratio':.01*task_shared/proximal if proximal>EPS else None,
-            'shared_parameters':count,'equivalent_unnormalized_prox_coefficient':strength/count,
+            'shared_parameters':count,'prox_normalization':normalization,
+            'equivalent_unnormalized_prox_coefficient':strength/denominator,
             'calibration_note':'1 percent is a dimensional reference only; no lambda is changed'}
 
 

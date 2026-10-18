@@ -213,6 +213,8 @@ class LocalUpdate_AdaptiveFL(object):
         if prox_setup is not None:
             from adapterfl_methods import prepare_prox, prox_loss, prox_gradient_diagnostics
             prox_targets, prox_count, prox_strength = prepare_prox(net, prox_setup)
+            prox_normalization = prox_setup[2] if len(prox_setup)>2 else 'mean'
+            prox_denominator = prox_count if prox_normalization=='mean' else 1
             task_sum, prox_sum, steps = 0.0, 0.0, 0
             prox_samples, ratio_sum = [], 0.0
         if self.args.optimizer == 'sgd':
@@ -240,13 +242,13 @@ class LocalUpdate_AdaptiveFL(object):
                 log_probs = net(images)["output"]
                 loss = self.loss_func(log_probs, labels)
                 if prox_setup is not None:
-                    regularizer = prox_loss(net, prox_targets, prox_count)
+                    regularizer = prox_loss(net, prox_targets, prox_count, prox_normalization)
                     task_sum += float(loss.detach())
                     prox_sum += float(regularizer.detach())
                     steps += 1
                     ratio_sum += float((prox_strength * regularizer.detach()) / loss.detach().clamp_min(1e-12))
                     if steps <= getattr(self, 'adapterfl_prox_diagnostic_steps', 2):
-                        prox_samples.append(dict(prox_gradient_diagnostics(net,loss,regularizer,prox_targets,prox_count,prox_strength),step=steps))
+                        prox_samples.append(dict(prox_gradient_diagnostics(net,loss,regularizer,prox_targets,prox_count,prox_strength,prox_normalization),step=steps))
                     loss = loss + prox_strength * regularizer
                 loss.backward()
                 optimizer.step()
@@ -259,8 +261,10 @@ class LocalUpdate_AdaptiveFL(object):
         if prox_setup is not None:
             self.adapterfl_metrics = {'task_ce_mean': task_sum / max(steps, 1),
                                      'prox_loss_mean': prox_sum / max(steps, 1),
-                                     'lambda_prox': prox_strength, 'target_parameters': prox_count,
-                                     'effective_coefficient_per_parameter': prox_strength / prox_count,
+                                     'lambda_prox': prox_strength if prox_normalization=='mean' else None,
+                                     'mu_prox': prox_strength / prox_denominator,
+                                     'prox_normalization': prox_normalization,'target_parameters': prox_count,
+                                     'effective_coefficient_per_parameter': prox_strength / prox_denominator,
                                      'weighted_prox_loss_mean': prox_strength * prox_sum / max(steps, 1),
                                      'weighted_prox_to_task_loss_ratio_mean': ratio_sum / max(steps, 1),
                                      'gradient_samples': prox_samples,

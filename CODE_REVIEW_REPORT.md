@@ -1,8 +1,8 @@
-# AdapterFL 七模型六种独立方法：代码审查报告
+# AdapterFL 七模型六种独立方法：第三轮修订报告
 
 ## 交付范围与状态
 
-开发分支：`feature/adapterfl-six-methods`。本轮审查修正基准为 `d78fc9f`，继续在同一分支上工作。用户已授权提交、推送及 Linux 服务器卡 0 的 1～3 轮集成检查；**没有启动 300 轮训练**。服务器使用 `hh` 环境、独立 checkout `/home/hh/TMC_re_adapterfl_review_20261018`，不修改原 `/home/hh/TMC_re`、不中断已有进程、不操作卡 1 上的其他任务。没有重新打包，不把登录凭据、数据、权重或私人材料加入 Git。
+开发分支：`feature/adapterfl-six-methods`。本轮审查基准为 `17aa580`，继续在同一分支上修正 M6 warmup、M4 曲率参数化及 M1/M5 诊断。**没有启动 300 轮训练**。服务器使用 `hh` 环境，第三轮独立 checkout 为 `/home/hh/TMC_re_adapterfl_review3_20261018_src`；原 `/home/hh/TMC_re` 及上一轮实验结果均保留，不中断已有进程、不操作卡 1 的其他任务。没有打包，不把登录凭据、数据、权重或私人材料加入 Git。第 9、10 节保留上一轮的历史诊断，第 11 节记录本轮实际结果。
 
 AdapterFL 是本任务的方法名称；仓库原始模块实际拼写是 `AdaptiveFL`，入口仍为 `main_fed_ori.py` 和 `Algorithm/Training_AdaptiveFL.py::AdaptiveFL`。保留这些真实文件名，不引入另一个框架。AdapterFL-5 的未提交文件及已有实验产物保持原状，不混入本分支提交。
 
@@ -31,7 +31,7 @@ AdapterFL 是本任务的方法名称；仓库原始模块实际拼写是 `Adapt
 
 原 `split_model` 按同名张量取前缀：卷积/线性权重前两个维度；BN 和 bias 第一个维度。卷积空间核形状保持不变。原聚合在同一前缀位置按样本数累计分子与分母，对有覆盖坐标归一化，无覆盖位置保留旧 Full。客户端若在一轮被选中多次，原代码将其视为独立训练槽位；本次保留这种重复计数含义，不擅自去重。
 
-原各档在初始化时独立随机构建，并非第一轮开始前就从 Full 同步。M2/M5 所以必须使用各槽位**实际下发快照**计算本地增量，尤其不能在首轮减去 Full 的前缀。M1/M3/M6 按设计作用于 `W_aggregated - W_previous_Full`，首轮该差值也包含初始独立模型的融合差异，本次没有增加额外同步或 warmup。
+原各档在初始化时独立随机构建，并非第一轮开始前就从 Full 同步。M2/M5 所以必须使用各槽位**实际下发快照**计算本地增量，尤其不能在首轮减去 Full 的前缀。M1/M3/M6 按设计作用于 `W_aggregated - W_previous_Full`，首轮该差值也包含初始独立模型的融合差异。本次不增加额外同步；仅 M6 默认将第一轮原聚合结果直接保留，并排除其历史动量，见第 11 节。
 
 ### 设计假设差异与兼容定义
 
@@ -100,18 +100,21 @@ new_region = W_region + alpha_region*(A_region-W_region)
 
 默认 `--partition-alpha-shared 1 --partition-alpha-remainder .9`。这里不是论文原始的两个模型重组分区，而是前述实际覆盖 shared/remainder 区域。只作用于本轮实际覆盖坐标，无覆盖位置不动；同一坐标恰好归属一个区域。当前只实现固定系数，**没有历史自适应系数**，也不根据官方测试集调 alpha。记录两区域的原始/实际应用更新 L2、相对上轮更新范数波动和实际 alpha；历史只用于诊断，两个标量随 checkpoint 保存。两 alpha=1 时精确返回原聚合值。
 
-### M4：共同覆盖参数的近端约束
+### M4：直接控制共同覆盖参数的近端曲率
 
 调用路径：`configure_local` 仅给 M4 设置属性 → 原 `LocalUpdate_AdaptiveFL.train` 的可选 loss hook → `prepare_prox` / `prox_loss`。
 
 ```text
-R = 0.5 * sum_{shared named_parameter coords} (theta - actual_initial)^2 / N_shared
-L = original_CE + lambda_prox*R
+R_sum = 0.5 * sum_{shared named_parameter coords} (theta - actual_initial)^2
+L = original_CE + mu*R_sum
+grad_prox = mu*(theta_shared - actual_initial_shared)
 ```
 
-默认 `--shared-prox-lambda 1`。目标从**实际训练副本**进入本地 SGD 前取 detached clone，仅对 named_parameters 对应 shared 前缀计算梯度；不对任何统计 buffer 正则化，不把服务器/初始参数接入反向图。其他原 optimizer、lr decay、CE、loader、drop_last 不变。lambda=0 完全关闭 hook、与原单步/多步更新逐值一致。记录 task CE、归一化 R、lambda、实际目标参数量、lambda/N 和 SGD 步数。
+当前默认 `--shared-prox-mu .01`，不再除以 N_shared。mu 是同一参数坐标上的直接近端曲率；目标仍从**实际训练副本**进入本地 SGD 前取 detached clone，仅约束原 shared 集合，不对任何统计 buffer 正则化，不把初始参数接入反向图。原 optimizer、lr decay、CE、loader、drop_last 不变。
 
-由于 N_shared=2,120,985，默认平均正则可能很弱，不能仅凭开关存在宣称它已改善真实训练；没有为追求精度调整 lambda。测试用小模型的非零正则证明其梯度和第二步更新确实不同，未将该合成结论当作 CIFAR 收益。
+保留互斥的旧接口 `--shared-prox-lambda`（默认 None）。显式传入时使用旧 `lambda*R_sum/N_shared`，不再叠加 mu；`--shared-prox-lambda 0` 和 `--shared-prox-mu 0` 都完全关闭 hook，与冻结原版本地训练逐参数/RNG 一致。两种 flag 不能同时提供。日志明确区分 sum/mean、mu/lambda、实际目标参数量和等效曲率，避免混淆旧 Prox Loss 与新 Prox Loss 的数值单位。Task/Prox 梯度诊断及前两步采样保留。
+
+mu=.01 在原 lr=.01 下对应无量纲 `lr*mu=1e-4`：仅考虑近端梯度、无 momentum 的单步位移收缩为 0.9999。原 momentum 会改变多步响应，因此这只是保守尺度依据，不是完整优化稳定性证明。该默认值在真实检查前固定，未按测试 Accuracy 选择；实际梯度比例见第 11 节。旧 lambda=1 在 N=2,120,985 下极弱的实测留档见第 9 节。
 
 ### M5：相同支持集合内的分区增量裁剪
 
@@ -129,36 +132,43 @@ new = original_aggregate(U'_i, n_i, W)
 
 默认 `--partition-norm-multiplier 2 --partition-norm-min-clients 3`。证据少于 3 槽时不裁剪，零范数不缩放，正常更新保持原 tensor 值，不因重构浮点数引入假变化。两区域不重叠，无覆盖坐标仍由原聚合保留。记录每组槽位、before/after 范数、阈值、factor、裁剪比例和证据不足退回。可能出现很多 remainder 分组证据不足，这是保守实现的限制，不自动扩大比较支持或降低阈值。
 
-### M6：只在连续覆盖坐标平滑历史
+### M6：排除初始化融合的 warmup 与连续覆盖历史
 
 调用路径：原聚合 → `MethodHooks.aggregate` m6 分支；原服务器没有 momentum，此方法不重复服务器已有优化器（原客户端 SGD momentum 不等同于服务器 momentum）。
 
 ```text
 delta_t = A_t - W_previous
-if covered_now and covered_previous:
-    v_t = beta*v_previous + (1-beta)*delta_t
-elif covered_now:                 # 首次或覆盖间隔后重新参与
-    v_t = delta_t
+if t <= warmup_rounds:
+    new = A_t                    # 原聚合结果逐值保留
+    velocity = {}; active = {}  # 不将初始化融合增量送入后续历史
 else:
-    v_t = 0
-new = W_previous + v_t            # 仅本轮覆盖坐标
+    if covered_now and covered_previous_valid:
+        v_t = beta*v_previous + (1-beta)*delta_t
+    elif covered_now:             # 首个有效历史轮或覆盖间隔后重新参与
+        v_t = delta_t
+    else:
+        v_t = 0
+    new = W_previous + v_t        # 仅本轮覆盖坐标；无覆盖位置保持旧值
 ```
 
-默认 `--history-beta .9`。首轮和间隔后再次覆盖的坐标用当前增量初始化；本轮未覆盖坐标完全保持旧值，同时清空该坐标历史，下一次不沿用陈旧方向。beta=0 时精确返回原聚合值。记录原始/平滑更新 L2、当前 delta 与上一轮 velocity 的方向 cosine、覆盖与重新初始化坐标数；该 cosine 不是两轮 raw delta 的 cosine，不混淆日志含义。
+默认 `--history-beta .9 --history-warmup-rounds 1`。第一轮使用原聚合结果，velocity 和 active 均为空；第二轮用当前真实聚合增量初始化有效历史，应用结果仍与原聚合逐值一致；第三轮才开始对连续覆盖坐标平滑。未覆盖位置不变，覆盖中断清空相应历史，重新覆盖只使用当前增量。warmup=0 显式复现旧初始化策略，warmup=2 等更长配置也可保存/恢复，不按精度自动选择。
+
+checkpoint 同时保存 `history_rounds_seen`、warmup 配置、有效 velocity、previous_active 与诊断阶段。warmup 期间不允许包含 velocity；旧污染历史不会静默迁移到新配置。首轮巨大 delta 的范数可以保留为标量诊断，但其张量不作为后续动量。beta=0 精确返回原聚合。保留原始/平滑更新范数、贡献量、覆盖和间隔后重新初始化诊断。
 
 ## 4. 修改清单
 
-下列 8 个文件为首版实现清单。本次相对 `d78fc9f` **仅修改 4 个文件、新增 1 个诊断探针**：
+下列 8 个文件为首版实现清单。本轮相对 `17aa580` **修改 6 个文件**：
 
 |文件|本次修正|
 |---|---|
-|`adapterfl_methods.py`|M2 支持占比、独占区域、冲突分布；M4 梯度采样；M5 真实裁剪/分组/回退/连续不触发警告与 checkpoint 计数；M6 首轮及历史贡献量诊断；初始七档哈希记录|
-|`models/Update.py`|仅 M4 增加损失比例和前两个 SGD 步的梯度诊断，其他模式原训练分支不变|
-|`tests/test_adapterfl_methods.py`|增加 4 项审查专项检查|
-|`CODE_REVIEW_REPORT.md`|更新实际语义、默认强度测量及 Linux 集成证据|
-|`tools/probe_adapterfl_m4.py`（新增）|真实七档模型构建、Full 的配对小步合成 SGD 探针，含零正则同诊断控制；不是另一套联邦训练器|
+|`adapterfl_methods.py`|M6 可恢复 warmup；M4 sum/mean 参数化；M1 相对原聚合的逐层/全局实际差异 L2；M5 尾部比值与不触发原因|
+|`models/Update.py`|M4 mu 对应未归一化 penalty/梯度，保留旧 lambda 和零强度路径|
+|`utils/options.py`|互斥 mu/lambda 参数及 history-warmup-rounds，原训练默认参数不变|
+|`tests/test_adapterfl_methods.py`|warmup 前后恢复、巨大初始化排除、覆盖间隔、mu 曲率及零强度等价等测试|
+|`CODE_REVIEW_REPORT.md`|本轮数学依据、已有真实 M5 范数分析及集成证据|
+|`tools/probe_adapterfl_m4.py`|配对探针跟随新 mu 默认配置，保留零正则同诊断控制|
 
-本轮不修改 `main_fed_ori.py`、`utils/options.py`、`Algorithm/Training_AdaptiveFL.py`、原聚合/切片函数或七模型配置。
+本轮不修改 `main_fed_ori.py`、`Algorithm/Training_AdaptiveFL.py`、原聚合/切片函数、客户端采样、真实分区或七模型配置。
 
 **修改 4 个现有文件：**
 
@@ -205,7 +215,9 @@ checkpoint 仅按最新/最终轮保存，不根据官方测试 peak 选模。�
 python -m pytest -q tests/test_adapterfl_methods.py
 ```
 
-首版 43 项专项检查的证据为 `runs/adapterfl_methods_checks/pytest_final.log`。本轮 **47 passed**，本地证据 `runs/adapterfl_methods_checks/review_fix_tests_final.log`，Linux 证据 `runs/review_revision_checks/pytest_linux.log`。除原检查外，新增覆盖 M2 独占区域权重约消、M4 解析/自动梯度与诊断开关不改变权重/RNG、M5 连续不裁剪警告及恢复计数、M6 首轮/β=.9 的贡献量。原检查包括：
+首版 43 项专项检查的证据为 `runs/adapterfl_methods_checks/pytest_final.log`，第二轮为 47 项。本轮六方法专项 **55 passed**，Linux hh 日志为新目录 `runs/third_review_checks/pytest_linux.log`（8.37 秒）；本地 fd 同样 55 项通过，并额外对现有 AdapterFL-5 作 6 项兼容回归，合计 **61 passed**，日志 `runs/adapterfl_methods_checks/third_review_all_local.log`。没有修改或提交五模型代码。
+
+本轮增加 warmup=0/1/2 的状态恢复、默认第2轮巨大初始化排除与覆盖间隔、mu=0/旧lambda=0 冻结原版等价、直接曲率梯度、M1 实际差异范数和 M5 正常更新不强制裁剪。原来的 M6 无 warmup 代数测试显式设置 warmup=0，不以修改预期值掩盖旧策略。其余原检查包括：
 
 - 冻结原循环 vs 新的默认旧路径 / named baseline：真实七档 ResNet、固定输入、同样采样、本地 SGD、重组与七次测试，最终所有参数 **bitwise equal**，Python/NumPy/Torch RNG 状态相同。
 - 冻结原本地 train vs 新 train 在 M4=0 时 bitwise equal；未额外设置 proximal snapshot。
@@ -224,7 +236,7 @@ python -m pytest -q tests/test_adapterfl_methods.py
 
 最后仅在测试进程关闭 MKLDNN、限制 2 线程核验，旧回归推进到 66% 后仍在旧七档 HGKR 的 CPU 卷积中遇到访问异常，见 `regression_cpu_native_backend.log`。没有将这些后端设置写入项目或正式训练，也没有修改旧测试以隐藏问题；停止继续尝试后端排列。
 
-**首版结论：43 项专项检查通过，扩展旧回归未完整通过，不能声明全项目回归通过。** 本轮已额外完成目标 Linux 的 47 项专项检查与七模式各 3 轮真实集成，见第 10 节；这不等于此前旧 FD/HGKR 全套回归已重新完整通过。没有用正式训练来代替检查，没有精度收益结论。
+**首版结论：43 项专项检查通过，扩展旧回归未完整通过，不能声明全项目回归通过。** 第二轮完成目标 Linux 的 47 项专项检查与七模式各 3 轮真实集成，见第 10 节；第三轮的 55 项专项及五模式三轮检查见第 11 节。这不等于此前旧 FD/HGKR 全套回归已重新完整通过。没有用正式训练来代替检查，没有精度收益结论。
 
 ## 7. 后续正式命令（仅供审查，不执行）
 
@@ -255,13 +267,13 @@ python -u main_fed_ori.py --method m6 --epochs 300 --seed 1 --gpu 0 \
 1. 六方法是独立待验证的候选机制，不是已证实改善 CIFAR Accuracy 的算法；没有调参、试种子、测试峰值选模或新增损失以外的组合模块。
 2. M3/M4/M5 的目标是本报告明确的实际覆盖分区，不是原代码中不存在的固定命名“两分区”。这个兼容定义应在正式实验前重点审查。
 3. M2 使用所有当前槽位共同支持上的一个客户端权重，可能受大张量方向主导；没有另加分层权重或额外模块。M5 对 remainder 的同支持组可能频繁证据不足而不裁剪，日志会如实显示。
-4. M4 的 mean-normalized penalty 在真实百万参数上可能很弱；M6 首轮按当前真实更新初始化，未额外避开独立模型初始化融合。均不据测试精度自动改参数。
+4. 旧 M4 mean-normalized lambda=1 很弱、旧 M6 首轮初始化融合污染历史的问题已有实测。本轮默认改为直接 mu 和 warmup=1；旧行为只能显式选择对应兼容参数复现，未按测试精度调参。
 5. 只支持本仓库经核验的 float32、BN 无统计缓冲区的七档 ResNet；未知标量 buffer 或其他网络不做猜测性兼容。原聚合对标量 BN buffer 的潜在问题没有在 baseline 中修补。
 6. 原最大客户端时间指标不能替代真实墙钟。M2/M5 下发快照、M6 历史状态和逐轮 checkpoint 会增加内存/时间/I/O，尚未测 GPU 吞吐。M6 持久化速度和 bool 覆盖 mask 不会更新无本轮覆盖的参数。
 7. 共享参数代码只在新分支更改；不要在服务器运行目录原地换文件。旧 FD/HGKR 的已有 checkpoint 指纹含源码/参数，本分支不得用于恢复旧实验，旧实验继续使用其原 checkout。
 8. 现有默认入口捕获异常后静默 continue、`get_final_acc` 会基于测试序列挑一个显示轮次：原旧路径保留；named 模式改为失败明确上报、最终轮汇总，不把该显示规则当作验证集选择。
 
-## 9. d78fc9f 审查修正：诊断语义和实测
+## 9. 上一轮 17aa580 诊断留档（不是当前默认配置）
 
 ### 9.1 M1/M2/M3：原公式和作用范围
 
@@ -309,7 +321,7 @@ Linux CPU 的配对合成探针使用真实原七档模型构建、Full、相同
 
 原七档初始化独立，因此首轮 delta 不是纯本地学习位移，还包含独立模型初始化融合。该事实不通过额外同步或修改 warmup 隐藏。
 
-## 10. 实际 Linux 三轮集成检查
+## 10. 上一轮 17aa580 的 Linux 三轮集成留档
 
 ### 环境、执行与配对
 
@@ -369,3 +381,91 @@ M4 实际客户端的平均 Task CE 范围为 2.77965～3.49761，平均 Prox Lo
 本地已保存证据副本：`runs/adapterfl_methods_checks/review_revision_linux/{integration_summary_linux.json,pytest_linux.log,m4_control_probe_linux.json}`，并核对汇总中的所有训练源文件 SHA256 与本地文件相同。权重留在服务器，不加入 Git。
 
 结论：本轮修正与轻量集成已完成。M1/M2/M3 有对应机制作用；M4 默认梯度强度极弱；M5 当前三轮没有实际裁剪且已有明确警告；M6 有强历史作用但首轮初始化融合支配明显。这些观察不等于任何方法已取得科学性能收益。**不启动 300 轮，等待下一次代码/研究设定审查。**
+
+## 11. 第三轮修订：数学依据、验证和真实三轮结果
+
+本节是当前配置的结论；第 9、10 节为修改前 `17aa580` 的证据留档。没有以任何一轮官方测试 Accuracy 选择配置。
+
+### 11.1 M6：初始化 warmup 与可恢复时序
+
+默认 warmup=1，第一轮精确返回原聚合结果，同时不建立 velocity 或 previous_active。第2轮所有当前覆盖坐标以本轮 delta 建立有效历史，仍直接保留原聚合结果；第3轮才开始 beta=.9 的原 EMA。覆盖中断后 velocity 清零，重新参与时直接取当前 delta。`history_rounds_seen` 和配置、velocity、mask 一起保存；warmup 期间 checkpoint 不允许携带有效动量。首轮范数只作标量留档，不参与公式。
+
+专项测试用 100 倍的大首轮增量验证默认第2轮只使用新的单位增量。另对 warmup=0/1/2、warmup 完成后的 checkpoint、首个有效增量之后的 checkpoint、未覆盖/重新覆盖作恢复检查。原训练循环的“第一轮保存后中断→恢复”与不中断轨迹，最终七档权重/RNG 仍逐值一致。
+
+### 11.2 M4：预先固定的直接 mu
+
+默认 mu=.01，以直接曲率而非参数均值的系数控制约束；`grad_prox=mu*drift`，不再随约212万个目标参数被除小。原 lr=.01 给出 `lr*mu=1e-4`，作为保守的单步位移尺度。此值在真实检查前固定，真实结果仅作量级核验，没有反过来调整 mu。
+
+旧 lambda 接口显式选用时仍对应 `lambda/N`，两个接口互斥，均不叠加；mu=0 和 lambda=0 都不取快照、不计算附加项，恢复原训练。实际下发 detached 快照和 shared 参数集合原样保留。日志的 `prox_normalization=sum`、`mu_prox=.01` 明确标识新量纲。
+
+配对 CPU 合成代码探针（同一原始 Full、3 个本地步、batch2、相同初始状态/RNG）的第2/3步加权近端/shared Task 梯度比为 **1.00714e-4 / 1.75391e-4**；M4 与 baseline 的参数差异 L2=**.0117858**，相对 baseline 更新范数约 **.93197%**，零正则同诊断控制与 baseline 差异仍为0。这证明新参数化有可观测作用；多步网络非线性与浮点变化不受单步梯度比例的简单上界约束，不能把该探针当作精度收益。
+
+### 11.3 M5：为何不改成“保证触发”的阈值
+
+重新读取上一轮真实 `norms_before`，不使用测试分数：
+
+|区域/轮次|同支持槽位数|中位数 L2|最大 L2|max/median|原阈值|
+|---|---:|---:|---:|---:|---:|
+|shared/1|10|1.29801|1.50682|1.16088|2.59601|
+|shared/2|10|1.05758|1.24302|1.17535|2.11516|
+|shared/3|10|1.01301|1.20516|1.18968|2.02603|
+|remainder/2 合格组|3|1.01585|1.07852|1.06169|2.03170|
+|remainder/3 合格组|4|1.00450|1.05011|1.04541|2.00901|
+
+其余非空 remainder 组不足3槽；空区域单独排除。因此未触发来自两种可解释情形：证据不足，或正常更新远未超过固定阈值。现有 median×2 本身是预先固定的稳健规则，当前范数没有支持降低阈值的异常证据，本轮**不更改 multiplier=2、min_clients=3**，也不为制造触发率加入另一套阈值候选。
+
+新增每组 median/max、max/median、nonactivation_reason（空区域、槽位不足、阈值内）。保留真实上传变化、裁剪率、连续不生效警告和 checkpoint 计数。人工异常 `[1,1,100]` 单测会裁剪并改变聚合；正常 `[1,1.1,1.2]` 不裁剪且逐值返回原聚合，分别验证预期条件下的有效性与正常更新保护。
+
+### 11.4 M1/M2/M3
+
+M1 公式未变，新增每层及 `server.__summary__.difference_from_native_aggregate_l2`，直接度量 `||W_M1 - W_native_aggregate||2`，不以 eta 活跃比例替代实际参数差异。三轮实测分别为 **6.92534 / .135756 / .157105**。
+
+M2 的留一法、共同支持/独占区域和冲突权重公式/诊断均未改。M3 仍称**固定双区域服务器步长**，shared/remainder 不是论文原始两重组分区，没有历史自适应系数。两者仅运行全套专项回归，没有追加真实训练。
+
+### 11.5 Linux 真实检查与产物
+
+目录：`/home/hh/TMC_re_adapterfl_review3_20261018_src`；使用 `hh`，torch2.7.1+cu118 / torchvision0.22.1+cu118，RTX4090 GPU0。原 TMC_re 和上一轮结果均不覆盖。远端 GitHub 拉取曾遇 TLS 断开，改从服务器上已核验的 `17aa580` Git checkout 克隆源码（不复制旧 runs、不给 Git 对象创建硬链接），再应用本轮修正，origin 仍指向同一 GitHub 仓库。
+
+先完成 Linux 55 项 CPU 专项，再顺序执行 baseline、m1、m4、m5、m6 **各3轮**真实 CIFAR-100；只缩短轮数，其余七档、100客户端、10槽、5 local epoch、batch50、SGD/CE、学习率、分区和全部七档逐轮测试不变。每组实际命令：
+
+```bash
+/home/hh/miniconda3/envs/hh/bin/python -u main_fed_ori.py \
+  --method "$method" --method-run-name linux3_seed1 --epochs 3 \
+  --seed 1 --gpu 0 --generate_data 0 --data_beta 0.3
+```
+
+默认参数已在 manifest 中核对：mu=.01、旧lambda=None、warmup=1。五组七档初始化哈希、实际三轮客户端/模型槽位、分区和训练源码均一致。CSV/diagnostics/checkpoint 均记录3轮，Full 权重有限，`formal_300_success=false`；M6 checkpoint 的 history_rounds_seen=3。所有测试训练源文件 SHA256 与本地待提交代码逐项一致。
+
+M6 的实际结果：
+
+|轮次|阶段|原始 delta L2|实际更新 L2|历史分量 L2|相对原聚合结果差异 L2|
+|---|---|---:|---:|---:|---:|
+|1|warmup，未建历史|44.44994|44.44994|0|0|
+|2|首个有效历史|.808814|.808814|0|0|
+|3|连续覆盖 EMA|.870758|.743278|.727933|1.00454|
+
+第2轮不再继承初始化增量；第3轮历史/当前分量比约8.36，来自正常 beta=.9 的有效历史，与上一轮约40的污染历史不同。这证明初始化问题已按时序修正，不证明 EMA 改善精度。
+
+M4 真数据的30个非零梯度采样（各客户端第2个 SGD 步）近端/shared Task 梯度比 **9.75532e-5～1.14355e-4**。客户端平均 Task CE 为2.76250～3.50706，未加权 `R_sum` 为.195910～.551015，加权 penalty 为.00195910～.00551015，加权 penalty/Task 比为 **.00075436～.00201327**。这些是前两步梯度采样及全本地步的损失均值，不冒充全程梯度统计。
+
+M5 三轮裁剪率仍为0，逐轮与连续3轮不触发警告完整；这符合本批没有超阈值异常的范数数据，不能把不同进程的精度差异归因于 M5。
+
+Full 测试仅作有限性/轨迹检查：
+
+|模式|第1/2/3轮 Accuracy (%)|第3轮 CE|
+|---|---|---:|
+|baseline|1.07 / 2.48 / 5.09|4.62479|
+|M1|1.01 / 3.34 / 4.70|4.69593|
+|M4|1.04 / 2.60 / 5.20|4.63435|
+|M5|1.05 / 2.63 / 5.15|4.62642|
+|M6|1.04 / 2.82 / 3.96|5.04279|
+
+不按三轮精度排名或调参；保留原 CUDA 非确定性，尤其不能将 M5 零裁剪时的差异解释为作用，也不能把 M4 5.20% 解释为可靠收益。M6 修复的是历史初始化污染，其三轮精度并不足以评价长期性能。
+
+结果路径（均相对于新 checkout）：
+
+- `runs/adapterfl_methods/{baseline,m1,m4,m5,m6}/linux3_seed1/`：独立 manifest、三个 CSV、console.log、latest.pt、completed.json。
+- `runs/third_review_checks/`：Linux 单测、各组 stdout、`integration_summary.json`、`m5_prior_norm_analysis.json`、`m4_mu_probe/` 和本次顺序执行脚本/完成状态。
+- 本地证据副本：`runs/adapterfl_methods_checks/third_review_linux/`，含汇总、Linux单测、mu探针与原 M5 范数分析；权重保留服务器，不上传 Git。
+
+本轮结论：M6 warmup/恢复和覆盖中断处理通过；M4 直接 mu 在真实数据上有预期量级的非零梯度作用；M5 在异常单测下生效，对本批正常范数保持不裁剪并明确说明原因；M1 实际参数差异已度量，M2/M3 算法不变。**停止于代码与最多三轮检查，等待最终审查，不启动300轮。**

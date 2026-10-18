@@ -2,7 +2,7 @@
 
 Use: python -m tools.probe_adapterfl_m4 --output-dir runs/m4_probe --device cpu
 Original seven ResNets, Full local SGD, same initial weights/batches/seed.
-Small synthetic tensors are explicitly labelled; lambda=1 is never tuned here.
+Small synthetic tensors are explicitly labelled; default mu is never tuned here.
 """
 import argparse
 import contextlib
@@ -46,7 +46,7 @@ def probe(output,device='cpu',steps=3):
     control=LocalUpdate_AdaptiveFL(args,data,range(len(data)))
     # Numerical/instrumentation floor: same diagnostic graph but exactly zero
     # proximal gradient. This is a code probe, not another experiment candidate.
-    control.adapterfl_prox=(hooks.shared_shapes,0.)
+    control.adapterfl_prox=(hooks.shared_shapes,0.,'sum')
     control.adapterfl_prox_diagnostic_steps=steps
     zero_control=cpu_copy(control.train(0,copy.deepcopy(models[-1])))
     restore_rng(before)
@@ -63,7 +63,8 @@ def probe(output,device='cpu',steps=3):
         m4_control_difference+=float((constrained[k].double()-zero_control[k].double()).square().sum())
     result={'kind':'paired_synthetic_local_code_probe_not_performance',
         'device':str(args.device),'torch':torch.__version__,'seed':1,'local_steps':steps,'batch_size':2,
-        'image_shape':[3,32,32],'profiles':profiles,'lambda_unchanged':args.shared_prox_lambda,
+        'image_shape':[3,32,32],'profiles':profiles,'mu_unchanged':args.shared_prox_mu,
+        'legacy_lambda':args.shared_prox_lambda,
         'metrics':local.adapterfl_metrics,'parameter_difference_from_baseline_l2':difference**.5,
         'baseline_update_l2':baseline_update**.5,
         'difference_relative_to_baseline_update':(difference/baseline_update)**.5 if baseline_update else None,
@@ -71,7 +72,7 @@ def probe(output,device='cpu',steps=3):
         'zero_prox_diagnostic_control_vs_baseline_l2':control_difference**.5,
         'm4_vs_zero_prox_diagnostic_control_l2':m4_control_difference**.5,
         'numerical_control_note':'Differences include float32/backward/instrumentation variation; do not attribute the whole parameter difference to the proximal force',
-        'dimension_based_proposal':'For a desired unnormalized curvature mu, lambda_mean=N_shared*mu. Alternatively measure rho*task_shared_gradient_l2/proximal_gradient_l2 at a prespecified training-only probe. Neither is applied here.'}
+        'dimension_based_configuration':'Direct curvature mu=.01: lr*mu=.0001 at original lr=.01; fixed before integration without test-based tuning.'}
     (path/'probe.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     torch.save({'baseline':baseline,'m4':constrained,'zero_prox_diagnostic_control':zero_control},path/'paired_final.pt')
     print(json.dumps({k:v for k,v in result.items() if k not in ('profiles','metrics')},indent=2),flush=True)
