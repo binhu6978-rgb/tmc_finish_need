@@ -4,16 +4,20 @@
 
 ## 上传和安装（首次一次）
 
-将新版 `hgkr7_300_full_eval_server.tar.gz` 上传到目标Linux机器，解压：
+将新版完整源码包 `hgkr7_300_full_project_server.tar.gz` 上传到目标Linux机器，解压：
 
 ```bash
-scp hgkr7_300_full_eval_server.tar.gz USER@HOST:~/
+scp hgkr7_300_full_project_server.tar.gz USER@HOST:~/
 # 在服务器上：
-tar -xzf hgkr7_300_full_eval_server.tar.gz
-cd hgkr7_300
+tar -xzf hgkr7_300_full_project_server.tar.gz
+cd AAAITMC_finish_need_code
 ```
 
-USER/HOST替换成自己的SSH账号/地址。包内附原始分区JSON，不附数据集、历史runs、论文、审稿材料、凭据或Git元数据。
+USER/HOST替换成自己的SSH账号/地址。**服务器保留本地项目的源码目录结构**，不再只收集HGKR的最小依赖。包含原有Algorithm、models、utils、optimizer、experiments、semconsfl、hgkr、research、configs、tests、tools、docs目录，以及main_fed_ori.py等根目录源码；`utils/get_datatset_new.py`、`utils/tinyimagenet.py`等原文件完整保留，内容与本地一致。
+
+包内保留全部已跟踪的数据分区JSON；不打包原始数据集、历史runs/结果、__pycache__、IDE配置、私人论文/审稿材料、凭据或Git元数据。解压根目录为 `AAAITMC_finish_need_code/`。原始文件按原路径保留，不改名或移动。
+
+运行入口继续使用与本地相同的 `experiments/run_hgkr7.py`：从 `experiments/baseline.py` 读取已有CIFAR-100和分区缓存。保留原始get_datatset_new.py，不代表改用它重新生成分区。原始main_fed_ori.py也完整保留，但本次启动脚本仍调用独立HGKR入口。
 
 使用conda `fd` 环境（没有时创建），参考本机已核验Python3.12 / torch2.7.1 / torchvision0.22.1：
 
