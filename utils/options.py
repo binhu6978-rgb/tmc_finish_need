@@ -27,6 +27,10 @@ def args_parser():
     parser.add_argument('--method-run-name', default=None)
     parser.add_argument('--method-output-root', default='runs/adapterfl_methods')
     parser.add_argument('--method-resume', default=None, help='Explicit round-boundary checkpoint; no automatic resume')
+    parser.add_argument('--eval-profiles', choices=['all','full'], default='all',
+                        help='Seven models still train and synchronize; full tests only P6')
+    parser.add_argument('--isolate-eval-rng', action='store_true',
+                        help='Preserve training RNG across evaluation; always enabled by eval-profiles full')
     parser.add_argument('--coverage-gamma', type=float, default=0.5)
     parser.add_argument('--coverage-eta-min', type=float, default=0.8)
     parser.add_argument('--coverage-eta-max', type=float, default=1.2)

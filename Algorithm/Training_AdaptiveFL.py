@@ -33,6 +33,9 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
 
     # Explicit opt-in only. Without --method, the original path stays intact.
     method_run = None
+    isolated_eval = getattr(args, 'eval_profiles', 'all') == 'full' or getattr(args, 'isolate_eval_rng', False)
+    if isolated_eval and not getattr(args, 'method', None):
+        args.method = 'baseline'
     if getattr(args, 'method', None):
         from adapterfl_methods import RunLog
         method_run = RunLog(args, net_glob_list)
@@ -115,19 +118,36 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
         evaluations = []
         evaluation_seconds = 0.
 
-        for idx, net in enumerate(net_glob_list):
-            net.load_state_dict(split_model(w_glob_param, net.state_dict()))
-  
-            print(net_slim_info[idx])
-            if method_run:
-                evaluation_begin = time.perf_counter()
-                accuracy, ce = test_img(net, dataset_test, args)
-                evaluation_seconds += time.perf_counter() - evaluation_begin
-                print("Testing accuracy: {:.2f}".format(accuracy))
-                acc_list[idx].append(accuracy)
-                evaluations.append((accuracy, ce))
-            else:
-                acc_list[idx].append(test(net, dataset_test, args))
+        if isolated_eval:
+            # Synchronize all seven, even when only Full is evaluated.
+            for net in net_glob_list:
+                net.load_state_dict(split_model(w_glob_param, net.state_dict()))
+            from adapterfl_methods import isolated_evaluation_rng
+            evaluations = {}
+            indices = [len(net_glob_list)-1] if args.eval_profiles == 'full' else range(len(net_glob_list))
+            evaluation_begin = time.perf_counter()
+            with isolated_evaluation_rng():
+                for idx in indices:
+                    accuracy, ce = test_img(net_glob_list[idx], dataset_test, args)
+                    print(net_slim_info[idx])
+                    print("Testing accuracy: {:.2f}".format(accuracy))
+                    acc_list[idx].append(accuracy)
+                    evaluations[idx] = (accuracy, ce)
+            evaluation_seconds = time.perf_counter() - evaluation_begin
+        else:
+            # Frozen legacy all-profile evaluation order and RNG consumption.
+            for idx, net in enumerate(net_glob_list):
+                net.load_state_dict(split_model(w_glob_param, net.state_dict()))
+                print(net_slim_info[idx])
+                if method_run:
+                    evaluation_begin = time.perf_counter()
+                    accuracy, ce = test_img(net, dataset_test, args)
+                    evaluation_seconds += time.perf_counter() - evaluation_begin
+                    print("Testing accuracy: {:.2f}".format(accuracy))
+                    acc_list[idx].append(accuracy)
+                    evaluations.append((accuracy, ce))
+                else:
+                    acc_list[idx].append(test(net, dataset_test, args))
 
         if method_run:
             method_run.record(iter, net_glob_list, evaluations, max_time, total_time,

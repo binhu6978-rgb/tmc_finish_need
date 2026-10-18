@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Python version: 3.6
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 import matplotlib
 from tqdm import tqdm
@@ -147,6 +147,8 @@ if __name__ == '__main__':
         for data_beta in data_betas:
             try:
                 args = args_parser()
+                if (args.eval_profiles == 'full' or args.isolate_eval_rng) and not args.method:
+                    args.method = 'baseline'
                 if args.method:
                     from adapterfl_methods import prepare_output
                     method_path = prepare_output(args)

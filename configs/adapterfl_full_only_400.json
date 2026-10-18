@@ -1,0 +1,17 @@
+{
+  "description": "Fixed exploratory official-test-oracle sweep; no online tuning",
+  "common_args": ["--epochs", "400", "--seed", "1", "--gpu", "0", "--generate_data", "0", "--data_beta", "0.3", "--eval-profiles", "full"],
+  "batches": [["B00", "E02"], ["E01", "E03"], ["E04", "E05"], ["E06", "E07"], ["E08", "E09"]],
+  "experiments": [
+    {"id": "B00", "method": "baseline", "args": []},
+    {"id": "E01", "method": "m2", "args": ["--conflict-lambda", "0.5"]},
+    {"id": "E02", "method": "m2", "args": ["--conflict-lambda", "2.0"]},
+    {"id": "E03", "method": "m2", "args": ["--conflict-lambda", "4.0"]},
+    {"id": "E04", "method": "m3", "args": ["--partition-alpha-shared", "1.0", "--partition-alpha-remainder", "0.95"]},
+    {"id": "E05", "method": "m3", "args": ["--partition-alpha-shared", "1.0", "--partition-alpha-remainder", "1.05"]},
+    {"id": "E06", "method": "m3", "args": ["--partition-alpha-shared", "1.05", "--partition-alpha-remainder", "0.95"]},
+    {"id": "E07", "method": "m4", "args": ["--shared-prox-mu", "0.003"]},
+    {"id": "E08", "method": "m4", "args": ["--shared-prox-mu", "0.03"]},
+    {"id": "E09", "method": "m6", "args": ["--history-beta", "0.5", "--history-warmup-rounds", "1"]}
+  ]
+}

@@ -1,4 +1,6 @@
-# AdapterFL 七模型六种独立方法：第三轮修订报告
+# AdapterFL 六方法与 Full-only 400轮探索实验报告
+
+当前阶段基于 `0e3498c8b076b5df8d7d1ca9449d423346c5e369`，仅增加可选 Full-only 评估、RNG 隔离、日志/峰值快照和固定十组队列。七模型、分区、采样、本地训练、原聚合以及六方法数学公式保持不变。当前验证结果与执行方式见第 12 节；第 1–11 节保留此前实现及审查证据，其中“本轮”等表述属于当时阶段。
 
 ## 交付范围与状态
 
@@ -469,3 +471,63 @@ Full 测试仅作有限性/轨迹检查：
 - 本地证据副本：`runs/adapterfl_methods_checks/third_review_linux/`，含汇总、Linux单测、mu探针与原 M5 范数分析；权重保留服务器，不上传 Git。
 
 本轮结论：M6 warmup/恢复和覆盖中断处理通过；M4 直接 mu 在真实数据上有预期量级的非零梯度作用；M5 在异常单测下生效，对本批正常范数保持不裁剪并明确说明原因；M1 实际参数差异已度量，M2/M3 算法不变。**停止于代码与最多三轮检查，等待最终审查，不启动300轮。**
+
+## 12. Full-only 评估与固定十组400轮探索（2026-10-19）
+
+### 12.1 评估行为及随机数边界
+
+`--eval-profiles all` 为默认，继续原来的七次测试顺序和训练 RNG 消耗；旧路径和 named baseline 都通过冻结原版的逐参数/RNG 对照。`--eval-profiles full` 先按原 `split_model` 同步全部七档，然后只对 `net_glob_list[-1]` 调用一次原 `test_img`。`models/test.py`、测试集、batch size、eval/no_grad 均未改。没有 method 的显式新评估选项会选择 named baseline，以便保存完整日志；没有任何新选项的旧入口保持原路径。
+
+Full-only 隐式隔离评估的 Python、NumPy、Torch CPU 和已初始化 CUDA RNG，finally 恢复，即使评估抛出异常也恢复。新 all 模式可显式添加 `--isolate-eval-rng` 使用同一隔离规则，供机制核验。DataLoader 的迭代器即使 shuffle=False 仍可抽取 Torch base seed，因此新 full/isolated-all 与历史 legacy-all 的后续训练 RNG 轨迹不同；**不能称为与旧300轮日志 bitwise identical**。十组新实验包含新的 B00，全部统一使用 Full-only 的隔离规则；400轮预算也不同于历史300轮。
+
+`main_fed_ori.py` 改为 `os.environ.setdefault('CUDA_VISIBLE_DEVICES','0')`，外部可见卡设置不被覆盖。此次最终用户要求仅物理 GPU0，两个槽位均设置 `CUDA_VISIBLE_DEVICES=0`，各自内部 `--gpu 0`；不使用卡1。
+
+### 12.2 日志、峰值和恢复
+
+评估结果显式带 profile ID。Full-only 仅保存 full_accuracy/full_ce 及 P6 列，不写 P0–P5 分数；`accuracy_summary.csv` 只有 P6。每轮仍有 wall/server/evaluation 时间和原 method diagnostics。
+
+`summary.json` 每轮原子更新：best_full_accuracy/best_round、final_full_accuracy/final_full_ce、末20轮均值/总体标准差及样本数、末50轮均值、完成轮数、耗时及方法/全部方法超参数和训练配置指纹。manifest 另存命令、原七档、实际评估档位、可见 GPU、完整 argparse 配置与 RNG 兼容说明。
+
+`best_full.pt` 保存严格超过此前峰值时的 Full 权重、轮次、Accuracy/CE 和配置；相同峰值保留最早轮次。它明确标为官方测试集 **test-oracle peak** 的探索性快照，不是独立验证集选模。`latest.pt` 保留完整恢复状态和 RNG，恢复时要求评估模式、RNG策略、方法参数、epochs、数据与源码指纹不变，并核对 peak snapshot。新代码不会恢复旧源码的300轮 checkpoint；旧实验继续使用冻结的旧 checkout。
+
+### 12.3 固定配置和轻量队列
+
+固定配置：`configs/adapterfl_full_only_400.json`。公共参数固定为400轮、seed1、原保存分区、alpha=.3、Full-only；十个 run-name 均包含 ID/full_only/400/seed1。
+
+|ID|方法|固定差异参数|
+|---|---|---|
+|B00|baseline|无方法改进|
+|E01|m2|conflict-lambda=.5|
+|E02|m2|conflict-lambda=2|
+|E03|m2|conflict-lambda=4|
+|E04|m3|shared=1，remainder=.95|
+|E05|m3|shared=1，remainder=1.05|
+|E06|m3|shared=1.05，remainder=.95|
+|E07|m4|mu=.003|
+|E08|m4|mu=.03|
+|E09|m6|beta=.5，warmup=1|
+
+`tools/run_full_only_sweep.sh` 调用标准库队列 `tools/run_full_only_sweep.py`，队列只启动原 `main_fed_ori.py`，不实现训练。批次严格为 B00/E02 → E01/E03 → E04/E05 → E06/E07 → E08/E09；两组400轮均成功才进入下一批。无 early stopping、自动恢复、重试、调参或按测试结果改顺序。每组独立 stdout/stderr 合并日志、manifest、每轮CSV、summary、best/latest；整批完成生成 comparison.csv 和 report.md。
+
+默认和 `--dry-run` 只打印十条实际命令，不创建实验目录。`--execute` 才执行，根目录 `mkdir(exist_ok=False)` 防止重复覆盖。状态文件记录父/子PID、实际 argv、GPU、批次与完成状态。失败保留原错误/checkpoint，停止本批自己的另一个子进程和后续调度，绝不操作已有训练进程。
+
+执行前与每批边界调用 nvidia-smi；有其他 GPU0 compute 进程或显存不足时停止，不改 batch/model。共享单卡必须显式 `--allow-shared-gpu`。本次用户已明确授权卡0每次两个；现场旧 M4/M5 两进程实际使用约3.6GB/24GB，前阶段 baseline/M1 双进程也已验证。`--after-suite` 仅等待旧七组队列完成状态（60秒一次检查批次状态，不读取或播报逐轮准确率）；旧队列失败或异常退出时不启动新实验。
+
+### 12.4 验证与服务器交付
+
+本地 fd：**65 passed**（9.83秒）；目标 Linux hh：**65 passed**（11.38秒），Linux 单测通过 `CUDA_VISIBLE_DEVICES=''` 在CPU执行，未占用训练GPU。证据为本地 `runs/adapterfl_methods_checks/full_only_pytest_local.log` 与新服务器目录 `runs/full_only_checks/pytest_linux.log`。第一次本地运行有一个测试读取中文源码时误用 Windows 默认 GBK，修为显式 UTF-8 后全部通过；不涉及算法修正。
+
+新增检查覆盖：Full每轮仅一次原测试函数调用、全七档同步、合成小数据上三轮实际SGD的 full/isolated-all 最终权重及采样/RNG一致、旧 legacy-all RNG 差异、默认 baseline 冻结原版兼容、Full-only CSV/summary、峰值权重/轮次/最早并列、M6中断恢复及配置变更拒绝、异常恢复RNG、十组 hook 参数注入/路径唯一、失败停止同批自身进程/错误保留、GPU映射、显式共享授权、重复目录拒绝和旧队列失败停止。这些是实现检查，不是新一批真实 CIFAR-100 性能结果。
+
+服务器独立 checkout：`/home/hh/TMC_re_adapterfl_full_only_400_20261019`，环境 `/home/hh/miniconda3/envs/hh/bin/python`。源数据仍为 `/home/hh/ICML_finish/data`，原始分区不变。现场确认旧 M4（PID1750465）/M5（PID1750467）仍在卡0，父队列PID1645598之后还有旧M6，因此不立即抢占卡0。旧源码、目录、日志及checkpoint均未修改。
+
+最终执行命令（后台启动时将 stdout 重定向至新 checkout 的 runs 下）：
+
+```bash
+PYTHON=/home/hh/miniconda3/envs/hh/bin/python bash tools/run_full_only_sweep.sh \
+  --execute --gpus 0,0 --allow-shared-gpu \
+  --after-suite /home/hh/TMC_re_adapterfl_formal_0e3498c/runs/formal_300_20261018/status.json \
+  --output-root runs/full_only_400_seed1
+```
+
+十条完整命令可用同脚本 `--dry-run --gpus 0,0` 生成，已在服务器保存 `runs/full_only_checks/commands_dry_run.txt`。新队列结果根目录为 `runs/full_only_400_seed1/`；排队等待不表示十组已开始或已完成。此次不做实时逐轮监控，不依据官方测试峰值在线修改任何设置。

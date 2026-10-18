@@ -4,6 +4,7 @@ No model, sampler, optimizer, test function or aggregation mapping is replaced.
 The two named regions below are COVERAGE regions, not invented ResNet stages.
 """
 import copy
+from contextlib import contextmanager
 import csv
 import hashlib
 import json
@@ -499,6 +500,16 @@ def restore_rng(state):
         torch.cuda.set_rng_state_all([v.cpu() for v in state['cuda']])
 
 
+@contextmanager
+def isolated_evaluation_rng():
+    """DataLoader iteration can draw a base seed even with shuffle=False."""
+    before = rng_state()
+    try:
+        yield
+    finally:
+        restore_rng(before)
+
+
 class RunLog:
     """Journal/checkpoint hook called by the native loop, not a training engine."""
     def __init__(self,args,models):
@@ -508,6 +519,9 @@ class RunLog:
         self.rows=[]; self.next_round=0; self.total_time=0.
         self.started=time.perf_counter()
         self.elapsed_before=0.
+        self.eval_profiles=getattr(args,'eval_profiles','all')
+        self.evaluated_indices=[6] if self.eval_profiles=='full' else list(range(7))
+        self.eval_rng_policy='isolated' if self.eval_profiles=='full' or getattr(args,'isolate_eval_rng',False) else 'legacy'
         if args.client_chosen_mode!='available':
             raise ValueError('Reviewed experiments use original available scheduling only')
         if args.model!='resnet' or args.width_ration!=[.4,.66,1.] or args.depth_saved!=[2,3,4]:
@@ -515,6 +529,9 @@ class RunLog:
         self.identity={k:getattr(args,k) for k in ('seed','epochs','num_users','frac','local_ep','local_bs','bs','lr',
             'lr_decay','momentum','weight_decay','optimizer','dataset','model','iid','data_beta','client_hetero_ration','client_chosen_mode')}
         self.identity['method']=args.method; self.identity['options']=self.hooks.config
+        self.identity['eval_profiles']=self.eval_profiles
+        self.identity['eval_rng_policy']=self.eval_rng_policy
+        self.identity['logging_schema']=2
         self.identity['partition_sha256']=getattr(args,'_method_partition_sha256',None)
         files=('main_fed_ori.py','Algorithm/Training_AdaptiveFL.py','models/Update.py','models/Fed.py','models/resnet.py','models/test.py','utils/options.py','adapterfl_methods.py','utils/get_datatset_new.py','utils/set_seed.py')
         self.identity['source_sha256']={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}
@@ -537,13 +554,22 @@ class RunLog:
                 diagnostics=list(csv.DictReader(f))
             if len(existing)!=self.next_round or len(diagnostics)!=self.next_round:
                 raise ValueError('Only aligned round-boundary checkpoints can resume; journal differs')
+            if self.rows:
+                best=torch.load(self.path/'best_full.pt',map_location='cpu',weights_only=False)
+                peak=max(self.rows,key=lambda r:r['full_accuracy'])
+                if best['identity']!=self.identity or best['round']!=peak['round'] or best['full_accuracy']!=peak['full_accuracy']:
+                    raise ValueError('Peak snapshot and latest checkpoint disagree')
             restore_rng(state['rng'])
         else:
             manifest={'identity':self.identity,'command':sys.argv,'torch':torch.__version__,
                       'python':sys.version,'device':str(args.device),'profiles':[(w,d) for w in args.width_ration for d in args.depth_saved if w!=1 or d==args.depth_saved[0]],
                       'initial_state_sha256':[hashlib.sha256(b''.join(k.encode()+v.detach().cpu().contiguous().numpy().tobytes() for k,v in m.state_dict().items())).hexdigest() for m in models],
                       'partition_definition':'intersection of all seven actual parameter prefixes vs complement; no original fixed two-part topology',
-                      'checkpoint_selection':'latest round only; never selected on official test accuracy'}
+                      'evaluated_profiles':[f'P{i}' for i in self.evaluated_indices],
+                      'cuda_visible_devices':__import__('os').environ.get('CUDA_VISIBLE_DEVICES'),
+                      'training_configuration':{k:str(v) if isinstance(v,(torch.device,Path)) else v for k,v in vars(args).items() if not k.startswith('_')},
+                      'rng_compatibility':'isolated evaluation changes the legacy training RNG trajectory; not bitwise identical to historical 300-round runs' if self.eval_rng_policy=='isolated' else 'legacy evaluation RNG consumption',
+                      'checkpoint_selection':'latest.pt for resume; best_full.pt is an exploratory official-test-oracle selection, not validation-selected'}
             (self.path/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
         self.accuracy=(self.path/'accuracy_each_round.csv').open('a' if args.method_resume else 'x',newline='',encoding='utf-8')
         self.diagnostics=(self.path/'method_diagnostics.csv').open('a' if args.method_resume else 'x',newline='',encoding='utf-8')
@@ -553,10 +579,13 @@ class RunLog:
             self.diagnostic_writer.writeheader()
 
     def record(self,round_index,models,evaluations,max_time,total_time,wall,server_seconds,eval_seconds,slots,local_logs):
-        row={'round':round_index+1,'full_accuracy':evaluations[-1][0],'full_ce':evaluations[-1][1],
+        scores=evaluations if isinstance(evaluations,dict) else dict(enumerate(evaluations))
+        if set(scores)!=set(self.evaluated_indices):
+            raise ValueError('Evaluation profile IDs do not match configured logging mode')
+        row={'round':round_index+1,'full_accuracy':scores[6][0],'full_ce':scores[6][1],
              'original_max_client_seconds':max_time,'original_cumulative_max_client_seconds':total_time,
              'round_wall_seconds':wall,'server_seconds':server_seconds,'evaluation_seconds':eval_seconds}
-        for i,(acc,ce) in enumerate(evaluations):
+        for i,(acc,ce) in scores.items():
             row[f'P{i}_accuracy']=acc; row[f'P{i}_ce']=ce
         if self.accuracy_writer is None:
             self.accuracy_writer=csv.DictWriter(self.accuracy,fieldnames=list(row))
@@ -568,16 +597,41 @@ class RunLog:
             print(f'METHOD_DIAGNOSTIC_WARNING method={self.args.method} round={round_index+1} code={warning}',flush=True)
         self.diagnostic_writer.writerow({'round':round_index+1,'method':self.args.method,'metrics_json':json.dumps(metrics,allow_nan=False)})
         self.diagnostics.flush()
+        is_best=not self.rows or row['full_accuracy']>max(r['full_accuracy'] for r in self.rows)
         self.rows.append(row);self.total_time=total_time;self.next_round=round_index+1
         checkpoint={'identity':self.identity,'next_round':self.next_round,'total_time':total_time,
                     'elapsed_seconds':self.elapsed_before+time.perf_counter()-self.started,'rows':self.rows,
                     'global':cpu_copy(models[-1].state_dict()),'method_state':self.hooks.state_dict(),'rng':rng_state()}
+        if is_best:
+            best={'identity':self.identity,'round':round_index+1,'full_accuracy':row['full_accuracy'],
+                  'full_ce':row['full_ce'],'global':checkpoint['global'],
+                  'selection':'test-oracle peak on official test set; exploratory only, not an unbiased validation-selected model'}
+            temp=self.path/'best_full.pending'
+            torch.save(best,temp);temp.replace(self.path/'best_full.pt')
         temp=self.path/'latest.pending'
         torch.save(checkpoint,temp); temp.replace(self.path/'latest.pt')
+        self.write_summary()
+
+    def write_summary(self):
+        if not self.rows:
+            return
+        values=[r['full_accuracy'] for r in self.rows]
+        best=max(self.rows,key=lambda r:r['full_accuracy'])
+        summary={'method':self.args.method,'configuration':self.identity,'rounds_completed':len(values),
+                 'requested_epochs':self.args.epochs,'best_full_accuracy':best['full_accuracy'],
+                 'best_round':best['round'],'peak_label':'test-oracle peak',
+                 'final_full_accuracy':values[-1],'final_full_ce':self.rows[-1]['full_ce'],
+                 'last20_full_mean':statistics.mean(values[-20:]),
+                 'last20_full_std':statistics.pstdev(values[-20:]),'last20_count':len(values[-20:]),
+                 'last50_full_mean':statistics.mean(values[-50:]),
+                 'elapsed_seconds':self.elapsed_before+time.perf_counter()-self.started,
+                 'selection':'best_full.pt is exploratory official-test selection; latest.pt is the resume checkpoint'}
+        pending=self.path/'summary.pending'
+        pending.write_text(json.dumps(summary,indent=2),encoding='utf-8');pending.replace(self.path/'summary.json')
 
     def finish(self):
         rows=[]
-        for i in range(7):
+        for i in self.evaluated_indices:
             values=[r[f'P{i}_accuracy'] for r in self.rows]
             if values:
                 rows.append({'profile':f'P{i}','rounds_completed':len(values),'final_accuracy':values[-1],
@@ -587,8 +641,10 @@ class RunLog:
             with (self.path/'accuracy_summary.csv').open('w',newline='',encoding='utf-8') as f:
                 writer=csv.DictWriter(f,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
         completed={'rounds_completed':len(self.rows),'requested_epochs':self.args.epochs,
+                   'success':len(self.rows)==self.args.epochs,
                    'formal_300_success':len(self.rows)==self.args.epochs==300,
                    'elapsed_seconds':self.elapsed_before+time.perf_counter()-self.started,
                    'checkpoint':'latest.pt','selection':'latest/final round, no test selection'}
         (self.path/'completed.json').write_text(json.dumps(completed,indent=2),encoding='utf-8')
+        self.write_summary()
         self.accuracy.close();self.diagnostics.close()

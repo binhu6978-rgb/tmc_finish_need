@@ -558,3 +558,116 @@ def test_third_m1_actual_difference_norm_and_m5_no_forced_clipping():
     assert_states(out,Aggregation_AdaptiveFL(uploads,[1]*3,old))
     assert all(g['nonactivation_reason']=='within_fixed_threshold' for g in hooks.round_diagnostics['groups'])
     assert all(g['max_to_median_norm_ratio']<2 for g in hooks.round_diagnostics['groups'])
+
+
+def test_full_only_and_isolated_all_have_identical_next_round_updates(tmp_path,monkeypatch):
+    import json
+    import random
+    built=[];calls=[]
+    def build(args):
+        models=tiny_models();built.append(models)
+        return models,[(.4,2,.001)]*7
+    monkeypatch.setattr(training,'get_model_list',build)
+    original_test=training.test_img
+    def evaluation(*args):
+        calls.append(1)
+        # Exercise every RNG in addition to real DataLoader's base seed draw.
+        random.random();np.random.rand();torch.rand(1)
+        return original_test(*args)
+    monkeypatch.setattr(training,'test_img',evaluation)
+    original_record=methods.RunLog.record
+    def record(self,index,models,*args):
+        for model in models:
+            assert_states(model.state_dict(),split_model(models[-1].state_dict(),model.state_dict()))
+        original_record(self,index,models,*args)
+    monkeypatch.setattr(methods.RunLog,'record',record)
+    data=torch.utils.data.TensorDataset(torch.arange(4*3*4*4).reshape(4,3,4,4).float()/100,
+                                        torch.tensor([0,1,0,1]))
+    users={i:list(range(4)) for i in range(100)}
+    results={}
+    for name,profile,isolate in [('full','full',False),('isolated_all','all',True),('legacy','all',False)]:
+        args=args_for('baseline',tmp_path,epochs=3,method_run_name=name,eval_profiles=profile,isolate_eval_rng=isolate)
+        set_random_seed(11);calls.clear()
+        with contextlib.redirect_stdout(io.StringIO()):training.AdaptiveFL(args,data,data,users)
+        path=tmp_path/'baseline'/name
+        with (path/'method_diagnostics.csv').open() as f:
+            slots=[json.loads(r['metrics_json'])['slots'] for r in csv.DictReader(f)]
+        with (path/'accuracy_each_round.csv').open() as f:rows=list(csv.DictReader(f))
+        results[name]=([methods.cpu_copy(m.state_dict()) for m in built.pop()],methods.rng_state(),slots)
+        assert len(calls)==(3 if profile=='full' else 21)
+        if profile=='full':
+            assert 'P6_accuracy' in rows[0] and 'P0_accuracy' not in rows[0]
+            assert all(f'P{i}_ce' not in rows[0] for i in range(6))
+            summary=json.loads((path/'summary.json').read_text())
+            peak=max(rows,key=lambda r:float(r['full_accuracy']))
+            best=torch.load(path/'best_full.pt',weights_only=False)
+            assert best['round']==int(peak['round'])==summary['best_round']
+            assert best['full_accuracy']==float(peak['full_accuracy'])==summary['best_full_accuracy']
+            with (path/'accuracy_summary.csv').open() as f:
+                assert [r['profile'] for r in csv.DictReader(f)]==['P6']
+    for a,b in zip(results['full'][0],results['isolated_all'][0]):assert_states(a,b)
+    assert_rng(results['full'][1],results['isolated_all'][1])
+    assert results['full'][2]==results['isolated_all'][2]
+    assert not torch.equal(results['full'][1]['torch'],results['legacy'][1]['torch'])
+
+
+def test_full_only_resume_and_peak_checkpoint_remain_consistent(tmp_path,monkeypatch):
+    built=[];journals=[]
+    def build(args):
+        models=tiny_models();built.append(models)
+        return models,[(.4,2,.001)]*7
+    monkeypatch.setattr(training,'get_model_list',build)
+    class Journal(methods.RunLog):
+        def __init__(self,*a,**kw):
+            super().__init__(*a,**kw);journals.append(self)
+    monkeypatch.setattr(methods,'RunLog',Journal)
+    data=torch.utils.data.TensorDataset(torch.randn(4,3,4,4),torch.tensor([0,1,0,1]))
+    users={i:list(range(4)) for i in range(100)}
+    def arguments(name,**kw):
+        return args_for('m6',tmp_path,epochs=3,method_run_name=name,eval_profiles='full',**kw)
+    set_random_seed(9)
+    with contextlib.redirect_stdout(io.StringIO()):training.AdaptiveFL(arguments('reference'),data,data,users)
+    golden=[methods.cpu_copy(m.state_dict()) for m in built.pop()];rng=methods.rng_state()
+    original=Journal.record
+    def stop(self,*args,**kw):
+        original(self,*args,**kw)
+        if self.next_round==1:raise RuntimeError('saved boundary')
+    monkeypatch.setattr(Journal,'record',stop);set_random_seed(9)
+    with pytest.raises(RuntimeError,match='saved boundary'),contextlib.redirect_stdout(io.StringIO()):
+        training.AdaptiveFL(arguments('resumed'),data,data,users)
+    journals[-1].accuracy.close();journals[-1].diagnostics.close();built.pop()
+    monkeypatch.setattr(Journal,'record',original)
+    checkpoint=str(tmp_path/'m6/resumed/latest.pt')
+    with contextlib.redirect_stdout(io.StringIO()):
+        training.AdaptiveFL(arguments('resumed',method_resume=checkpoint),data,data,users)
+    for a,b in zip(golden,built.pop()):assert_states(a,b.state_dict())
+    assert_rng(rng,methods.rng_state())
+    with pytest.raises(ValueError,match='identity|differ'):
+        methods.RunLog(args_for('m6',tmp_path,epochs=3,method_resume=checkpoint,eval_profiles='all'),tiny_models())
+
+
+def test_peak_snapshot_preserves_earliest_tie_and_model_values(tmp_path):
+    import json
+    models=tiny_models();args=args_for('baseline',tmp_path,epochs=3,method_run_name='peak',eval_profiles='full')
+    journal=methods.RunLog(args,models)
+    for r,acc in enumerate([10.,20.,20.]):
+        models[-1].load_state_dict(filled(models[-1],r+1))
+        journal.record(r,models,{6:(acc,3.-r)},0.,0.,0.,0.,0.,[],[])
+    journal.finish()
+    best=torch.load(tmp_path/'baseline/peak/best_full.pt',weights_only=False)
+    latest=torch.load(tmp_path/'baseline/peak/latest.pt',weights_only=False)
+    assert best['round']==2 and latest['next_round']==3
+    assert_states(best['global'],filled(models[-1],2.))
+    assert_states(latest['global'],filled(models[-1],3.))
+    summary=json.loads((tmp_path/'baseline/peak/summary.json').read_text())
+    assert summary['best_full_accuracy']==20. and summary['best_round']==2
+    assert summary['final_full_ce']==1.
+
+
+def test_isolated_eval_restores_rng_on_exception():
+    import random
+    before=methods.rng_state()
+    with pytest.raises(RuntimeError),methods.isolated_evaluation_rng():
+        random.random();np.random.rand();torch.rand(3)
+        raise RuntimeError('evaluation failed')
+    assert_rng(before,methods.rng_state())
