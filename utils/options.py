@@ -21,6 +21,22 @@ def args_parser():
     parser.add_argument('--weight_decay', type=float, default=1e-4, help="weight_decay (default: 1e-4)")
     parser.add_argument('--split', type=str, default='user', help="train-test split type, user or sample")
     parser.add_argument("--algorithm", type=str, default="AdaptiveFL")
+    # Opt-in research hooks in the original seven-model AdapterFL path.
+    # None leaves the legacy path (including its result files) entirely intact.
+    parser.add_argument('--method', choices=['baseline','m1','m2','m3','m4','m5','m6'], default=None)
+    parser.add_argument('--method-run-name', default=None)
+    parser.add_argument('--method-output-root', default='runs/adapterfl_methods')
+    parser.add_argument('--method-resume', default=None, help='Explicit round-boundary checkpoint; no automatic resume')
+    parser.add_argument('--coverage-gamma', type=float, default=0.5)
+    parser.add_argument('--coverage-eta-min', type=float, default=0.8)
+    parser.add_argument('--coverage-eta-max', type=float, default=1.2)
+    parser.add_argument('--conflict-lambda', type=float, default=1.0)
+    parser.add_argument('--partition-alpha-shared', type=float, default=1.0)
+    parser.add_argument('--partition-alpha-remainder', type=float, default=0.9)
+    parser.add_argument('--shared-prox-lambda', type=float, default=1.0)
+    parser.add_argument('--partition-norm-multiplier', type=float, default=2.0)
+    parser.add_argument('--partition-norm-min-clients', type=int, default=3)
+    parser.add_argument('--history-beta', type=float, default=0.9)
 
     # model arguments
     parser.add_argument('--model', type=str, default='mobilenet', help='model name')

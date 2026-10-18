@@ -147,6 +147,11 @@ if __name__ == '__main__':
         for data_beta in data_betas:
             try:
                 args = args_parser()
+                if args.method:
+                    from adapterfl_methods import prepare_output
+                    method_path = prepare_output(args)
+                    if args.generate_data != 0:
+                        raise ValueError('Named method experiments require --generate_data 0 to retain the existing split')
                 args.device = torch.device('cuda:{}'.format(args.gpu) if torch.cuda.is_available() and args.gpu != -1 else 'cpu')
                 args.data_beta = data_beta
                 if data_beta == 1:
@@ -171,6 +176,8 @@ if __name__ == '__main__':
 
 
                 log_path = os.path.join(run_dir, "%s_%s_%s_%s_%s.log" % (str(args.data_beta), args.dataset,args.algorithm,args.model,stamp))
+                if args.method:
+                    log_path = str(method_path / ('resume_' + stamp + '.log' if args.method_resume else 'console.log'))
 
                 
                 logging.basicConfig(level=logging.DEBUG,
@@ -181,7 +188,17 @@ if __name__ == '__main__':
 
                 set_random_seed(args.seed)
 
+                if args.method:
+                    from pathlib import Path
+                    from utils.get_datatset_new import _build_record_path
+                    if not Path(_build_record_path(args)).is_file():
+                        raise FileNotFoundError('The original saved partition is required; named methods do not generate a new split')
                 dataset_train, dataset_test, dict_users = get_dataset(args)
+                if args.method:
+                    import hashlib
+                    from pathlib import Path
+                    from utils.get_datatset_new import _build_record_path
+                    args._method_partition_sha256 = hashlib.sha256(Path(_build_record_path(args)).read_bytes()).hexdigest()
                 # plot_client_distribution(dataset_train, dict_users)
 
                 if args.model == 'cnn':
@@ -230,4 +247,12 @@ if __name__ == '__main__':
                     raise "%s algorithm has not achieved".format(args.algorithm)
 
             except Exception as e:
+                if getattr(locals().get('args'), 'method', None):
+                    import json
+                    import traceback
+                    from pathlib import Path
+                    path = getattr(args, '_method_run_path', None)
+                    if path and Path(path).is_dir():
+                        (Path(path) / 'failed.json').write_text(json.dumps({'traceback': traceback.format_exc()}, indent=2), encoding='utf-8')
+                    raise
                 continue  # Continue with the next algorithm even if there's an error

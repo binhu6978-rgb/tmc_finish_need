@@ -31,14 +31,25 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
     acc_list = [[] for _ in net_glob_list]
     clients = HeteroClients(args, net_slim_info)
 
+    # Explicit opt-in only. Without --method, the original path stays intact.
+    method_run = None
+    if getattr(args, 'method', None):
+        from adapterfl_methods import RunLog
+        method_run = RunLog(args, net_glob_list)
+        total_time = method_run.total_time
+
     # 开始训练
-    for iter in tqdm(range(args.epochs)):  # tqdm 进度条库
+    for iter in tqdm(range(method_run.next_round if method_run else 0, args.epochs)):  # tqdm 进度条库
+
+        round_begin = time.perf_counter() if method_run else None
 
         print('*' * 80)
         print('Round {:3d}'.format(iter))
 
         w_locals = []
         lens = []
+        dispatched_snapshots = []
+        local_diagnostics = []
 
         m = max(int(args.frac * args.num_users), 1)
 
@@ -66,7 +77,17 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
                 feedback_model_idx = ration_users[id]  # 这里是基于规则的，不会出错，分发的是什么模型，返回的就是什么模型
             feedback_list.append(feedback_model_idx)
 
+            if method_run:
+                method_run.hooks.configure_local(local)
+                if args.method in ('m2', 'm5'):
+                    # These are the actual per-slot pre-training weights, including
+                    # independent first-round submodel initialization.
+                    dispatched_snapshots.append(copy.deepcopy(net_glob_list[feedback_model_idx].state_dict()))
+
             w = local.train(round=iter, net=copy.deepcopy(net_glob_list[feedback_model_idx]).to(args.device))  # 这里开始正式训练
+
+            if method_run:
+                local_diagnostics.append(getattr(local, 'adapterfl_metrics', {}))
 
             w_locals.append(copy.deepcopy(w))
             lens.append(len(dict_users[idx]))
@@ -84,13 +105,38 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
         print(f"hetero_proportion: \t{args.client_hetero_ration}")
         # 需要print 每个客户端的计算资源
 
-        w_glob_param = Aggregation_AdaptiveFL(w_locals, lens, net_glob_list[-1].state_dict())
+        server_begin = time.perf_counter() if method_run else None
+        if method_run:
+            w_glob_param = method_run.hooks.aggregate(w_locals, lens, net_glob_list[-1].state_dict(), dispatched_snapshots)
+        else:
+            w_glob_param = Aggregation_AdaptiveFL(w_locals, lens, net_glob_list[-1].state_dict())
+
+        server_seconds = time.perf_counter() - server_begin if method_run else None
+        evaluations = []
+        evaluation_seconds = 0.
 
         for idx, net in enumerate(net_glob_list):
             net.load_state_dict(split_model(w_glob_param, net.state_dict()))
   
             print(net_slim_info[idx])
-            acc_list[idx].append(test(net, dataset_test, args))
+            if method_run:
+                evaluation_begin = time.perf_counter()
+                accuracy, ce = test_img(net, dataset_test, args)
+                evaluation_seconds += time.perf_counter() - evaluation_begin
+                print("Testing accuracy: {:.2f}".format(accuracy))
+                acc_list[idx].append(accuracy)
+                evaluations.append((accuracy, ce))
+            else:
+                acc_list[idx].append(test(net, dataset_test, args))
+
+        if method_run:
+            method_run.record(iter, net_glob_list, evaluations, max_time, total_time,
+                              time.perf_counter() - round_begin, server_seconds, evaluation_seconds,
+                              [(int(c), int(p)) for c, p in zip(idx_users, feedback_list)], local_diagnostics)
+
+    if method_run:
+        method_run.finish()
+        return
 
     save_result(time_list, 'test_time', args)
     for id, acc in enumerate(acc_list):

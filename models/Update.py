@@ -209,6 +209,11 @@ class LocalUpdate_AdaptiveFL(object):
     # ======== 你原来的 AdaptiveFL 本地训练：完全保留不动 ========
     def train(self, round, net):
         net.train()
+        prox_setup = getattr(self, 'adapterfl_prox', None)
+        if prox_setup is not None:
+            from adapterfl_methods import prepare_prox, prox_loss
+            prox_targets, prox_count, prox_strength = prepare_prox(net, prox_setup)
+            task_sum, prox_sum, steps = 0.0, 0.0, 0
         if self.args.optimizer == 'sgd':
             optimizer = torch.optim.SGD(
                 net.parameters(),
@@ -233,6 +238,12 @@ class LocalUpdate_AdaptiveFL(object):
                 net.zero_grad()
                 log_probs = net(images)["output"]
                 loss = self.loss_func(log_probs, labels)
+                if prox_setup is not None:
+                    regularizer = prox_loss(net, prox_targets, prox_count)
+                    task_sum += float(loss.detach())
+                    prox_sum += float(regularizer.detach())
+                    steps += 1
+                    loss = loss + prox_strength * regularizer
                 loss.backward()
                 optimizer.step()
                 Predict_loss += float(loss.item())
@@ -241,6 +252,12 @@ class LocalUpdate_AdaptiveFL(object):
             info = '\nUser predict Loss={:.4f}'.format(Predict_loss / (self.args.local_ep * len(self.ldr_train)))
             print(info)
 
+        if prox_setup is not None:
+            self.adapterfl_metrics = {'task_ce_mean': task_sum / max(steps, 1),
+                                     'prox_loss_mean': prox_sum / max(steps, 1),
+                                     'lambda_prox': prox_strength, 'target_parameters': prox_count,
+                                     'effective_coefficient_per_parameter': prox_strength / prox_count,
+                                     'steps': steps}
         return net.state_dict()
 
     # ======== 新增：SemanticFL 本地训练（与 client.py 同逻辑）========
