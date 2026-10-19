@@ -1,0 +1,143 @@
+{
+  "description": "Second exploratory M2/M3 sweep selected after inspecting official-test peaks; no online tuning",
+  "common_args": [
+    "--epochs",
+    "400",
+    "--seed",
+    "1",
+    "--gpu",
+    "0",
+    "--generate_data",
+    "0",
+    "--data_beta",
+    "0.3",
+    "--eval-profiles",
+    "full"
+  ],
+  "batches": [
+    [
+      "N03",
+      "N04"
+    ],
+    [
+      "N01",
+      "N02"
+    ],
+    [
+      "N05",
+      "N06"
+    ],
+    [
+      "N07",
+      "N08"
+    ],
+    [
+      "N09",
+      "N10"
+    ]
+  ],
+  "experiments": [
+    {
+      "id": "N01",
+      "method": "m2",
+      "args": [
+        "--conflict-lambda",
+        "3.0"
+      ]
+    },
+    {
+      "id": "N02",
+      "method": "m2",
+      "args": [
+        "--conflict-lambda",
+        "3.5"
+      ]
+    },
+    {
+      "id": "N03",
+      "method": "m2",
+      "args": [
+        "--conflict-lambda",
+        "4.5"
+      ]
+    },
+    {
+      "id": "N04",
+      "method": "m2",
+      "args": [
+        "--conflict-lambda",
+        "5.0"
+      ]
+    },
+    {
+      "id": "N05",
+      "method": "m2",
+      "args": [
+        "--conflict-lambda",
+        "6.0"
+      ]
+    },
+    {
+      "id": "N06",
+      "method": "m2",
+      "args": [
+        "--conflict-lambda",
+        "8.0"
+      ]
+    },
+    {
+      "id": "N07",
+      "method": "m3",
+      "args": [
+        "--partition-alpha-shared",
+        "1.0",
+        "--partition-alpha-remainder",
+        "0.92"
+      ]
+    },
+    {
+      "id": "N08",
+      "method": "m3",
+      "args": [
+        "--partition-alpha-shared",
+        "1.0",
+        "--partition-alpha-remainder",
+        "0.98"
+      ]
+    },
+    {
+      "id": "N09",
+      "method": "m3",
+      "args": [
+        "--partition-alpha-shared",
+        "0.98",
+        "--partition-alpha-remainder",
+        "0.95"
+      ]
+    },
+    {
+      "id": "N10",
+      "method": "m3",
+      "args": [
+        "--partition-alpha-shared",
+        "1.02",
+        "--partition-alpha-remainder",
+        "0.95"
+      ]
+    }
+  ],
+  "default_output_dir": "runs/adapterfl_next10_m2_m3_400_seed1",
+  "report": {
+    "peak_ce_window_radius": 2,
+    "references": [
+      {
+        "id": "B00",
+        "rounds_csv": "runs/full_only_400_seed1/experiments/baseline/B00_full_only_400_seed1/accuracy_each_round.csv"
+      },
+      {
+        "id": "E03",
+        "rounds_csv": "runs/full_only_400_seed1/experiments/m2/E03_full_only_400_seed1/accuracy_each_round.csv"
+      }
+    ]
+  }
+}

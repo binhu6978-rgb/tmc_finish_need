@@ -662,6 +662,10 @@ def test_peak_snapshot_preserves_earliest_tie_and_model_values(tmp_path):
     summary=json.loads((tmp_path/'baseline/peak/summary.json').read_text())
     assert summary['best_full_accuracy']==20. and summary['best_round']==2
     assert summary['final_full_ce']==1.
+    with (tmp_path/'baseline/peak/accuracy_each_round.csv').open() as f:
+        rounds=list(csv.DictReader(f))
+    assert [float(r['best_full_accuracy']) for r in rounds]==[10.,20.,20.]
+    assert [int(r['best_round']) for r in rounds]==[1,2,2]
 
 
 def test_isolated_eval_restores_rng_on_exception():

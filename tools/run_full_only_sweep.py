@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / 'configs/adapterfl_full_only_400.json'
 
 
-def plan(output, gpus, python):
-    cfg = json.loads(CONFIG.read_text(encoding='utf-8'))
+def plan(output, gpus, python, config=CONFIG):
+    cfg = json.loads(Path(config).read_text(encoding='utf-8'))
     entries = {e['id']: e for e in cfg['experiments']}
     batches = []
     for ids in cfg['batches']:
@@ -133,7 +133,14 @@ def run_batch(batch, state, save, validator=validate):
         raise
 
 
-def summarize(batches, output):
+def summarize(batches, output, config=CONFIG):
+    cfg = json.loads(Path(config).read_text(encoding='utf-8'))
+    if cfg.get('report'):
+        if __package__:
+            from .report_next10_m2_m3 import report_next10
+        else:
+            from report_next10_m2_m3 import report_next10
+        return report_next10(batches, output, cfg['report'])
     records = []
     for batch in batches:
         for job in batch:
@@ -157,7 +164,8 @@ def main(argv=None):
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--execute', action='store_true')
     mode.add_argument('--dry-run', action='store_true')
-    parser.add_argument('--output-root', type=Path, default=ROOT/'runs/adapterfl_full_only_400_seed1')
+    parser.add_argument('--config', type=Path, default=CONFIG)
+    parser.add_argument('--output-root', type=Path, default=None)
     parser.add_argument('--gpus', default='0,1', help='Physical GPUs for the two slots, e.g. 0,0')
     parser.add_argument('--allow-shared-gpu', action='store_true', help='Explicit authorization after confirming single-GPU two-job resources')
     parser.add_argument('--after-suite', type=Path, help='Wait for the old seven-experiment suite status.json to complete')
@@ -167,8 +175,9 @@ def main(argv=None):
         parser.error('--gpus requires two nonnegative physical GPU indices')
     if args.execute and len(set(gpus)) == 1 and not args.allow_shared_gpu:
         parser.error('Two jobs sharing a GPU need --allow-shared-gpu after resource validation')
-    output = args.output_root.resolve()
-    batches = plan(output, gpus, sys.executable)
+    cfg = json.loads(args.config.read_text(encoding='utf-8'))
+    output = (args.output_root or ROOT/cfg.get('default_output_dir','runs/adapterfl_full_only_400_seed1')).resolve()
+    batches = plan(output, gpus, sys.executable, args.config)
     for i, batch in enumerate(batches, 1):
         print(f'# Batch {i}', flush=True)
         for job in batch:
@@ -179,7 +188,7 @@ def main(argv=None):
     output.mkdir(parents=True, exist_ok=False)
     state = {'state': 'starting', 'parent_pid': os.getpid(), 'jobs': {}, 'plan': batches,
              'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-             'configuration_sha256': hashlib.sha256(CONFIG.read_bytes()).hexdigest()}
+             'configuration_sha256': hashlib.sha256(args.config.read_bytes()).hexdigest(), 'config_path': str(args.config.resolve())}
     def save():
         temp = output/'status.pending'; temp.write_text(json.dumps(state, indent=2)); temp.replace(output/'status.json')
     def interrupt(signum, frame):
@@ -193,7 +202,7 @@ def main(argv=None):
             (output/f'batch{i}_nvidia_smi.txt').write_text(inventory)
             state.update(state='running', batch=i); save()
             run_batch(batch, state, save)
-        summarize(batches, output)
+        summarize(batches, output, args.config)
         state.update(state='completed'); save()
     except BaseException as exc:
         state.update(state='failed', error=repr(exc)); save()

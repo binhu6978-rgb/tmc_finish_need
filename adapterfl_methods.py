@@ -585,6 +585,11 @@ class RunLog:
         row={'round':round_index+1,'full_accuracy':scores[6][0],'full_ce':scores[6][1],
              'original_max_client_seconds':max_time,'original_cumulative_max_client_seconds':total_time,
              'round_wall_seconds':wall,'server_seconds':server_seconds,'evaluation_seconds':eval_seconds}
+        peak=max(self.rows,key=lambda r:r['full_accuracy']) if self.rows else row
+        if row['full_accuracy']>peak['full_accuracy']:
+            peak=row
+        row['best_full_accuracy']=peak['full_accuracy']
+        row['best_round']=peak['round']
         for i,(acc,ce) in scores.items():
             row[f'P{i}_accuracy']=acc; row[f'P{i}_ce']=ce
         if self.accuracy_writer is None:
