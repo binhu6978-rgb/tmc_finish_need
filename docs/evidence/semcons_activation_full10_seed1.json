@@ -1,0 +1,4834 @@
+{
+  "reviewed_commit": "5d7c1522269b69c6ab08475dd58d343b000f98de",
+  "server_project": "/home/hh/TMC_re_adapterfl_full_only_400_20261019",
+  "preflight_root": "runs/semcons_activation_full10_seed1",
+  "summary": {
+    "kind": "full-data short activation preflight; not formal400",
+    "runs": {
+      "s03": {
+        "path": "runs/semcons_activation_full10_seed1/s03/activation_10",
+        "rounds": [
+          {
+            "direction": {
+              "n": 39,
+              "positive": 3,
+              "positive_fraction": 0.07692307692307693,
+              "mean": 0.0014138378474922463,
+              "max": 0.036067921284956034
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 38,
+              "positive_fraction": 1.0,
+              "mean": 0.010593802956891062,
+              "max": 0.029855436171478185
+            },
+            "joint_positive": {
+              "n": 39,
+              "positive": 3,
+              "positive_fraction": 0.07692307692307693,
+              "mean": 0.07692307692307693,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 39,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.07692307692307693,
+            "gate_min": 0.8656525311792138,
+            "gate_comparisons": 39,
+            "gate_mean": 0.9946597725334245,
+            "non_neutral_gates": 3,
+            "actual_changed_parameter_fraction_full": 0.3765241559349166,
+            "changed_coordinates": 4301546,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.017416883357630777,
+            "difference_to_native_learning_l2_ratio": 0.021597438651006867,
+            "counts": {
+              "comparable_regions": 8,
+              "joint_positive_confidence_positive_slots": 3,
+              "active_gate_regions": 2,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 2,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 4,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 1
+          },
+          {
+            "direction": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 61,
+              "positive": 55,
+              "positive_fraction": 0.9016393442622951,
+              "mean": 0.006498217036634669,
+              "max": 0.02971256375422775
+            },
+            "joint_positive": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 67,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 67,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 2
+          },
+          {
+            "direction": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 50,
+              "positive": 50,
+              "positive_fraction": 1.0,
+              "mean": 0.008440818996266856,
+              "max": 0.01952516062573884
+            },
+            "joint_positive": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 57,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 57,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 3
+          },
+          {
+            "direction": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 47,
+              "positive": 47,
+              "positive_fraction": 1.0,
+              "mean": 0.014151796710045858,
+              "max": 0.024994706058295315
+            },
+            "joint_positive": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 56,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 56,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 4
+          },
+          {
+            "direction": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 34,
+              "positive": 34,
+              "positive_fraction": 1.0,
+              "mean": 0.010978391278406371,
+              "max": 0.033435321076344365
+            },
+            "joint_positive": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 35,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 35,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 5
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 36,
+              "positive_fraction": 0.9473684210526315,
+              "mean": 0.004668512384882649,
+              "max": 0.01753697886744193
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 4,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 6
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 46,
+              "positive": 35,
+              "positive_fraction": 0.7608695652173914,
+              "mean": 0.0035401231665013223,
+              "max": 0.012434089800642544
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 7
+          },
+          {
+            "direction": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 40,
+              "positive": 32,
+              "positive_fraction": 0.8,
+              "mean": 0.007040432154714241,
+              "max": 0.034109462833529385
+            },
+            "joint_positive": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 40,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 40,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 8
+          },
+          {
+            "direction": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 11,
+              "positive_fraction": 0.24444444444444444,
+              "mean": 0.0008006399637972325,
+              "max": 0.015876756812980657
+            },
+            "joint_positive": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 53,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 53,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 9
+          },
+          {
+            "direction": {
+              "n": 51,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 25,
+              "positive_fraction": 0.5555555555555556,
+              "mean": 0.0009707551643067422,
+              "max": 0.006795300695285544
+            },
+            "joint_positive": {
+              "n": 51,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 51,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 51,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 10
+          }
+        ],
+        "resources": {
+          "pid": 2500321,
+          "device": "cuda:0",
+          "cuda_visible_devices": "0",
+          "gpu_name": "NVIDIA GeForce RTX 4090",
+          "status": "completed_short_preflight",
+          "wall_seconds": 111.10158135893289,
+          "peak_allocated_bytes": 1602702336,
+          "peak_reserved_bytes": 1927282688
+        },
+        "direction": {
+          "n": 490,
+          "positive": 3,
+          "positive_fraction": 0.006122448979591836,
+          "mean": 0.00011252995112693389,
+          "max": 0.036067921284956034
+        },
+        "semantic": {
+          "n": 444,
+          "positive": 363,
+          "positive_fraction": 0.8175675675675675,
+          "mean": 0.006668864084427343,
+          "max": 0.034109462833529385
+        },
+        "joint_positive": {
+          "n": 490,
+          "positive": 3,
+          "positive_fraction": 0.006122448979591836,
+          "mean": 0.006122448979591836,
+          "max": 1.0
+        },
+        "gate_non_neutral_fraction": 0.006122448979591836,
+        "mean_changed_parameter_fraction_full": 0.03765241559349166,
+        "max_changed_parameter_fraction_full": 0.3765241559349166,
+        "minimum_gate": 0.8656525311792138,
+        "mean_gate": 0.9995749614873543,
+        "mean_relative_aggregate_intervention": 0.002159743865100687,
+        "counts": {
+          "comparable_regions": 80,
+          "joint_positive_confidence_positive_slots": 3,
+          "active_gate_regions": 2,
+          "normalized_uniform_canceled_regions": 0,
+          "active_but_no_changed_coordinate_regions": 0,
+          "changed_regions": 2,
+          "permuted_region_client_scores": 0,
+          "changed_region_client_scores": 0,
+          "insufficient_client_regions": 10,
+          "s08_changed_distinct_clients": 0
+        },
+        "two_distinct_clients": {
+          "regions": 10,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "changed_regions": 0,
+          "positive_semantic_scores": 14,
+          "semantic_scores": 20
+        },
+        "normalized_cancellation_fraction_of_active_regions": 0.0,
+        "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+        "completed_rounds": 10
+      },
+      "s04": {
+        "path": "runs/semcons_activation_full10_seed1/s04/activation_10",
+        "rounds": [
+          {
+            "direction": {
+              "n": 39,
+              "positive": 4,
+              "positive_fraction": 0.10256410256410256,
+              "mean": 0.001709353542001781,
+              "max": 0.03880131865185789
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 34,
+              "positive_fraction": 0.8947368421052632,
+              "mean": 0.010297793909134084,
+              "max": 0.030019635868751463
+            },
+            "joint_positive": {
+              "n": 39,
+              "positive": 4,
+              "positive_fraction": 0.10256410256410256,
+              "mean": 0.10256410256410256,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 39,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.8974358974358975,
+            "gate_min": 0.8868507776396729,
+            "gate_comparisons": 39,
+            "gate_mean": 0.9587565092224452,
+            "non_neutral_gates": 35,
+            "actual_changed_parameter_fraction_full": 0.48386246016843315,
+            "changed_coordinates": 5527817,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.022279859905840582,
+            "difference_to_native_learning_l2_ratio": 0.027572330851634498,
+            "counts": {
+              "comparable_regions": 8,
+              "joint_positive_confidence_positive_slots": 4,
+              "active_gate_regions": 6,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 6,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 1
+          },
+          {
+            "direction": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 61,
+              "positive": 55,
+              "positive_fraction": 0.9016393442622951,
+              "mean": 0.006641226157886659,
+              "max": 0.026959017942671814
+            },
+            "joint_positive": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 67,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.9104477611940298,
+            "gate_min": 0.8977747549942918,
+            "gate_comparisons": 67,
+            "gate_mean": 0.9746441070293823,
+            "non_neutral_gates": 61,
+            "actual_changed_parameter_fraction_full": 0.6078803041501858,
+            "changed_coordinates": 6944641,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.007328794117272261,
+            "difference_to_native_learning_l2_ratio": 0.009073588007768483,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 9,
+              "normalized_uniform_canceled_regions": 1,
+              "active_but_no_changed_coordinate_regions": 1,
+              "changed_regions": 8,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 1,
+              "normalized_uniform_canceled_regions": 1,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 2
+          },
+          {
+            "direction": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 50,
+              "positive": 47,
+              "positive_fraction": 0.94,
+              "mean": 0.008203586505930787,
+              "max": 0.01979718371296477
+            },
+            "joint_positive": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 57,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.8947368421052632,
+            "gate_min": 0.9238655423633406,
+            "gate_comparisons": 57,
+            "gate_mean": 0.9714056772403014,
+            "non_neutral_gates": 51,
+            "actual_changed_parameter_fraction_full": 0.5976618725817018,
+            "changed_coordinates": 6827902,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.011743972331997614,
+            "difference_to_native_learning_l2_ratio": 0.019227039263621286,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 7,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 7,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 3
+          },
+          {
+            "direction": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 47,
+              "positive": 47,
+              "positive_fraction": 1.0,
+              "mean": 0.010673234681701414,
+              "max": 0.020690887137450042
+            },
+            "joint_positive": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 56,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 1.0,
+            "gate_min": 0.9205687913136947,
+            "gate_comparisons": 56,
+            "gate_mean": 0.9593437209909312,
+            "non_neutral_gates": 56,
+            "actual_changed_parameter_fraction_full": 0.6079183806947193,
+            "changed_coordinates": 6945076,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.013334606208787448,
+            "difference_to_native_learning_l2_ratio": 0.01459066603923127,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 9,
+              "normalized_uniform_canceled_regions": 1,
+              "active_but_no_changed_coordinate_regions": 1,
+              "changed_regions": 8,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 1,
+              "normalized_uniform_canceled_regions": 1,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 4
+          },
+          {
+            "direction": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 34,
+              "positive": 34,
+              "positive_fraction": 1.0,
+              "mean": 0.011736641425316675,
+              "max": 0.031668610319541726
+            },
+            "joint_positive": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 35,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 1.0,
+            "gate_min": 0.8810204498047607,
+            "gate_comparisons": 35,
+            "gate_mean": 0.9543838169231035,
+            "non_neutral_gates": 35,
+            "actual_changed_parameter_fraction_full": 0.4838527440846556,
+            "changed_coordinates": 5527706,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.01417203960571249,
+            "difference_to_native_learning_l2_ratio": 0.016341345857417314,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 7,
+              "normalized_uniform_canceled_regions": 1,
+              "active_but_no_changed_coordinate_regions": 1,
+              "changed_regions": 6,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 1,
+              "normalized_uniform_canceled_regions": 1,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 5
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 34,
+              "positive_fraction": 0.8947368421052632,
+              "mean": 0.0042736818766712995,
+              "max": 0.02443865569381278
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.8695652173913043,
+            "gate_min": 0.9068714020426356,
+            "gate_comparisons": 46,
+            "gate_mean": 0.9852451493964981,
+            "non_neutral_gates": 40,
+            "actual_changed_parameter_fraction_full": 0.4837911213551118,
+            "changed_coordinates": 5527002,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.011017546249945973,
+            "difference_to_native_learning_l2_ratio": 0.012429256099881335,
+            "counts": {
+              "comparable_regions": 8,
+              "active_gate_regions": 6,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 6,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 6
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 46,
+              "positive": 35,
+              "positive_fraction": 0.7608695652173914,
+              "mean": 0.0025930014817189353,
+              "max": 0.01273094830074132
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.7608695652173914,
+            "gate_min": 0.950351090985629,
+            "gate_comparisons": 46,
+            "gate_mean": 0.9897512564429757,
+            "non_neutral_gates": 35,
+            "actual_changed_parameter_fraction_full": 0.5976156555345439,
+            "changed_coordinates": 6827374,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.005951106166069443,
+            "difference_to_native_learning_l2_ratio": 0.007322584267614759,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 7,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 7,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 7
+          },
+          {
+            "direction": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 40,
+              "positive": 33,
+              "positive_fraction": 0.825,
+              "mean": 0.006076615153107796,
+              "max": 0.03334634076722063
+            },
+            "joint_positive": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 40,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.825,
+            "gate_min": 0.8751277851911654,
+            "gate_comparisons": 40,
+            "gate_mean": 0.9764692273815768,
+            "non_neutral_gates": 33,
+            "actual_changed_parameter_fraction_full": 0.5976957475764936,
+            "changed_coordinates": 6828289,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.025052465231003174,
+            "difference_to_native_learning_l2_ratio": 0.03282196377113412,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 7,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 7,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 8
+          },
+          {
+            "direction": {
+              "n": 53,
+              "positive": 2,
+              "positive_fraction": 0.03773584905660377,
+              "mean": 0.0001615515964829878,
+              "max": 0.007140100426603424
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 12,
+              "positive_fraction": 0.26666666666666666,
+              "mean": 0.0006024194297130189,
+              "max": 0.005953336463458989
+            },
+            "joint_positive": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 53,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.2830188679245283,
+            "gate_min": 0.9764679545413194,
+            "gate_comparisons": 53,
+            "gate_mean": 0.9975298585619149,
+            "non_neutral_gates": 15,
+            "actual_changed_parameter_fraction_full": 0.4811936007596402,
+            "changed_coordinates": 5497327,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.003824489758223969,
+            "difference_to_native_learning_l2_ratio": 0.004354623376222906,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 5,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 5,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "direction_positive_semantic_zero_slots": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 9
+          },
+          {
+            "direction": {
+              "n": 51,
+              "positive": 1,
+              "positive_fraction": 0.0196078431372549,
+              "mean": 4.551229704187036e-05,
+              "max": 0.0023211271491353886
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 24,
+              "positive_fraction": 0.5333333333333333,
+              "mean": 0.0012778766251097,
+              "max": 0.011747591335940685
+            },
+            "joint_positive": {
+              "n": 51,
+              "positive": 1,
+              "positive_fraction": 0.0196078431372549,
+              "mean": 0.0196078431372549,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 51,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.49019607843137253,
+            "gate_min": 0.9540965899387497,
+            "gate_comparisons": 51,
+            "gate_mean": 0.9954619425899,
+            "non_neutral_gates": 25,
+            "actual_changed_parameter_fraction_full": 0.5975636613564913,
+            "changed_coordinates": 6826780,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.008875814354693286,
+            "difference_to_native_learning_l2_ratio": 0.010256974437945507,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 7,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 7,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "joint_positive_confidence_positive_slots": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 10
+          }
+        ],
+        "resources": {
+          "pid": 2500322,
+          "device": "cuda:0",
+          "cuda_visible_devices": "0",
+          "gpu_name": "NVIDIA GeForce RTX 4090",
+          "status": "completed_short_preflight",
+          "wall_seconds": 111.09486813191324,
+          "peak_allocated_bytes": 1579415040,
+          "peak_reserved_bytes": 1832910848
+        },
+        "direction": {
+          "n": 490,
+          "positive": 7,
+          "positive_fraction": 0.014285714285714285,
+          "mean": 0.00015826153040980246,
+          "max": 0.03880131865185789
+        },
+        "semantic": {
+          "n": 444,
+          "positive": 355,
+          "positive_fraction": 0.7995495495495496,
+          "mean": 0.006118590171259839,
+          "max": 0.03334634076722063
+        },
+        "joint_positive": {
+          "n": 490,
+          "positive": 5,
+          "positive_fraction": 0.01020408163265306,
+          "mean": 0.01020408163265306,
+          "max": 1.0
+        },
+        "gate_non_neutral_fraction": 0.7877551020408163,
+        "mean_changed_parameter_fraction_full": 0.5539035548261977,
+        "max_changed_parameter_fraction_full": 0.6079183806947193,
+        "minimum_gate": 0.8751277851911654,
+        "mean_gate": 0.9770116529405861,
+        "mean_relative_aggregate_intervention": 0.015399037197247148,
+        "counts": {
+          "comparable_regions": 80,
+          "joint_positive_confidence_positive_slots": 5,
+          "active_gate_regions": 70,
+          "normalized_uniform_canceled_regions": 3,
+          "active_but_no_changed_coordinate_regions": 3,
+          "changed_regions": 67,
+          "permuted_region_client_scores": 0,
+          "changed_region_client_scores": 0,
+          "insufficient_client_regions": 10,
+          "s08_changed_distinct_clients": 0,
+          "direction_positive_semantic_zero_slots": 2
+        },
+        "two_distinct_clients": {
+          "regions": 10,
+          "active_gate_regions": 3,
+          "normalized_uniform_canceled_regions": 3,
+          "changed_regions": 0,
+          "positive_semantic_scores": 6,
+          "semantic_scores": 20
+        },
+        "normalized_cancellation_fraction_of_active_regions": 0.04285714285714286,
+        "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+        "completed_rounds": 10
+      },
+      "s06": {
+        "path": "runs/semcons_activation_full10_seed1/s06/activation_10",
+        "rounds": [
+          {
+            "direction": {
+              "n": 39,
+              "positive": 2,
+              "positive_fraction": 0.05128205128205128,
+              "mean": 0.0013822820330355347,
+              "max": 0.037402159957557544
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 38,
+              "positive_fraction": 1.0,
+              "mean": 0.010078689960160737,
+              "max": 0.02980562369472714
+            },
+            "joint_positive": {
+              "n": 39,
+              "positive": 2,
+              "positive_fraction": 0.05128205128205128,
+              "mean": 0.05128205128205128,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 39,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.05128205128205128,
+            "gate_min": 0.9988318684985895,
+            "gate_comparisons": 39,
+            "gate_mean": 0.999951193187639,
+            "non_neutral_gates": 2,
+            "actual_changed_parameter_fraction_full": 0.37453752316541955,
+            "changed_coordinates": 4278850,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0001524127715260064,
+            "difference_to_native_learning_l2_ratio": 0.00018868343935351303,
+            "counts": {
+              "comparable_regions": 8,
+              "joint_positive_confidence_positive_slots": 2,
+              "active_gate_regions": 2,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 2,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 4,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 1
+          },
+          {
+            "direction": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 61,
+              "positive": 60,
+              "positive_fraction": 0.9836065573770492,
+              "mean": 0.006481713369198103,
+              "max": 0.02617377947137933
+            },
+            "joint_positive": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 67,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 67,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 2
+          },
+          {
+            "direction": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 50,
+              "positive": 47,
+              "positive_fraction": 0.94,
+              "mean": 0.007713388742055127,
+              "max": 0.020012986308424366
+            },
+            "joint_positive": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 57,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 57,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 3
+          },
+          {
+            "direction": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 47,
+              "positive": 47,
+              "positive_fraction": 1.0,
+              "mean": 0.011833412890640216,
+              "max": 0.027994671450034307
+            },
+            "joint_positive": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 56,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 56,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 4
+          },
+          {
+            "direction": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 34,
+              "positive": 34,
+              "positive_fraction": 1.0,
+              "mean": 0.009879447233500746,
+              "max": 0.026506622618179997
+            },
+            "joint_positive": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 35,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 35,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 5
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 29,
+              "positive_fraction": 0.7631578947368421,
+              "mean": 0.0050293313997679156,
+              "max": 0.026346132680283553
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 6
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 1,
+              "positive_fraction": 0.021739130434782608,
+              "mean": 9.35940158711942e-05,
+              "max": 0.004305324730074933
+            },
+            "semantic": {
+              "n": 46,
+              "positive": 36,
+              "positive_fraction": 0.782608695652174,
+              "mean": 0.002641631452574664,
+              "max": 0.010551230097208647
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 1,
+              "positive_fraction": 0.021739130434782608,
+              "mean": 0.021739130434782608,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.021739130434782608,
+            "gate_min": 0.9999504518285798,
+            "gate_comparisons": 46,
+            "gate_mean": 0.9999989228658387,
+            "non_neutral_gates": 1,
+            "actual_changed_parameter_fraction_full": 0.0023169796179320743,
+            "changed_coordinates": 26470,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 9.395065244784773e-07,
+            "difference_to_native_learning_l2_ratio": 1.1565913215377796e-06,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 1,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 1,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "joint_positive_confidence_positive_slots": 1,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 7
+          },
+          {
+            "direction": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 40,
+              "positive": 34,
+              "positive_fraction": 0.85,
+              "mean": 0.003900060408231152,
+              "max": 0.01776167368258509
+            },
+            "joint_positive": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 40,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 40,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 8
+          },
+          {
+            "direction": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 16,
+              "positive_fraction": 0.35555555555555557,
+              "mean": 0.0009111043376202346,
+              "max": 0.0066988636364538725
+            },
+            "joint_positive": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 53,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 53,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 2
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 9
+          },
+          {
+            "direction": {
+              "n": 51,
+              "positive": 1,
+              "positive_fraction": 0.0196078431372549,
+              "mean": 1.9501698284381935e-05,
+              "max": 0.0009945866125034787
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 27,
+              "positive_fraction": 0.6,
+              "mean": 0.0014157573522574573,
+              "max": 0.00669121705679376
+            },
+            "joint_positive": {
+              "n": 51,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 51,
+              "min": 1.0,
+              "mean": 1.0,
+              "max": 1.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 51,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "direction_positive_semantic_zero_slots": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 0,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 10
+          }
+        ],
+        "resources": {
+          "pid": 2501560,
+          "device": "cuda:0",
+          "cuda_visible_devices": "0",
+          "gpu_name": "NVIDIA GeForce RTX 4090",
+          "status": "completed_short_preflight",
+          "wall_seconds": 112.9504163999809,
+          "peak_allocated_bytes": 1602702336,
+          "peak_reserved_bytes": 1927282688
+        },
+        "direction": {
+          "n": 490,
+          "positive": 4,
+          "positive_fraction": 0.00816326530612245,
+          "mean": 0.00012083451149176382,
+          "max": 0.037402159957557544
+        },
+        "semantic": {
+          "n": 444,
+          "positive": 368,
+          "positive_fraction": 0.8288288288288288,
+          "mean": 0.005922199583991941,
+          "max": 0.02980562369472714
+        },
+        "joint_positive": {
+          "n": 490,
+          "positive": 3,
+          "positive_fraction": 0.006122448979591836,
+          "mean": 0.006122448979591836,
+          "max": 1.0
+        },
+        "gate_non_neutral_fraction": 0.006122448979591836,
+        "mean_changed_parameter_fraction_full": 0.03768545027833516,
+        "max_changed_parameter_fraction_full": 0.37453752316541955,
+        "minimum_gate": 0.9988318684985895,
+        "mean_gate": 0.9999960142574419,
+        "mean_relative_aggregate_intervention": 1.898400306750508e-05,
+        "counts": {
+          "comparable_regions": 80,
+          "joint_positive_confidence_positive_slots": 3,
+          "active_gate_regions": 3,
+          "normalized_uniform_canceled_regions": 0,
+          "active_but_no_changed_coordinate_regions": 0,
+          "changed_regions": 3,
+          "permuted_region_client_scores": 0,
+          "changed_region_client_scores": 0,
+          "insufficient_client_regions": 10,
+          "s08_changed_distinct_clients": 0,
+          "direction_positive_semantic_zero_slots": 1
+        },
+        "two_distinct_clients": {
+          "regions": 10,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "changed_regions": 0,
+          "positive_semantic_scores": 10,
+          "semantic_scores": 20
+        },
+        "normalized_cancellation_fraction_of_active_regions": 0.0,
+        "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+        "completed_rounds": 10
+      },
+      "s07": {
+        "path": "runs/semcons_activation_full10_seed1/s07/activation_10",
+        "rounds": [
+          {
+            "direction": {
+              "n": 39,
+              "positive": 3,
+              "positive_fraction": 0.07692307692307693,
+              "mean": 0.001451649640551994,
+              "max": 0.03717443097717701
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 38,
+              "positive_fraction": 1.0,
+              "mean": 0.010279820991266385,
+              "max": 0.02958799238261613
+            },
+            "joint_positive": {
+              "n": 39,
+              "positive": 3,
+              "positive_fraction": 0.07692307692307693,
+              "mean": 0.07692307692307693,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 39,
+              "min": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 39,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "joint_positive_confidence_zero_slots": 3,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 4,
+              "semantic_scores": 4
+            },
+            "history_total_events": 38,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.8101124326684971,
+              "s09_learning_l2": 0.8101124326684971,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.44707083190487074,
+                  "s09_l2": 0.44707083190487074
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.156602362627447,
+                  "s09_l2": 0.156602362627447
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.23940362735704296,
+                  "s09_l2": 0.23940362735704296
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.21185752506499061,
+                  "s09_l2": 0.21185752506499061
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.062163963303325326,
+                  "s09_l2": 0.062163963303325326
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.4287994460328654,
+                  "s09_l2": 0.4287994460328654
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.36173922619246096,
+                  "s09_l2": 0.36173922619246096
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.10535286473132015,
+                  "s09_l2": 0.10535286473132015
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                }
+              ]
+            },
+            "round": 1
+          },
+          {
+            "direction": {
+              "n": 67,
+              "positive": 1,
+              "positive_fraction": 0.014925373134328358,
+              "mean": 2.369081557594323e-05,
+              "max": 0.0015872846435881964
+            },
+            "semantic": {
+              "n": 61,
+              "positive": 61,
+              "positive_fraction": 1.0,
+              "mean": 0.006809949895725802,
+              "max": 0.03291954904779662
+            },
+            "joint_positive": {
+              "n": 67,
+              "positive": 1,
+              "positive_fraction": 0.014925373134328358,
+              "mean": 0.014925373134328358,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 67,
+              "min": 0.0,
+              "mean": 0.007462686567164179,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 67,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "joint_positive_confidence_zero_slots": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 99,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.8088753708234943,
+              "s09_learning_l2": 0.8088753708234943,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.41452596522345797,
+                  "s09_l2": 0.41452596522345797
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.10643705793656286,
+                  "s09_l2": 0.10643705793656286
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.14335520311940117,
+                  "s09_l2": 0.14335520311940117
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.13296416576935322,
+                  "s09_l2": 0.13296416576935322
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.030264070080906424,
+                  "s09_l2": 0.030264070080906424
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.18668805657570514,
+                  "s09_l2": 0.18668805657570514
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.32776115454962507,
+                  "s09_l2": 0.32776115454962507
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.05924026162071693,
+                  "s09_l2": 0.05924026162071693
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.5349611493403983,
+                  "s09_l2": 0.5349611493403983
+                }
+              ]
+            },
+            "round": 2
+          },
+          {
+            "direction": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 50,
+              "positive": 47,
+              "positive_fraction": 0.94,
+              "mean": 0.008016350540395773,
+              "max": 0.017809412966441084
+            },
+            "joint_positive": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 57,
+              "min": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 57,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 149,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.6056740650277178,
+              "s09_learning_l2": 0.6056740650277178,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.4133225707713947,
+                  "s09_l2": 0.4133225707713947
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.10332382397361828,
+                  "s09_l2": 0.10332382397361828
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.14222120502803065,
+                  "s09_l2": 0.14222120502803065
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.14657343277920998,
+                  "s09_l2": 0.14657343277920998
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.03285829507884154,
+                  "s09_l2": 0.03285829507884154
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.20472650142182686,
+                  "s09_l2": 0.20472650142182686
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.31721674394864174,
+                  "s09_l2": 0.31721674394864174
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                }
+              ]
+            },
+            "round": 3
+          },
+          {
+            "direction": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 47,
+              "positive": 47,
+              "positive_fraction": 1.0,
+              "mean": 0.009839422089229876,
+              "max": 0.02136615059949274
+            },
+            "joint_positive": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 56,
+              "min": 0.0,
+              "mean": 0.19642857142857142,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 56,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 196,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.9104099730204409,
+              "s09_learning_l2": 0.9104099730204409,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.4854046974533105,
+                  "s09_l2": 0.4854046974533105
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.13186889476875813,
+                  "s09_l2": 0.13186889476875813
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.17821195455145955,
+                  "s09_l2": 0.17821195455145955
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.19277126130678227,
+                  "s09_l2": 0.19277126130678227
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.05072310948303498,
+                  "s09_l2": 0.05072310948303498
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.2715911445257334,
+                  "s09_l2": 0.2715911445257334
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.35980898405174905,
+                  "s09_l2": 0.35980898405174905
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.06499102931761279,
+                  "s09_l2": 0.06499102931761279
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.5448834837012465,
+                  "s09_l2": 0.5448834837012465
+                }
+              ]
+            },
+            "round": 4
+          },
+          {
+            "direction": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 34,
+              "positive": 34,
+              "positive_fraction": 1.0,
+              "mean": 0.009430618827102178,
+              "max": 0.02625324928032326
+            },
+            "joint_positive": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 35,
+              "min": 0.0,
+              "mean": 0.22857142857142856,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 35,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 230,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.8618018430831705,
+              "s09_learning_l2": 0.8618018430831705,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.5111994807826474,
+                  "s09_l2": 0.5111994807826474
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.14716396946617413,
+                  "s09_l2": 0.14716396946617413
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.19102197309253913,
+                  "s09_l2": 0.19102197309253913
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.23809917848215234,
+                  "s09_l2": 0.23809917848215234
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.05770782502288244,
+                  "s09_l2": 0.05770782502288244
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.3518626064828895,
+                  "s09_l2": 0.3518626064828895
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.4892874142793922,
+                  "s09_l2": 0.4892874142793922
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                }
+              ]
+            },
+            "round": 5
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 33,
+              "positive_fraction": 0.868421052631579,
+              "mean": 0.004166874850367067,
+              "max": 0.024164271363694142
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 0.0,
+              "mean": 0.08333333333333333,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 268,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.8869574832076795,
+              "s09_learning_l2": 0.8869574832076795,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.5424455616972033,
+                  "s09_l2": 0.5424455616972033
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.17726933522659233,
+                  "s09_l2": 0.17726933522659233
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.23907084907287793,
+                  "s09_l2": 0.23907084907287793
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.2562910210410968,
+                  "s09_l2": 0.2562910210410968
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.06700432643547816,
+                  "s09_l2": 0.06700432643547816
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.39454731094838763,
+                  "s09_l2": 0.39454731094838763
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.41098593055204485,
+                  "s09_l2": 0.41098593055204485
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.09547470140989157,
+                  "s09_l2": 0.09547470140989157
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                }
+              ]
+            },
+            "round": 6
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 46,
+              "positive": 37,
+              "positive_fraction": 0.8043478260869565,
+              "mean": 0.003197264873844433,
+              "max": 0.015009996475026178
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 0.0,
+              "mean": 0.14130434782608695,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 314,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.8096130381583829,
+              "s09_learning_l2": 0.8096130381583829,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.5321752471495731,
+                  "s09_l2": 0.5321752471495731
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.15671284245155498,
+                  "s09_l2": 0.15671284245155498
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.21399796369456744,
+                  "s09_l2": 0.21399796369456744
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.22131023871165384,
+                  "s09_l2": 0.22131023871165384
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.05196902806077963,
+                  "s09_l2": 0.05196902806077963
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.3134392198784602,
+                  "s09_l2": 0.3134392198784602
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.3898532906472147,
+                  "s09_l2": 0.3898532906472147
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                }
+              ]
+            },
+            "round": 7
+          },
+          {
+            "direction": {
+              "n": 40,
+              "positive": 1,
+              "positive_fraction": 0.025,
+              "mean": 5.77827234975634e-05,
+              "max": 0.0023113089399025358
+            },
+            "semantic": {
+              "n": 40,
+              "positive": 29,
+              "positive_fraction": 0.725,
+              "mean": 0.004364742179290453,
+              "max": 0.025886132236883866
+            },
+            "joint_positive": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 40,
+              "min": 0.0,
+              "mean": 0.325,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 40,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "direction_positive_semantic_zero_slots": 1,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 354,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.762100374307689,
+              "s09_learning_l2": 0.762100374307689,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.5028877914163227,
+                  "s09_l2": 0.5028877914163227
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.15134755979678538,
+                  "s09_l2": 0.15134755979678538
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.20855919937934897,
+                  "s09_l2": 0.20855919937934897
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.21535053186300665,
+                  "s09_l2": 0.21535053186300665
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.05589930669106217,
+                  "s09_l2": 0.05589930669106217
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.30114312323023273,
+                  "s09_l2": 0.30114312323023273
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.34829593958450866,
+                  "s09_l2": 0.34829593958450866
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": null,
+                  "s07_l2": null,
+                  "s09_l2": null
+                }
+              ]
+            },
+            "round": 8
+          },
+          {
+            "direction": {
+              "n": 53,
+              "positive": 1,
+              "positive_fraction": 0.018867924528301886,
+              "mean": 2.597328371707444e-05,
+              "max": 0.0013765840370049455
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 11,
+              "positive_fraction": 0.24444444444444444,
+              "mean": 0.001006128246545993,
+              "max": 0.02563628892970947
+            },
+            "joint_positive": {
+              "n": 53,
+              "positive": 1,
+              "positive_fraction": 0.018867924528301886,
+              "mean": 0.018867924528301886,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 53,
+              "min": 0.0,
+              "mean": 0.2358490566037736,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 53,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "joint_positive_confidence_zero_slots": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 2
+            },
+            "history_total_events": 399,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.8757792114617025,
+              "s09_learning_l2": 0.8757792114617025,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.4638578537964249,
+                  "s09_l2": 0.4638578537964249
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.18826602636011047,
+                  "s09_l2": 0.18826602636011047
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.2734410176506275,
+                  "s09_l2": 0.2734410176506275
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.2191553665283384,
+                  "s09_l2": 0.2191553665283384
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.06280747575516558,
+                  "s09_l2": 0.06280747575516558
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.32766903908166883,
+                  "s09_l2": 0.32766903908166883
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.27078199935990055,
+                  "s09_l2": 0.27078199935990055
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.06792941145128813,
+                  "s09_l2": 0.06792941145128813
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.4520319489876189,
+                  "s09_l2": 0.4520319489876189
+                }
+              ]
+            },
+            "round": 9
+          },
+          {
+            "direction": {
+              "n": 51,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 24,
+              "positive_fraction": 0.5333333333333333,
+              "mean": 0.0020189662297437454,
+              "max": 0.02129362059405299
+            },
+            "joint_positive": {
+              "n": 51,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 51,
+              "min": 0.0,
+              "mean": 0.32189542483660133,
+              "max": 0.75
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 51,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 444,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": {
+              "gates_identical": true,
+              "history_identical": true,
+              "aggregate_difference_l2": 0.0,
+              "aggregate_changed_coordinates": 0,
+              "s07_actual_changed_fraction": 0.0,
+              "s09_actual_changed_fraction": 0.0,
+              "s07_learning_l2": 0.866050530176136,
+              "s09_learning_l2": 0.866050530176136,
+              "regions": [
+                {
+                  "region_id": 0,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.5173722621502349,
+                  "s09_l2": 0.5173722621502349
+                },
+                {
+                  "region_id": 1,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.1982705970150398,
+                  "s09_l2": 0.1982705970150398
+                },
+                {
+                  "region_id": 2,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.2421803412684362,
+                  "s09_l2": 0.2421803412684362
+                },
+                {
+                  "region_id": 3,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.25048360577567025,
+                  "s09_l2": 0.25048360577567025
+                },
+                {
+                  "region_id": 4,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.057714170435120594,
+                  "s09_l2": 0.057714170435120594
+                },
+                {
+                  "region_id": 5,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.2733051883643416,
+                  "s09_l2": 0.2733051883643416
+                },
+                {
+                  "region_id": 6,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.325767561257632,
+                  "s09_l2": 0.325767561257632
+                },
+                {
+                  "region_id": 7,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.07558646236919345,
+                  "s09_l2": 0.07558646236919345
+                },
+                {
+                  "region_id": 8,
+                  "mass_ratio": 1.0,
+                  "s07_l2": 0.36304326237904483,
+                  "s09_l2": 0.36304326237904483
+                }
+              ]
+            },
+            "round": 10
+          }
+        ],
+        "resources": {
+          "pid": 2501561,
+          "device": "cuda:0",
+          "cuda_visible_devices": "0",
+          "gpu_name": "NVIDIA GeForce RTX 4090",
+          "status": "completed_short_preflight",
+          "wall_seconds": 122.73008906107862,
+          "peak_allocated_bytes": 1655932928,
+          "peak_reserved_bytes": 1860173824
+        },
+        "direction": {
+          "n": 490,
+          "positive": 6,
+          "positive_fraction": 0.012244897959183673,
+          "mean": 0.00012630512980004783,
+          "max": 0.03717443097717701
+        },
+        "semantic": {
+          "n": 444,
+          "positive": 361,
+          "positive_fraction": 0.8130630630630631,
+          "mean": 0.005869562868824126,
+          "max": 0.03291954904779662
+        },
+        "joint_positive": {
+          "n": 490,
+          "positive": 5,
+          "positive_fraction": 0.01020408163265306,
+          "mean": 0.01020408163265306,
+          "max": 1.0
+        },
+        "gate_non_neutral_fraction": 0.0,
+        "mean_changed_parameter_fraction_full": 0.0,
+        "max_changed_parameter_fraction_full": 0.0,
+        "minimum_gate": 1.0,
+        "mean_gate": 1.0,
+        "mean_relative_aggregate_intervention": 0.0,
+        "counts": {
+          "comparable_regions": 80,
+          "joint_positive_confidence_zero_slots": 5,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "active_but_no_changed_coordinate_regions": 0,
+          "changed_regions": 0,
+          "permuted_region_client_scores": 0,
+          "changed_region_client_scores": 0,
+          "insufficient_client_regions": 10,
+          "s08_changed_distinct_clients": 0,
+          "direction_positive_semantic_zero_slots": 1
+        },
+        "two_distinct_clients": {
+          "regions": 10,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "changed_regions": 0,
+          "positive_semantic_scores": 10,
+          "semantic_scores": 20
+        },
+        "normalized_cancellation_fraction_of_active_regions": null,
+        "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+        "completed_rounds": 10
+      },
+      "s08": {
+        "path": "runs/semcons_activation_full10_seed1/s08/activation_10",
+        "rounds": [
+          {
+            "direction": {
+              "n": 39,
+              "positive": 4,
+              "positive_fraction": 0.10256410256410256,
+              "mean": 0.0016248098349360247,
+              "max": 0.037856084537111895
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 38,
+              "positive_fraction": 1.0,
+              "mean": 0.010028813803199614,
+              "max": 0.0290419805538717
+            },
+            "joint_positive": {
+              "n": 39,
+              "positive": 4,
+              "positive_fraction": 0.10256410256410256,
+              "mean": 0.10256410256410256,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 39,
+              "min": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 39,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "joint_positive_confidence_zero_slots": 4,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 38,
+              "changed_region_client_scores": 34,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 9
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 4,
+              "semantic_scores": 4
+            },
+            "history_total_events": 38,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 1
+          },
+          {
+            "direction": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 61,
+              "positive": 60,
+              "positive_fraction": 0.9836065573770492,
+              "mean": 0.00665468667904369,
+              "max": 0.027057567324833016
+            },
+            "joint_positive": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 67,
+              "min": 0.0,
+              "mean": 0.007462686567164179,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 67,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 61,
+              "changed_region_client_scores": 59,
+              "s08_changed_distinct_clients": 9
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 99,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 2
+          },
+          {
+            "direction": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 50,
+              "positive": 47,
+              "positive_fraction": 0.94,
+              "mean": 0.00891527287543947,
+              "max": 0.019763836467647396
+            },
+            "joint_positive": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 57,
+              "min": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 57,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 50,
+              "changed_region_client_scores": 50,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 9
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 149,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 3
+          },
+          {
+            "direction": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 47,
+              "positive": 47,
+              "positive_fraction": 1.0,
+              "mean": 0.011544659877657631,
+              "max": 0.024708066840211693
+            },
+            "joint_positive": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 56,
+              "min": 0.0,
+              "mean": 0.19642857142857142,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 56,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 47,
+              "changed_region_client_scores": 45,
+              "s08_changed_distinct_clients": 9
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 196,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 4
+          },
+          {
+            "direction": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 34,
+              "positive": 34,
+              "positive_fraction": 1.0,
+              "mean": 0.012313556614393604,
+              "max": 0.033944560735664125
+            },
+            "joint_positive": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 35,
+              "min": 0.0,
+              "mean": 0.22857142857142856,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 35,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 34,
+              "changed_region_client_scores": 32,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 9
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 230,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 5
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 30,
+              "positive_fraction": 0.7894736842105263,
+              "mean": 0.004734742960659666,
+              "max": 0.022242509307798457
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 0.0,
+              "mean": 0.08333333333333333,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 38,
+              "changed_region_client_scores": 34,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 9
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 268,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 6
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 46,
+              "positive": 38,
+              "positive_fraction": 0.8260869565217391,
+              "mean": 0.003488912134590239,
+              "max": 0.015241116683381191
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 0.0,
+              "mean": 0.14130434782608695,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 46,
+              "changed_region_client_scores": 46,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 10
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 314,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 7
+          },
+          {
+            "direction": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 40,
+              "positive": 36,
+              "positive_fraction": 0.9,
+              "mean": 0.006199600130336145,
+              "max": 0.033942023823710296
+            },
+            "joint_positive": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 40,
+              "min": 0.0,
+              "mean": 0.325,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 40,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 40,
+              "changed_region_client_scores": 39,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 10
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 354,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 8
+          },
+          {
+            "direction": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 9,
+              "positive_fraction": 0.2,
+              "mean": 0.0005303935628279692,
+              "max": 0.017253497407898912
+            },
+            "joint_positive": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 53,
+              "min": 0.0,
+              "mean": 0.2358490566037736,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 53,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 45,
+              "changed_region_client_scores": 15,
+              "s08_changed_distinct_clients": 8
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 2
+            },
+            "history_total_events": 399,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 9
+          },
+          {
+            "direction": {
+              "n": 51,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 18,
+              "positive_fraction": 0.4,
+              "mean": 0.0010259721556515474,
+              "max": 0.009704760242239971
+            },
+            "joint_positive": {
+              "n": 51,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 51,
+              "min": 0.0,
+              "mean": 0.32189542483660133,
+              "max": 0.75
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 51,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 45,
+              "changed_region_client_scores": 31,
+              "s08_changed_distinct_clients": 9
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 444,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 10
+          }
+        ],
+        "resources": {
+          "pid": 2503080,
+          "device": "cuda:0",
+          "cuda_visible_devices": "0",
+          "gpu_name": "NVIDIA GeForce RTX 4090",
+          "status": "completed_short_preflight",
+          "wall_seconds": 110.44578909501433,
+          "peak_allocated_bytes": 1602702336,
+          "peak_reserved_bytes": 1927282688
+        },
+        "direction": {
+          "n": 490,
+          "positive": 4,
+          "positive_fraction": 0.00816326530612245,
+          "mean": 0.000129321599107153,
+          "max": 0.037856084537111895
+        },
+        "semantic": {
+          "n": 444,
+          "positive": 357,
+          "positive_fraction": 0.8040540540540541,
+          "mean": 0.006424515874089543,
+          "max": 0.033944560735664125
+        },
+        "joint_positive": {
+          "n": 490,
+          "positive": 4,
+          "positive_fraction": 0.00816326530612245,
+          "mean": 0.00816326530612245,
+          "max": 1.0
+        },
+        "gate_non_neutral_fraction": 0.0,
+        "mean_changed_parameter_fraction_full": 0.0,
+        "max_changed_parameter_fraction_full": 0.0,
+        "minimum_gate": 1.0,
+        "mean_gate": 1.0,
+        "mean_relative_aggregate_intervention": 0.0,
+        "counts": {
+          "comparable_regions": 80,
+          "joint_positive_confidence_zero_slots": 4,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "active_but_no_changed_coordinate_regions": 0,
+          "changed_regions": 0,
+          "permuted_region_client_scores": 444,
+          "changed_region_client_scores": 385,
+          "insufficient_client_regions": 10,
+          "s08_changed_distinct_clients": 91
+        },
+        "two_distinct_clients": {
+          "regions": 10,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "changed_regions": 0,
+          "positive_semantic_scores": 10,
+          "semantic_scores": 20
+        },
+        "normalized_cancellation_fraction_of_active_regions": null,
+        "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+        "completed_rounds": 10
+      },
+      "s09": {
+        "path": "runs/semcons_activation_full10_seed1/s09/activation_10",
+        "rounds": [
+          {
+            "direction": {
+              "n": 39,
+              "positive": 3,
+              "positive_fraction": 0.07692307692307693,
+              "mean": 0.00145362255442033,
+              "max": 0.03836581276612522
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 38,
+              "positive_fraction": 1.0,
+              "mean": 0.01030267702587255,
+              "max": 0.02833513176078297
+            },
+            "joint_positive": {
+              "n": 39,
+              "positive": 3,
+              "positive_fraction": 0.07692307692307693,
+              "mean": 0.07692307692307693,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 39,
+              "min": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 39,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "joint_positive_confidence_zero_slots": 3,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 4,
+              "semantic_scores": 4
+            },
+            "history_total_events": 38,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 1
+          },
+          {
+            "direction": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 61,
+              "positive": 58,
+              "positive_fraction": 0.9508196721311475,
+              "mean": 0.007074378385451112,
+              "max": 0.029849639939686323
+            },
+            "joint_positive": {
+              "n": 67,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 67,
+              "min": 0.0,
+              "mean": 0.007462686567164179,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 67,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 99,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 2
+          },
+          {
+            "direction": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 50,
+              "positive": 47,
+              "positive_fraction": 0.94,
+              "mean": 0.009172918880265534,
+              "max": 0.02201654799660497
+            },
+            "joint_positive": {
+              "n": 57,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 57,
+              "min": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 57,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 149,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 3
+          },
+          {
+            "direction": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 47,
+              "positive": 47,
+              "positive_fraction": 1.0,
+              "mean": 0.014366975269082106,
+              "max": 0.03076682120327707
+            },
+            "joint_positive": {
+              "n": 56,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 56,
+              "min": 0.0,
+              "mean": 0.19642857142857142,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 56,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 196,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 4
+          },
+          {
+            "direction": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 34,
+              "positive": 34,
+              "positive_fraction": 1.0,
+              "mean": 0.00961885714608581,
+              "max": 0.025234537564197124
+            },
+            "joint_positive": {
+              "n": 35,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 35,
+              "min": 0.0,
+              "mean": 0.22857142857142856,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 35,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 2,
+              "semantic_scores": 2
+            },
+            "history_total_events": 230,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 5
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 38,
+              "positive": 30,
+              "positive_fraction": 0.7894736842105263,
+              "mean": 0.003920914136780581,
+              "max": 0.018992307288797666
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 0.0,
+              "mean": 0.08333333333333333,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 8,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 1,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 268,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 6
+          },
+          {
+            "direction": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 46,
+              "positive": 37,
+              "positive_fraction": 0.8043478260869565,
+              "mean": 0.002717048268776855,
+              "max": 0.013031139963844513
+            },
+            "joint_positive": {
+              "n": 46,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 46,
+              "min": 0.0,
+              "mean": 0.14130434782608695,
+              "max": 0.5
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 46,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 6945581,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 314,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 7
+          },
+          {
+            "direction": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 40,
+              "positive": 31,
+              "positive_fraction": 0.775,
+              "mean": 0.006882953800761422,
+              "max": 0.03562832422276482
+            },
+            "joint_positive": {
+              "n": 40,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 40,
+              "min": 0.0,
+              "mean": 0.325,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 40,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 7,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "insufficient_client_regions": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {},
+            "history_total_events": 354,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 8
+          },
+          {
+            "direction": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 9,
+              "positive_fraction": 0.2,
+              "mean": 0.0007946725696507327,
+              "max": 0.018248197936029276
+            },
+            "joint_positive": {
+              "n": 53,
+              "positive": 0,
+              "positive_fraction": 0.0,
+              "mean": 0.0,
+              "max": 0.0
+            },
+            "confidence": {
+              "n": 53,
+              "min": 0.0,
+              "mean": 0.2358490566037736,
+              "max": 0.6666666666666666
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 53,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 1,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 2
+            },
+            "history_total_events": 399,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 9
+          },
+          {
+            "direction": {
+              "n": 51,
+              "positive": 2,
+              "positive_fraction": 0.0392156862745098,
+              "mean": 3.952834266152101e-05,
+              "max": 0.0010911287528285983
+            },
+            "semantic": {
+              "n": 45,
+              "positive": 27,
+              "positive_fraction": 0.6,
+              "mean": 0.0011236617084445435,
+              "max": 0.006603209981068946
+            },
+            "joint_positive": {
+              "n": 51,
+              "positive": 2,
+              "positive_fraction": 0.0392156862745098,
+              "mean": 0.0392156862745098,
+              "max": 1.0
+            },
+            "confidence": {
+              "n": 51,
+              "min": 0.0,
+              "mean": 0.32189542483660133,
+              "max": 0.75
+            },
+            "gate_non_neutral_fraction": 0.0,
+            "gate_min": 1.0,
+            "gate_comparisons": 51,
+            "gate_mean": 1.0,
+            "non_neutral_gates": 0,
+            "actual_changed_parameter_fraction_full": 0.0,
+            "changed_coordinates": 0,
+            "covered_coordinates": 11424356,
+            "difference_from_native_l2": 0.0,
+            "difference_to_native_learning_l2_ratio": 0.0,
+            "counts": {
+              "comparable_regions": 9,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "active_but_no_changed_coordinate_regions": 0,
+              "changed_regions": 0,
+              "permuted_region_client_scores": 0,
+              "changed_region_client_scores": 0,
+              "joint_positive_confidence_zero_slots": 2,
+              "s08_changed_distinct_clients": 0
+            },
+            "two_distinct_clients": {
+              "regions": 2,
+              "active_gate_regions": 0,
+              "normalized_uniform_canceled_regions": 0,
+              "changed_regions": 0,
+              "positive_semantic_scores": 0,
+              "semantic_scores": 4
+            },
+            "history_total_events": 444,
+            "semantic_valid_comparison_fraction": 1.0,
+            "same_input_s07_s09": null,
+            "round": 10
+          }
+        ],
+        "resources": {
+          "pid": 2503081,
+          "device": "cuda:0",
+          "cuda_visible_devices": "0",
+          "gpu_name": "NVIDIA GeForce RTX 4090",
+          "status": "completed_short_preflight",
+          "wall_seconds": 110.8952007550979,
+          "peak_allocated_bytes": 1610740736,
+          "peak_reserved_bytes": 1927282688
+        },
+        "direction": {
+          "n": 490,
+          "positive": 5,
+          "positive_fraction": 0.01020408163265306,
+          "mean": 0.00011981066346557234,
+          "max": 0.03836581276612522
+        },
+        "semantic": {
+          "n": 444,
+          "positive": 358,
+          "positive_fraction": 0.8063063063063063,
+          "mean": 0.006575666408173131,
+          "max": 0.03562832422276482
+        },
+        "joint_positive": {
+          "n": 490,
+          "positive": 5,
+          "positive_fraction": 0.01020408163265306,
+          "mean": 0.01020408163265306,
+          "max": 1.0
+        },
+        "gate_non_neutral_fraction": 0.0,
+        "mean_changed_parameter_fraction_full": 0.0,
+        "max_changed_parameter_fraction_full": 0.0,
+        "minimum_gate": 1.0,
+        "mean_gate": 1.0,
+        "mean_relative_aggregate_intervention": 0.0,
+        "counts": {
+          "comparable_regions": 80,
+          "joint_positive_confidence_zero_slots": 5,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "active_but_no_changed_coordinate_regions": 0,
+          "changed_regions": 0,
+          "permuted_region_client_scores": 0,
+          "changed_region_client_scores": 0,
+          "insufficient_client_regions": 10,
+          "s08_changed_distinct_clients": 0
+        },
+        "two_distinct_clients": {
+          "regions": 10,
+          "active_gate_regions": 0,
+          "normalized_uniform_canceled_regions": 0,
+          "changed_regions": 0,
+          "positive_semantic_scores": 10,
+          "semantic_scores": 20
+        },
+        "normalized_cancellation_fraction_of_active_regions": null,
+        "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+        "completed_rounds": 10
+      }
+    },
+    "pairing": {
+      "schedules_identical": true,
+      "initial_models_identical": true,
+      "protocol_identical": true
+    }
+  },
+  "verification": {
+    "runs": {
+      "s03": {
+        "latest_next_round": 10,
+        "latest_rows": 10,
+        "completed": {
+          "rounds_completed": 10,
+          "requested_epochs": 10,
+          "success": true,
+          "formal_300_success": false,
+          "elapsed_seconds": 110.6099547239719,
+          "checkpoint": "latest.pt",
+          "selection": "latest/final round, no test selection"
+        },
+        "identity_matches_manifest": true,
+        "core_matches_reviewed_commit": true,
+        "ten_slots_each_round": true,
+        "all_checkpoint_tensors_finite": true,
+        "best_snapshot_exists_and_round_in_range": true,
+        "runner_sha256_matches": true
+      },
+      "s04": {
+        "latest_next_round": 10,
+        "latest_rows": 10,
+        "completed": {
+          "rounds_completed": 10,
+          "requested_epochs": 10,
+          "success": true,
+          "formal_300_success": false,
+          "elapsed_seconds": 110.60255173605401,
+          "checkpoint": "latest.pt",
+          "selection": "latest/final round, no test selection"
+        },
+        "identity_matches_manifest": true,
+        "core_matches_reviewed_commit": true,
+        "ten_slots_each_round": true,
+        "all_checkpoint_tensors_finite": true,
+        "best_snapshot_exists_and_round_in_range": true,
+        "runner_sha256_matches": true
+      },
+      "s06": {
+        "latest_next_round": 10,
+        "latest_rows": 10,
+        "completed": {
+          "rounds_completed": 10,
+          "requested_epochs": 10,
+          "success": true,
+          "formal_300_success": false,
+          "elapsed_seconds": 112.44555820594542,
+          "checkpoint": "latest.pt",
+          "selection": "latest/final round, no test selection"
+        },
+        "identity_matches_manifest": true,
+        "core_matches_reviewed_commit": true,
+        "ten_slots_each_round": true,
+        "all_checkpoint_tensors_finite": true,
+        "best_snapshot_exists_and_round_in_range": true,
+        "runner_sha256_matches": true
+      },
+      "s07": {
+        "latest_next_round": 10,
+        "latest_rows": 10,
+        "completed": {
+          "rounds_completed": 10,
+          "requested_epochs": 10,
+          "success": true,
+          "formal_300_success": false,
+          "elapsed_seconds": 122.22034132503904,
+          "checkpoint": "latest.pt",
+          "selection": "latest/final round, no test selection"
+        },
+        "identity_matches_manifest": true,
+        "core_matches_reviewed_commit": true,
+        "ten_slots_each_round": true,
+        "all_checkpoint_tensors_finite": true,
+        "best_snapshot_exists_and_round_in_range": true,
+        "runner_sha256_matches": true
+      },
+      "s08": {
+        "latest_next_round": 10,
+        "latest_rows": 10,
+        "completed": {
+          "rounds_completed": 10,
+          "requested_epochs": 10,
+          "success": true,
+          "formal_300_success": false,
+          "elapsed_seconds": 109.93705292697996,
+          "checkpoint": "latest.pt",
+          "selection": "latest/final round, no test selection"
+        },
+        "identity_matches_manifest": true,
+        "core_matches_reviewed_commit": true,
+        "ten_slots_each_round": true,
+        "all_checkpoint_tensors_finite": true,
+        "best_snapshot_exists_and_round_in_range": true,
+        "runner_sha256_matches": true
+      },
+      "s09": {
+        "latest_next_round": 10,
+        "latest_rows": 10,
+        "completed": {
+          "rounds_completed": 10,
+          "requested_epochs": 10,
+          "success": true,
+          "formal_300_success": false,
+          "elapsed_seconds": 110.3896497261012,
+          "checkpoint": "latest.pt",
+          "selection": "latest/final round, no test selection"
+        },
+        "identity_matches_manifest": true,
+        "core_matches_reviewed_commit": true,
+        "ten_slots_each_round": true,
+        "all_checkpoint_tensors_finite": true,
+        "best_snapshot_exists_and_round_in_range": true,
+        "runner_sha256_matches": true
+      }
+    },
+    "old_result_files_checked": 229,
+    "old_result_files_unchanged": true,
+    "same_input_replay_gates_and_history_identical": true,
+    "formal400_directory_exists": false
+  },
+  "negative_control_verification": {
+    "S07_S08_valid_class_sets_identical": true,
+    "S08_score_distributions_preserved": true,
+    "S08_distinct_clients_changed_over_all_rounds": 61,
+    "S08_two_client_region_changed_scores": 0
+  },
+  "linux_tests": {
+    "passed": 105,
+    "warnings": 12,
+    "seconds": 11.55,
+    "log_sha256": "290bc126ce208f5cff9c4fc95485e1e1cd8d7778c77df62d422a3ad1d28612f5"
+  },
+  "evidence_files_sha256": {
+    "nohup.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest_linux.log": "69a7435efa7c8ba384af2ca21ae1874f12c7f3f905f2d09de79bc78c0a9e74a3",
+    "s07.stdout.log": "5845ff676d2c3d69f29ef50c4a04f740950c1406c513bc24a08a06a00161066e",
+    "s04.stderr.log": "de72b6dbb4ec0b491073d38b1ee4e9e09f4f1908ba03340d2f579019b0dcb780",
+    "processes.tsv": "8a9c036948b3f17d5261aa4398ba6642499cbc2530c959125d8dc9233f4f522a",
+    "pytest_linux_final.log": "290bc126ce208f5cff9c4fc95485e1e1cd8d7778c77df62d422a3ad1d28612f5",
+    "s09.stderr.log": "6095f342ae47d022c60a72ed006d087fcc3c3180b9984a84dff8df2d9491c4e6",
+    "s04.stdout.log": "e063b9db1c1113602ac7db7b659137837442ca6d9ce6e0c828f960fd8bc2b99b",
+    "s08.stdout.log": "8037fcab3157a4baa55fc0be55e601bb9ba8c987cf066b37f9bb9ab82517e586",
+    "commands_dry_run.txt": "0fc45f479c62e11b1fcca769764ddc79bc87c0e8a8c4272789a77da1c43917bc",
+    "s09.stdout.log": "6f518dc42bd33b7d57b211371eba0a8456444bc49cb5992a326ba2a8446d64d0",
+    "s06.stdout.log": "3d961e3711d76813b26dba090522d55056e6adcd5b7ef356997b47746959fbac",
+    "s03.stdout.log": "d4d6239a88b9f5aee927ba0c85e1fda94a5ff9a1358a762d65d4a14892a91839",
+    "s06.stderr.log": "2971ee5ac678710a404b418a741929986fd7e10712604920640073a20eeb0a3f",
+    "gpu_final.csv": "0d37e1ab5e4b0f9a04a08e5283173e2ed605983a329c905e9173ba6dda94b11b",
+    "s03.stderr.log": "9afbe2f86c32a0739e4fd85fb5b58dd8f1198985f993537c0f4094d56e735979",
+    "s08.stderr.log": "12cc820f168832f4dd196a518058e0a56fc80923059d7f6bbbb4a6e433baaf03",
+    "s07.stderr.log": "8a206bf4c3187883d304513bb2f8861ec788033191fdd9f874b101274fb22867",
+    "launch.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status.txt": "70cb0ffd8825fb4809b02e2986748de04b066e387d9b469d5b211ba693d20db1",
+    "s04/activation_10/preflight_resources.json": "aad4247f5511121aeb312dbe3f2c16cec81465356e286c55b5c4c54fc7d86386",
+    "s04/activation_10/completed.json": "d55a9c62b69eac1e20bb8fa06ae1448de312e68b828d04f0a7c9fcd92ba40af5",
+    "s04/activation_10/method_diagnostics.csv": "231bff877aaf4e0a51b23767de073a831c4050b69d92f2474d48b3aa662a7403",
+    "s04/activation_10/activation_observations.jsonl": "1d7b09dc0110006278356fc218e0897ab4c4ce0af15ca632ab0e1f200fe3cf6f",
+    "s04/activation_10/preflight_provenance.json": "3b92e1d7626ff5fd07917f75058399bf781224367a6028064835e623b24f1402",
+    "s04/activation_10/manifest.json": "e82a2d43146ac8488a97a61a56f5ca030088a21aea3fe01501f8696e882bd3dd",
+    "s06/activation_10/preflight_resources.json": "9e99620690405147d8a7b2c987ad48cd05cfada004f14d2ec17773c082f85d3d",
+    "s06/activation_10/completed.json": "ec910691c2fd424e2de8640493ac747228cdb5100c7d62e400607510c97741ae",
+    "s06/activation_10/method_diagnostics.csv": "c86b9ef8ad2791cfa5f242665aec049cea40f9ed3a352e2aab56b8aee24da0ba",
+    "s06/activation_10/activation_observations.jsonl": "82a6e2791b6de3be68bd5e738e557c82ca9b8d2f4b4e61926eea66452fc1c7d8",
+    "s06/activation_10/preflight_provenance.json": "0ea46bfbe6f6d639a77d89bcd1b3e3f9b11d07e8945933707090879ba8757185",
+    "s06/activation_10/manifest.json": "c9699dc8feadb5a98811dc33d8e2f73c01477aa7435ef319a78a9089fe893547",
+    "s09/activation_10/preflight_resources.json": "003868844b8ef71d126cf336db730af93d59b7aec5b31816ede31842a3483202",
+    "s09/activation_10/completed.json": "7f99923d082710747b6fa09d90f1ea09977d3926ffde1fa0b6a38ce65eb725f7",
+    "s09/activation_10/method_diagnostics.csv": "778e6625de78916e7ca4f978715e9049e2cfe8c3d543ca8357a213775093572d",
+    "s09/activation_10/activation_observations.jsonl": "910e39741ba7d3c6510aa6f612ce0f9b15040ae58eb88715119b49f82b0a8f6e",
+    "s09/activation_10/preflight_provenance.json": "b06197367b19cf5979ced789e01719e4338ea9e1255da0ab70a734d8bd2729aa",
+    "s09/activation_10/manifest.json": "832ac5ecfc9511d7177e6cea985306ecc307a2fa6b5129da6a0a0fb87ec83f61",
+    "s07/activation_10/preflight_resources.json": "52f2ae236ac8b4f26125ddb1227f4b8d0657a6aba049274a9366143a43efb12c",
+    "s07/activation_10/completed.json": "47c1ceb6dd3d06d665407b0bbd4b57a9b46aeab3d1fb5f7f575af58e3b54f54f",
+    "s07/activation_10/method_diagnostics.csv": "a0d67937a76895670180447e05a599dcf08bab223d73abfe505386f5679b6ca7",
+    "s07/activation_10/activation_observations.jsonl": "27ccb4ace5776e8f4cf8f8b38b2077ffd0555530a40d99bd7d6ad54dc9d13f66",
+    "s07/activation_10/preflight_provenance.json": "4c0e44cb7fe3cb93309e19cb7e90ebe7a16db856b5c787e591f2d27e0a283c96",
+    "s07/activation_10/manifest.json": "d645b5c308407e5fef30233d234da91924c3a5d3505be2d6adca90f327b52aef",
+    "s08/activation_10/preflight_resources.json": "7c666c3be01ba56936163fcc2d4e5e10939e195007d43e345080d20207b92fc5",
+    "s08/activation_10/completed.json": "3145a0bb4fb1b114d7800fb83048f42f49633b0421bb48819425cb467140715a",
+    "s08/activation_10/method_diagnostics.csv": "0a71faf3c5426a8c0f27e53b2375e6cc250e7708ed0df59d063c2d6774fd97a2",
+    "s08/activation_10/activation_observations.jsonl": "4305fc072b6950dd369ec3fe6552c8205abe2d5000b4e25ae0058d8f685aae35",
+    "s08/activation_10/preflight_provenance.json": "f0e29a502b8ffd0b23a088776f4a269757ab1c658c5ff4cdd1e092a179fc1774",
+    "s08/activation_10/manifest.json": "53b14d8a41f748a97b2795dcaaa71e25dd6d4da8a2ada793b75b733868e78035",
+    "s03/activation_10/preflight_resources.json": "a6f6d8a6eeddf29b4304e4c8e2425ce35a34243da5c8334fa96b63fe52fd0d0d",
+    "s03/activation_10/completed.json": "6efb6b70376e371a4cf0696a4d22fcc9204223f8de18cb5a1453965e04776e63",
+    "s03/activation_10/method_diagnostics.csv": "045b8c7826634efe906e7ec413d96cd15e170a4d0d0799e2d2582af16093e154",
+    "s03/activation_10/activation_observations.jsonl": "a26ca9f2597e7dfac935513015c1d0a970fdf75a47e79c07ffa3126d316589fa",
+    "s03/activation_10/preflight_provenance.json": "13dc116623b7ca51f6482de1c2deda08bd9c9ea8ed8007024bc0eded9eae8f18",
+    "s03/activation_10/manifest.json": "e385a3a565529ad6ddd9bad7074dd14a809104a3036e459ea5b5a8aa4edb9aa8"
+  }
+}

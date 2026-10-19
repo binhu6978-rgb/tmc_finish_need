@@ -533,3 +533,13 @@ PYTHON=/home/hh/miniconda3/envs/hh/bin/python bash tools/run_full_only_sweep.sh 
 ```
 
 十条完整命令可用同脚本 `--dry-run --gpus 0,0` 生成，已在服务器保存 `runs/full_only_checks/commands_dry_run.txt`。新队列结果根目录为 `runs/full_only_400_seed1/`；排队等待不表示十组已开始或已完成。此次不做实时逐轮监控，不依据官方测试峰值在线修改任何设置。
+
+## SemConsFL 完整分区机制激活预检（2026-10-19）
+
+审查基准 `5d7c1522269b69c6ab08475dd58d343b000f98de` 的训练、聚合、Gate与历史公式全部保留。新增独立诊断工具，目标Linux上S03/S04/S06/S07/S08/S09各完成10轮完整CIFAR-100训练分区预检：100客户端、10slots、5本地epoch、seed1、原七档、Full-only。没有启动或排队正式400轮。
+
+Linux专项测试105 passed。六组初始模型、真实调度、分区和源码指纹配对一致，latest实际完成10轮，229个旧B/E/N结果文件哈希保持不变。用户明确授权共用GPU0后，两进程三批全部成功且无OOM，单进程PyTorch峰值allocated约1506–1579MiB，reserved约1748–1838MiB。
+
+完整数据上的语义分数约80%非零；S04的386/490个区域-slot Gate非中性，S06仅3/490且修改强度很弱；S07/S08/S09为0/490。S07的5次、S08的4次、S09的5次联合正风险均发生在对应客户端/区域置信度为0时。S04三个双客户端活跃区域均因共同Gate被归一化精确抵消。S08有385/444个分数数值实际改变，但未改变Gate；S07真实输入逐轮重放S09的差异均为0，不能声称已验证非中性真实分母效应。
+
+建议暂缓正式队列，先审查方向比较粒度及成熟阶段诊断的必要性；没有为了制造激活而改公式或调整系数。详细数学解释、统计分母、置信度变化、GPU与执行证据见 `docs/SEMCONS_SCOPE_ACTIVATION_PREFLIGHT.md` 和 `docs/evidence/semcons_activation_full10_seed1.json`。
