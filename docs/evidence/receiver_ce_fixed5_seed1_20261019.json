@@ -1,0 +1,3200 @@
+{
+  "summary": {
+    "protocol": {
+      "version": 1,
+      "rounds": 5,
+      "seed": 1,
+      "max_classes": 16,
+      "samples_per_class": 2,
+      "batch_size": 50,
+      "senders_per_direction_stratum": 2,
+      "recipients_per_sender": 2,
+      "direction_strata": "signed region LOO cosine <0 versus >=0; zero norm separate",
+      "probe_views": "fixed seed per physical client across all rounds; materialized once",
+      "injection": "one actual upload-slot delta; alpha=lens[slot]/sum(lens of ALL covering upload slots)",
+      "duplicates": "unique physical senders per stratum; hash representative slot; unique recipients; exclude same physical client",
+      "ce_tolerance": 1e-06,
+      "primary_rounds": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "q_definition": "original region physical-client pooled Q; never recomputed from CE",
+      "analysis": "Q/D AUC; leave-round-out fixed OLS D versus D+Q, with and without fixed magnitude/own-gain controls",
+      "minimum_incremental_sample": {
+        "each_ce_sign_pairs": 10,
+        "distinct_senders": 10,
+        "rounds": 3
+      },
+      "raw_snapshot_budget_bytes": 6442450944,
+      "feedback_to_training": false,
+      "source_sha256": "01f26db3de3279f555080f992243df68d87fa888b59eabb47728da1a7eedd696"
+    },
+    "all5": {
+      "pairs": 156,
+      "valid_pairs": 156,
+      "invalid_reasons": {},
+      "outcomes": {
+        "worse": 48,
+        "better": 108
+      },
+      "delta_ce": {
+        "n": 156,
+        "mean": -0.004691971585345574,
+        "median": -0.0007105804979801178,
+        "min": -0.08493354916572571,
+        "max": 0.03526362031698227
+      },
+      "physical_senders": 24,
+      "physical_receivers": 34,
+      "sign_analysis_distinct_senders": 24,
+      "regions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "profile_pairs": {
+        "P4->P1": 3,
+        "P4->P3": 10,
+        "P0->P1": 2,
+        "P0->P3": 1,
+        "P5->P1": 10,
+        "P4->P5": 13,
+        "P5->P3": 1,
+        "P5->P4": 9,
+        "P5->P5": 14,
+        "P3->P5": 3,
+        "P3->P3": 2,
+        "P4->P4": 10,
+        "P6->P4": 2,
+        "P6->P5": 15,
+        "P4->P2": 8,
+        "P5->P6": 10,
+        "P2->P4": 4,
+        "P2->P6": 3,
+        "P6->P2": 2,
+        "P5->P2": 6,
+        "P6->P6": 9,
+        "P2->P5": 5,
+        "P2->P1": 4,
+        "P2->P2": 1,
+        "P1->P6": 2,
+        "P1->P1": 2,
+        "P0->P6": 1,
+        "P5->P0": 1,
+        "P1->P5": 1,
+        "P1->P4": 1,
+        "P3->P4": 1
+      },
+      "q_by_outcome": {
+        "better": {
+          "n": 108,
+          "mean": 0.00822754018688149,
+          "median": 0.006022117582569672,
+          "min": 4.333694886557724e-05,
+          "max": 0.027568072433389157
+        },
+        "worse": {
+          "n": 48,
+          "mean": 0.009629473587000573,
+          "median": 0.00882212543793265,
+          "min": 4.333694886557724e-05,
+          "max": 0.02502048231138331
+        },
+        "neutral": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "sender_own_gain": {
+        "n": 156,
+        "mean": 1.4461583774861468,
+        "median": 1.5034798844717443,
+        "min": 0.5354094263748266,
+        "max": 2.2178910182556137
+      },
+      "sender_own_gain_positive_receiver_worse": 48,
+      "mixed_receiver_sign_contexts": 31,
+      "sender_region_contexts": 83,
+      "multiple_receiver_contexts": 73,
+      "classes": {
+        "all": {
+          "count": 2496,
+          "outcomes": {
+            "worse": 1230,
+            "better": 1265,
+            "neutral": 1
+          },
+          "delta_ce": {
+            "n": 2496,
+            "mean": -0.004691971585345574,
+            "median": -2.682209014892578e-05,
+            "min": -0.75777268409729,
+            "max": 0.34665393829345703
+          }
+        },
+        "sender_training_classes": {
+          "count": 1632,
+          "outcomes": {
+            "better": 946,
+            "worse": 685,
+            "neutral": 1
+          },
+          "delta_ce": {
+            "n": 1632,
+            "mean": -0.01752227530175564,
+            "median": -0.0005725622177124023,
+            "min": -0.75777268409729,
+            "max": 0.2054891586303711
+          }
+        },
+        "q_compared_classes": {
+          "count": 1238,
+          "outcomes": {
+            "better": 794,
+            "worse": 444
+          },
+          "delta_ce": {
+            "n": 1238,
+            "mean": -0.02655350093117438,
+            "median": -0.0011371374130249023,
+            "min": -0.75777268409729,
+            "max": 0.13208305835723877
+          }
+        }
+      },
+      "auc": {
+        "q": {
+          "value": 0.5846836419753086,
+          "pairs": 156
+        },
+        "negative_signed_LOO_cosine": {
+          "value": 0.5954861111111112,
+          "pairs": 156
+        },
+        "clipped_direction_risk": {
+          "value": 0.5478395061728395,
+          "pairs": 156
+        },
+        "negative_pair_cosine": {
+          "value": 0.6540316358024691,
+          "pairs": 156
+        }
+      },
+      "incremental_status": "descriptive_only",
+      "minimum_sample_requirements": {
+        "each_ce_sign_pairs": 10,
+        "distinct_senders": 10,
+        "rounds": 3
+      },
+      "OLS": {
+        "status": "descriptive_leave_round_out",
+        "folds": [
+          {
+            "round": 1,
+            "train": 122,
+            "test": 34
+          },
+          {
+            "round": 2,
+            "train": 122,
+            "test": 34
+          },
+          {
+            "round": 3,
+            "train": 128,
+            "test": 28
+          },
+          {
+            "round": 4,
+            "train": 122,
+            "test": 34
+          },
+          {
+            "round": 5,
+            "train": 130,
+            "test": 26
+          }
+        ],
+        "controls": [],
+        "direction_mse": 0.00021949222885500247,
+        "direction_plus_q_mse": 0.00022065305727660454,
+        "relative_mse_reduction": -0.0052886994116266095,
+        "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+      },
+      "OLS_same_magnitude_own_gain_controls": {
+        "status": "descriptive_leave_round_out",
+        "folds": [
+          {
+            "round": 1,
+            "train": 122,
+            "test": 34
+          },
+          {
+            "round": 2,
+            "train": 122,
+            "test": 34
+          },
+          {
+            "round": 3,
+            "train": 128,
+            "test": 28
+          },
+          {
+            "round": 4,
+            "train": 122,
+            "test": 34
+          },
+          {
+            "round": 5,
+            "train": 130,
+            "test": 26
+          }
+        ],
+        "controls": [
+          "alpha",
+          "scaled_delta_l2",
+          "ce_before",
+          "sender_own_gain"
+        ],
+        "direction_mse": 0.00020581821705531502,
+        "direction_plus_q_mse": 0.00020669198489670665,
+        "relative_mse_reduction": -0.004245337725167432,
+        "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+      }
+    },
+    "primary2_5": {
+      "pairs": 122,
+      "valid_pairs": 122,
+      "invalid_reasons": {},
+      "outcomes": {
+        "worse": 36,
+        "better": 86
+      },
+      "delta_ce": {
+        "n": 122,
+        "mean": -0.0053237757538674305,
+        "median": -0.0006736926734447479,
+        "min": -0.08493354916572571,
+        "max": 0.03526362031698227
+      },
+      "physical_senders": 21,
+      "physical_receivers": 29,
+      "sign_analysis_distinct_senders": 21,
+      "regions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "profile_pairs": {
+        "P4->P4": 10,
+        "P4->P5": 9,
+        "P6->P4": 2,
+        "P6->P5": 15,
+        "P4->P2": 8,
+        "P5->P6": 10,
+        "P2->P4": 4,
+        "P2->P6": 3,
+        "P6->P2": 2,
+        "P5->P2": 6,
+        "P5->P5": 6,
+        "P6->P6": 9,
+        "P2->P5": 5,
+        "P5->P4": 4,
+        "P2->P1": 4,
+        "P4->P1": 2,
+        "P4->P3": 5,
+        "P2->P2": 1,
+        "P1->P6": 2,
+        "P1->P1": 2,
+        "P0->P6": 1,
+        "P0->P1": 1,
+        "P5->P1": 6,
+        "P5->P0": 1,
+        "P1->P5": 1,
+        "P1->P4": 1,
+        "P3->P4": 1,
+        "P3->P5": 1
+      },
+      "q_by_outcome": {
+        "better": {
+          "n": 86,
+          "mean": 0.00806936887106436,
+          "median": 0.006022117582569672,
+          "min": 4.333694886557724e-05,
+          "max": 0.022799952382323192
+        },
+        "worse": {
+          "n": 36,
+          "mean": 0.009249104232500194,
+          "median": 0.0074331213908684635,
+          "min": 4.333694886557724e-05,
+          "max": 0.01948484499010576
+        },
+        "neutral": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "sender_own_gain": {
+        "n": 122,
+        "mean": 1.3532953620597254,
+        "median": 1.2531430879607797,
+        "min": 0.5354094263748266,
+        "max": 2.1064683236181736
+      },
+      "sender_own_gain_positive_receiver_worse": 36,
+      "mixed_receiver_sign_contexts": 23,
+      "sender_region_contexts": 64,
+      "multiple_receiver_contexts": 58,
+      "classes": {
+        "all": {
+          "count": 1952,
+          "outcomes": {
+            "better": 1003,
+            "worse": 948,
+            "neutral": 1
+          },
+          "delta_ce": {
+            "n": 1952,
+            "mean": -0.0053237757538674305,
+            "median": -5.0902366638183594e-05,
+            "min": -0.75777268409729,
+            "max": 0.34665393829345703
+          }
+        },
+        "sender_training_classes": {
+          "count": 1267,
+          "outcomes": {
+            "better": 742,
+            "worse": 524,
+            "neutral": 1
+          },
+          "delta_ce": {
+            "n": 1267,
+            "mean": -0.01936878138107866,
+            "median": -0.0005702972412109375,
+            "min": -0.75777268409729,
+            "max": 0.2054891586303711
+          }
+        },
+        "q_compared_classes": {
+          "count": 987,
+          "outcomes": {
+            "better": 634,
+            "worse": 353
+          },
+          "delta_ce": {
+            "n": 987,
+            "mean": -0.027988102298377133,
+            "median": -0.0011075735092163086,
+            "min": -0.75777268409729,
+            "max": 0.13208305835723877
+          }
+        }
+      },
+      "auc": {
+        "q": {
+          "value": 0.5597545219638242,
+          "pairs": 122
+        },
+        "negative_signed_LOO_cosine": {
+          "value": 0.5468346253229974,
+          "pairs": 122
+        },
+        "clipped_direction_risk": {
+          "value": 0.5,
+          "pairs": 122
+        },
+        "negative_pair_cosine": {
+          "value": 0.6001291989664083,
+          "pairs": 122
+        }
+      },
+      "incremental_status": "descriptive_only",
+      "minimum_sample_requirements": {
+        "each_ce_sign_pairs": 10,
+        "distinct_senders": 10,
+        "rounds": 3
+      },
+      "OLS": {
+        "status": "descriptive_leave_round_out",
+        "folds": [
+          {
+            "round": 2,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 3,
+            "train": 94,
+            "test": 28
+          },
+          {
+            "round": 4,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 5,
+            "train": 96,
+            "test": 26
+          }
+        ],
+        "controls": [],
+        "direction_mse": 0.00025365521422272353,
+        "direction_plus_q_mse": 0.00025620254555561536,
+        "relative_mse_reduction": -0.010042495442869663,
+        "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+      },
+      "OLS_same_magnitude_own_gain_controls": {
+        "status": "descriptive_leave_round_out",
+        "folds": [
+          {
+            "round": 2,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 3,
+            "train": 94,
+            "test": 28
+          },
+          {
+            "round": 4,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 5,
+            "train": 96,
+            "test": 26
+          }
+        ],
+        "controls": [
+          "alpha",
+          "scaled_delta_l2",
+          "ce_before",
+          "sender_own_gain"
+        ],
+        "direction_mse": 0.00024666617536959063,
+        "direction_plus_q_mse": 0.00024762971495167997,
+        "relative_mse_reduction": -0.003906249329263004,
+        "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+      }
+    },
+    "round1": {
+      "pairs": 34,
+      "valid_pairs": 34,
+      "invalid_reasons": {},
+      "outcomes": {
+        "worse": 12,
+        "better": 22
+      },
+      "delta_ce": {
+        "n": 34,
+        "mean": -0.0024249095688847933,
+        "median": -0.0008063092827796936,
+        "min": -0.03806527704000473,
+        "max": 0.02605445683002472
+      },
+      "physical_senders": 5,
+      "physical_receivers": 7,
+      "sign_analysis_distinct_senders": 5,
+      "regions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "profile_pairs": {
+        "P4->P1": 1,
+        "P4->P3": 5,
+        "P0->P1": 1,
+        "P0->P3": 1,
+        "P5->P1": 4,
+        "P4->P5": 4,
+        "P5->P3": 1,
+        "P5->P4": 5,
+        "P5->P5": 8,
+        "P3->P5": 2,
+        "P3->P3": 2
+      },
+      "q_by_outcome": {
+        "better": {
+          "n": 22,
+          "mean": 0.008845846239621173,
+          "median": 0.006720891392198974,
+          "min": 0.0015442830290291055,
+          "max": 0.027568072433389157
+        },
+        "worse": {
+          "n": 12,
+          "mean": 0.010770581650501708,
+          "median": 0.009844908362269443,
+          "min": 0.0022301386965315672,
+          "max": 0.02502048231138331
+        },
+        "neutral": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "sender_own_gain": {
+        "n": 34,
+        "mean": 1.7793727269574233,
+        "median": 1.7787758065387607,
+        "min": 1.001543676480651,
+        "max": 2.2178910182556137
+      },
+      "sender_own_gain_positive_receiver_worse": 12,
+      "mixed_receiver_sign_contexts": 8,
+      "sender_region_contexts": 19,
+      "multiple_receiver_contexts": 15,
+      "classes": {
+        "all": {
+          "count": 544,
+          "outcomes": {
+            "worse": 282,
+            "better": 262
+          },
+          "delta_ce": {
+            "n": 544,
+            "mean": -0.0024249095688847933,
+            "median": 0.0002657771110534668,
+            "min": -0.38073205947875977,
+            "max": 0.11857175827026367
+          }
+        },
+        "sender_training_classes": {
+          "count": 365,
+          "outcomes": {
+            "better": 204,
+            "worse": 161
+          },
+          "delta_ce": {
+            "n": 365,
+            "mean": -0.01111262269216041,
+            "median": -0.0005748271942138672,
+            "min": -0.38073205947875977,
+            "max": 0.09289836883544922
+          }
+        },
+        "q_compared_classes": {
+          "count": 251,
+          "outcomes": {
+            "better": 160,
+            "worse": 91
+          },
+          "delta_ce": {
+            "n": 251,
+            "mean": -0.02091225969838906,
+            "median": -0.0011818408966064453,
+            "min": -0.38073205947875977,
+            "max": 0.0745694637298584
+          }
+        }
+      },
+      "auc": {
+        "q": {
+          "value": 0.6893939393939394,
+          "pairs": 34
+        },
+        "negative_signed_LOO_cosine": {
+          "value": 0.8484848484848485,
+          "pairs": 34
+        },
+        "clipped_direction_risk": {
+          "value": 0.6931818181818182,
+          "pairs": 34
+        },
+        "negative_pair_cosine": {
+          "value": 0.7859848484848485,
+          "pairs": 34
+        }
+      },
+      "incremental_status": "\u65e0\u6cd5\u5224\u65ad",
+      "minimum_sample_requirements": {
+        "each_ce_sign_pairs": 10,
+        "distinct_senders": 10,
+        "rounds": 3
+      },
+      "OLS": null,
+      "OLS_same_magnitude_own_gain_controls": null
+    },
+    "by_stratum": {
+      "conflict": {
+        "pairs": 0,
+        "valid_pairs": 0,
+        "invalid_reasons": {},
+        "outcomes": {},
+        "delta_ce": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null
+        },
+        "physical_senders": 0,
+        "physical_receivers": 0,
+        "sign_analysis_distinct_senders": 0,
+        "regions": [],
+        "profile_pairs": {},
+        "q_by_outcome": {
+          "better": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "worse": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "neutral": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sender_own_gain": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null
+        },
+        "sender_own_gain_positive_receiver_worse": 0,
+        "mixed_receiver_sign_contexts": 0,
+        "sender_region_contexts": 0,
+        "multiple_receiver_contexts": 0,
+        "classes": {
+          "all": {
+            "count": 0,
+            "outcomes": {},
+            "delta_ce": {
+              "n": 0,
+              "mean": null,
+              "median": null,
+              "min": null,
+              "max": null
+            }
+          },
+          "sender_training_classes": {
+            "count": 0,
+            "outcomes": {},
+            "delta_ce": {
+              "n": 0,
+              "mean": null,
+              "median": null,
+              "min": null,
+              "max": null
+            }
+          },
+          "q_compared_classes": {
+            "count": 0,
+            "outcomes": {},
+            "delta_ce": {
+              "n": 0,
+              "mean": null,
+              "median": null,
+              "min": null,
+              "max": null
+            }
+          }
+        },
+        "auc": {
+          "q": {
+            "value": null,
+            "pairs": 0
+          },
+          "negative_signed_LOO_cosine": {
+            "value": null,
+            "pairs": 0
+          },
+          "clipped_direction_risk": {
+            "value": null,
+            "pairs": 0
+          },
+          "negative_pair_cosine": {
+            "value": null,
+            "pairs": 0
+          }
+        },
+        "incremental_status": "\u65e0\u6cd5\u5224\u65ad",
+        "minimum_sample_requirements": {
+          "each_ce_sign_pairs": 10,
+          "distinct_senders": 10,
+          "rounds": 3
+        },
+        "OLS": null,
+        "OLS_same_magnitude_own_gain_controls": null
+      },
+      "nonconflict": {
+        "pairs": 122,
+        "valid_pairs": 122,
+        "invalid_reasons": {},
+        "outcomes": {
+          "worse": 36,
+          "better": 86
+        },
+        "delta_ce": {
+          "n": 122,
+          "mean": -0.0053237757538674305,
+          "median": -0.0006736926734447479,
+          "min": -0.08493354916572571,
+          "max": 0.03526362031698227
+        },
+        "physical_senders": 21,
+        "physical_receivers": 29,
+        "sign_analysis_distinct_senders": 21,
+        "regions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "profile_pairs": {
+          "P4->P4": 10,
+          "P4->P5": 9,
+          "P6->P4": 2,
+          "P6->P5": 15,
+          "P4->P2": 8,
+          "P5->P6": 10,
+          "P2->P4": 4,
+          "P2->P6": 3,
+          "P6->P2": 2,
+          "P5->P2": 6,
+          "P5->P5": 6,
+          "P6->P6": 9,
+          "P2->P5": 5,
+          "P5->P4": 4,
+          "P2->P1": 4,
+          "P4->P1": 2,
+          "P4->P3": 5,
+          "P2->P2": 1,
+          "P1->P6": 2,
+          "P1->P1": 2,
+          "P0->P6": 1,
+          "P0->P1": 1,
+          "P5->P1": 6,
+          "P5->P0": 1,
+          "P1->P5": 1,
+          "P1->P4": 1,
+          "P3->P4": 1,
+          "P3->P5": 1
+        },
+        "q_by_outcome": {
+          "better": {
+            "n": 86,
+            "mean": 0.00806936887106436,
+            "median": 0.006022117582569672,
+            "min": 4.333694886557724e-05,
+            "max": 0.022799952382323192
+          },
+          "worse": {
+            "n": 36,
+            "mean": 0.009249104232500194,
+            "median": 0.0074331213908684635,
+            "min": 4.333694886557724e-05,
+            "max": 0.01948484499010576
+          },
+          "neutral": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sender_own_gain": {
+          "n": 122,
+          "mean": 1.3532953620597254,
+          "median": 1.2531430879607797,
+          "min": 0.5354094263748266,
+          "max": 2.1064683236181736
+        },
+        "sender_own_gain_positive_receiver_worse": 36,
+        "mixed_receiver_sign_contexts": 23,
+        "sender_region_contexts": 64,
+        "multiple_receiver_contexts": 58,
+        "classes": {
+          "all": {
+            "count": 1952,
+            "outcomes": {
+              "better": 1003,
+              "worse": 948,
+              "neutral": 1
+            },
+            "delta_ce": {
+              "n": 1952,
+              "mean": -0.0053237757538674305,
+              "median": -5.0902366638183594e-05,
+              "min": -0.75777268409729,
+              "max": 0.34665393829345703
+            }
+          },
+          "sender_training_classes": {
+            "count": 1267,
+            "outcomes": {
+              "better": 742,
+              "worse": 524,
+              "neutral": 1
+            },
+            "delta_ce": {
+              "n": 1267,
+              "mean": -0.01936878138107866,
+              "median": -0.0005702972412109375,
+              "min": -0.75777268409729,
+              "max": 0.2054891586303711
+            }
+          },
+          "q_compared_classes": {
+            "count": 987,
+            "outcomes": {
+              "better": 634,
+              "worse": 353
+            },
+            "delta_ce": {
+              "n": 987,
+              "mean": -0.027988102298377133,
+              "median": -0.0011075735092163086,
+              "min": -0.75777268409729,
+              "max": 0.13208305835723877
+            }
+          }
+        },
+        "auc": {
+          "q": {
+            "value": 0.5597545219638242,
+            "pairs": 122
+          },
+          "negative_signed_LOO_cosine": {
+            "value": 0.5468346253229974,
+            "pairs": 122
+          },
+          "clipped_direction_risk": {
+            "value": 0.5,
+            "pairs": 122
+          },
+          "negative_pair_cosine": {
+            "value": 0.6001291989664083,
+            "pairs": 122
+          }
+        },
+        "incremental_status": "descriptive_only",
+        "minimum_sample_requirements": {
+          "each_ce_sign_pairs": 10,
+          "distinct_senders": 10,
+          "rounds": 3
+        },
+        "OLS": {
+          "status": "descriptive_leave_round_out",
+          "folds": [
+            {
+              "round": 2,
+              "train": 88,
+              "test": 34
+            },
+            {
+              "round": 3,
+              "train": 94,
+              "test": 28
+            },
+            {
+              "round": 4,
+              "train": 88,
+              "test": 34
+            },
+            {
+              "round": 5,
+              "train": 96,
+              "test": 26
+            }
+          ],
+          "controls": [],
+          "direction_mse": 0.00025365521422272353,
+          "direction_plus_q_mse": 0.00025620254555561536,
+          "relative_mse_reduction": -0.010042495442869663,
+          "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+        },
+        "OLS_same_magnitude_own_gain_controls": {
+          "status": "descriptive_leave_round_out",
+          "folds": [
+            {
+              "round": 2,
+              "train": 88,
+              "test": 34
+            },
+            {
+              "round": 3,
+              "train": 94,
+              "test": 28
+            },
+            {
+              "round": 4,
+              "train": 88,
+              "test": 34
+            },
+            {
+              "round": 5,
+              "train": 96,
+              "test": 26
+            }
+          ],
+          "controls": [
+            "alpha",
+            "scaled_delta_l2",
+            "ce_before",
+            "sender_own_gain"
+          ],
+          "direction_mse": 0.00024666617536959063,
+          "direction_plus_q_mse": 0.00024762971495167997,
+          "relative_mse_reduction": -0.003906249329263004,
+          "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+        }
+      }
+    },
+    "all5_by_stratum": {
+      "conflict": {
+        "pairs": 6,
+        "valid_pairs": 6,
+        "invalid_reasons": {},
+        "outcomes": {
+          "worse": 5,
+          "better": 1
+        },
+        "delta_ce": {
+          "n": 6,
+          "mean": 0.009436084578434626,
+          "median": 0.009523797780275345,
+          "min": -8.408725261688232e-05,
+          "max": 0.02605445683002472
+        },
+        "physical_senders": 1,
+        "physical_receivers": 5,
+        "sign_analysis_distinct_senders": 1,
+        "regions": [
+          0,
+          4,
+          6
+        ],
+        "profile_pairs": {
+          "P4->P1": 1,
+          "P4->P3": 2,
+          "P4->P5": 3
+        },
+        "q_by_outcome": {
+          "better": {
+            "n": 1,
+            "mean": 0.02502048231138331,
+            "median": 0.02502048231138331,
+            "min": 0.02502048231138331,
+            "max": 0.02502048231138331
+          },
+          "worse": {
+            "n": 5,
+            "mean": 0.012744258022956857,
+            "median": 0.010528278463767833,
+            "min": 0.00882212543793265,
+            "max": 0.02502048231138331
+          },
+          "neutral": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sender_own_gain": {
+          "n": 6,
+          "mean": 2.2178910182556137,
+          "median": 2.2178910182556137,
+          "min": 2.2178910182556137,
+          "max": 2.2178910182556137
+        },
+        "sender_own_gain_positive_receiver_worse": 5,
+        "mixed_receiver_sign_contexts": 1,
+        "sender_region_contexts": 3,
+        "multiple_receiver_contexts": 3,
+        "classes": {
+          "all": {
+            "count": 96,
+            "outcomes": {
+              "worse": 65,
+              "better": 31
+            },
+            "delta_ce": {
+              "n": 96,
+              "mean": 0.009436084578434626,
+              "median": 0.0012909173965454102,
+              "min": -0.10621190071105957,
+              "max": 0.09289836883544922
+            }
+          },
+          "sender_training_classes": {
+            "count": 64,
+            "outcomes": {
+              "better": 27,
+              "worse": 37
+            },
+            "delta_ce": {
+              "n": 64,
+              "mean": 0.0003709234297275543,
+              "median": 0.00040721893310546875,
+              "min": -0.10621190071105957,
+              "max": 0.09289836883544922
+            }
+          },
+          "q_compared_classes": {
+            "count": 34,
+            "outcomes": {
+              "better": 22,
+              "worse": 12
+            },
+            "delta_ce": {
+              "n": 34,
+              "mean": -0.018383068196913776,
+              "median": -0.006806612014770508,
+              "min": -0.10621190071105957,
+              "max": 0.05186891555786133
+            }
+          }
+        },
+        "auc": {
+          "q": {
+            "value": 0.1,
+            "pairs": 6
+          },
+          "negative_signed_LOO_cosine": {
+            "value": 0.9,
+            "pairs": 6
+          },
+          "clipped_direction_risk": {
+            "value": 0.9,
+            "pairs": 6
+          },
+          "negative_pair_cosine": {
+            "value": 0.2,
+            "pairs": 6
+          }
+        },
+        "incremental_status": "\u65e0\u6cd5\u5224\u65ad",
+        "minimum_sample_requirements": {
+          "each_ce_sign_pairs": 10,
+          "distinct_senders": 10,
+          "rounds": 3
+        },
+        "OLS": null,
+        "OLS_same_magnitude_own_gain_controls": null
+      },
+      "nonconflict": {
+        "pairs": 150,
+        "valid_pairs": 150,
+        "invalid_reasons": {},
+        "outcomes": {
+          "better": 107,
+          "worse": 43
+        },
+        "delta_ce": {
+          "n": 150,
+          "mean": -0.0052570938318967815,
+          "median": -0.0008063092827796936,
+          "min": -0.08493354916572571,
+          "max": 0.03526362031698227
+        },
+        "physical_senders": 24,
+        "physical_receivers": 34,
+        "sign_analysis_distinct_senders": 24,
+        "regions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "profile_pairs": {
+          "P0->P1": 2,
+          "P0->P3": 1,
+          "P5->P1": 10,
+          "P4->P3": 8,
+          "P4->P5": 10,
+          "P5->P3": 1,
+          "P5->P4": 9,
+          "P5->P5": 14,
+          "P3->P5": 3,
+          "P3->P3": 2,
+          "P4->P4": 10,
+          "P6->P4": 2,
+          "P6->P5": 15,
+          "P4->P2": 8,
+          "P5->P6": 10,
+          "P2->P4": 4,
+          "P2->P6": 3,
+          "P6->P2": 2,
+          "P5->P2": 6,
+          "P6->P6": 9,
+          "P2->P5": 5,
+          "P2->P1": 4,
+          "P4->P1": 2,
+          "P2->P2": 1,
+          "P1->P6": 2,
+          "P1->P1": 2,
+          "P0->P6": 1,
+          "P5->P0": 1,
+          "P1->P5": 1,
+          "P1->P4": 1,
+          "P3->P4": 1
+        },
+        "q_by_outcome": {
+          "better": {
+            "n": 107,
+            "mean": 0.008070596802540351,
+            "median": 0.005972220121752189,
+            "min": 4.333694886557724e-05,
+            "max": 0.027568072433389157
+          },
+          "worse": {
+            "n": 43,
+            "mean": 0.009267289350261469,
+            "median": 0.008256508656875659,
+            "min": 4.333694886557724e-05,
+            "max": 0.01948484499010576
+          },
+          "neutral": {
+            "n": 0,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sender_own_gain": {
+          "n": 150,
+          "mean": 1.4152890718553681,
+          "median": 1.4929076607804745,
+          "min": 0.5354094263748266,
+          "max": 2.2178910182556137
+        },
+        "sender_own_gain_positive_receiver_worse": 43,
+        "mixed_receiver_sign_contexts": 30,
+        "sender_region_contexts": 80,
+        "multiple_receiver_contexts": 70,
+        "classes": {
+          "all": {
+            "count": 2400,
+            "outcomes": {
+              "better": 1234,
+              "worse": 1165,
+              "neutral": 1
+            },
+            "delta_ce": {
+              "n": 2400,
+              "mean": -0.0052570938318967815,
+              "median": -5.8531761169433594e-05,
+              "min": -0.75777268409729,
+              "max": 0.34665393829345703
+            }
+          },
+          "sender_training_classes": {
+            "count": 1568,
+            "outcomes": {
+              "better": 919,
+              "worse": 648,
+              "neutral": 1
+            },
+            "delta_ce": {
+              "n": 1568,
+              "mean": -0.018252609943857,
+              "median": -0.0006189346313476562,
+              "min": -0.75777268409729,
+              "max": 0.2054891586303711
+            }
+          },
+          "q_compared_classes": {
+            "count": 1204,
+            "outcomes": {
+              "better": 772,
+              "worse": 432
+            },
+            "delta_ce": {
+              "n": 1204,
+              "mean": -0.02678422743695915,
+              "median": -0.0011328458786010742,
+              "min": -0.75777268409729,
+              "max": 0.13208305835723877
+            }
+          }
+        },
+        "auc": {
+          "q": {
+            "value": 0.5743316670289068,
+            "pairs": 150
+          },
+          "negative_signed_LOO_cosine": {
+            "value": 0.5536839817430993,
+            "pairs": 150
+          },
+          "clipped_direction_risk": {
+            "value": 0.5,
+            "pairs": 150
+          },
+          "negative_pair_cosine": {
+            "value": 0.6283416648554662,
+            "pairs": 150
+          }
+        },
+        "incremental_status": "descriptive_only",
+        "minimum_sample_requirements": {
+          "each_ce_sign_pairs": 10,
+          "distinct_senders": 10,
+          "rounds": 3
+        },
+        "OLS": {
+          "status": "descriptive_leave_round_out",
+          "folds": [
+            {
+              "round": 1,
+              "train": 122,
+              "test": 28
+            },
+            {
+              "round": 2,
+              "train": 116,
+              "test": 34
+            },
+            {
+              "round": 3,
+              "train": 122,
+              "test": 28
+            },
+            {
+              "round": 4,
+              "train": 116,
+              "test": 34
+            },
+            {
+              "round": 5,
+              "train": 124,
+              "test": 26
+            }
+          ],
+          "controls": [],
+          "direction_mse": 0.00022685410830634116,
+          "direction_plus_q_mse": 0.00022832539590820304,
+          "relative_mse_reduction": -0.006485611448019587,
+          "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+        },
+        "OLS_same_magnitude_own_gain_controls": {
+          "status": "descriptive_leave_round_out",
+          "folds": [
+            {
+              "round": 1,
+              "train": 122,
+              "test": 28
+            },
+            {
+              "round": 2,
+              "train": 116,
+              "test": 34
+            },
+            {
+              "round": 3,
+              "train": 122,
+              "test": 28
+            },
+            {
+              "round": 4,
+              "train": 116,
+              "test": 34
+            },
+            {
+              "round": 5,
+              "train": 124,
+              "test": 26
+            }
+          ],
+          "controls": [
+            "alpha",
+            "scaled_delta_l2",
+            "ce_before",
+            "sender_own_gain"
+          ],
+          "direction_mse": 0.0002075682425362608,
+          "direction_plus_q_mse": 0.00020780569610042836,
+          "relative_mse_reduction": -0.0011439782948784681,
+          "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+        }
+      }
+    },
+    "inventory": [
+      {
+        "round": 1,
+        "regions": [
+          {
+            "region": 0,
+            "numel": 2120985,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              56,
+              57,
+              63,
+              76,
+              94,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 1,
+                "candidate_physical_senders": 1,
+                "selected_physical_senders": 1
+              },
+              "nonconflict": {
+                "candidate_slots": 9,
+                "candidate_physical_senders": 8,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 1,
+            "numel": 185955,
+            "members": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              56,
+              57,
+              76,
+              94
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 7,
+                "candidate_physical_senders": 7,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 2,
+            "numel": 339416,
+            "members": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              57,
+              94
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 5,
+                "candidate_physical_senders": 5,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 3,
+            "numel": 671880,
+            "members": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48,
+              56,
+              76,
+              94
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 5,
+                "candidate_physical_senders": 5,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 4,
+            "numel": 29040,
+            "members": [
+              0,
+              2,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48,
+              94
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 1,
+                "candidate_physical_senders": 1,
+                "selected_physical_senders": 1
+              },
+              "nonconflict": {
+                "candidate_slots": 2,
+                "candidate_physical_senders": 2,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 5,
+            "numel": 1300464,
+            "members": [
+              0,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 2,
+                "candidate_physical_senders": 2,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 6,
+            "numel": 2180801,
+            "members": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48,
+              56,
+              76,
+              94
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 1,
+                "candidate_physical_senders": 1,
+                "selected_physical_senders": 1
+              },
+              "nonconflict": {
+                "candidate_slots": 4,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 7,
+            "numel": 117040,
+            "members": [
+              0,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 2,
+                "candidate_physical_senders": 2,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 8,
+            "numel": 4478775,
+            "members": [],
+            "physical_clients": [],
+            "fallback": "insufficient_distinct_clients"
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "regions": [
+          {
+            "region": 0,
+            "numel": 2120985,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 10,
+                "candidate_physical_senders": 9,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 1,
+            "numel": 185955,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 10,
+                "candidate_physical_senders": 9,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 2,
+            "numel": 339416,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 10,
+                "candidate_physical_senders": 9,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 3,
+            "numel": 671880,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 9,
+                "candidate_physical_senders": 8,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 4,
+            "numel": 29040,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 9,
+                "candidate_physical_senders": 8,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 5,
+            "numel": 1300464,
+            "members": [
+              1,
+              3,
+              5,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              49,
+              70,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 6,
+                "candidate_physical_senders": 6,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 6,
+            "numel": 2180801,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 7,
+                "candidate_physical_senders": 6,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 7,
+            "numel": 117040,
+            "members": [
+              1,
+              3,
+              7,
+              8
+            ],
+            "physical_clients": [
+              70,
+              81,
+              95,
+              97
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 4,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 8,
+            "numel": 4478775,
+            "members": [
+              3,
+              7
+            ],
+            "physical_clients": [
+              70,
+              95
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 2,
+                "candidate_physical_senders": 2,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "regions": [
+          {
+            "region": 0,
+            "numel": 2120985,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 10,
+                "candidate_physical_senders": 9,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 1,
+            "numel": 185955,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 10,
+                "candidate_physical_senders": 9,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 2,
+            "numel": 339416,
+            "members": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              84,
+              86,
+              88,
+              98
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 9,
+                "candidate_physical_senders": 8,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 3,
+            "numel": 671880,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 9,
+                "candidate_physical_senders": 8,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 4,
+            "numel": 29040,
+            "members": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              34,
+              40,
+              67,
+              84,
+              86,
+              88,
+              98
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 8,
+                "candidate_physical_senders": 7,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 5,
+            "numel": 1300464,
+            "members": [
+              3,
+              5,
+              6,
+              7
+            ],
+            "physical_clients": [
+              34,
+              84,
+              98
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 4,
+                "candidate_physical_senders": 3,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 6,
+            "numel": 2180801,
+            "members": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              8
+            ],
+            "physical_clients": [
+              40,
+              67,
+              78,
+              84,
+              86,
+              88
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 7,
+                "candidate_physical_senders": 6,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 7,
+            "numel": 117040,
+            "members": [
+              5,
+              6
+            ],
+            "physical_clients": [
+              84
+            ],
+            "fallback": "insufficient_distinct_clients"
+          },
+          {
+            "region": 8,
+            "numel": 4478775,
+            "members": [
+              6
+            ],
+            "physical_clients": [
+              84
+            ],
+            "fallback": "insufficient_distinct_clients"
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "regions": [
+          {
+            "region": 0,
+            "numel": 2120985,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              40,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 10,
+                "candidate_physical_senders": 9,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 1,
+            "numel": 185955,
+            "members": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 9,
+                "candidate_physical_senders": 8,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 2,
+            "numel": 339416,
+            "members": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 9,
+                "candidate_physical_senders": 8,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 3,
+            "numel": 671880,
+            "members": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 5,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 4,
+            "numel": 29040,
+            "members": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 5,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 5,
+            "numel": 1300464,
+            "members": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 5,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 6,
+            "numel": 2180801,
+            "members": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 5,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 7,
+            "numel": 117040,
+            "members": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 5,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 8,
+            "numel": 4478775,
+            "members": [
+              1,
+              3,
+              8
+            ],
+            "physical_clients": [
+              70,
+              73
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 3,
+                "candidate_physical_senders": 2,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "regions": [
+          {
+            "region": 0,
+            "numel": 2120985,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              27,
+              54,
+              56,
+              63,
+              67,
+              87,
+              88,
+              92
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 10,
+                "candidate_physical_senders": 9,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 1,
+            "numel": 185955,
+            "members": [
+              0,
+              2,
+              3,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              54,
+              56,
+              63,
+              67,
+              87,
+              88,
+              92
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 7,
+                "candidate_physical_senders": 7,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 2,
+            "numel": 339416,
+            "members": [
+              0,
+              2,
+              3,
+              6,
+              8,
+              9
+            ],
+            "physical_clients": [
+              54,
+              56,
+              63,
+              67,
+              87,
+              92
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 6,
+                "candidate_physical_senders": 6,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 3,
+            "numel": 671880,
+            "members": [
+              2,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              54,
+              56,
+              67,
+              88
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 4,
+                "candidate_physical_senders": 4,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 4,
+            "numel": 29040,
+            "members": [
+              2,
+              6,
+              8
+            ],
+            "physical_clients": [
+              54,
+              56,
+              67
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 3,
+                "candidate_physical_senders": 3,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 5,
+            "numel": 1300464,
+            "members": [
+              6,
+              8
+            ],
+            "physical_clients": [
+              54,
+              56
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 2,
+                "candidate_physical_senders": 2,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 6,
+            "numel": 2180801,
+            "members": [
+              2,
+              6,
+              7
+            ],
+            "physical_clients": [
+              54,
+              67,
+              88
+            ],
+            "strata": {
+              "conflict": {
+                "candidate_slots": 0,
+                "candidate_physical_senders": 0,
+                "selected_physical_senders": 0
+              },
+              "nonconflict": {
+                "candidate_slots": 3,
+                "candidate_physical_senders": 3,
+                "selected_physical_senders": 2
+              }
+            },
+            "zero_norm_direction_slots": 0
+          },
+          {
+            "region": 7,
+            "numel": 117040,
+            "members": [
+              6
+            ],
+            "physical_clients": [
+              54
+            ],
+            "fallback": "insufficient_distinct_clients"
+          },
+          {
+            "region": 8,
+            "numel": 4478775,
+            "members": [],
+            "physical_clients": [],
+            "fallback": "insufficient_distinct_clients"
+          }
+        ]
+      }
+    ],
+    "primary_q_compared_classes_only": {
+      "pairs": 122,
+      "valid_pairs": 122,
+      "invalid_reasons": {},
+      "outcomes": {
+        "better": 101,
+        "worse": 21
+      },
+      "delta_ce": {
+        "n": 122,
+        "mean": -0.02781052083195439,
+        "median": -0.002675473690032959,
+        "min": -0.23392702639102936,
+        "max": 0.003964583079020183
+      },
+      "physical_senders": 21,
+      "physical_receivers": 29,
+      "sign_analysis_distinct_senders": 21,
+      "regions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "profile_pairs": {
+        "P4->P4": 10,
+        "P4->P5": 9,
+        "P6->P4": 2,
+        "P6->P5": 15,
+        "P4->P2": 8,
+        "P5->P6": 10,
+        "P2->P4": 4,
+        "P2->P6": 3,
+        "P6->P2": 2,
+        "P5->P2": 6,
+        "P5->P5": 6,
+        "P6->P6": 9,
+        "P2->P5": 5,
+        "P5->P4": 4,
+        "P2->P1": 4,
+        "P4->P1": 2,
+        "P4->P3": 5,
+        "P2->P2": 1,
+        "P1->P6": 2,
+        "P1->P1": 2,
+        "P0->P6": 1,
+        "P0->P1": 1,
+        "P5->P1": 6,
+        "P5->P0": 1,
+        "P1->P5": 1,
+        "P1->P4": 1,
+        "P3->P4": 1,
+        "P3->P5": 1
+      },
+      "q_by_outcome": {
+        "better": {
+          "n": 101,
+          "mean": 0.008494268906951501,
+          "median": 0.006502499218136638,
+          "min": 4.333694886557724e-05,
+          "max": 0.022799952382323192
+        },
+        "worse": {
+          "n": 21,
+          "mean": 0.008048205508544778,
+          "median": 0.00709601756793912,
+          "min": 4.333694886557724e-05,
+          "max": 0.017607443256178183
+        },
+        "neutral": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "sender_own_gain": {
+        "n": 122,
+        "mean": 1.3532953620597254,
+        "median": 1.2531430879607797,
+        "min": 0.5354094263748266,
+        "max": 2.1064683236181736
+      },
+      "sender_own_gain_positive_receiver_worse": 21,
+      "mixed_receiver_sign_contexts": 17,
+      "sender_region_contexts": 64,
+      "multiple_receiver_contexts": 58,
+      "classes": {
+        "all": {
+          "count": 987,
+          "outcomes": {
+            "better": 634,
+            "worse": 353
+          },
+          "delta_ce": {
+            "n": 987,
+            "mean": -0.027988102298377133,
+            "median": -0.0011075735092163086,
+            "min": -0.75777268409729,
+            "max": 0.13208305835723877
+          }
+        },
+        "sender_training_classes": {
+          "count": 987,
+          "outcomes": {
+            "better": 634,
+            "worse": 353
+          },
+          "delta_ce": {
+            "n": 987,
+            "mean": -0.027988102298377133,
+            "median": -0.0011075735092163086,
+            "min": -0.75777268409729,
+            "max": 0.13208305835723877
+          }
+        },
+        "q_compared_classes": {
+          "count": 987,
+          "outcomes": {
+            "better": 634,
+            "worse": 353
+          },
+          "delta_ce": {
+            "n": 987,
+            "mean": -0.027988102298377133,
+            "median": -0.0011075735092163086,
+            "min": -0.75777268409729,
+            "max": 0.13208305835723877
+          }
+        }
+      },
+      "auc": {
+        "q": {
+          "value": 0.5075436115040075,
+          "pairs": 122
+        },
+        "negative_signed_LOO_cosine": {
+          "value": 0.7197076850542197,
+          "pairs": 122
+        },
+        "clipped_direction_risk": {
+          "value": 0.5,
+          "pairs": 122
+        },
+        "negative_pair_cosine": {
+          "value": 0.6555869872701556,
+          "pairs": 122
+        }
+      },
+      "incremental_status": "descriptive_only",
+      "minimum_sample_requirements": {
+        "each_ce_sign_pairs": 10,
+        "distinct_senders": 10,
+        "rounds": 3
+      },
+      "OLS": {
+        "status": "descriptive_leave_round_out",
+        "folds": [
+          {
+            "round": 2,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 3,
+            "train": 94,
+            "test": 28
+          },
+          {
+            "round": 4,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 5,
+            "train": 96,
+            "test": 26
+          }
+        ],
+        "controls": [],
+        "direction_mse": 0.0018339113714740801,
+        "direction_plus_q_mse": 0.0019094042378462004,
+        "relative_mse_reduction": -0.041164948070222064,
+        "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+      },
+      "OLS_same_magnitude_own_gain_controls": {
+        "status": "descriptive_leave_round_out",
+        "folds": [
+          {
+            "round": 2,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 3,
+            "train": 94,
+            "test": 28
+          },
+          {
+            "round": 4,
+            "train": 88,
+            "test": 34
+          },
+          {
+            "round": 5,
+            "train": 96,
+            "test": 26
+          }
+        ],
+        "controls": [
+          "alpha",
+          "scaled_delta_l2",
+          "ce_before",
+          "sender_own_gain"
+        ],
+        "direction_mse": 0.0008289380028114058,
+        "direction_plus_q_mse": 0.0008469750884827127,
+        "relative_mse_reduction": -0.02175926982492389,
+        "warning": "single-seed dependent pairs; exploratory association, not Gate effectiveness"
+      }
+    },
+    "coverage": [
+      {
+        "round": 1,
+        "regions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "union_coordinate_fraction_full": 0.6079625844992925,
+        "pairs_by_stratum": {
+          "conflict": 6,
+          "nonconflict": 28
+        }
+      },
+      {
+        "round": 2,
+        "regions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "union_coordinate_fraction_full": 1.0,
+        "pairs_by_stratum": {
+          "nonconflict": 34
+        }
+      },
+      {
+        "round": 3,
+        "regions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "union_coordinate_fraction_full": 0.5977178057126371,
+        "pairs_by_stratum": {
+          "nonconflict": 28
+        }
+      },
+      {
+        "round": 4,
+        "regions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "union_coordinate_fraction_full": 1.0,
+        "pairs_by_stratum": {
+          "nonconflict": 34
+        }
+      },
+      {
+        "round": 5,
+        "regions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "union_coordinate_fraction_full": 0.5977178057126371,
+        "pairs_by_stratum": {
+          "nonconflict": 26
+        }
+      }
+    ],
+    "cost": {
+      "pairs": 156,
+      "injection_forwards": 156,
+      "baseline_zero_control_forwards": 88,
+      "sender_post_forwards": 31,
+      "diagnostic_seconds_including_snapshot_io": 3.3824838179862127,
+      "raw_tensor_bytes": 2093579776,
+      "online_extra_delta_downlink_float32_proxy": 636464464,
+      "online_feedback_class_delta_count_uint32_float32_proxy": 29952,
+      "max_injection_queries_per_round_physical_receiver": 9,
+      "unique_receiver_round_slot_baseline_forwards": 42,
+      "native_one_direction_slot_parameter_bytes": 1046789888
+    }
+  },
+  "verification": {
+    "all_100_probe_plans_recomputed_from_train_only": true,
+    "all_probe_indices_belong_to_recipient_partition": true,
+    "sampling_checks": [
+      {
+        "round": 1,
+        "hash_strata_selection_reproduced": true,
+        "q_max_abs_error": 0,
+        "native_alpha_max_abs_error": 0
+      },
+      {
+        "round": 2,
+        "hash_strata_selection_reproduced": true,
+        "q_max_abs_error": 0,
+        "native_alpha_max_abs_error": 0
+      },
+      {
+        "round": 3,
+        "hash_strata_selection_reproduced": true,
+        "q_max_abs_error": 0,
+        "native_alpha_max_abs_error": 0
+      },
+      {
+        "round": 4,
+        "hash_strata_selection_reproduced": true,
+        "q_max_abs_error": 0,
+        "native_alpha_max_abs_error": 0
+      },
+      {
+        "round": 5,
+        "hash_strata_selection_reproduced": true,
+        "q_max_abs_error": 0,
+        "native_alpha_max_abs_error": 0
+      }
+    ],
+    "initial_models_equal_prior_S07": true,
+    "actual_slots_equal_prior_S07_first5": true,
+    "core_matches_reviewed_0cc4215": true,
+    "probe_source_hash_matches_frozen_protocol": true,
+    "old_B_E_N_files_unchanged": true,
+    "old_B_E_N_files_checked": 229,
+    "old_activation_evidence_unchanged": true,
+    "old_focused_evidence_unchanged": true,
+    "checkpoint_next_round": 5,
+    "checkpoint_weights_finite": true,
+    "formal400_directory_exists": false,
+    "all_actual_gates_remained_neutral": true,
+    "max_zero_control_abs_CE": 0.0
+  },
+  "replay_round2": {
+    "round": 2,
+    "no_SGD": true,
+    "no_dataset_access": true,
+    "native_hook_output_exactly_equal": true,
+    "history_equal": true,
+    "rng_equal": true,
+    "uploads_and_dispatch_unchanged": true,
+    "template_models_unchanged": true,
+    "CE_backend": "CPU; numerical values not pooled with original GPU observations"
+  },
+  "reviewed_commit": "0cc42156bd7add87d53525f1646d1655b55b7a33",
+  "resources": {
+    "pid": 2537338,
+    "device": "cuda:0",
+    "cuda_visible_devices": "0",
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "status": "completed_short_preflight",
+    "wall_seconds": 35.915582210058346,
+    "peak_allocated_bytes": 1653921280,
+    "peak_reserved_bytes": 1803550720
+  },
+  "linux_tests": {
+    "passed": 125,
+    "warnings": 13,
+    "seconds": 11.09,
+    "log_sha256": "827b55435834447823c02bd0522c56d7540ba0f78701631765d8e4a82ced2a99"
+  },
+  "original_evidence_sha256": {
+    "raw_round_01.pt": "1609942ee4b5a281088505dea0009b5c53100bd4fbaec5c03c6a940646a16a85",
+    "raw_round_02.pt": "5f31d04a711704067672bbff35c5c52437cd4db3752b82f3810c90358fc96f44",
+    "diagnostic_completed.json": "723474fbe6d36a36182a76c2b1ca7bcaf0c295e6066b46242b9e599c3fc17c8c",
+    "raw_round_05.pt": "fa4f6a6df175a9761bce6f3289169c9b378fa5430cf5782e90b32cb2f943fd6b",
+    "raw_round_04.pt": "40dba25f6e22fba93a7cd93ef39e73c4bf2bbec9fe3a70a447ceb987816fdee5",
+    "probe_plans.json": "0a3757f1fafaeab653a0010dc0e375a3b0b53ed594e08c20f6de220a11805214",
+    "raw_round_03.pt": "de51508aab40b94fb9531579f5657191d38f42eea62e515a4495b633c35f4fe7",
+    "receiver_ce.jsonl": "0083d0e5ead35e0cc549ba8e8fb77c606a57aeeee5286437857d6fb5168911ac",
+    "protocol.json": "7831b8e01e6c6903239c4e2bd7d6413aa78ec1f848b69968174e4098ed9f3a8b",
+    "fixed_probes.pt": "a4fdfa7d1c70e4ea72a8b9c13fade72f7548d70d2b7e4d82fd30e825542a8e04",
+    "s07/activation_5/preflight_resources.json": "2ddb39ac4c2d4330c9a94cf2f533326e7de0881c682061408bf06840f96bab65",
+    "s07/activation_5/accuracy_summary.csv": "bd276c00fa64c18dd5890e92056ee028baac37445aa54322e2f24bdab5e8a820",
+    "s07/activation_5/completed.json": "182a2c311a6fd9fad5f53fb12abe5bf9a2d00286b8f937ffa8a9dd7236ab5605",
+    "s07/activation_5/best_full.pt": "b218906847cee70fff48b1f9a59f49859b86fc9c2b7a672c1868b77a8d79ae31",
+    "s07/activation_5/latest.pt": "9aab3caf71d34935162649e3fd7ca2c3c2693d933409b99d75b2469695962f2c",
+    "s07/activation_5/method_diagnostics.csv": "0714a077a02336aaf34748e9a203abfb7c79f4102c9e42933a49461da03cb8e6",
+    "s07/activation_5/activation_observations.jsonl": "5a50b76695cf99f9b038881557a73b13ca26f35d28f0b62691b10d9c8928c51b",
+    "s07/activation_5/preflight_provenance.json": "40fee994eec70710191c134060a3579b0376696ea5243a5a51585a2e6a81f31c",
+    "s07/activation_5/manifest.json": "021a204247ce804f065e1b578704a10e0e5f05f719775189f9e1ee47599c7360",
+    "s07/activation_5/accuracy_each_round.csv": "dd02812e6a66cb865a86fd153847c0a4ec66370eb161c5e396d344e459575590",
+    "s07/activation_5/summary.json": "710769005ddd55aa4db2f1653508dcce86c10c365c69d2272a5610fac055ad6b"
+  }
+}
