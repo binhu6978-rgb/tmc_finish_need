@@ -593,3 +593,15 @@ C1实际完成400轮，test-oracle peak为36.0200%（387轮），Final35.5300%�
 `tools/run_e03_tonight10.sh --dry-run` 输出11条固定命令：C2重跑加十组T实验。`--execute` 严格一次一个，物理GPU0、hh环境，顺序C2→T01→T04→T05→T06→T09→T02→T03→T07→T08→T10；套件PID2643515，启动C2 PID2643520。新C2启动manifest证明七档初始化与C1完全一致、分区相同、只评P6。独立方法失败保留日志、不重试，继续其余既定方法；既有结果和其他用户进程均不动。
 
 结果根为 `runs/e03_tonight10_400_seed1/`。完成后自动验证每组真实400轮、best/latest和逐轮文件对齐，生成report/comparison.csv、summary.json、Accuracy/CE曲线及固定对照表。当前仅为启动交付，不能声称十组已经完成或超越E03。证据在 `docs/evidence/e03_tonight10_launch/`；训练期间不修改冻结算法、不根据测试峰值调参、不追加实验。
+
+## 本地REF及L01–L11：六批双进程400轮（启动交付）
+
+用户新增授权本地12组：新REF为原M2 lambda4，所有L组首先与此本地控制比较，不按服务器37.29%判断优劣。服务器7577f42版本C2/T队列未修改、未停止；本地冻结训练源码为 `975ccb1ac030cf9a937a60b589fe8539c97f7f36`。
+
+本地新增Local12Hooks及参考只读包装、固定JSON、原入口批量调用器和报告工具。原七模型/聚合函数/采样/SGD未改；模块仅在选定新组时启用。REF直接返回原M2计算，额外只读记录更新L2。L01分离下发融合与实际SGD；L02首轮保留E03、同步后与REF代数等价，作为中性数值对照，不声称新机制。L03–L05按真实模块保护BN、分类器或二者；L06按物理能力ID0–39保护，L07按实际Full profile6；保护时改原始logit再统一稳定化。L08排除BN证据，L09等权平均有效特征/分类器余弦再计算负风险；L10对不同物理客户端的内部成对中位数作外层中位数；L11用用户规定的幅度有界负点积风险，无新增可调参数。公式和限制见docs/E03_LOCAL12_DESIGN.md。
+
+本地fd专项及旧baseline/Full-only回归 **93 passed**（13.70秒），另有完整12组构造日志的报告/实际PNG绘图检查 **1 passed**（4.13秒），合计94。含12组原训练循环两轮合成数据、REF与原M2逐键一致、L02与REF最终权重相同、物理去重、参数保护范围、零参考、原覆盖分母、容量保护、固定队列/失败等待同批/禁止覆盖与显存仅影响调度。这些均是代码核验，不冒充CIFAR性能实验。
+
+正式六批已在本地4080 SUPER启动，conda fd为D:/software/minicoonda/envs/fd/python.exe，PyTorch2.7.1+cu128。数据根C:/Users/admin/Desktop/submissioning/code/ori/AAAITMC_finish_need_code/data/cifar100，完整50000/10000，原有分区。套件PID18468，第一批REF PID40452、L01 PID50084，实际双进程使用GPU0且初始七档、分区一致，只评P6。启动后GPU总占约5882MiB/16GB，剩余10166MiB；没有改batch或训练协议。Windows使用fd激活所需Library/bin和Scripts路径，并保留原main已有KMP_DUPLICATE_LIB_OK设置，报告绘图已验证可用。
+
+输出根为runs/e03_local12_full400_seed1；按REF/L01、L02/L03、L04/L05、L06/L07、L08/L09、L10/L11自动执行。每批两组真实完成400轮后才进入下一批；失败保存错误/checkpoint并等待同批另一组结束后停止后续批次，不自动重试。结束自动生成以本地REF为对照的表格、全部400轮Accuracy/CE曲线及冲突/权重/更新L2统计。启动证据在docs/evidence/e03_local12_launch/。本节仅确认启动，不预报任何精度收益；完成后再按真实结果给出最多两个建议机制或保留REF，并停止本批扩展。
