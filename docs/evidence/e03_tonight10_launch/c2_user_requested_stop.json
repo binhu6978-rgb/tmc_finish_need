@@ -1,0 +1,7 @@
+{
+  "reason": "User requested stop C2, modify code, rerun C2 then T experiments",
+  "pid": 2628652,
+  "completed_csv_rounds_at_stop": 114,
+  "time": 1792423910.6836207,
+  "argv": "/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method c2 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --conflict-lambda 4 --method-run-name C2_full_only_400_seed1 --method-output-root runs/e03_scope_components400_seed1 "
+}

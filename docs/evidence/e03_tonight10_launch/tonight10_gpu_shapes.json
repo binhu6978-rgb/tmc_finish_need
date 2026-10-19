@@ -1,0 +1,33 @@
+{
+  "purpose": "synthetic real-seven-shape aggregation memory/identity check, no SGD or performance result",
+  "results": [
+    {
+      "method": "t05",
+      "seconds": 0.304932523984462,
+      "peak_allocated_bytes": 1233111040,
+      "peak_reserved_bytes": 1270874112,
+      "conflict_slots": 1
+    },
+    {
+      "method": "t06",
+      "seconds": 0.5080180229851976,
+      "peak_allocated_bytes": 1233111040,
+      "peak_reserved_bytes": 1270874112,
+      "conflict_slots": 1
+    },
+    {
+      "method": "t09",
+      "seconds": 0.13346693094354123,
+      "peak_allocated_bytes": 1254166016,
+      "peak_reserved_bytes": 1285554176,
+      "conflict_slots": 1
+    },
+    {
+      "method": "c2",
+      "seconds": 0.18472790892701596,
+      "peak_allocated_bytes": 1533502464,
+      "peak_reserved_bytes": 1763704832,
+      "conflict_slots": 1
+    }
+  ]
+}
