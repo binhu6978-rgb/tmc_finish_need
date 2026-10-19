@@ -1,0 +1,13 @@
+{
+  "experiments": ["c1", "c2"],
+  "order": "C1 completes400, then C2; one process on physical GPU0, conda hh",
+  "epochs": 400, "seed": 1, "conflict_lambda": 4.0,
+  "data": "Original CIFAR100 partition alpha=.3; 100 clients, 10 original slots, seven models, local SGD5epochs batch50; Full-only official evaluation, isolated RNG",
+  "initialization": "Original fresh seed1 independent seven-profile initialization, NOT continuation from E03 final",
+  "c1": "Native M2 output only in the intersection of all actual uploads; native AdaptiveFL elsewhere",
+  "c2": "Same C1/M2 weighted dispatch fusion. Delta=d; reference=original M2 slot-LOO; p=min(dot(d,r/||r||),0)*r/||r||. Intrinsic gate=exp(-4*max(0,-cos)). Learning=sum native n_i/sum(n) * (d_i+(g_i-1)*p_i). No renormalization of projection gates. Native outside intersection.",
+  "no_conflict": "Exact original native aggregation",
+  "first_round": "C2 preserves C1/M2's weighted dispatch fusion; only actual SGD delta component changes. Never treat independent dispatch differences as SGD deltas.",
+  "references": {"B00_peak":36.40,"E03_peak":37.29,"N08_peak":37.18},
+  "stopping": "400 complete rounds per candidate; no tuning, extra seeds, methods, or automatic retry. All peaks labelled test-oracle peak."
+}
