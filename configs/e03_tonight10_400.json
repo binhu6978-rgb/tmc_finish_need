@@ -1,0 +1,19 @@
+{
+  "order": ["c2", "t01", "t04", "t05", "t06", "t09", "t02", "t03", "t07", "t08", "t10"],
+  "epochs": 400, "seed": 1, "physical_gpu": 0, "concurrency": 1,
+  "conflict_lambda": 4.0, "fixed_scale": 0.98,
+  "protocol": "Original seven-model CIFAR100 partition alpha=.3,100 clients,10 slots,5 local epochs,batch50,SGD;Full-only with isolated evaluation RNG",
+  "c2": "Explicitly authorized fresh restart after source update; old interrupted C2 kept unchanged. Same frozen C2 mathematical rule.",
+  "t01": "Native E03 then original M3 static shared/remainder geometry: scales1/.98 of total aggregate displacement",
+  "t02": "Native E03 then global .98 of total displacement from Full anchor",
+  "t03": "T01 only if the original M2 reports any negative cosine",
+  "t04": "First round native AdaptiveFL; rounds2-400 exact original M2",
+  "t05": "Common intersection, exclude all own-physical-client slots; mean peer slots before sample-weighted distinct-client LOO",
+  "t06": "Direct-sum pairwise-overlap cosine; exclude own physical client; each distinct peer sample mass once, split equally among its slots; global upload reweighting",
+  "t07": "Original M2 score on classifier.* keys only, global reweighting",
+  "t08": "Original M2 score on all non-classifier keys only, global reweighting",
+  "t09": "Native E03 everywhere; in evidence intersection add max(alpha_i-beta_i,0)*remaining_i for negative slots only; keep beta_i*negative_projection_i and weighted dispatch fusion",
+  "t10": "Native E03 minus .02 of E03-weighted actual SGD increment outside current all-upload intersection; no dispatch-fusion scaling",
+  "failure": "Keep failed results, no retry or parameter changes; record failure, continue remaining independent methods serially",
+  "selection": "Official test-oracle peaks, exploratory single seed, no online tuning; no additional experiments"
+}

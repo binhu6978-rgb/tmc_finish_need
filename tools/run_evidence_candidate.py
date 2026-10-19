@@ -26,8 +26,8 @@ def main():
     try:
         sys.argv=['main_fed_ori.py',*remaining];args=args_parser()
     finally:sys.argv=argv
-    if args.method not in ('c1','c2') or args.seed!=1 or args.epochs!=400 or args.generate_data!=0 or args.eval_profiles!='full':
-        raise ValueError('Fixed C1/C2 seed1 full-only400 protocol required')
+    if args.method not in ('c1','c2',*[f't{i:02d}' for i in range(1,11)]) or args.seed!=1 or args.epochs!=400 or args.generate_data!=0 or args.eval_profiles!='full':
+        raise ValueError('Fixed C1/C2/T01-T10 seed1 full-only400 protocol required')
     args.model='resnet';args.dataset='cifar100';args.algorithm='AdaptiveFL'
     args.device=torch.device('cuda:0');torch.set_num_threads(2)
     path=prepare_output(args);started=time.perf_counter()

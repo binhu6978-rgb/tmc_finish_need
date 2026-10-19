@@ -515,7 +515,10 @@ class RunLog:
     def __init__(self,args,models):
         self.args=args
         self.path=prepare_output(args)
-        if args.method in ('c1','c2'):
+        if args.method in [f't{i:02d}' for i in range(1,11)]:
+            from tonight_aggregation import TonightHooks
+            self.hooks=TonightHooks(args,models)
+        elif args.method in ('c1','c2'):
             from evidence_aggregation import EvidenceHooks
             self.hooks=EvidenceHooks(args,models)
         elif args.method.startswith('s'):
@@ -543,6 +546,7 @@ class RunLog:
         files=('main_fed_ori.py','Algorithm/Training_AdaptiveFL.py','models/Update.py','models/Fed.py','models/resnet.py','models/test.py','utils/options.py','adapterfl_methods.py','utils/get_datatset_new.py','utils/set_seed.py')
         if getattr(self.hooks,'is_scope',False):files=(*files,'semcons_scope.py')
         if getattr(self.hooks,'is_evidence',False):files=(*files,'evidence_aggregation.py','tools/run_evidence_candidate.py','configs/e03_scope_components400.json')
+        if getattr(self.hooks,'is_tonight',False):files=(*files,'tonight_aggregation.py','tools/run_evidence_candidate.py','configs/e03_tonight10_400.json')
         self.identity['source_sha256']={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}
         if args.method_resume:
             # Local, user-selected research checkpoint includes RNG tuples.
