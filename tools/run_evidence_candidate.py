@@ -21,14 +21,17 @@ from adapterfl_methods import prepare_output
 
 def main():
     extra=argparse.ArgumentParser(add_help=False);extra.add_argument('--dataset-root',type=Path,required=True)
+    extra.add_argument('--local-reference',action='store_true',help='Native M2 with read-only local-suite norm logging')
     opt,remaining=extra.parse_known_args()
     argv=sys.argv
     try:
         sys.argv=['main_fed_ori.py',*remaining];args=args_parser()
     finally:sys.argv=argv
-    if args.method not in ('c1','c2',*[f't{i:02d}' for i in range(1,11)]) or args.seed!=1 or args.epochs!=400 or args.generate_data!=0 or args.eval_profiles!='full':
-        raise ValueError('Fixed C1/C2/T01-T10 seed1 full-only400 protocol required')
+    if args.method not in ('m2','c1','c2',*[f't{i:02d}' for i in range(1,11)],*[f'l{i:02d}' for i in range(1,12)]) or args.seed!=1 or args.epochs!=400 or args.generate_data!=0 or args.eval_profiles!='full':
+        raise ValueError('Fixed E03 controls seed1 full-only400 protocol required')
     args.model='resnet';args.dataset='cifar100';args.algorithm='AdaptiveFL'
+    args._local12_reference=opt.local_reference
+    if opt.local_reference and args.method!='m2':raise ValueError('Local REF must use original M2')
     args.device=torch.device('cuda:0');torch.set_num_threads(2)
     path=prepare_output(args);started=time.perf_counter()
     try:

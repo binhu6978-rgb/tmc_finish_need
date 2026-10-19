@@ -1,0 +1,20 @@
+{
+  "batches": [["REF","L01"],["L02","L03"],["L04","L05"],["L06","L07"],["L08","L09"],["L10","L11"]],
+  "epochs":400,"seed":1,"conflict_lambda":4.0,"gpu":0,"max_parallel":2,
+  "data":"CIFAR100 all50000 training10000 official test; original cached100-client alpha.3 partition",
+  "training":"Original seven models,10 slots,available4:3:3,local_ep5,batch50,SGD .01 decay.998 momentum.5 wd.0001; Full-only eval batch128,isolated RNG",
+  "REF":"Exact native MethodHooks(m2),lambda4; PRIMARY local control, not historical Linux E03",
+  "L01":"E03 plus native dispatch fusion minus M2 dispatch fusion. Synced identical dispatch anchor returns exact E03.",
+  "L02":"First round exact E03, then L01. Because original loop synchronizes every model this is an algebraic negative control, not a new post-sync mathematical effect.",
+  "L03":"E03 score, native aggregation for true BatchNorm affine keys only",
+  "L04":"E03 score, native aggregation for classifier.* only",
+  "L05":"E03 score, native aggregation for both BatchNorm affine and classifier keys",
+  "L06":"E03 score; low physical capability IDs0-39 with negative cosine get intrinsic gate1; all other intrinsic gates unchanged",
+  "L07":"E03 score; actual Full profile6 uploads get intrinsic gate1",
+  "L08":"Native M2 scoring on all common keys except true BatchNorm affine keys; global upload weighting",
+  "L09":"Mean of valid backbone(noBN) and classifier LOO cosines, equal weight; BN excluded; apply original risk after cosine fusion",
+  "L10":"Common intersection; per sender slot median peer-slot cosine within each other physical client, then median across distinct peers; no same-physical slots in reference; no sample-count/norm weighting of medians",
+  "L11":"Original slot-LOO reference, risk=clamp(2*max(0,-dot)/(deltaSquare+referenceSquare+1e-12),0,1), invalid reference neutral; native M2 weight normalization",
+  "failure":"Keep logs/checkpoints; no automatic retry or parameter changes; wait for the other job in this batch then stop subsequent batches on failure",
+  "no_extensions":"Exactly12 runs, no extra seed, tuning, Q, Memory or new combinations"
+}

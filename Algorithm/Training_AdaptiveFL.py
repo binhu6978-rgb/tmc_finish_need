@@ -84,7 +84,7 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
 
             if method_run:
                 method_run.hooks.configure_local(local)
-                if args.method in ('m2', 'm5', 'c1', 'c2') or getattr(method_run.hooks,'is_tonight',False) or (scope and scope.needs_dispatch):
+                if args.method in ('m2', 'm5', 'c1', 'c2') or getattr(method_run.hooks,'is_tonight',False) or getattr(method_run.hooks,'is_local12',False) or (scope and scope.needs_dispatch):
                     # These are the actual per-slot pre-training weights, including
                     # independent first-round submodel initialization.
                     dispatched_snapshots.append(copy.deepcopy(net_glob_list[feedback_model_idx].state_dict()))
@@ -121,7 +121,7 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
 
         server_begin = time.perf_counter() if method_run else None
         if method_run:
-            if getattr(method_run.hooks,'is_tonight',False):
+            if getattr(method_run.hooks,'is_tonight',False) or getattr(method_run.hooks,'is_local12',False):
                 method_run.hooks.set_slots(zip(idx_users,feedback_list))
             w_glob_param = method_run.hooks.aggregate(w_locals, lens, net_glob_list[-1].state_dict(), dispatched_snapshots)
         else:

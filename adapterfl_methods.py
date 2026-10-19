@@ -515,7 +515,13 @@ class RunLog:
     def __init__(self,args,models):
         self.args=args
         self.path=prepare_output(args)
-        if args.method in [f't{i:02d}' for i in range(1,11)]:
+        if args.method=='m2' and getattr(args,'_local12_reference',False):
+            from local12_aggregation import LocalReferenceHooks
+            self.hooks=LocalReferenceHooks(args,models)
+        elif args.method in [f'l{i:02d}' for i in range(1,12)]:
+            from local12_aggregation import Local12Hooks
+            self.hooks=Local12Hooks(args,models)
+        elif args.method in [f't{i:02d}' for i in range(1,11)]:
             from tonight_aggregation import TonightHooks
             self.hooks=TonightHooks(args,models)
         elif args.method in ('c1','c2'):
@@ -547,6 +553,7 @@ class RunLog:
         if getattr(self.hooks,'is_scope',False):files=(*files,'semcons_scope.py')
         if getattr(self.hooks,'is_evidence',False):files=(*files,'evidence_aggregation.py','tools/run_evidence_candidate.py','configs/e03_scope_components400.json')
         if getattr(self.hooks,'is_tonight',False):files=(*files,'tonight_aggregation.py','tools/run_evidence_candidate.py','configs/e03_tonight10_400.json')
+        if getattr(self.hooks,'is_local12',False):files=(*files,'local12_aggregation.py','tonight_aggregation.py','tools/run_evidence_candidate.py','configs/e03_local12_400.json')
         self.identity['source_sha256']={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}
         if args.method_resume:
             # Local, user-selected research checkpoint includes RNG tuples.
