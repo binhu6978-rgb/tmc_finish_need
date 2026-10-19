@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import torch
 
 
 def stats(values):
@@ -37,7 +38,10 @@ def incremental(rows,controlled=False):
             x=np.array([features(r,add_q) for r in train]);z=np.array([features(r,add_q) for r in test])
             mean=x.mean(0);scale=x.std(0);scale[scale<1e-12]=1
             x=np.column_stack([np.ones(len(x)),(x-mean)/scale]);z=np.column_stack([np.ones(len(z)),(z-mean)/scale])
-            coefficient=np.linalg.lstsq(x,np.array([r['delta_ce'] for r in train]),rcond=None)[0]
+            # Same float64 OLS objective. Torch's CPU LAPACK also works on the
+            # local Windows environment whose NumPy lstsq DLL fails to load.
+            coefficient=torch.linalg.lstsq(torch.from_numpy(x),
+                torch.tensor([r['delta_ce'] for r in train],dtype=torch.float64),driver='gelsd').solution.numpy()
             predictions[add_q].extend((z@coefficient).tolist())
     y=np.array(truth);a=float(np.mean((y-predictions[False])**2));b=float(np.mean((y-predictions[True])**2))
     return {'status':'descriptive_leave_round_out','folds':folds,'controls':controls,'direction_mse':a,'direction_plus_q_mse':b,

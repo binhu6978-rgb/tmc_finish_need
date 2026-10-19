@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "checkpoint_round": 400,
+  "restored_slots": 50,
+  "pair_records": 200,
+  "max_direction_replay_error": 2.0816681711721685e-16,
+  "max_q_replay_error": 0.0,
+  "round_checks": [
+    {
+      "cohort": 1,
+      "pairs": 32,
+      "mature_anchor_all_slots": true
+    },
+    {
+      "cohort": 2,
+      "pairs": 50,
+      "mature_anchor_all_slots": true
+    },
+    {
+      "cohort": 3,
+      "pairs": 36,
+      "mature_anchor_all_slots": true
+    },
+    {
+      "cohort": 4,
+      "pairs": 50,
+      "mature_anchor_all_slots": true
+    },
+    {
+      "cohort": 5,
+      "pairs": 32,
+      "mature_anchor_all_slots": true
+    }
+  ],
+  "physical_exclusion_native_alpha_original_partition": true,
+  "official_test_loaded": false,
+  "global_updates": 0,
+  "additional_local_SGD": 0,
+  "checkpoint_sha256": "3e3ccfb78c03653e9078ff7326c6cf0780b4a9c744973f0488f7bbc60fe075ff"
+}
