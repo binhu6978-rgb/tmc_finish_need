@@ -1,5 +1,7 @@
 # AdapterFL 六方法与 Full-only 400轮探索实验报告
 
+最新开发审查：基于 bd64c2c 的 SemConsFL S00–S09 结构作用域与功能响应实验。设计与公式见 [SEMCONS_SCOPE10_DESIGN](docs/SEMCONS_SCOPE10_DESIGN.md)，100项快速检查及十组两轮CPU CIFAR子集smoke证据见 [SEMCONS_SCOPE10_VALIDATION](docs/SEMCONS_SCOPE10_VALIDATION.md)。S00/S02权重及训练RNG一致；早期语义Gate中性情况已如实记录。此次没有启动或排队正式400轮S实验，等待独立代码审查。下文保留此前阶段记录。
+
 当前阶段基于 `0e3498c8b076b5df8d7d1ca9449d423346c5e369`，仅增加可选 Full-only 评估、RNG 隔离、日志/峰值快照和固定十组队列。七模型、分区、采样、本地训练、原聚合以及六方法数学公式保持不变。当前验证结果与执行方式见第 12 节；第 1–11 节保留此前实现及审查证据，其中“本轮”等表述属于当时阶段。
 
 ## 交付范围与状态

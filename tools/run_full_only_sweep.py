@@ -135,6 +135,12 @@ def run_batch(batch, state, save, validator=validate):
 
 def summarize(batches, output, config=CONFIG):
     cfg = json.loads(Path(config).read_text(encoding='utf-8'))
+    if cfg.get('report',{}).get('kind')=='semcons_scope':
+        if __package__:
+            from .report_semcons_scope10 import report_scope
+        else:
+            from report_semcons_scope10 import report_scope
+        return report_scope(batches,output,cfg['report'])
     if cfg.get('report'):
         if __package__:
             from .report_next10_m2_m3 import report_next10

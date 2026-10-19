@@ -515,7 +515,11 @@ class RunLog:
     def __init__(self,args,models):
         self.args=args
         self.path=prepare_output(args)
-        self.hooks=MethodHooks(args,models)
+        if args.method.startswith('s'):
+            from semcons_scope import ScopeHooks
+            self.hooks=ScopeHooks(args,models)
+        else:
+            self.hooks=MethodHooks(args,models)
         self.rows=[]; self.next_round=0; self.total_time=0.
         self.started=time.perf_counter()
         self.elapsed_before=0.
@@ -534,6 +538,7 @@ class RunLog:
         self.identity['logging_schema']=2
         self.identity['partition_sha256']=getattr(args,'_method_partition_sha256',None)
         files=('main_fed_ori.py','Algorithm/Training_AdaptiveFL.py','models/Update.py','models/Fed.py','models/resnet.py','models/test.py','utils/options.py','adapterfl_methods.py','utils/get_datatset_new.py','utils/set_seed.py')
+        if getattr(self.hooks,'is_scope',False):files=(*files,'semcons_scope.py')
         self.identity['source_sha256']={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}
         if args.method_resume:
             # Local, user-selected research checkpoint includes RNG tuples.
@@ -570,6 +575,9 @@ class RunLog:
                       'training_configuration':{k:str(v) if isinstance(v,(torch.device,Path)) else v for k,v in vars(args).items() if not k.startswith('_')},
                       'rng_compatibility':'isolated evaluation changes the legacy training RNG trajectory; not bitwise identical to historical 300-round runs' if self.eval_rng_policy=='isolated' else 'legacy evaluation RNG consumption',
                       'checkpoint_selection':'latest.pt for resume; best_full.pt is an exploratory official-test-oracle selection, not validation-selected'}
+            if getattr(self.hooks,'is_scope',False):
+                manifest['structural_regions']=self.hooks.regions
+                manifest['scope_geometry_sha256']=self.hooks.geometry_hash
             (self.path/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
         self.accuracy=(self.path/'accuracy_each_round.csv').open('a' if args.method_resume else 'x',newline='',encoding='utf-8')
         self.diagnostics=(self.path/'method_diagnostics.csv').open('a' if args.method_resume else 'x',newline='',encoding='utf-8')

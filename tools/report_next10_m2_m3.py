@@ -60,7 +60,7 @@ def report_next10(batches, output, config):
         ax.plot(rounds,values,label=name,linewidth=1)
     for name, values in reference_curves.items():
         ax.plot(rounds,values,label=name+' historical',linestyle='--',linewidth=1.6)
-    ax.set(xlabel='Communication round',ylabel='Full test Accuracy (%)',title='M2/M3 exploratory sweep: Full Model')
+    ax.set(xlabel='Communication round',ylabel='Full test Accuracy (%)',title=config.get('title','M2/M3 exploratory sweep: Full Model'))
     ax.legend(ncol=4,fontsize=8);ax.grid(alpha=.2);fig.tight_layout()
     fig.savefig(output/'full_accuracy_comparison.png',dpi=180);plt.close(fig)
     for name, values in curves.items():
@@ -77,21 +77,21 @@ def report_next10(batches, output, config):
         writer=csv.DictWriter(f,fieldnames=['round',*curves]);writer.writeheader()
         writer.writerows({'round':r,**{name:v[r-1] for name,v in curves.items()}} for r in rounds)
     (output/'reference_metrics.json').write_text(json.dumps(references,indent=2)+'\n',encoding='utf-8')
-    text=['# Next10 M2/M3: 400-round exploratory results','',
+    text=['# '+config.get('title','Next10 M2/M3: 400-round exploratory results'),'',
           'All peaks are official-test **test-oracle peaks**, not independent validation-selected performance.',
           'This second sweep was chosen after inspecting the previous official-test results; it is further exploration, not an independent confirmation.','',
           'Peak-neighborhood CE is the arithmetic mean in the fixed peak round +/- 2 window, clipped to rounds 1..400.',
           'Peak CE itself is also reported. Tied maxima use the first round.','',
-          '|ID|Method|test-oracle peak|Round|Final|Last20|Last50|Final CE|Peak CE|Peak-window CE|B00 delta pp|E03 delta pp|',
-          '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+          '|ID|Method|test-oracle peak|Round|Final|Last20|Last50|Final CE|Peak CE|Peak-window CE|'+''.join(ref['id']+' delta pp|' for ref in references),
+          '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|'+('---:|'*len(references))]
     for r in records:
-        text.append('|{id}|{method}|{test_oracle_peak:.4f}|{best_round}|{final_accuracy:.4f}|{last20_mean:.4f}|{last50_mean:.4f}|{final_ce:.6f}|{peak_ce:.6f}|{peak_window_ce_mean:.6f}|{peak_minus_B00_pp:+.4f}|{peak_minus_E03_pp:+.4f}|'.format(**r))
+        text.append('|{id}|{method}|{test_oracle_peak:.4f}|{best_round}|{final_accuracy:.4f}|{last20_mean:.4f}|{last50_mean:.4f}|{final_ce:.6f}|{peak_ce:.6f}|{peak_window_ce_mean:.6f}|'.format(**r)+''.join(f"{r['peak_minus_'+ref['id']+'_pp']:+.4f}|" for ref in references))
     for ref in references:
         text += ['',f"Historical {ref['id']}: peak {ref['test_oracle_peak']:.4f}% at round {ref['best_round']}; final {ref['final_accuracy']:.4f}%. Read directly from preserved CSV."]
     best=max(records,key=lambda r:r['test_oracle_peak'])
     text += ['',f"Highest observed next10 test-oracle peak: {best['id']} = {best['test_oracle_peak']:.4f}% (round {best['best_round']}).",
              'A higher peak is an exploratory observation from one seed. It does not establish unbiased performance or a robust improvement.',
              '', '![All Full Accuracy curves](full_accuracy_comparison.png)',
-             '', 'Individual curves: accuracy_curves/N01.png through N10.png. Raw 400-round values: full_accuracy_all_rounds.csv.',
+             '', 'Individual curves: accuracy_curves/<ID>.png. Raw 400-round values: full_accuracy_all_rounds.csv.',
              'Per-round CE, cumulative peak, timings and M2/M3 diagnostics remain in each experiment directory. Best/latest checkpoints are preserved.']
     (output/'report.md').write_text('\n'.join(text)+'\n',encoding='utf-8')

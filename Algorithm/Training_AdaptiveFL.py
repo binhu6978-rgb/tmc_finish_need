@@ -45,6 +45,8 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
     for iter in tqdm(range(method_run.next_round if method_run else 0, args.epochs)):  # tqdm 进度条库
 
         round_begin = time.perf_counter() if method_run else None
+        scope = method_run.hooks if method_run and getattr(method_run.hooks,'is_scope',False) else None
+        if scope:scope.start_round(iter)
 
         print('*' * 80)
         print('Round {:3d}'.format(iter))
@@ -82,12 +84,21 @@ def AdaptiveFL(args, dataset_train, dataset_test, dict_users):
 
             if method_run:
                 method_run.hooks.configure_local(local)
-                if args.method in ('m2', 'm5'):
+                if args.method in ('m2', 'm5') or (scope and scope.needs_dispatch):
                     # These are the actual per-slot pre-training weights, including
                     # independent first-round submodel initialization.
                     dispatched_snapshots.append(copy.deepcopy(net_glob_list[feedback_model_idx].state_dict()))
 
-            w = local.train(round=iter, net=copy.deepcopy(net_glob_list[feedback_model_idx]).to(args.device))  # 这里开始正式训练
+            if scope:
+                local_net = copy.deepcopy(net_glob_list[feedback_model_idx]).to(args.device)
+                before = scope.before_slot(local_net,dataset_train,dict_users[idx],int(idx))
+                native_begin = time.perf_counter()
+                w = local.train(round=iter, net=local_net)
+                native_seconds = time.perf_counter()-native_begin
+                local.adapterfl_metrics=scope.finish_slot(local_net,dataset_train,before,int(idx),int(feedback_model_idx))
+                local.adapterfl_metrics['native_local_train_seconds']=native_seconds
+            else:
+                w = local.train(round=iter, net=copy.deepcopy(net_glob_list[feedback_model_idx]).to(args.device))
 
             if method_run:
                 local_diagnostics.append(getattr(local, 'adapterfl_metrics', {}))

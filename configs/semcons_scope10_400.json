@@ -1,0 +1,113 @@
+{
+  "description": "Prespecified SemConsFL structure, direction, functional observation and normalization controls",
+  "common_args": [
+    "--epochs",
+    "400",
+    "--seed",
+    "1",
+    "--gpu",
+    "0",
+    "--generate_data",
+    "0",
+    "--data_beta",
+    "0.3",
+    "--eval-profiles",
+    "full",
+    "--conflict-lambda",
+    "4.0"
+  ],
+  "batches": [
+    [
+      "S00",
+      "S02"
+    ],
+    [
+      "S01",
+      "S03"
+    ],
+    [
+      "S04",
+      "S05"
+    ],
+    [
+      "S06",
+      "S07"
+    ],
+    [
+      "S08",
+      "S09"
+    ]
+  ],
+  "experiments": [
+    {
+      "id": "S00",
+      "method": "s00",
+      "args": []
+    },
+    {
+      "id": "S01",
+      "method": "s01",
+      "args": []
+    },
+    {
+      "id": "S02",
+      "method": "s02",
+      "args": []
+    },
+    {
+      "id": "S03",
+      "method": "s03",
+      "args": []
+    },
+    {
+      "id": "S04",
+      "method": "s04",
+      "args": []
+    },
+    {
+      "id": "S05",
+      "method": "s05",
+      "args": []
+    },
+    {
+      "id": "S06",
+      "method": "s06",
+      "args": []
+    },
+    {
+      "id": "S07",
+      "method": "s07",
+      "args": []
+    },
+    {
+      "id": "S08",
+      "method": "s08",
+      "args": []
+    },
+    {
+      "id": "S09",
+      "method": "s09",
+      "args": []
+    }
+  ],
+  "default_output_dir": "runs/semcons_scope10_full400_seed1",
+  "report": {
+    "peak_ce_window_radius": 2,
+    "references": [
+      {
+        "id": "B00",
+        "rounds_csv": "runs/full_only_400_seed1/experiments/baseline/B00_full_only_400_seed1/accuracy_each_round.csv"
+      },
+      {
+        "id": "E03",
+        "rounds_csv": "runs/full_only_400_seed1/experiments/m2/E03_full_only_400_seed1/accuracy_each_round.csv"
+      },
+      {
+        "id": "N08",
+        "rounds_csv": "runs/adapterfl_next10_m2_m3_400_seed1/experiments/m3/N08_full_only_400_seed1/accuracy_each_round.csv"
+      }
+    ],
+    "kind": "semcons_scope",
+    "title": "SemConsFL structural scope and functional response experiments"
+  }
+}
