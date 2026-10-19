@@ -1,0 +1,6095 @@
+[
+  {
+    "cohort": 1,
+    "slots": [
+      [
+        48,
+        5
+      ],
+      [
+        76,
+        3
+      ],
+      [
+        94,
+        4
+      ],
+      [
+        97,
+        0
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        56,
+        3
+      ],
+      [
+        47,
+        5
+      ],
+      [
+        63,
+        0
+      ],
+      [
+        97,
+        0
+      ],
+      [
+        57,
+        1
+      ]
+    ],
+    "lens": [
+      644,
+      462,
+      429,
+      496,
+      558,
+      512,
+      411,
+      507,
+      496,
+      608
+    ],
+    "methods": {
+      "A1": {
+        "common_coordinates": 2120985,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.18565466622363658,
+        "common_support_fraction_per_upload": [
+          0.30537186161963986,
+          0.4110737978622849,
+          0.38367501031552204,
+          1.0,
+          0.8014738001992173,
+          0.4110737978622849,
+          0.30537186161963986,
+          1.0,
+          1.0,
+          0.8014738001992173
+        ],
+        "exclusive_coordinates": 0,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 4478775,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          0.021845488800967396,
+          0.023352789383637114,
+          0.034033486225449994,
+          0.2901586128119644,
+          0.0028252296252480637,
+          0.022209141672231817,
+          0.00973062188113158,
+          -0.0008318203470163715,
+          0.3042131756000954,
+          0.02881057518201231
+        ],
+        "conflict_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.996678247878477,
+          1.0,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.996678247878477,
+          "median": 1.0,
+          "mean": 0.9996678247878477,
+          "max": 1.0,
+          "std_population": 0.000996525636456891
+        },
+        "valid_cosine_negative_fraction": 0.1,
+        "unnormalized_log_weights": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.003327281388065486,
+          -0.0,
+          -0.0
+        ],
+        "negative_fraction": 0.1,
+        "fallback_slots": 0
+      },
+      "A2": {
+        "shared": {
+          "alpha": 1.0,
+          "base_update_l2": 0.19467555982511583,
+          "applied_update_l2": 0.19467555982511583,
+          "relative_norm_fluctuation": null
+        },
+        "remainder": {
+          "alpha": 0.98,
+          "base_update_l2": 0.13236084770813722,
+          "applied_update_l2": 0.12971363218450294,
+          "relative_norm_fluctuation": null
+        }
+      },
+      "A4": {
+        "scope_mode": "s03",
+        "measurement_enabled": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              56,
+              57,
+              63,
+              76,
+              94,
+              97
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.19467556070888906,
+            "applied_learning_update_l2": 0.19467556070888906,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              56,
+              57,
+              76,
+              94
+            ],
+            "slot_count": 7,
+            "client_count": 7,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.05937973954425608,
+            "applied_learning_update_l2": 0.05937973954425608,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              57,
+              94
+            ],
+            "slot_count": 5,
+            "client_count": 5,
+            "direction_risks": {
+              "0": 0.0,
+              "2": 0.0,
+              "4": 0.0,
+              "6": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "2": 1.0,
+              "4": 1.0,
+              "6": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.09128703470094204,
+            "applied_learning_update_l2": 0.09128703470094204,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48,
+              56,
+              76,
+              94
+            ],
+            "slot_count": 5,
+            "client_count": 5,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "5": 0.0,
+              "6": 0.0014177252790719067
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "5": 1.0,
+              "6": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9943451480912932
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9990544572276329,
+            "native_learning_update_l2": 0.05339167609657852,
+            "applied_learning_update_l2": 0.05342057247783221,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 669408,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48,
+              94
+            ],
+            "slot_count": 3,
+            "client_count": 3,
+            "direction_risks": {
+              "0": 0.0,
+              "2": 0.0,
+              "6": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "2": 1.0,
+              "6": 1.0
+            },
+            "eligible_slots": [
+              0,
+              2,
+              6
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.008468624411906775,
+            "applied_learning_update_l2": 0.008468624411906775,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48
+            ],
+            "slot_count": 2,
+            "client_count": 2,
+            "direction_risks": {
+              "0": 0.005059430680823542,
+              "6": 0.005059430680823542
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "6": 1.0
+            },
+            "eligible_slots": [
+              0,
+              6
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.9799656855031122,
+              0.9799656855031122
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9799656855031124,
+            "native_learning_update_l2": 0.04386400221557035,
+            "applied_learning_update_l2": 0.04386400221557035,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48,
+              56,
+              76,
+              94
+            ],
+            "slot_count": 5,
+            "client_count": 5,
+            "direction_risks": {
+              "0": 0.02855140840666618,
+              "1": 0.0,
+              "2": 0.0,
+              "5": 0.0,
+              "6": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "5": 1.0,
+              "6": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.8920744965063747,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.971723342453257,
+            "native_learning_update_l2": 0.027775429758020387,
+            "applied_learning_update_l2": 0.028416176485068757,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2179883,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "physical_clients": [
+              47,
+              48
+            ],
+            "slot_count": 2,
+            "client_count": 2,
+            "direction_risks": {
+              "0": 0.025382586953780442,
+              "6": 0.025382586953780442
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "6": 1.0
+            },
+            "eligible_slots": [
+              0,
+              6
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.9034537610784683,
+              0.9034537610784683
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9034537610784682,
+            "native_learning_update_l2": 0.006496481701324785,
+            "applied_learning_update_l2": 0.006496481701324785,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "physical_clients": [],
+            "slot_count": 0,
+            "client_count": 0,
+            "fallback": "insufficient_distinct_clients",
+            "gates": []
+          }
+        ],
+        "global_client_risks": {},
+        "direction_valid_comparisons": 39,
+        "direction_conflict_fraction": 0.15384615384615385,
+        "semantic_valid_comparison_fraction": 0.0,
+        "semantic_missing_comparison_fraction": 1.0,
+        "gate_trigger_region_slot_fraction": 0.15384615384615385,
+        "gate_target_covered_parameter_fraction": 0.6148060183878066,
+        "actual_changed_parameter_fraction_full": 0.24940495551784275,
+        "difference_from_native_aggregate_l2": 0.0009942986436030413,
+        "regions_with_actual_changes": 2,
+        "neutral_or_fallback_region_fraction": 0.7777777777777778,
+        "insufficient_evidence_region_fraction": 0.1111111111111111,
+        "comparable_native_learning_update_l2": 0.23541021271196466,
+        "comparable_applied_learning_update_l2": 0.23549322564425865,
+        "history_unique_events_this_round": 0,
+        "history_total_events": 0,
+        "measurement_valid_class_fraction": 0.0,
+        "aggregation_note": "native dispatch fusion preserved; gate only adjusts actual local training increments"
+      },
+      "A3": {
+        "physical_client_risks": {
+          "48": 0.010339714624686256,
+          "76": 0.0,
+          "94": 0.0,
+          "97": 0.0,
+          "8": 0.0,
+          "56": 0.0,
+          "47": 0.0015121739561427333,
+          "63": 0.0,
+          "57": 0.0
+        },
+        "regions": [
+          {
+            "region_id": 0,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0015121739561427333,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "gates": [
+              0.9594847489029023,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9939695607080673,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              56,
+              57,
+              63,
+              76,
+              94,
+              97
+            ],
+            "extrapolated_slots": [
+              0,
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2119726,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "1": 0.0,
+              "2": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0015121739561427333,
+              "9": 0.0
+            },
+            "gates": [
+              0.9594847489029023,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9939695607080673,
+              1.0
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              56,
+              57,
+              76,
+              94
+            ],
+            "extrapolated_slots": [
+              0,
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 185880,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 2,
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "2": 0.0,
+              "4": 0.0,
+              "6": 0.0015121739561427333,
+              "9": 0.0
+            },
+            "gates": [
+              0.9594847489029023,
+              1.0,
+              1.0,
+              0.9939695607080673,
+              1.0
+            ],
+            "physical_clients": [
+              8,
+              47,
+              48,
+              57,
+              94
+            ],
+            "extrapolated_slots": [
+              0,
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 339342,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 3,
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "1": 0.0,
+              "2": 0.0,
+              "5": 0.0,
+              "6": 0.0015121739561427333
+            },
+            "gates": [
+              0.9594847489029023,
+              1.0,
+              1.0,
+              1.0,
+              0.9939695607080673
+            ],
+            "physical_clients": [
+              47,
+              48,
+              56,
+              76,
+              94
+            ],
+            "extrapolated_slots": [
+              0
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 671570,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "2": 0.0,
+              "6": 0.0015121739561427333
+            },
+            "gates": [
+              0.9594847489029023,
+              1.0,
+              0.9939695607080673
+            ],
+            "physical_clients": [
+              47,
+              48,
+              94
+            ],
+            "extrapolated_slots": [
+              0,
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 29031,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 5,
+            "slots": [
+              0,
+              6
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "6": 0.0015121739561427333
+            },
+            "gates": [
+              0.9594847489029023,
+              0.9939695607080673
+            ],
+            "physical_clients": [
+              47,
+              48
+            ],
+            "extrapolated_slots": [],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 1299624,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 6,
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "1": 0.0,
+              "2": 0.0,
+              "5": 0.0,
+              "6": 0.0015121739561427333
+            },
+            "gates": [
+              0.9594847489029023,
+              1.0,
+              1.0,
+              1.0,
+              0.9939695607080673
+            ],
+            "physical_clients": [
+              47,
+              48,
+              56,
+              76,
+              94
+            ],
+            "extrapolated_slots": [
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2178493,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "slots": [
+              0,
+              6
+            ],
+            "global_risks": {
+              "0": 0.010339714624686256,
+              "6": 0.0015121739561427333
+            },
+            "gates": [
+              0.9594847489029023,
+              0.9939695607080673
+            ],
+            "physical_clients": [
+              47,
+              48
+            ],
+            "extrapolated_slots": [],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 116846,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 8,
+            "slots": [],
+            "global_risks": {},
+            "gates": [],
+            "physical_clients": [],
+            "extrapolated_slots": [],
+            "returned_native_exactly": true,
+            "changed_coordinates": 0,
+            "common_gate_cancellation": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cohort": 2,
+    "slots": [
+      [
+        70,
+        4
+      ],
+      [
+        81,
+        5
+      ],
+      [
+        64,
+        4
+      ],
+      [
+        95,
+        6
+      ],
+      [
+        26,
+        1
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        71,
+        4
+      ],
+      [
+        70,
+        6
+      ],
+      [
+        97,
+        5
+      ],
+      [
+        49,
+        2
+      ]
+    ],
+    "lens": [
+      647,
+      674,
+      462,
+      387,
+      436,
+      463,
+      508,
+      647,
+      496,
+      649
+    ],
+    "methods": {
+      "A1": {
+        "common_coordinates": 2646356,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.23164159100084067,
+        "common_support_fraction_per_upload": [
+          0.47871185585873716,
+          0.3810129059037682,
+          0.47871185585873716,
+          0.23164159100084067,
+          1.0,
+          0.5693855508268535,
+          0.47871185585873716,
+          0.23164159100084067,
+          0.3810129059037682,
+          0.5693855508268535
+        ],
+        "exclusive_coordinates": 0,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 0,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          0.04007358060631164,
+          0.030503370285377418,
+          0.017964661910489736,
+          -0.002254852408994032,
+          0.01566157790049396,
+          0.006526153151446481,
+          0.01595372530921461,
+          0.07263570660090715,
+          0.04057262638014619,
+          0.011366846939522784
+        ],
+        "conflict_weights": [
+          1.0,
+          1.0,
+          1.0,
+          0.9910211432265721,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9910211432265721,
+          "median": 1.0,
+          "mean": 0.9991021143226572,
+          "max": 1.0,
+          "std_population": 0.002693657032028374
+        },
+        "valid_cosine_negative_fraction": 0.1,
+        "unnormalized_log_weights": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.009019409635976128,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "negative_fraction": 0.1,
+        "fallback_slots": 0
+      },
+      "A2": {
+        "shared": {
+          "alpha": 1.0,
+          "base_update_l2": 0.06670015121576889,
+          "applied_update_l2": 0.06670015121576889,
+          "relative_norm_fluctuation": null
+        },
+        "remainder": {
+          "alpha": 0.98,
+          "base_update_l2": 0.07653879417741018,
+          "applied_update_l2": 0.07500801830063622,
+          "relative_norm_fluctuation": null
+        }
+      },
+      "A4": {
+        "scope_mode": "s03",
+        "measurement_enabled": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.00786440253202256,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              0.9690320327268683,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9977678146145088,
+            "native_learning_update_l2": 0.0667001506639951,
+            "applied_learning_update_l2": 0.06684515436433507,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2113868,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.031050613689813315,
+            "applied_learning_update_l2": 0.031050613689813315,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.03873999316614349,
+            "applied_learning_update_l2": 0.03873999316614349,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 9,
+            "client_count": 8,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.012548572514373718,
+              "5": 0.0008428539519918987,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              0.9510446280337763,
+              0.9966342610328519,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.99584348954131,
+            "native_learning_update_l2": 0.032624893152807186,
+            "applied_learning_update_l2": 0.03270434799050115,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 670438,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 9,
+            "client_count": 8,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.015173946606265986,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              0.9411094945162463,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9953799664256614,
+            "native_learning_update_l2": 0.007291199057280338,
+            "applied_learning_update_l2": 0.007323392954265718,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 28984,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              5,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              12,
+              49,
+              70,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 6,
+            "client_count": 6,
+            "direction_risks": {
+              "1": 0.0015007418251205642,
+              "3": 0.0018991870253063725,
+              "5": 0.0,
+              "7": 0.0,
+              "8": 0.0025847441956489497,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "5": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              5,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.9940150145083273,
+              0.9924320342594,
+              1.0,
+              1.0,
+              0.989714286716454,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9963617621376241,
+            "native_learning_update_l2": 0.04484065845463997,
+            "applied_learning_update_l2": 0.044986536108606257,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 1296392,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 7,
+            "client_count": 6,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.07792228012456398,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              6,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              0.7322091216563269,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9728775006754772,
+            "native_learning_update_l2": 0.01372984850366794,
+            "applied_learning_update_l2": 0.014099518276696137,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2179186,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              7,
+              8
+            ],
+            "physical_clients": [
+              70,
+              81,
+              95,
+              97
+            ],
+            "slot_count": 4,
+            "client_count": 4,
+            "direction_risks": {
+              "1": 0.0,
+              "3": 0.044365235641234284,
+              "7": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              0.837393705147308,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9714479872468277,
+            "native_learning_update_l2": 0.002652534284379637,
+            "applied_learning_update_l2": 0.002696645290650366,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 116819,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [
+              3,
+              7
+            ],
+            "physical_clients": [
+              70,
+              95
+            ],
+            "slot_count": 2,
+            "client_count": 2,
+            "direction_risks": {
+              "3": 0.04146850780164572,
+              "7": 0.04146850780164572
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "3": 1.0,
+              "7": 1.0
+            },
+            "eligible_slots": [
+              3,
+              7
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.847152942302294,
+              0.847152942302294
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.8471529423022939,
+            "native_learning_update_l2": 0.008335771875862782,
+            "applied_learning_update_l2": 0.008335771875862782,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          }
+        ],
+        "global_client_risks": {},
+        "direction_valid_comparisons": 67,
+        "direction_conflict_fraction": 0.16417910447761194,
+        "semantic_valid_comparison_fraction": 0.0,
+        "semantic_missing_comparison_fraction": 1.0,
+        "gate_trigger_region_slot_fraction": 0.16417910447761194,
+        "gate_target_covered_parameter_fraction": 0.9540130752227959,
+        "actual_changed_parameter_fraction_full": 0.560704428328389,
+        "difference_from_native_aggregate_l2": 0.000675362911766073,
+        "regions_with_actual_changes": 6,
+        "neutral_or_fallback_region_fraction": 0.3333333333333333,
+        "insufficient_evidence_region_fraction": 0.0,
+        "comparable_native_learning_update_l2": 0.1015238761968188,
+        "comparable_applied_learning_update_l2": 0.10176320867651975,
+        "history_unique_events_this_round": 0,
+        "history_total_events": 0,
+        "measurement_valid_class_fraction": 0.0,
+        "aggregation_note": "native dispatch fusion preserved; gate only adjusts actual local training increments"
+      },
+      "A3": {
+        "physical_client_risks": {
+          "70": 0.01625720662322811,
+          "81": 0.00028099315476467547,
+          "64": 0.0,
+          "95": 0.034039161603258726,
+          "26": 0.0,
+          "12": 0.0001218434579525354,
+          "71": 0.0,
+          "97": 0.0004839576092554987,
+          "49": 0.0
+        },
+        "regions": [
+          {
+            "region_id": 0,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.01625720662322811,
+              "1": 0.00028099315476467547,
+              "2": 0.0,
+              "3": 0.034039161603258726,
+              "4": 0.0,
+              "5": 0.0001218434579525354,
+              "6": 0.0,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987,
+              "9": 0.0
+            },
+            "gates": [
+              0.9370404513981441,
+              0.9988766588015768,
+              1.0,
+              0.8727059155295862,
+              1.0,
+              0.9995127449155236,
+              1.0,
+              0.9370404513981441,
+              0.9980660420742354,
+              1.0
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              5,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2120263,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.01625720662322811,
+              "1": 0.00028099315476467547,
+              "2": 0.0,
+              "3": 0.034039161603258726,
+              "4": 0.0,
+              "5": 0.0001218434579525354,
+              "6": 0.0,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987,
+              "9": 0.0
+            },
+            "gates": [
+              0.9370404513981441,
+              0.9988766588015768,
+              1.0,
+              0.8727059155295862,
+              1.0,
+              0.9995127449155236,
+              1.0,
+              0.9370404513981441,
+              0.9980660420742354,
+              1.0
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              3,
+              5,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 185921,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 2,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.01625720662322811,
+              "1": 0.00028099315476467547,
+              "2": 0.0,
+              "3": 0.034039161603258726,
+              "4": 0.0,
+              "5": 0.0001218434579525354,
+              "6": 0.0,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987,
+              "9": 0.0
+            },
+            "gates": [
+              0.9370404513981441,
+              0.9988766588015768,
+              1.0,
+              0.8727059155295862,
+              1.0,
+              0.9995127449155236,
+              1.0,
+              0.9370404513981441,
+              0.9980660420742354,
+              1.0
+            ],
+            "physical_clients": [
+              12,
+              26,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              3,
+              5,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 339340,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 3,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.01625720662322811,
+              "1": 0.00028099315476467547,
+              "2": 0.0,
+              "3": 0.034039161603258726,
+              "5": 0.0001218434579525354,
+              "6": 0.0,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987,
+              "9": 0.0
+            },
+            "gates": [
+              0.9370404513981441,
+              0.9988766588015768,
+              1.0,
+              0.8727059155295862,
+              0.9995127449155236,
+              1.0,
+              0.9370404513981441,
+              0.9980660420742354,
+              1.0
+            ],
+            "physical_clients": [
+              12,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 671662,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.01625720662322811,
+              "1": 0.00028099315476467547,
+              "2": 0.0,
+              "3": 0.034039161603258726,
+              "5": 0.0001218434579525354,
+              "6": 0.0,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987,
+              "9": 0.0
+            },
+            "gates": [
+              0.9370404513981441,
+              0.9988766588015768,
+              1.0,
+              0.8727059155295862,
+              0.9995127449155236,
+              1.0,
+              0.9370404513981441,
+              0.9980660420742354,
+              1.0
+            ],
+            "physical_clients": [
+              12,
+              49,
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              5,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 29028,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 5,
+            "slots": [
+              1,
+              3,
+              5,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "1": 0.00028099315476467547,
+              "3": 0.034039161603258726,
+              "5": 0.0001218434579525354,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987,
+              "9": 0.0
+            },
+            "gates": [
+              0.9988766588015768,
+              0.8727059155295862,
+              0.9995127449155236,
+              0.9370404513981441,
+              0.9980660420742354,
+              1.0
+            ],
+            "physical_clients": [
+              12,
+              49,
+              70,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              5,
+              7
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 1299959,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 6,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              6,
+              7,
+              8
+            ],
+            "global_risks": {
+              "0": 0.01625720662322811,
+              "1": 0.00028099315476467547,
+              "2": 0.0,
+              "3": 0.034039161603258726,
+              "6": 0.0,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987
+            },
+            "gates": [
+              0.9370404513981441,
+              0.9988766588015768,
+              1.0,
+              0.8727059155295862,
+              1.0,
+              0.9370404513981441,
+              0.9980660420742354
+            ],
+            "physical_clients": [
+              64,
+              70,
+              71,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2178670,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "slots": [
+              1,
+              3,
+              7,
+              8
+            ],
+            "global_risks": {
+              "1": 0.00028099315476467547,
+              "3": 0.034039161603258726,
+              "7": 0.01625720662322811,
+              "8": 0.0004839576092554987
+            },
+            "gates": [
+              0.9988766588015768,
+              0.8727059155295862,
+              0.9370404513981441,
+              0.9980660420742354
+            ],
+            "physical_clients": [
+              70,
+              81,
+              95,
+              97
+            ],
+            "extrapolated_slots": [
+              1,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 116820,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 8,
+            "slots": [
+              3,
+              7
+            ],
+            "global_risks": {
+              "3": 0.034039161603258726,
+              "7": 0.01625720662322811
+            },
+            "gates": [
+              0.8727059155295862,
+              0.9370404513981441
+            ],
+            "physical_clients": [
+              70,
+              95
+            ],
+            "extrapolated_slots": [],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 4463686,
+            "returned_native_exactly": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cohort": 3,
+    "slots": [
+      [
+        67,
+        4
+      ],
+      [
+        78,
+        3
+      ],
+      [
+        88,
+        4
+      ],
+      [
+        98,
+        2
+      ],
+      [
+        40,
+        4
+      ],
+      [
+        84,
+        5
+      ],
+      [
+        84,
+        6
+      ],
+      [
+        34,
+        2
+      ],
+      [
+        86,
+        4
+      ],
+      [
+        29,
+        1
+      ]
+    ],
+    "lens": [
+      412,
+      366,
+      483,
+      426,
+      488,
+      422,
+      422,
+      588,
+      539,
+      465
+    ],
+    "methods": {
+      "A1": {
+        "common_coordinates": 2306940,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.20193173251953983,
+        "common_support_fraction_per_upload": [
+          0.4173132899559829,
+          0.44711423571615044,
+          0.4173132899559829,
+          0.49635736938813274,
+          0.4173132899559829,
+          0.33214499982074935,
+          0.20193173251953983,
+          0.49635736938813274,
+          0.4173132899559829,
+          0.8717421238865821
+        ],
+        "exclusive_coordinates": 4478775,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4478775,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 0,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          0.00880068926670901,
+          0.009436522729101905,
+          0.012280039952541441,
+          0.023991116899524104,
+          0.018613482107538985,
+          0.03933107382782523,
+          0.036398748936792576,
+          0.021544263620567747,
+          -0.003188087266430187,
+          0.02079530746352951
+        ],
+        "conflict_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9873286176004578,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9873286176004578,
+          "median": 1.0,
+          "mean": 0.9987328617600457,
+          "max": 1.0,
+          "std_population": 0.0038014147198626724
+        },
+        "valid_cosine_negative_fraction": 0.1,
+        "unnormalized_log_weights": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.012752349065720748,
+          -0.0
+        ],
+        "negative_fraction": 0.1,
+        "fallback_slots": 0
+      },
+      "A2": {
+        "shared": {
+          "alpha": 1.0,
+          "base_update_l2": 0.09153748070192108,
+          "applied_update_l2": 0.09153748070192108,
+          "relative_norm_fluctuation": null
+        },
+        "remainder": {
+          "alpha": 0.98,
+          "base_update_l2": 0.1140183809788163,
+          "applied_update_l2": 0.11173801481266223,
+          "relative_norm_fluctuation": null
+        }
+      },
+      "A4": {
+        "scope_mode": "s03",
+        "measurement_enabled": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.00499624057435642,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9802134133536962,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.99768705916236,
+            "native_learning_update_l2": 0.0915374811105721,
+            "applied_learning_update_l2": 0.09172324389848391,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2116376,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.04278271433900152,
+            "applied_learning_update_l2": 0.04278271433900152,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              84,
+              86,
+              88,
+              98
+            ],
+            "slot_count": 9,
+            "client_count": 8,
+            "direction_risks": {
+              "0": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.05509111371131357,
+            "applied_learning_update_l2": 0.05509111371131357,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "slot_count": 9,
+            "client_count": 8,
+            "direction_risks": {
+              "0": 0.01167760952148638,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.9543637049655083,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9954649894948842,
+            "native_learning_update_l2": 0.048934172545971016,
+            "applied_learning_update_l2": 0.0491021380167606,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 671358,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              34,
+              40,
+              67,
+              84,
+              86,
+              88,
+              98
+            ],
+            "slot_count": 8,
+            "client_count": 7,
+            "direction_risks": {
+              "0": 0.0028657984763063083,
+              "2": 0.01515049406362377,
+              "3": 0.010811252880804404,
+              "4": 0.0020507456701994065,
+              "5": 0.0008706367168148619,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.9886022581667058,
+              0.9411977842996259,
+              0.9576767194879148,
+              0.9918305699750014,
+              0.9965235101657414,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9850315296616395,
+            "native_learning_update_l2": 0.010354257346145267,
+            "applied_learning_update_l2": 0.01029707260846917,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 29029,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              3,
+              5,
+              6,
+              7
+            ],
+            "physical_clients": [
+              34,
+              84,
+              98
+            ],
+            "slot_count": 4,
+            "client_count": 3,
+            "direction_risks": {
+              "3": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "3": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0
+            },
+            "eligible_slots": [
+              3,
+              5,
+              6,
+              7
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.06828018334326622,
+            "applied_learning_update_l2": 0.06828018334326622,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              8
+            ],
+            "physical_clients": [
+              40,
+              67,
+              78,
+              84,
+              86,
+              88
+            ],
+            "slot_count": 7,
+            "client_count": 6,
+            "direction_risks": {
+              "0": 0.05591947462626012,
+              "1": 0.03330925632645096,
+              "2": 0.058286284018637696,
+              "4": 0.018880616300703708,
+              "5": 0.02141965184692237,
+              "6": 0.023225199272786202,
+              "8": 0.053059655470587705
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.7995726364377636,
+              0.8752576093179009,
+              0.7920386118069593,
+              0.9272588992407768,
+              0.9178891866228687,
+              0.9112838978256746,
+              0.8087716839171671
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.8597267505822507,
+            "native_learning_update_l2": 0.024810379553652305,
+            "applied_learning_update_l2": 0.024612900612750305,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2180323,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              5,
+              6
+            ],
+            "physical_clients": [
+              84
+            ],
+            "slot_count": 2,
+            "client_count": 1,
+            "fallback": "insufficient_distinct_clients",
+            "gates": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [
+              6
+            ],
+            "physical_clients": [
+              84
+            ],
+            "slot_count": 1,
+            "client_count": 1,
+            "fallback": "insufficient_distinct_clients",
+            "gates": [
+              1.0
+            ]
+          }
+        ],
+        "global_client_risks": {},
+        "direction_valid_comparisons": 57,
+        "direction_conflict_fraction": 0.24561403508771928,
+        "semantic_valid_comparison_fraction": 0.0,
+        "semantic_missing_comparison_fraction": 1.0,
+        "gate_trigger_region_slot_fraction": 0.24561403508771928,
+        "gate_target_covered_parameter_fraction": 0.43789829378566286,
+        "actual_changed_parameter_fraction_full": 0.4374063623367479,
+        "difference_from_native_aggregate_l2": 0.0018769929053292875,
+        "regions_with_actual_changes": 4,
+        "neutral_or_fallback_region_fraction": 0.5555555555555556,
+        "insufficient_evidence_region_fraction": 0.2222222222222222,
+        "comparable_native_learning_update_l2": 0.1449965660392324,
+        "comparable_applied_learning_update_l2": 0.1451329490622671,
+        "history_unique_events_this_round": 0,
+        "history_total_events": 0,
+        "measurement_valid_class_fraction": 0.0,
+        "aggregation_note": "native dispatch fusion preserved; gate only adjusts actual local training increments"
+      },
+      "A3": {
+        "physical_client_risks": {
+          "67": 0.02349432203232171,
+          "78": 0.014078720027300567,
+          "88": 0.023073259801145454,
+          "98": 6.755084915648463e-05,
+          "40": 0.007459089401875832,
+          "84": 0.007130865821627775,
+          "34": 0.0,
+          "86": 0.022848723168022892,
+          "29": 0.0
+        },
+        "regions": [
+          {
+            "region_id": 0,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.02349432203232171,
+              "1": 0.014078720027300567,
+              "2": 0.023073259801145454,
+              "3": 6.755084915648463e-05,
+              "4": 0.007459089401875832,
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775,
+              "7": 0.0,
+              "8": 0.022848723168022892,
+              "9": 0.0
+            },
+            "gates": [
+              0.9103034366999523,
+              0.9452414512939707,
+              0.9118379061358831,
+              0.9997298331050242,
+              0.9706043525718139,
+              0.9718794903916748,
+              0.9718794903916748,
+              1.0,
+              0.9126572380744647,
+              1.0
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2120617,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.02349432203232171,
+              "1": 0.014078720027300567,
+              "2": 0.023073259801145454,
+              "3": 6.755084915648463e-05,
+              "4": 0.007459089401875832,
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775,
+              "7": 0.0,
+              "8": 0.022848723168022892,
+              "9": 0.0
+            },
+            "gates": [
+              0.9103034366999523,
+              0.9452414512939707,
+              0.9118379061358831,
+              0.9997298331050242,
+              0.9706043525718139,
+              0.9718794903916748,
+              0.9718794903916748,
+              1.0,
+              0.9126572380744647,
+              1.0
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "extrapolated_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 185930,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 2,
+            "slots": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.02349432203232171,
+              "2": 0.023073259801145454,
+              "3": 6.755084915648463e-05,
+              "4": 0.007459089401875832,
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775,
+              "7": 0.0,
+              "8": 0.022848723168022892,
+              "9": 0.0
+            },
+            "gates": [
+              0.9103034366999523,
+              0.9118379061358831,
+              0.9997298331050242,
+              0.9706043525718139,
+              0.9718794903916748,
+              0.9718794903916748,
+              1.0,
+              0.9126572380744647,
+              1.0
+            ],
+            "physical_clients": [
+              29,
+              34,
+              40,
+              67,
+              84,
+              86,
+              88,
+              98
+            ],
+            "extrapolated_slots": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 339389,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 3,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "global_risks": {
+              "0": 0.02349432203232171,
+              "1": 0.014078720027300567,
+              "2": 0.023073259801145454,
+              "3": 6.755084915648463e-05,
+              "4": 0.007459089401875832,
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775,
+              "7": 0.0,
+              "8": 0.022848723168022892
+            },
+            "gates": [
+              0.9103034366999523,
+              0.9452414512939707,
+              0.9118379061358831,
+              0.9997298331050242,
+              0.9706043525718139,
+              0.9718794903916748,
+              0.9718794903916748,
+              1.0,
+              0.9126572380744647
+            ],
+            "physical_clients": [
+              34,
+              40,
+              67,
+              78,
+              84,
+              86,
+              88,
+              98
+            ],
+            "extrapolated_slots": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 671789,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "slots": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "global_risks": {
+              "0": 0.02349432203232171,
+              "2": 0.023073259801145454,
+              "3": 6.755084915648463e-05,
+              "4": 0.007459089401875832,
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775,
+              "7": 0.0,
+              "8": 0.022848723168022892
+            },
+            "gates": [
+              0.9103034366999523,
+              0.9118379061358831,
+              0.9997298331050242,
+              0.9706043525718139,
+              0.9718794903916748,
+              0.9718794903916748,
+              1.0,
+              0.9126572380744647
+            ],
+            "physical_clients": [
+              34,
+              40,
+              67,
+              84,
+              86,
+              88,
+              98
+            ],
+            "extrapolated_slots": [
+              6,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 29037,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 5,
+            "slots": [
+              3,
+              5,
+              6,
+              7
+            ],
+            "global_risks": {
+              "3": 6.755084915648463e-05,
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775,
+              "7": 0.0
+            },
+            "gates": [
+              0.9997298331050242,
+              0.9718794903916748,
+              0.9718794903916748,
+              1.0
+            ],
+            "physical_clients": [
+              34,
+              84,
+              98
+            ],
+            "extrapolated_slots": [
+              3,
+              5,
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 1299627,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 6,
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              8
+            ],
+            "global_risks": {
+              "0": 0.02349432203232171,
+              "1": 0.014078720027300567,
+              "2": 0.023073259801145454,
+              "4": 0.007459089401875832,
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775,
+              "8": 0.022848723168022892
+            },
+            "gates": [
+              0.9103034366999523,
+              0.9452414512939707,
+              0.9118379061358831,
+              0.9706043525718139,
+              0.9718794903916748,
+              0.9718794903916748,
+              0.9126572380744647
+            ],
+            "physical_clients": [
+              40,
+              67,
+              78,
+              84,
+              86,
+              88
+            ],
+            "extrapolated_slots": [],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2179545,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "slots": [
+              5,
+              6
+            ],
+            "global_risks": {
+              "5": 0.007130865821627775,
+              "6": 0.007130865821627775
+            },
+            "gates": [
+              0.9718794903916748,
+              0.9718794903916748
+            ],
+            "physical_clients": [
+              84
+            ],
+            "extrapolated_slots": [
+              5,
+              6
+            ],
+            "common_gate_cancellation": true,
+            "returned_native_exactly": true,
+            "changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "slots": [
+              6
+            ],
+            "global_risks": {
+              "6": 0.007130865821627775
+            },
+            "gates": [
+              0.9718794903916748
+            ],
+            "physical_clients": [
+              84
+            ],
+            "extrapolated_slots": [
+              6
+            ],
+            "common_gate_cancellation": true,
+            "returned_native_exactly": true,
+            "changed_coordinates": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cohort": 4,
+    "slots": [
+      [
+        75,
+        1
+      ],
+      [
+        73,
+        6
+      ],
+      [
+        40,
+        0
+      ],
+      [
+        70,
+        6
+      ],
+      [
+        41,
+        5
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        83,
+        1
+      ],
+      [
+        74,
+        5
+      ],
+      [
+        70,
+        6
+      ],
+      [
+        48,
+        1
+      ]
+    ],
+    "lens": [
+      600,
+      469,
+      488,
+      647,
+      633,
+      598,
+      757,
+      561,
+      647,
+      644
+    ],
+    "methods": {
+      "A1": {
+        "common_coordinates": 2120985,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.18565466622363658,
+        "common_support_fraction_per_upload": [
+          0.8014738001992173,
+          0.18565466622363658,
+          1.0,
+          0.18565466622363658,
+          0.30537186161963986,
+          0.8014738001992173,
+          0.8014738001992173,
+          0.30537186161963986,
+          0.18565466622363658,
+          0.8014738001992173
+        ],
+        "exclusive_coordinates": 0,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 0,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          0.011158805995144077,
+          0.032176431687892804,
+          0.02266089630219277,
+          0.04430757030829485,
+          -0.003108224112595001,
+          0.0018566546182780096,
+          0.030544796187626153,
+          0.029992592311107676,
+          0.03382822657374508,
+          -0.00598775805192626
+        ],
+        "conflict_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9876440726933455,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9763335174842751
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9763335174842751,
+          "median": 1.0,
+          "mean": 0.9963977590177621,
+          "max": 1.0,
+          "std_population": 0.007635508714770067
+        },
+        "valid_cosine_negative_fraction": 0.2,
+        "unnormalized_log_weights": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.012432896450380005,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.02395103220770504
+        ],
+        "negative_fraction": 0.2,
+        "fallback_slots": 0
+      },
+      "A2": {
+        "shared": {
+          "alpha": 1.0,
+          "base_update_l2": 0.12907037058975837,
+          "applied_update_l2": 0.12907037058975837,
+          "relative_norm_fluctuation": null
+        },
+        "remainder": {
+          "alpha": 0.98,
+          "base_update_l2": 0.08619343052582398,
+          "applied_update_l2": 0.08446956291445079,
+          "relative_norm_fluctuation": null
+        }
+      },
+      "A4": {
+        "scope_mode": "s03",
+        "measurement_enabled": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              40,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0040413190956421945,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.006037914289368987
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9839646804924488,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9761376602689491
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9957780105832104,
+            "native_learning_update_l2": 0.12907037258216514,
+            "applied_learning_update_l2": 0.12914274928521557,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2119823,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "slot_count": 9,
+            "client_count": 8,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "3": 0.0012105816442922763,
+              "4": 0.0,
+              "5": 0.0039000620726721193,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.002003421445957195,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              0.9951693785851431,
+              1.0,
+              0.9845208052766123,
+              1.0,
+              1.0,
+              0.9920183381956266,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9968419536199733,
+            "native_learning_update_l2": 0.05150537241515466,
+            "applied_learning_update_l2": 0.05131504997937671,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 185889,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "slot_count": 9,
+            "client_count": 8,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0034985823611151856,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9861031359996079,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9985042612181003,
+            "native_learning_update_l2": 0.06404220589748398,
+            "applied_learning_update_l2": 0.06374630422977076,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 339297,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "slot_count": 5,
+            "client_count": 4,
+            "direction_risks": {
+              "1": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "7": 0.0,
+              "8": 0.0010423986064244013
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.9958390862639637
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9990895802545772,
+            "native_learning_update_l2": 0.01505531317909409,
+            "applied_learning_update_l2": 0.015047741587174762,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 663584,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "slot_count": 5,
+            "client_count": 4,
+            "direction_risks": {
+              "1": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "7": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.0034413310620525273,
+            "applied_learning_update_l2": 0.0034413310620525273,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "slot_count": 5,
+            "client_count": 4,
+            "direction_risks": {
+              "1": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "7": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.016142460179618467,
+            "applied_learning_update_l2": 0.016142460179618467,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "slot_count": 5,
+            "client_count": 4,
+            "direction_risks": {
+              "1": 0.0,
+              "3": 0.017310333202668508,
+              "4": 0.0,
+              "7": 0.0,
+              "8": 0.03361665680597391
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              0.9331014649042202,
+              1.0,
+              1.0,
+              0.8741820522716758
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9578330861051081,
+            "native_learning_update_l2": 0.009434785273903417,
+            "applied_learning_update_l2": 0.009377764610511697,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2179150,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "slot_count": 5,
+            "client_count": 4,
+            "direction_risks": {
+              "1": 0.0,
+              "3": 0.010990068735714696,
+              "4": 0.0,
+              "7": 0.0,
+              "8": 0.04258960383668827
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              0.9569919732787738,
+              1.0,
+              1.0,
+              0.843362488361376
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9563169890704013,
+            "native_learning_update_l2": 0.002343116632600105,
+            "applied_learning_update_l2": 0.002310504706083828,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 116871,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [
+              1,
+              3,
+              8
+            ],
+            "physical_clients": [
+              70,
+              73
+            ],
+            "slot_count": 3,
+            "client_count": 2,
+            "direction_risks": {
+              "1": 0.0,
+              "3": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "1": 1.0,
+              "3": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              1,
+              3,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.009028317280122138,
+            "applied_learning_update_l2": 0.009028317280122138,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          }
+        ],
+        "global_client_risks": {},
+        "direction_valid_comparisons": 56,
+        "direction_conflict_fraction": 0.19642857142857142,
+        "semantic_valid_comparison_fraction": 0.0,
+        "semantic_missing_comparison_fraction": 1.0,
+        "gate_trigger_region_slot_fraction": 0.19642857142857142,
+        "gate_target_covered_parameter_fraction": 0.49158805975584097,
+        "actual_changed_parameter_fraction_full": 0.4905846771581698,
+        "difference_from_native_aggregate_l2": 0.0014349507932678411,
+        "regions_with_actual_changes": 6,
+        "neutral_or_fallback_region_fraction": 0.3333333333333333,
+        "insufficient_evidence_region_fraction": 0.0,
+        "comparable_native_learning_update_l2": 0.15520460276363418,
+        "comparable_applied_learning_update_l2": 0.15507521746328587,
+        "history_unique_events_this_round": 0,
+        "history_total_events": 0,
+        "measurement_valid_class_fraction": 0.0,
+        "aggregation_note": "native dispatch fusion preserved; gate only adjusts actual local training increments"
+      },
+      "A3": {
+        "physical_client_risks": {
+          "75": 0.0,
+          "73": 0.0,
+          "40": 0.0,
+          "70": 0.0051920047981716955,
+          "41": 0.0012341051356352564,
+          "3": 0.0007227715671678398,
+          "83": 0.0,
+          "74": 0.0,
+          "48": 0.0048392301107777185
+        },
+        "regions": [
+          {
+            "region_id": 0,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "5": 0.0007227715671678398,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0051920047981716955,
+              "9": 0.0048392301107777185
+            },
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              0.9971130888966782,
+              1.0,
+              1.0,
+              0.9794461509258152,
+              0.9808292217599283
+            ],
+            "physical_clients": [
+              3,
+              40,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "extrapolated_slots": [
+              3,
+              5,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2119545,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "slots": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "5": 0.0007227715671678398,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0051920047981716955,
+              "9": 0.0048392301107777185
+            },
+            "gates": [
+              1.0,
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              0.9971130888966782,
+              1.0,
+              1.0,
+              0.9794461509258152,
+              0.9808292217599283
+            ],
+            "physical_clients": [
+              3,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "extrapolated_slots": [
+              4,
+              9
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 185869,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 2,
+            "slots": [
+              0,
+              1,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "5": 0.0007227715671678398,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0051920047981716955,
+              "9": 0.0048392301107777185
+            },
+            "gates": [
+              1.0,
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              0.9971130888966782,
+              1.0,
+              1.0,
+              0.9794461509258152,
+              0.9808292217599283
+            ],
+            "physical_clients": [
+              3,
+              41,
+              48,
+              70,
+              73,
+              74,
+              75,
+              83
+            ],
+            "extrapolated_slots": [
+              3,
+              4,
+              8,
+              9
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 339250,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 3,
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "global_risks": {
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "7": 0.0,
+              "8": 0.0051920047981716955
+            },
+            "gates": [
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              1.0,
+              0.9794461509258152
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "extrapolated_slots": [
+              3,
+              4
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 670353,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "global_risks": {
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "7": 0.0,
+              "8": 0.0051920047981716955
+            },
+            "gates": [
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              1.0,
+              0.9794461509258152
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "extrapolated_slots": [
+              3,
+              4,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 28950,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 5,
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "global_risks": {
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "7": 0.0,
+              "8": 0.0051920047981716955
+            },
+            "gates": [
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              1.0,
+              0.9794461509258152
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "extrapolated_slots": [
+              3,
+              4,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 1295713,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 6,
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "global_risks": {
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "7": 0.0,
+              "8": 0.0051920047981716955
+            },
+            "gates": [
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              1.0,
+              0.9794461509258152
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "extrapolated_slots": [
+              4
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2170776,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "slots": [
+              1,
+              3,
+              4,
+              7,
+              8
+            ],
+            "global_risks": {
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "4": 0.0012341051356352564,
+              "7": 0.0,
+              "8": 0.0051920047981716955
+            },
+            "gates": [
+              1.0,
+              0.9794461509258152,
+              0.99507574355741,
+              1.0,
+              0.9794461509258152
+            ],
+            "physical_clients": [
+              41,
+              70,
+              73,
+              74
+            ],
+            "extrapolated_slots": [
+              4
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 115883,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 8,
+            "slots": [
+              1,
+              3,
+              8
+            ],
+            "global_risks": {
+              "1": 0.0,
+              "3": 0.0051920047981716955,
+              "8": 0.0051920047981716955
+            },
+            "gates": [
+              1.0,
+              0.9794461509258152,
+              0.9794461509258152
+            ],
+            "physical_clients": [
+              70,
+              73
+            ],
+            "extrapolated_slots": [
+              3,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 4408038,
+            "returned_native_exactly": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cohort": 5,
+    "slots": [
+      [
+        87,
+        1
+      ],
+      [
+        27,
+        0
+      ],
+      [
+        67,
+        4
+      ],
+      [
+        92,
+        1
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        67,
+        0
+      ],
+      [
+        54,
+        5
+      ],
+      [
+        88,
+        3
+      ],
+      [
+        56,
+        2
+      ],
+      [
+        63,
+        1
+      ]
+    ],
+    "lens": [
+      323,
+      415,
+      412,
+      491,
+      598,
+      412,
+      560,
+      483,
+      512,
+      507
+    ],
+    "methods": {
+      "A1": {
+        "common_coordinates": 2120985,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.18565466622363658,
+        "common_support_fraction_per_upload": [
+          0.8014738001992173,
+          1.0,
+          0.38367501031552204,
+          0.8014738001992173,
+          1.0,
+          1.0,
+          0.30537186161963986,
+          0.4110737978622849,
+          0.4563476011997229,
+          0.8014738001992173
+        ],
+        "exclusive_coordinates": 117040,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          117040,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 4478775,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          0.01857663918172521,
+          0.014333680424658221,
+          0.043666543775802175,
+          0.046911617087426936,
+          0.02490340526054028,
+          -0.005646512364907706,
+          0.027945650415578612,
+          0.028849211803485462,
+          0.03816138549327036,
+          0.009444970885501641
+        ],
+        "conflict_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9776671058475028,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9776671058475028,
+          "median": 1.0,
+          "mean": 0.9977667105847503,
+          "max": 1.0,
+          "std_population": 0.006699868245749152
+        },
+        "valid_cosine_negative_fraction": 0.1,
+        "unnormalized_log_weights": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.022586049459630823,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "negative_fraction": 0.1,
+        "fallback_slots": 0
+      },
+      "A2": {
+        "shared": {
+          "alpha": 1.0,
+          "base_update_l2": 0.18432605278322617,
+          "applied_update_l2": 0.18432605278322617,
+          "relative_norm_fluctuation": null
+        },
+        "remainder": {
+          "alpha": 0.98,
+          "base_update_l2": 0.17065127750447806,
+          "applied_update_l2": 0.16723825460556332,
+          "relative_norm_fluctuation": null
+        }
+      },
+      "A4": {
+        "scope_mode": "s03",
+        "measurement_enabled": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              3,
+              27,
+              54,
+              56,
+              63,
+              67,
+              87,
+              88,
+              92
+            ],
+            "slot_count": 10,
+            "client_count": 9,
+            "direction_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.01751420723217888,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.01690459126584463,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              0.932340834469589,
+              1.0,
+              1.0,
+              0.9346170880577792,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9883697568600204,
+            "native_learning_update_l2": 0.18432605373519073,
+            "applied_learning_update_l2": 0.1853528497714297,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2120588,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              3,
+              6,
+              7,
+              8,
+              9
+            ],
+            "physical_clients": [
+              54,
+              56,
+              63,
+              67,
+              87,
+              88,
+              92
+            ],
+            "slot_count": 7,
+            "client_count": 7,
+            "direction_risks": {
+              "0": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "6": 0.001202964324056571,
+              "7": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              2,
+              3,
+              6,
+              7,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              0.9951997011424759,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9991824308515166,
+            "native_learning_update_l2": 0.07223627213104573,
+            "applied_learning_update_l2": 0.07229292347293279,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 185417,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              3,
+              6,
+              8,
+              9
+            ],
+            "physical_clients": [
+              54,
+              56,
+              63,
+              67,
+              87,
+              92
+            ],
+            "slot_count": 6,
+            "client_count": 6,
+            "direction_risks": {
+              "0": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "6": 0.0,
+              "8": 0.0,
+              "9": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "0": 1.0,
+              "2": 1.0,
+              "3": 1.0,
+              "6": 1.0,
+              "8": 1.0,
+              "9": 1.0
+            },
+            "eligible_slots": [
+              0,
+              2,
+              3,
+              6,
+              8,
+              9
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.07211101795315084,
+            "applied_learning_update_l2": 0.07211101795315084,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              2,
+              6,
+              7,
+              8
+            ],
+            "physical_clients": [
+              54,
+              56,
+              67,
+              88
+            ],
+            "slot_count": 4,
+            "client_count": 4,
+            "direction_risks": {
+              "2": 0.0030128613484390445,
+              "6": 0.0011061267900429868,
+              "7": 0.00478226592665682,
+              "8": 0.0011385215650543006
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "2": 1.0,
+              "6": 1.0,
+              "7": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              2,
+              6,
+              7,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.98802088243111,
+              0.9955852665517007,
+              0.9810527357690656,
+              0.9954562678667898
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9903987968250253,
+            "native_learning_update_l2": 0.11273321701009442,
+            "applied_learning_update_l2": 0.11173982612252407,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 671692,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              2,
+              6,
+              8
+            ],
+            "physical_clients": [
+              54,
+              56,
+              67
+            ],
+            "slot_count": 3,
+            "client_count": 3,
+            "direction_risks": {
+              "2": 0.0,
+              "6": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "2": 1.0,
+              "6": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              2,
+              6,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.007614123946717847,
+            "applied_learning_update_l2": 0.007614123946717847,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              6,
+              8
+            ],
+            "physical_clients": [
+              54,
+              56
+            ],
+            "slot_count": 2,
+            "client_count": 2,
+            "direction_risks": {
+              "6": 0.0,
+              "8": 0.0
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "6": 1.0,
+              "8": 1.0
+            },
+            "eligible_slots": [
+              6,
+              8
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              1.0,
+              1.0
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 1.0,
+            "native_learning_update_l2": 0.03931540716766622,
+            "applied_learning_update_l2": 0.03931540716766622,
+            "client_gate_extrapolation": false,
+            "returned_native_exactly": true
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              2,
+              6,
+              7
+            ],
+            "physical_clients": [
+              54,
+              67,
+              88
+            ],
+            "slot_count": 3,
+            "client_count": 3,
+            "direction_risks": {
+              "2": 0.026949194891121894,
+              "6": 0.0,
+              "7": 0.000700139979279934
+            },
+            "semantic": {
+              "valid_classes": {},
+              "original_scores": {},
+              "scores": {},
+              "donors": {},
+              "score_distribution_preserved": true,
+              "permuted_client_count": 0,
+              "changed_score_count": 0
+            },
+            "semantic_risks": {},
+            "confidence": {
+              "2": 1.0,
+              "6": 1.0,
+              "7": 1.0
+            },
+            "eligible_slots": [
+              2,
+              6,
+              7
+            ],
+            "insufficient_history_slots": [],
+            "fallback": null,
+            "gates": [
+              0.8978100312381221,
+              1.0,
+              0.9972033579925047
+            ],
+            "normalization": "gated_coverage_mass",
+            "gated_mass_ratio": 0.9701353641102997,
+            "native_learning_update_l2": 0.06594801698447494,
+            "applied_learning_update_l2": 0.06760109015681005,
+            "client_gate_extrapolation": false,
+            "changed_coordinates": 2180384,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              6
+            ],
+            "physical_clients": [
+              54
+            ],
+            "slot_count": 1,
+            "client_count": 1,
+            "fallback": "insufficient_distinct_clients",
+            "gates": [
+              1.0
+            ]
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "physical_clients": [],
+            "slot_count": 0,
+            "client_count": 0,
+            "fallback": "insufficient_distinct_clients",
+            "gates": []
+          }
+        ],
+        "global_client_risks": {},
+        "direction_valid_comparisons": 35,
+        "direction_conflict_fraction": 0.2571428571428571,
+        "semantic_valid_comparison_fraction": 0.0,
+        "semantic_missing_comparison_fraction": 1.0,
+        "gate_trigger_region_slot_fraction": 0.2571428571428571,
+        "gate_target_covered_parameter_fraction": 0.7428638439318468,
+        "actual_changed_parameter_fraction_full": 0.4514986227670076,
+        "difference_from_native_aggregate_l2": 0.0044969058872943585,
+        "regions_with_actual_changes": 4,
+        "neutral_or_fallback_region_fraction": 0.5555555555555556,
+        "insufficient_evidence_region_fraction": 0.2222222222222222,
+        "comparable_native_learning_update_l2": 0.2511090744937036,
+        "comparable_applied_learning_update_l2": 0.25187559800308207,
+        "history_unique_events_this_round": 0,
+        "history_total_events": 0,
+        "measurement_valid_class_fraction": 0.0,
+        "aggregation_note": "native dispatch fusion preserved; gate only adjusts actual local training increments"
+      },
+      "A3": {
+        "physical_client_risks": {
+          "87": 0.0,
+          "27": 0.0,
+          "67": 0.017600331926763673,
+          "92": 0.0,
+          "3": 0.0,
+          "54": 0.00014159418513764823,
+          "88": 0.0009186672427598546,
+          "56": 0.00016458534021453083,
+          "63": 0.0
+        },
+        "regions": [
+          {
+            "region_id": 0,
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.017600331926763673,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.017600331926763673,
+              "6": 0.00014159418513764823,
+              "7": 0.0009186672427598546,
+              "8": 0.00016458534021453083,
+              "9": 0.0
+            },
+            "gates": [
+              1.0,
+              1.0,
+              0.9320196995095953,
+              1.0,
+              1.0,
+              0.9320196995095953,
+              0.9994337836204792,
+              0.9963320743626156,
+              0.9993418752982678,
+              1.0
+            ],
+            "physical_clients": [
+              3,
+              27,
+              54,
+              56,
+              63,
+              67,
+              87,
+              88,
+              92
+            ],
+            "extrapolated_slots": [
+              6,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2120648,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 1,
+            "slots": [
+              0,
+              2,
+              3,
+              6,
+              7,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.0,
+              "2": 0.017600331926763673,
+              "3": 0.0,
+              "6": 0.00014159418513764823,
+              "7": 0.0009186672427598546,
+              "8": 0.00016458534021453083,
+              "9": 0.0
+            },
+            "gates": [
+              1.0,
+              0.9320196995095953,
+              1.0,
+              0.9994337836204792,
+              0.9963320743626156,
+              0.9993418752982678,
+              1.0
+            ],
+            "physical_clients": [
+              54,
+              56,
+              63,
+              67,
+              87,
+              88,
+              92
+            ],
+            "extrapolated_slots": [
+              2,
+              7,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 185902,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 2,
+            "slots": [
+              0,
+              2,
+              3,
+              6,
+              8,
+              9
+            ],
+            "global_risks": {
+              "0": 0.0,
+              "2": 0.017600331926763673,
+              "3": 0.0,
+              "6": 0.00014159418513764823,
+              "8": 0.00016458534021453083,
+              "9": 0.0
+            },
+            "gates": [
+              1.0,
+              0.9320196995095953,
+              1.0,
+              0.9994337836204792,
+              0.9993418752982678,
+              1.0
+            ],
+            "physical_clients": [
+              54,
+              56,
+              63,
+              67,
+              87,
+              92
+            ],
+            "extrapolated_slots": [
+              2,
+              6,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 339318,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 3,
+            "slots": [
+              2,
+              6,
+              7,
+              8
+            ],
+            "global_risks": {
+              "2": 0.017600331926763673,
+              "6": 0.00014159418513764823,
+              "7": 0.0009186672427598546,
+              "8": 0.00016458534021453083
+            },
+            "gates": [
+              0.9320196995095953,
+              0.9994337836204792,
+              0.9963320743626156,
+              0.9993418752982678
+            ],
+            "physical_clients": [
+              54,
+              56,
+              67,
+              88
+            ],
+            "extrapolated_slots": [],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 671761,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 4,
+            "slots": [
+              2,
+              6,
+              8
+            ],
+            "global_risks": {
+              "2": 0.017600331926763673,
+              "6": 0.00014159418513764823,
+              "8": 0.00016458534021453083
+            },
+            "gates": [
+              0.9320196995095953,
+              0.9994337836204792,
+              0.9993418752982678
+            ],
+            "physical_clients": [
+              54,
+              56,
+              67
+            ],
+            "extrapolated_slots": [
+              2,
+              6,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 29033,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 5,
+            "slots": [
+              6,
+              8
+            ],
+            "global_risks": {
+              "6": 0.00014159418513764823,
+              "8": 0.00016458534021453083
+            },
+            "gates": [
+              0.9994337836204792,
+              0.9993418752982678
+            ],
+            "physical_clients": [
+              54,
+              56
+            ],
+            "extrapolated_slots": [
+              6,
+              8
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 968310,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 6,
+            "slots": [
+              2,
+              6,
+              7
+            ],
+            "global_risks": {
+              "2": 0.017600331926763673,
+              "6": 0.00014159418513764823,
+              "7": 0.0009186672427598546
+            },
+            "gates": [
+              0.9320196995095953,
+              0.9994337836204792,
+              0.9963320743626156
+            ],
+            "physical_clients": [
+              54,
+              67,
+              88
+            ],
+            "extrapolated_slots": [
+              6
+            ],
+            "common_gate_cancellation": false,
+            "changed_coordinates": 2180112,
+            "returned_native_exactly": false
+          },
+          {
+            "region_id": 7,
+            "slots": [
+              6
+            ],
+            "global_risks": {
+              "6": 0.00014159418513764823
+            },
+            "gates": [
+              0.9994337836204792
+            ],
+            "physical_clients": [
+              54
+            ],
+            "extrapolated_slots": [
+              6
+            ],
+            "common_gate_cancellation": true,
+            "returned_native_exactly": true,
+            "changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "slots": [],
+            "global_risks": {},
+            "gates": [],
+            "physical_clients": [],
+            "extrapolated_slots": [],
+            "returned_native_exactly": true,
+            "changed_coordinates": 0,
+            "common_gate_cancellation": false
+          }
+        ]
+      }
+    }
+  }
+]

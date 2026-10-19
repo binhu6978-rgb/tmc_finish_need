@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "cohorts": 5,
+  "counterfactual_models": 25,
+  "probe_clients": 100,
+  "probe_examples_per_client": 32,
+  "client_SGD_calls": 0,
+  "official_test_access": false,
+  "input_tensors_unmodified": true,
+  "anchor_unmodified": true,
+  "source_commit": "8f730c5f5412d04df252a95cd3a58b9693d0eba1",
+  "fixed_batch_zero_control_max_abs_ce": 0.0,
+  "wall_seconds": 36.223948500002734,
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "peak_allocated_bytes": 113665536,
+  "peak_reserved_bytes": 159383552
+}

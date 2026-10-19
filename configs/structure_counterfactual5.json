@@ -1,0 +1,16 @@
+{
+  "cohorts": [1, 2, 3, 4, 5],
+  "methods": {
+    "A0": "Original Aggregation_AdaptiveFL",
+    "A1": "Original MethodHooks m2; conflict_lambda=4",
+    "A2": "Original MethodHooks m3; shared=1, remainder=0.98",
+    "A3": "Direction-only whole-physical-client control using A4 region risks; within-region mean of valid duplicate-slot risks; region-numel-weighted mean over valid regions; gate=exp(-4*risk); normalized covering-slot weights on local learning increments, preserve native dispatch fusion",
+    "A4": "Original ScopeHooks s03; conflict_lambda=4; original region/slot direction evidence"
+  },
+  "panel": "All 100 previously materialized training probes, same 32-image batch per physical client and model; Full model only. Equal client mean, then equal cohort mean. Also report participating/nonparticipating and fixed physical capacity groups cid0-39/40-69/70-99. No new images or SGD.",
+  "ce_tolerance": 0.000001,
+  "scale_analysis": "No search: rescale each A1-A4 full learning increment to A0 L2; also rescale A0 increment to A4 L2. Scales depend only on weights, never CE. These are analysis controls, not additional proposed methods.",
+  "limitations": "One mature E03 anchor, five dependent upload cohorts, training probes; no test accuracy or peak-performance claim. A3/A4 differ in global risk pooling and duplicate-slot pooling as well as intervention scope.",
+  "training_calls": 0,
+  "official_test_access": false
+}
