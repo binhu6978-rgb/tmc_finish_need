@@ -1,0 +1,30 @@
+{
+  "B00-D": {
+    "pid": 3191062,
+    "initial_seven_match_R0": true,
+    "execution_policy_matches_R0": true,
+    "partition_matches_R0": true,
+    "train_examples": 50000,
+    "test_examples": 10000,
+    "profile_count": 7,
+    "evaluated_profiles": [
+      "P6"
+    ],
+    "torch": "2.7.1+cu118",
+    "gpu": "NVIDIA GeForce RTX 4090"
+  },
+  "R3": {
+    "pid": 3191063,
+    "initial_seven_match_R0": true,
+    "execution_policy_matches_R0": true,
+    "partition_matches_R0": true,
+    "train_examples": 50000,
+    "test_examples": 10000,
+    "profile_count": 7,
+    "evaluated_profiles": [
+      "P6"
+    ],
+    "torch": "2.7.1+cu118",
+    "gpu": "NVIDIA GeForce RTX 4090"
+  }
+}

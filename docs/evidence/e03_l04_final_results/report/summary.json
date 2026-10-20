@@ -1,0 +1,678 @@
+{
+  "comparison": [
+    {
+      "id": "R0",
+      "test_oracle_peak": 36.55999755859375,
+      "best_round": 308,
+      "final": 35.90999984741211,
+      "last20": 35.84749889373779,
+      "last50": 35.71759902954101,
+      "final_ce": 3.6763112545013428,
+      "peak_ce": 3.498163938522339,
+      "test_oracle_peak_minus_R0": 0.0,
+      "final_minus_R0": 0.0,
+      "last20_minus_R0": 0.0,
+      "last50_minus_R0": 0.0
+    },
+    {
+      "id": "R1",
+      "test_oracle_peak": 36.39999771118164,
+      "best_round": 308,
+      "final": 35.84000015258789,
+      "last20": 35.690999031066895,
+      "last50": 35.60679901123047,
+      "final_ce": 3.680788516998291,
+      "peak_ce": 3.484149217605591,
+      "test_oracle_peak_minus_R0": -0.15999984741210938,
+      "final_minus_R0": -0.06999969482421875,
+      "last20_minus_R0": -0.15649986267089844,
+      "last50_minus_R0": -0.11080001831054176
+    },
+    {
+      "id": "R2",
+      "test_oracle_peak": 36.65999984741211,
+      "best_round": 308,
+      "final": 36.05999755859375,
+      "last20": 35.9114990234375,
+      "last50": 35.806999130249025,
+      "final_ce": 3.67980694770813,
+      "peak_ce": 3.494847536087036,
+      "test_oracle_peak_minus_R0": 0.10000228881835938,
+      "final_minus_R0": 0.14999771118164062,
+      "last20_minus_R0": 0.06400012969970703,
+      "last50_minus_R0": 0.08940010070801208
+    },
+    {
+      "id": "B00-D",
+      "test_oracle_peak": 36.68000030517578,
+      "best_round": 350,
+      "final": 36.029998779296875,
+      "last20": 36.31899871826172,
+      "last50": 36.115399017333985,
+      "final_ce": 3.672783136367798,
+      "peak_ce": 3.5913326740264893,
+      "test_oracle_peak_minus_R0": 0.12000274658203125,
+      "final_minus_R0": 0.11999893188476562,
+      "last20_minus_R0": 0.47149982452392436,
+      "last50_minus_R0": 0.3977999877929719
+    },
+    {
+      "id": "R3",
+      "test_oracle_peak": 36.56999969482422,
+      "best_round": 308,
+      "final": 35.849998474121094,
+      "last20": 36.083499336242674,
+      "last50": 35.876799240112305,
+      "final_ce": 3.621462821960449,
+      "peak_ce": 3.4529714584350586,
+      "test_oracle_peak_minus_R0": 0.01000213623046875,
+      "final_minus_R0": -0.060001373291015625,
+      "last20_minus_R0": 0.2360004425048814,
+      "last50_minus_R0": 0.1592002105712922
+    }
+  ],
+  "diagnostics": {
+    "R0": {
+      "first_round": {
+        "common_coordinates": 2120985,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.18565466622363658,
+        "common_support_fraction_per_upload": [
+          0.30537186161963986,
+          0.4110737978622849,
+          0.38367501031552204,
+          1.0,
+          0.8014738001992173,
+          0.4110737978622849,
+          0.30537186161963986,
+          1.0,
+          1.0,
+          0.8014738001992173
+        ],
+        "exclusive_coordinates": 0,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 4478775,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          -0.0006926431866563225,
+          0.018522618582404414,
+          -0.012242835325216386,
+          0.17835905346315958,
+          0.02326954671415732,
+          0.03466119619654313,
+          -0.012747219025891434,
+          0.016799641018834927,
+          0.18129637156058964,
+          0.05887796900340099
+        ],
+        "conflict_weights": [
+          0.9972332617479807,
+          1.0,
+          0.9522084183620493,
+          1.0,
+          1.0,
+          1.0,
+          0.9502892413927361,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9502892413927361,
+          "median": 1.0,
+          "mean": 0.9899730921502766,
+          "max": 1.0,
+          "std_population": 0.019384170931595997
+        },
+        "valid_cosine_negative_fraction": 0.3,
+        "unnormalized_log_weights": [
+          -0.00277057274662529,
+          -0.0,
+          -0.04897134130086554,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.050988876103565735,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "negative_fraction": 0.3,
+        "fallback_slots": 0,
+        "candidate": "REF",
+        "actual_update_l2": 44.487849270414436,
+        "e03_update_l2": 44.487849270414436,
+        "difference_from_e03_l2": 0.0,
+        "changed_from_e03_fraction": 0.0,
+        "update_l2_ratio_e03": 1.0,
+        "effective_step_along_e03": 1.0,
+        "update_cosine_e03": 1.0,
+        "conflict_slot_count": 3,
+        "normalized_share_changed_slots": 0
+      },
+      "later": {
+        "difference_from_e03_l2": 0.0,
+        "changed_from_e03_fraction": 0.0,
+        "update_l2_ratio_e03": 1.0,
+        "actual_update_l2": 0.4118395036606172,
+        "e03_update_l2": 0.4118395036606172
+      },
+      "changed_rounds": 0,
+      "classifier_active_rounds": 0
+    },
+    "R1": {
+      "first_round": {
+        "common_coordinates": 2120985,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.18565466622363658,
+        "common_support_fraction_per_upload": [
+          0.30537186161963986,
+          0.4110737978622849,
+          0.38367501031552204,
+          1.0,
+          0.8014738001992173,
+          0.4110737978622849,
+          0.30537186161963986,
+          1.0,
+          1.0,
+          0.8014738001992173
+        ],
+        "exclusive_coordinates": 0,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 4478775,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          -0.0006926431866563225,
+          0.018522618582404414,
+          -0.012242835325216386,
+          0.17835905346315958,
+          0.02326954671415732,
+          0.03466119619654313,
+          -0.012747219025891434,
+          0.016799641018834927,
+          0.18129637156058964,
+          0.05887796900340099
+        ],
+        "conflict_weights": [
+          0.9972332617479807,
+          1.0,
+          0.9522084183620493,
+          1.0,
+          1.0,
+          1.0,
+          0.9502892413927361,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9502892413927361,
+          "median": 1.0,
+          "mean": 0.9899730921502766,
+          "max": 1.0,
+          "std_population": 0.019384170931595997
+        },
+        "valid_cosine_negative_fraction": 0.3,
+        "unnormalized_log_weights": [
+          -0.00277057274662529,
+          -0.0,
+          -0.04897134130086554,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.050988876103565735,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "negative_fraction": 0.3,
+        "fallback_slots": 0,
+        "native_protected_keys": [
+          "classifier.bias",
+          "classifier.weight"
+        ],
+        "classifier_protection_active": true,
+        "classifier_protection_start_round": 1,
+        "candidate": "l04",
+        "original_e03_cosine": [
+          -0.0006926431866563225,
+          0.018522618582404414,
+          -0.012242835325216386,
+          0.17835905346315958,
+          0.02326954671415732,
+          0.03466119619654313,
+          -0.012747219025891434,
+          0.016799641018834927,
+          0.18129637156058964,
+          0.05887796900340099
+        ],
+        "original_e03_weights": [
+          0.9972332617479807,
+          1.0,
+          0.9522084183620493,
+          1.0,
+          1.0,
+          1.0,
+          0.9502892413927361,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "normalized_slot_share": [
+          0.1264138296328229,
+          0.09093978871997682,
+          0.0804083729272832,
+          0.09763232728378464,
+          0.10983636819425772,
+          0.10078175719616479,
+          0.07687933174293363,
+          0.09979756034854599,
+          0.09763232728378464,
+          0.1196783366704457
+        ],
+        "normalized_share_changed_slots": 0,
+        "conflict_slot_count": 3,
+        "conflict_slot_indices": [
+          0,
+          2,
+          6
+        ],
+        "actual_update_l2": 44.48686083205104,
+        "e03_update_l2": 44.487849270414436,
+        "difference_from_e03_l2": 0.04329591376382237,
+        "changed_from_e03_fraction": 0.0029585912763922975,
+        "update_l2_ratio_e03": 0.9999777818352741,
+        "effective_step_along_e03": 0.9999773085156107,
+        "update_cosine_e03": 0.9999995266698203,
+        "round_number": 1
+      },
+      "later": {
+        "difference_from_e03_l2": 0.00032832081002693913,
+        "changed_from_e03_fraction": 0.0014583326428374158,
+        "update_l2_ratio_e03": 0.9999889458641615,
+        "actual_update_l2": 0.41004044654203203,
+        "e03_update_l2": 0.410046484591937
+      },
+      "changed_rounds": 212,
+      "classifier_active_rounds": 400
+    },
+    "R2": {
+      "first_round": {
+        "common_coordinates": 2120985,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.18565466622363658,
+        "common_support_fraction_per_upload": [
+          0.30537186161963986,
+          0.4110737978622849,
+          0.38367501031552204,
+          1.0,
+          0.8014738001992173,
+          0.4110737978622849,
+          0.30537186161963986,
+          1.0,
+          1.0,
+          0.8014738001992173
+        ],
+        "exclusive_coordinates": 0,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 4478775,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          -0.0006926431866563225,
+          0.018522618582404414,
+          -0.012242835325216386,
+          0.17835905346315958,
+          0.02326954671415732,
+          0.03466119619654313,
+          -0.012747219025891434,
+          0.016799641018834927,
+          0.18129637156058964,
+          0.05887796900340099
+        ],
+        "conflict_weights": [
+          0.9972332617479807,
+          1.0,
+          0.9522084183620493,
+          1.0,
+          1.0,
+          1.0,
+          0.9502892413927361,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9502892413927361,
+          "median": 1.0,
+          "mean": 0.9899730921502766,
+          "max": 1.0,
+          "std_population": 0.019384170931595997
+        },
+        "valid_cosine_negative_fraction": 0.3,
+        "unnormalized_log_weights": [
+          -0.00277057274662529,
+          -0.0,
+          -0.04897134130086554,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.050988876103565735,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "negative_fraction": 0.3,
+        "fallback_slots": 0,
+        "classifier_protection_active": false,
+        "classifier_protection_start_round": 2,
+        "candidate": "l04",
+        "original_e03_cosine": [
+          -0.0006926431866563225,
+          0.018522618582404414,
+          -0.012242835325216386,
+          0.17835905346315958,
+          0.02326954671415732,
+          0.03466119619654313,
+          -0.012747219025891434,
+          0.016799641018834927,
+          0.18129637156058964,
+          0.05887796900340099
+        ],
+        "original_e03_weights": [
+          0.9972332617479807,
+          1.0,
+          0.9522084183620493,
+          1.0,
+          1.0,
+          1.0,
+          0.9502892413927361,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "normalized_slot_share": [
+          0.1264138296328229,
+          0.09093978871997682,
+          0.0804083729272832,
+          0.09763232728378464,
+          0.10983636819425772,
+          0.10078175719616479,
+          0.07687933174293363,
+          0.09979756034854599,
+          0.09763232728378464,
+          0.1196783366704457
+        ],
+        "normalized_share_changed_slots": 0,
+        "conflict_slot_count": 3,
+        "conflict_slot_indices": [
+          0,
+          2,
+          6
+        ],
+        "actual_update_l2": 44.487849270414436,
+        "e03_update_l2": 44.487849270414436,
+        "difference_from_e03_l2": 0.0,
+        "changed_from_e03_fraction": 0.0,
+        "update_l2_ratio_e03": 1.0,
+        "effective_step_along_e03": 1.0,
+        "update_cosine_e03": 1.0,
+        "round_number": 1
+      },
+      "later": {
+        "difference_from_e03_l2": 0.00033887438535164157,
+        "changed_from_e03_fraction": 0.0015807266913909967,
+        "update_l2_ratio_e03": 0.9999888875169524,
+        "actual_update_l2": 0.41229443757107775,
+        "e03_update_l2": 0.4123004403050685
+      },
+      "changed_rounds": 228,
+      "classifier_active_rounds": 399
+    },
+    "B00-D": {
+      "first_round": {},
+      "later": {
+        "difference_from_e03_l2": null,
+        "changed_from_e03_fraction": null,
+        "update_l2_ratio_e03": null,
+        "actual_update_l2": null,
+        "e03_update_l2": null
+      },
+      "changed_rounds": null,
+      "classifier_active_rounds": 0
+    },
+    "R3": {
+      "first_round": {
+        "common_coordinates": 2120985,
+        "full_coordinates": 11424356,
+        "common_support_fraction_full": 0.18565466622363658,
+        "common_support_fraction_per_upload": [
+          0.30537186161963986,
+          0.4110737978622849,
+          0.38367501031552204,
+          1.0,
+          0.8014738001992173,
+          0.4110737978622849,
+          0.30537186161963986,
+          1.0,
+          1.0,
+          0.8014738001992173
+        ],
+        "exclusive_coordinates": 0,
+        "exclusive_coordinates_per_slot": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "uncovered_coordinates": 4478775,
+        "exclusive_region_weight_effect": "One-holder normalized weight is 1: conflict multiplier cancels; no exclusive damping is claimed",
+        "cosine": [
+          -0.0006926431866563225,
+          0.018522618582404414,
+          -0.012242835325216386,
+          0.17835905346315958,
+          0.02326954671415732,
+          0.03466119619654313,
+          -0.012747219025891434,
+          0.016799641018834927,
+          0.18129637156058964,
+          0.05887796900340099
+        ],
+        "conflict_weights": [
+          0.9972332617479807,
+          1.0,
+          0.9522084183620493,
+          1.0,
+          1.0,
+          1.0,
+          0.9502892413927361,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "weight_distribution": {
+          "count": 10,
+          "min": 0.9502892413927361,
+          "median": 1.0,
+          "mean": 0.9899730921502766,
+          "max": 1.0,
+          "std_population": 0.019384170931595997
+        },
+        "valid_cosine_negative_fraction": 0.3,
+        "unnormalized_log_weights": [
+          -0.00277057274662529,
+          -0.0,
+          -0.04897134130086554,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.050988876103565735,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "negative_fraction": 0.3,
+        "fallback_slots": 0,
+        "native_protected_keys": [
+          "classifier.bias",
+          "classifier.weight"
+        ],
+        "classifier_protection_active": true,
+        "classifier_protection_start_round": 1,
+        "classifier_protection_end_round": 1,
+        "candidate": "l04",
+        "original_e03_cosine": [
+          -0.0006926431866563225,
+          0.018522618582404414,
+          -0.012242835325216386,
+          0.17835905346315958,
+          0.02326954671415732,
+          0.03466119619654313,
+          -0.012747219025891434,
+          0.016799641018834927,
+          0.18129637156058964,
+          0.05887796900340099
+        ],
+        "original_e03_weights": [
+          0.9972332617479807,
+          1.0,
+          0.9522084183620493,
+          1.0,
+          1.0,
+          1.0,
+          0.9502892413927361,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "normalized_slot_share": [
+          0.1264138296328229,
+          0.09093978871997682,
+          0.0804083729272832,
+          0.09763232728378464,
+          0.10983636819425772,
+          0.10078175719616479,
+          0.07687933174293363,
+          0.09979756034854599,
+          0.09763232728378464,
+          0.1196783366704457
+        ],
+        "normalized_share_changed_slots": 0,
+        "conflict_slot_count": 3,
+        "conflict_slot_indices": [
+          0,
+          2,
+          6
+        ],
+        "actual_update_l2": 44.48686083205104,
+        "e03_update_l2": 44.487849270414436,
+        "difference_from_e03_l2": 0.04329591376382237,
+        "changed_from_e03_fraction": 0.0029585912763922975,
+        "update_l2_ratio_e03": 0.9999777818352741,
+        "effective_step_along_e03": 0.9999773085156107,
+        "update_cosine_e03": 0.9999995266698203,
+        "round_number": 1
+      },
+      "later": {
+        "difference_from_e03_l2": 0.0,
+        "changed_from_e03_fraction": 0.0,
+        "update_l2_ratio_e03": 1.0,
+        "actual_update_l2": 0.4099271690448488,
+        "e03_update_l2": 0.4099271690448488
+      },
+      "changed_rounds": 1,
+      "classifier_active_rounds": 1
+    }
+  },
+  "factorial_contrasts": {
+    "test_oracle_peak": {
+      "initial_native_without_later": 0.01000213623046875,
+      "initial_native_with_later": -0.26000213623046875,
+      "later_native_without_initial": 0.10000228881835938,
+      "later_native_with_initial": -0.17000198364257812,
+      "interaction": -0.2700042724609375,
+      "m2_minus_native": -0.12000274658203125
+    },
+    "final": {
+      "initial_native_without_later": -0.060001373291015625,
+      "initial_native_with_later": -0.21999740600585938,
+      "later_native_without_initial": 0.14999771118164062,
+      "later_native_with_initial": -0.009998321533203125,
+      "interaction": -0.15999603271484375,
+      "m2_minus_native": -0.11999893188476562
+    },
+    "last20": {
+      "initial_native_without_later": 0.2360004425048814,
+      "initial_native_with_later": -0.22049999237060547,
+      "later_native_without_initial": 0.06400012969970703,
+      "later_native_with_initial": -0.39250030517577983,
+      "interaction": -0.45650043487548686,
+      "m2_minus_native": -0.47149982452392436
+    },
+    "last50": {
+      "initial_native_without_later": 0.1592002105712922,
+      "initial_native_with_later": -0.20020011901855383,
+      "later_native_without_initial": 0.08940010070801208,
+      "later_native_with_initial": -0.27000022888183395,
+      "interaction": -0.359400329589846,
+      "m2_minus_native": -0.3977999877929719
+    },
+    "final_ce": {
+      "initial_native_without_later": -0.054848432540893555,
+      "initial_native_with_later": 0.0009815692901611328,
+      "later_native_without_initial": 0.0034956932067871094,
+      "later_native_with_initial": 0.0593256950378418,
+      "interaction": 0.05583000183105469,
+      "m2_minus_native": 0.003528118133544922
+    }
+  },
+  "checks": {
+    "R3_later_same_input_exact_M2": true,
+    "R3_only_first_classifier_active": true,
+    "R0_R2_first_evaluation_equal": true,
+    "R1_R3_first_evaluation_equal": true
+  },
+  "interpretation": "All peaks official test-oracle; paired deterministic seed1 controls, not independent validation; historical E03 is contextual only"
+}

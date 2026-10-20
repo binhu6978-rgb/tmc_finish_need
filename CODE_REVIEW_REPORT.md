@@ -631,3 +631,17 @@ L04只保护51,300个classifier参数（Full的.44904%），实际221轮改变�
 本次只补充离线分析和报告：tools/analyze_local12_results.py读取保存的诊断/参数形状，验证作用范围并绘图；tools/report_local12.py将代数等价L02从新机制排名中排除，保留完整表格数据。报告/几何回归3 passed，未改变训练代码或启动新SGD。原始CSV/diagnostics/manifest/完成及资源记录、图和完整科研解释见docs/E03_LOCAL12_RESULTS.md及docs/evidence/e03_local12_results/；权重保留本地runs，不提交大checkpoint或私人资料。
 
 仅推荐L04作为后续研究候选，保留原M2/REF及L02数值对照，不推荐第二个新机制，不继续本轮BN/容量/评分/幅度固定版本的无目的调参。全部峰值标明test-oracle peak，以本地REF为主，不按服务器37.29%评判。当前只是参数类别分域聚合的探索结果，不是已验证的功能语义可靠性机制。本任务结束，等待后续授权。
+
+## 确定性五组分类器对照最终交付（2026-10-20）
+
+本节为后续受控验证，更新上节对L04的初步保留判断。R0/R1/R2以及最后并行的B00-D/R3均实际完成400轮，无失败或重试。原三组不重跑，所有服务器代码与结果均在/home/hh/TMC_re_e03_scope_components400_20261019。原三组训练冻结c183962，最后两组冻结115c7f9；只新增默认关闭的classifier end-round1选项、原baseline入口支持和轻量双进程/报告工具，原M2评分、lambda4、七模型、SGD和覆盖聚合函数均保持不变。启动本地与Linux96tests通过。
+
+此前真实GPU复核已定位旧数值分叉到同输入首次forward相同但backward梯度不同；严格确定性策略下本地REF/L02三轮逐张量权重、评价、RNG和调度完全相同。五组正式实验统一strict deterministic、cuDNN deterministic、benchmarkFalse、TF32off、CUBLAS4096:8，Torch2.7.1cu118/RTX4090；初始化、原分区及400轮slot调度一致。该数值环境与旧E03 37.29%的结果不同，不能直接跨批严格配对。
+
+B00-D原生AdaptiveFL的test-oracle peak36.6800%r350，Final36.0300、Last20 36.3190、Last50 36.1154、CE3.672783。R0原M2 peak36.5600r308、Final35.9100、Last20 35.8475、Last50 35.7176：相对Native的四项Accuracy全部下降。R1全程classifier Native peak36.4000、Final35.8400、Last20 35.6910、Last50 35.6068；R2第2轮起保护 peak36.6600、Final36.0600、Last20 35.9115、Last50 35.8070；R3仅首轮保护 peak36.5700、Final35.8500、Last20 36.0835、Last50 35.8768。R2的Final比Native多0.03pp，但Peak和后期均值落后；R3的Final CE3.621463最低，也没有转化为更高Accuracy。
+
+R1/R2实际212/228轮改变聚合，classifier范围不超过Full的0.44904%；R3只改变第1轮，差异L2=.04329591，第2–400轮相对各自同输入原M2差异严格0。R0有214轮非均匀权重，不能以门控未激活解释结果。首轮Native的条件Last20效应R3-R0=+.2360pp而R1-R2=-.2205；后续Native效应R2-R0=+.0640而R1-R3=-.3925。不存在普遍独立的classifier保护收益，首轮与后续存在非加性轨迹差异；首轮作用同时包含独立下发融合与第一次SGD权重，不宣称已将二者分离。R1/R2的同输入L2比约.999989且差异大部分非平行，几何变化真实但未胜过Native。
+
+新增纯离线tools/analyze_l04_results.py核对五组原始标量、checkpoint核验证据、调度/执行设置和2x2差值，不读取训练图像或测试集生成评分，不创建新SGD。实际结果与相关聚合回归4tests通过；完整证据、曲线和中文报告见docs/evidence/e03_l04_final_results及docs/E03_L04_FINAL_RESULTS.md。所有best/latest在服务器验证实际400轮/首次峰值对应，Full参数形状一致且有限，权重未上传。完成检查自动任务已暂停。
+
+最终以Native B00-D为该确定性环境的优先参考，保留原E03作为历史参考和对照代码；不将M2或任何classifier保护策略选为下一版核心，停止当前路线的无目的调参。后续核心创新应重新审视问题与功能影响证据，本轮不实施新算法或追加训练。单seed官方test-oracle探索不证明所有环境下M2均无效，也不证明独立泛化收益。

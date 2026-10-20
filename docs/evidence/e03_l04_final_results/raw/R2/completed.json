@@ -1,0 +1,9 @@
+{
+  "rounds_completed": 400,
+  "requested_epochs": 400,
+  "success": true,
+  "formal_300_success": false,
+  "elapsed_seconds": 2811.42396130797,
+  "checkpoint": "latest.pt",
+  "selection": "latest/final round, no test selection"
+}
