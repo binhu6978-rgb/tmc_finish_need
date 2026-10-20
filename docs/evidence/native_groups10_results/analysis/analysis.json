@@ -1,0 +1,879 @@
+{
+  "baseline": {
+    "id": "B00-D",
+    "method": "baseline",
+    "rounds": 400,
+    "test_oracle_peak": 36.68000030517578,
+    "best_round": 350,
+    "final_accuracy": 36.029998779296875,
+    "last20_mean": 36.31899871826172,
+    "last50_mean": 36.115399017333985,
+    "final_ce": 3.672783136367798,
+    "peak_ce": 3.5913326740264893,
+    "peak_ce_window_start": 348,
+    "peak_ce_window_end": 352,
+    "peak_window_ce_mean": 3.6195816516876222
+  },
+  "comparison": [
+    {
+      "id": "G01",
+      "method": "g01",
+      "rounds": 400,
+      "test_oracle_peak": 36.7599983215332,
+      "best_round": 326,
+      "final_accuracy": 35.369998931884766,
+      "last20_mean": 35.994498825073244,
+      "last50_mean": 35.852998886108395,
+      "final_ce": 3.660245895385742,
+      "peak_ce": 3.520440101623535,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.5602715015411377,
+      "test_oracle_peak_minus_B00_D": 0.07999801635742188,
+      "final_accuracy_minus_B00_D": -0.6599998474121094,
+      "last20_mean_minus_B00_D": -0.3244998931884737,
+      "last50_mean_minus_B00_D": -0.2624001312255899,
+      "final_ce_minus_B00_D": -0.012537240982055664
+    },
+    {
+      "id": "G02",
+      "method": "g02",
+      "rounds": 400,
+      "test_oracle_peak": 37.11000061035156,
+      "best_round": 326,
+      "final_accuracy": 36.0,
+      "last20_mean": 36.242498779296874,
+      "last50_mean": 36.205598983764645,
+      "final_ce": 3.6605772972106934,
+      "peak_ce": 3.4956061840057373,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.5421189785003664,
+      "test_oracle_peak_minus_B00_D": 0.43000030517578125,
+      "final_accuracy_minus_B00_D": -0.029998779296875,
+      "last20_mean_minus_B00_D": -0.07649993896484375,
+      "last50_mean_minus_B00_D": 0.09019996643066008,
+      "final_ce_minus_B00_D": -0.012205839157104492
+    },
+    {
+      "id": "G03",
+      "method": "g03",
+      "rounds": 400,
+      "test_oracle_peak": 38.45000076293945,
+      "best_round": 339,
+      "final_accuracy": 37.779998779296875,
+      "last20_mean": 37.65849914550781,
+      "last50_mean": 37.605599060058594,
+      "final_ce": 3.5871944427490234,
+      "peak_ce": 3.4508187770843506,
+      "peak_ce_window_start": 337,
+      "peak_ce_window_end": 341,
+      "peak_window_ce_mean": 3.4600050926208494,
+      "test_oracle_peak_minus_B00_D": 1.7700004577636719,
+      "final_accuracy_minus_B00_D": 1.75,
+      "last20_mean_minus_B00_D": 1.3395004272460938,
+      "last50_mean_minus_B00_D": 1.4902000427246094,
+      "final_ce_minus_B00_D": -0.08558869361877441
+    },
+    {
+      "id": "G04",
+      "method": "g04",
+      "rounds": 400,
+      "test_oracle_peak": 36.619998931884766,
+      "best_round": 385,
+      "final_accuracy": 35.61000061035156,
+      "last20_mean": 36.04899940490723,
+      "last50_mean": 35.793999099731444,
+      "final_ce": 3.663545608520508,
+      "peak_ce": 3.6280312538146973,
+      "peak_ce_window_start": 383,
+      "peak_ce_window_end": 387,
+      "peak_window_ce_mean": 3.6349004745483398,
+      "test_oracle_peak_minus_B00_D": -0.060001373291015625,
+      "final_accuracy_minus_B00_D": -0.4199981689453125,
+      "last20_mean_minus_B00_D": -0.26999931335448935,
+      "last50_mean_minus_B00_D": -0.32139991760254105,
+      "final_ce_minus_B00_D": -0.009237527847290039
+    },
+    {
+      "id": "G05",
+      "method": "g05",
+      "rounds": 400,
+      "test_oracle_peak": 36.98999786376953,
+      "best_round": 326,
+      "final_accuracy": 36.29999923706055,
+      "last20_mean": 36.38899917602539,
+      "last50_mean": 36.287399215698244,
+      "final_ce": 3.5929222106933594,
+      "peak_ce": 3.4454686641693115,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.4797083854675295,
+      "test_oracle_peak_minus_B00_D": 0.30999755859375,
+      "final_accuracy_minus_B00_D": 0.2700004577636719,
+      "last20_mean_minus_B00_D": 0.07000045776367614,
+      "last50_mean_minus_B00_D": 0.17200019836425895,
+      "final_ce_minus_B00_D": -0.07986092567443848
+    },
+    {
+      "id": "G06",
+      "method": "g06",
+      "rounds": 400,
+      "test_oracle_peak": 36.86000061035156,
+      "best_round": 301,
+      "final_accuracy": 36.32999801635742,
+      "last20_mean": 36.28049926757812,
+      "last50_mean": 36.1749991607666,
+      "final_ce": 3.6667745113372803,
+      "peak_ce": 3.480414390563965,
+      "peak_ce_window_start": 299,
+      "peak_ce_window_end": 303,
+      "peak_window_ce_mean": 3.476975107192993,
+      "test_oracle_peak_minus_B00_D": 0.18000030517578125,
+      "final_accuracy_minus_B00_D": 0.2999992370605469,
+      "last20_mean_minus_B00_D": -0.03849945068359517,
+      "last50_mean_minus_B00_D": 0.059600143432618324,
+      "final_ce_minus_B00_D": -0.006008625030517578
+    },
+    {
+      "id": "G07",
+      "method": "g07",
+      "rounds": 400,
+      "test_oracle_peak": 36.31999969482422,
+      "best_round": 387,
+      "final_accuracy": 35.34000015258789,
+      "last20_mean": 35.68899917602539,
+      "last50_mean": 35.44099937438965,
+      "final_ce": 3.778043270111084,
+      "peak_ce": 3.7267158031463623,
+      "peak_ce_window_start": 385,
+      "peak_ce_window_end": 389,
+      "peak_window_ce_mean": 3.746701145172119,
+      "test_oracle_peak_minus_B00_D": -0.3600006103515625,
+      "final_accuracy_minus_B00_D": -0.6899986267089844,
+      "last20_mean_minus_B00_D": -0.6299995422363267,
+      "last50_mean_minus_B00_D": -0.6743996429443371,
+      "final_ce_minus_B00_D": 0.10526013374328613
+    },
+    {
+      "id": "G08",
+      "method": "g08",
+      "rounds": 400,
+      "test_oracle_peak": 36.37999725341797,
+      "best_round": 326,
+      "final_accuracy": 35.65999984741211,
+      "last20_mean": 35.55149917602539,
+      "last50_mean": 35.62059928894043,
+      "final_ce": 3.6289565563201904,
+      "peak_ce": 3.4968061447143555,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.534584093093872,
+      "test_oracle_peak_minus_B00_D": -0.3000030517578125,
+      "final_accuracy_minus_B00_D": -0.3699989318847656,
+      "last20_mean_minus_B00_D": -0.7674995422363295,
+      "last50_mean_minus_B00_D": -0.49479972839355213,
+      "final_ce_minus_B00_D": -0.04382658004760742
+    },
+    {
+      "id": "G09",
+      "method": "g09",
+      "rounds": 400,
+      "test_oracle_peak": 27.959999084472656,
+      "best_round": 337,
+      "final_accuracy": 27.65999984741211,
+      "last20_mean": 27.070999240875246,
+      "last50_mean": 27.001599197387694,
+      "final_ce": 3.106663227081299,
+      "peak_ce": 3.083512306213379,
+      "peak_ce_window_start": 335,
+      "peak_ce_window_end": 339,
+      "peak_window_ce_mean": 3.091049003601074,
+      "test_oracle_peak_minus_B00_D": -8.720001220703125,
+      "final_accuracy_minus_B00_D": -8.369998931884766,
+      "last20_mean_minus_B00_D": -9.247999477386472,
+      "last50_mean_minus_B00_D": -9.11379981994629,
+      "final_ce_minus_B00_D": -0.566119909286499
+    },
+    {
+      "id": "G10",
+      "method": "g10",
+      "rounds": 400,
+      "test_oracle_peak": 32.34000015258789,
+      "best_round": 351,
+      "final_accuracy": 32.11000061035156,
+      "last20_mean": 31.982999324798584,
+      "last50_mean": 31.9251993560791,
+      "final_ce": 3.0557379722595215,
+      "peak_ce": 3.009087324142456,
+      "peak_ce_window_start": 349,
+      "peak_ce_window_end": 353,
+      "peak_window_ce_mean": 3.0110850811004637,
+      "test_oracle_peak_minus_B00_D": -4.340000152587891,
+      "final_accuracy_minus_B00_D": -3.9199981689453125,
+      "last20_mean_minus_B00_D": -4.335999393463133,
+      "last50_mean_minus_B00_D": -4.1901996612548835,
+      "final_ce_minus_B00_D": -0.6170451641082764
+    }
+  ],
+  "mechanisms": {
+    "G01": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.16308410633770662,
+      "later_update_l2_ratio_native_mean": 1.0668956588670475,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 1.2120226099959373,
+        "perpendicular_difference_energy": 12.124817053390414,
+        "perpendicular_fraction": 0.9091222028166609,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1648502883479334,
+        0.3489078151100204,
+        0.48624189654204625
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14423558897243108,
+        0.14202172096908938,
+        0.13905597326649957,
+        0.13972431077694236,
+        0.13851294903926484,
+        0.1476608187134503,
+        0.14878863826232247
+      ],
+      "full_only_directly_changed_rounds": 0
+    },
+    "G02": {
+      "changed_rounds": 164,
+      "later_native_difference_l2_mean": 0.034909624455306834,
+      "later_update_l2_ratio_native_mean": 1.0125046976901606,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 0.10207407052660458,
+        "perpendicular_difference_energy": 1.4381365077546875,
+        "perpendicular_fraction": 0.9337271981078664,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1705083736617894,
+        0.35872882925712085,
+        0.47076279708108976
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14675175789363726,
+        0.13913605874844753,
+        0.14682189060201972,
+        0.1421037072403419,
+        0.14038301808733147,
+        0.14259911252369978,
+        0.14220445490452233
+      ],
+      "full_only_directly_changed_rounds": 9
+    },
+    "G03": {
+      "changed_rounds": 398,
+      "later_native_difference_l2_mean": 0.21072145235074957,
+      "later_update_l2_ratio_native_mean": 1.186351306924794,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 1.0135515894902003,
+        "perpendicular_difference_energy": 23.025717538675007,
+        "perpendicular_fraction": 0.9578376703515211,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.2794486215538847,
+        0.3558897243107769,
+        0.36466165413533835
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.17186978408172704,
+        0.1688251731997507,
+        0.17364535292311883,
+        0.12268187690772198,
+        0.12215815074783974,
+        0.12868322184062989,
+        0.11213644029921177
+      ],
+      "full_only_directly_changed_rounds": 0
+    },
+    "G04": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.10676573455480273,
+      "later_update_l2_ratio_native_mean": 1.0431770675371435,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 0.37008773877917306,
+        "perpendicular_difference_energy": 5.266918234763707,
+        "perpendicular_fraction": 0.9343467541960806,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1648502883479334,
+        0.3489078151100204,
+        0.48624189654204625
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14423558897243108,
+        0.14202172096908938,
+        0.13905597326649957,
+        0.13972431077694236,
+        0.13851294903926484,
+        0.1476608187134503,
+        0.14878863826232247
+      ],
+      "full_only_directly_changed_rounds": 0
+    },
+    "G05": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.11691863203067723,
+      "later_update_l2_ratio_native_mean": 1.0335246014774597,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 0.49495633342212164,
+        "perpendicular_difference_energy": 7.067890359189711,
+        "perpendicular_fraction": 0.9345542289114962,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "full_only_directly_changed_rounds": 0
+    },
+    "G06": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.06303512152177662,
+      "later_update_l2_ratio_native_mean": 0.9614144107939884,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 0.39230168992609527,
+        "perpendicular_difference_energy": 1.7343996091712826,
+        "perpendicular_fraction": 0.8155351247057604,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1661654135338346,
+        0.3458646616541354,
+        0.48796992481203005
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14511278195488722,
+        0.13709273182957393,
+        0.14586466165413534,
+        0.14135338345864662,
+        0.14085213032581453,
+        0.14260651629072682,
+        0.14711779448621556
+      ],
+      "full_only_directly_changed_rounds": 172
+    },
+    "G07": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.07004819795876673,
+      "later_update_l2_ratio_native_mean": 0.9227254055450718,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 0.42974839405479953,
+        "perpendicular_difference_energy": 2.046946869513985,
+        "perpendicular_fraction": 0.8264831364697023,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "full_only_directly_changed_rounds": 329
+    },
+    "G08": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.026813920948083613,
+      "later_update_l2_ratio_native_mean": 0.920968800056097,
+      "later_global_scale_mean": 0.920968799484231,
+      "max_scale_norm_relative_error": 5.736716917456899e-08,
+      "worst_scale_match": {
+        "round": 26,
+        "actual_update_l2": 0.8905479236355257,
+        "virtual_regional_update_l2": 0.890547974723742,
+        "scale_norm_absolute_error": 5.10882163240467e-08,
+        "scale_norm_relative_error": 5.736716917456899e-08
+      },
+      "later_geometry": {
+        "parallel_difference_energy": 0.35132026355895407,
+        "perpendicular_difference_energy": 1.227981272222678e-09,
+        "perpendicular_fraction": 3.495332878014907e-09,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "full_only_directly_changed_rounds": 329
+    },
+    "G09": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.5880544421200175,
+      "later_update_l2_ratio_native_mean": 0.2582844965440999,
+      "later_global_scale_mean": 1.0,
+      "max_scale_norm_relative_error": null,
+      "worst_scale_match": null,
+      "later_geometry": {
+        "parallel_difference_energy": 127.22604560285059,
+        "perpendicular_difference_energy": 15.72998443755018,
+        "perpendicular_fraction": 0.11003372458723659,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "full_only_directly_changed_rounds": 172,
+      "mean_zero_gain_fraction_covered_coordinates": 0.16572524361531643,
+      "mean_parameter_weighted_regional_gain": 0.22100672822035258
+    },
+    "G10": {
+      "changed_rounds": 399,
+      "later_native_difference_l2_mean": 0.45342296475512883,
+      "later_update_l2_ratio_native_mean": 0.19751772805759293,
+      "later_global_scale_mean": 0.1975177279030481,
+      "max_scale_norm_relative_error": 0.0001109501960780202,
+      "worst_scale_match": {
+        "round": 127,
+        "actual_update_l2": 0.00010265269115074055,
+        "virtual_regional_update_l2": 0.00010264130307803834,
+        "scale_norm_absolute_error": 1.1388072702211852e-08,
+        "scale_norm_relative_error": 0.0001109501960780202
+      },
+      "later_geometry": {
+        "parallel_difference_energy": 89.12612170963226,
+        "perpendicular_difference_energy": 1.324489610939149e-09,
+        "perpendicular_fraction": 1.486084646692668e-11,
+        "note": "Approximate reconstruction from logged float32 displacement norms; difference energy, not total update energy"
+      },
+      "coverage_unique_physical_totals": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ],
+      "full_training_slots": 587,
+      "duplicate_client_rounds": 165,
+      "shared_tier_native_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_tier_applied_shares": [
+        0.1655653944180253,
+        0.3556760803859712,
+        0.4787585251960035
+      ],
+      "shared_profile_native_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "shared_profile_applied_shares": [
+        0.14504041255263125,
+        0.13632229877269256,
+        0.14643116667122705,
+        0.14168895252173555,
+        0.1406577531606747,
+        0.14405540240665457,
+        0.14580401391438433
+      ],
+      "full_only_directly_changed_rounds": 329,
+      "mean_zero_gain_fraction_covered_coordinates": 0.30806912543207243,
+      "mean_parameter_weighted_regional_gain": 0.20593756797293677
+    }
+  },
+  "contrasts": {
+    "G03-G06": {
+      "test_oracle_peak": 1.5900001525878906,
+      "final_accuracy": 1.4500007629394531,
+      "last20_mean": 1.377999877929689,
+      "last50_mean": 1.430599899291991,
+      "final_ce": -0.07958006858825684
+    },
+    "G05-G01": {
+      "test_oracle_peak": 0.22999954223632812,
+      "final_accuracy": 0.9300003051757812,
+      "last20_mean": 0.39450035095214986,
+      "last50_mean": 0.43440032958984887,
+      "final_ce": -0.06732368469238281
+    },
+    "G05-G04": {
+      "test_oracle_peak": 0.3699989318847656,
+      "final_accuracy": 0.6899986267089844,
+      "last20_mean": 0.3399997711181655,
+      "last50_mean": 0.4934001159668,
+      "final_ce": -0.07062339782714844
+    },
+    "G07-G08": {
+      "test_oracle_peak": -0.05999755859375,
+      "final_accuracy": -0.31999969482421875,
+      "last20_mean": 0.13750000000000284,
+      "last50_mean": -0.17959991455078494,
+      "final_ce": 0.14908671379089355
+    },
+    "G09-G10": {
+      "test_oracle_peak": -4.380001068115234,
+      "final_accuracy": -4.450000762939453,
+      "last20_mean": -4.912000083923338,
+      "last50_mean": -4.923600158691407,
+      "final_ce": 0.050925254821777344
+    }
+  },
+  "data_mass_by_physical_tier": [
+    19931,
+    15373,
+    14696
+  ],
+  "data_mass_share_by_tier": [
+    0.39862,
+    0.30746,
+    0.29392
+  ],
+  "physical_coverage_totals": [
+    3797,
+    3259,
+    2743,
+    2735,
+    2214,
+    1681,
+    2188,
+    1121,
+    571
+  ],
+  "model_numel": [
+    2120985,
+    2646356,
+    4647740,
+    5159621,
+    5528077,
+    6945581,
+    11424356
+  ],
+  "communication": {
+    "each_run_uplink_float32_state_bytes": 88387695816,
+    "each_run_downlink_float32_state_bytes": 88387695816,
+    "note": "Identical actual slot/profile schedule, no added client payload; excludes transport/serialization headers"
+  },
+  "verification": {
+    "all_ten_actual_400": true,
+    "checkpoint_finite_shape_and_peak_validated_on_server": true,
+    "all_baseline_init_protocol_schedule_and_first_eval_match": true,
+    "nine_real_coverage_regions": true,
+    "uncovered_regions_native": true,
+    "G04_G05_scopes_correct": true,
+    "G07_G08_counter_histories_correct": true
+  },
+  "interpretation": "G08/G10 regional gains are virtual, applied coefficient is the global scale. Difference norms compare each own trajectory with same-input Native, not with historical baseline models."
+}

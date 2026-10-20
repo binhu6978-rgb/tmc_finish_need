@@ -1,0 +1,42 @@
+{
+  "pid": 3291985,
+  "argv": [
+    "tools/run_evidence_candidate.py",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--method",
+    "g04",
+    "--epochs",
+    "400",
+    "--seed",
+    "1",
+    "--gpu",
+    "0",
+    "--generate_data",
+    "0",
+    "--data_beta",
+    ".3",
+    "--eval-profiles",
+    "full",
+    "--deterministic-execution",
+    "--method-run-name",
+    "G04_full_only_400_seed1_deterministic",
+    "--method-output-root",
+    "runs/native_groups10_full400_seed1"
+  ],
+  "dataset_root": "/home/hh/ICML_finish/data",
+  "cuda_visible_devices": "0",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "torch": "2.7.1+cu118",
+  "train_examples": 50000,
+  "test_examples": 10000,
+  "deterministic_execution": {
+    "deterministic_algorithms": true,
+    "warn_only": false,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "cublas_workspace_config": ":4096:8"
+  }
+}

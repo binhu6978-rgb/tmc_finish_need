@@ -1,0 +1,196 @@
+{
+  "source_commit": "36b84b858b6a03c038ad8a142ededf870c5b5ce6",
+  "status_at_launch": {
+    "parent_pid": 3243806,
+    "state": "running",
+    "completed": [],
+    "failed": [],
+    "jobs": {
+      "G01": {
+        "id": "G01",
+        "method": "g01",
+        "output": "runs/native_groups10_full400_seed1/g01/G01_full_only_400_seed1_deterministic",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "g01",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "G01_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/native_groups10_full400_seed1"
+        ],
+        "pid": 3243837,
+        "state": "running"
+      },
+      "G02": {
+        "id": "G02",
+        "method": "g02",
+        "output": "runs/native_groups10_full400_seed1/g02/G02_full_only_400_seed1_deterministic",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "g02",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "G02_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/native_groups10_full400_seed1"
+        ],
+        "pid": 3243838,
+        "state": "running"
+      }
+    },
+    "updated": 1792482927.7342196,
+    "batch": 1,
+    "concurrency": 2,
+    "free_mib": 23999
+  },
+  "pairing": {
+    "G01": {
+      "pid": 3243837,
+      "same_seven_initializations_as_B00_D": true,
+      "same_training_and_execution_as_B00_D": true,
+      "regions": 9,
+      "train_examples": 50000,
+      "test_examples": 10000,
+      "evaluated_profiles": [
+        "P6"
+      ]
+    },
+    "G02": {
+      "pid": 3243838,
+      "same_seven_initializations_as_B00_D": true,
+      "same_training_and_execution_as_B00_D": true,
+      "regions": 9,
+      "train_examples": 50000,
+      "test_examples": 10000,
+      "evaluated_profiles": [
+        "P6"
+      ]
+    }
+  },
+  "gpu_shape_check": {
+    "type": "synthetic uploads on actual seven ResNet shapes, not CIFAR training",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "torch": "2.7.1+cu118",
+    "checks": {
+      "g01": {
+        "regions": 9,
+        "actual_update_l2": 10.371563511555403,
+        "difference_from_native_l2": 3.7744977889747484,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "g02": {
+        "regions": 9,
+        "actual_update_l2": 12.692553819856855,
+        "difference_from_native_l2": 0.7768555271552543,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "g03": {
+        "regions": 9,
+        "actual_update_l2": 10.906399895358557,
+        "difference_from_native_l2": 2.8348567540182303,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "g04": {
+        "regions": 9,
+        "actual_update_l2": 11.924320064155703,
+        "difference_from_native_l2": 2.0101082118613935,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "g05": {
+        "regions": 9,
+        "actual_update_l2": 10.748047457246997,
+        "difference_from_native_l2": 3.1947298063502423,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "g06": {
+        "regions": 9,
+        "actual_update_l2": 11.76338814161906,
+        "difference_from_native_l2": 0.9868738630356054,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "g07": {
+        "regions": 9,
+        "actual_update_l2": 13.75557859769627,
+        "difference_from_native_l2": 2.0503404717370297,
+        "scale_norm_relative_error": null,
+        "gain_min": 0.8089010988089465,
+        "gain_max": 1.2
+      },
+      "g08": {
+        "regions": 9,
+        "actual_update_l2": 13.755578065989086,
+        "difference_from_native_l2": 1.5023905909545192,
+        "scale_norm_relative_error": 3.8653930795774815e-08,
+        "gain_min": 0.8089010988089465,
+        "gain_max": 1.2
+      },
+      "g09": {
+        "regions": 9,
+        "actual_update_l2": 11.420710231736976,
+        "difference_from_native_l2": 1.144469067104487,
+        "scale_norm_relative_error": null,
+        "gain_min": 0.7191800369901069,
+        "gain_max": 0.9668383641708118
+      },
+      "g10": {
+        "regions": 9,
+        "actual_update_l2": 11.420710472240613,
+        "difference_from_native_l2": 0.8324770041036118,
+        "scale_norm_relative_error": 2.105855342457157e-08,
+        "gain_min": 0.7191800369901069,
+        "gain_max": 0.9668383641708118
+      }
+    },
+    "peak_allocated_mib": 1246.82861328125,
+    "peak_reserved_mib": 1598.0
+  },
+  "linux_tests_log": "........................................................................ [ 77%]\n.....................                                                    [100%]\n=============================== warnings summary ===============================\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) < LooseVersion(\"1.0.0\"):\n\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) >= LooseVersion(\"1.1.0\"):\n\nutils/options.py:106\n  /home/hh/TMC_re_e03_scope_components400_20261019/utils/options.py:106: SyntaxWarning: invalid escape sequence '\\ '\n    parser.add_argument(\"--client_chosen_mode\", default='available', type=str, help=\"available \\ fit \\ random \\ RL \u5ba2\u6237\u7aef\u7684\u8d44\u6e90\u662f\u5426\u662f\u56fa\u5b9a \u8fd8\u662f\u4ee5\u9ad8\u65af\u5206\u5e03\u52a8\u6001\u7684\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n93 passed, 5 warnings in 9.10s\n",
+  "commands": "/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g01 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G01_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g02 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G02_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g03 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G03_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g06 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G06_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g04 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G04_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g05 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G05_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g07 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G07_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g08 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G08_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g09 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G09_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n/home/hh/miniconda3/envs/hh/bin/python -u tools/run_evidence_candidate.py --dataset-root /home/hh/ICML_finish/data --method g10 --epochs 400 --seed 1 --gpu 0 --generate_data 0 --data_beta .3 --eval-profiles full --deterministic-execution --method-run-name G10_full_only_400_seed1_deterministic --method-output-root runs/native_groups10_full400_seed1\n"
+}

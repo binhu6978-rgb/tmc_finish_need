@@ -1,0 +1,6104 @@
+{
+  "comparison": [
+    {
+      "id": "G01",
+      "method": "g01",
+      "rounds": 400,
+      "test_oracle_peak": 36.7599983215332,
+      "best_round": 326,
+      "final_accuracy": 35.369998931884766,
+      "last20_mean": 35.994498825073244,
+      "last50_mean": 35.852998886108395,
+      "final_ce": 3.660245895385742,
+      "peak_ce": 3.520440101623535,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.5602715015411377,
+      "test_oracle_peak_minus_B00_D": 0.07999801635742188,
+      "final_accuracy_minus_B00_D": -0.6599998474121094,
+      "last20_mean_minus_B00_D": -0.3244998931884737,
+      "last50_mean_minus_B00_D": -0.2624001312255899,
+      "final_ce_minus_B00_D": -0.012537240982055664
+    },
+    {
+      "id": "G02",
+      "method": "g02",
+      "rounds": 400,
+      "test_oracle_peak": 37.11000061035156,
+      "best_round": 326,
+      "final_accuracy": 36.0,
+      "last20_mean": 36.242498779296874,
+      "last50_mean": 36.205598983764645,
+      "final_ce": 3.6605772972106934,
+      "peak_ce": 3.4956061840057373,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.5421189785003664,
+      "test_oracle_peak_minus_B00_D": 0.43000030517578125,
+      "final_accuracy_minus_B00_D": -0.029998779296875,
+      "last20_mean_minus_B00_D": -0.07649993896484375,
+      "last50_mean_minus_B00_D": 0.09019996643066008,
+      "final_ce_minus_B00_D": -0.012205839157104492
+    },
+    {
+      "id": "G03",
+      "method": "g03",
+      "rounds": 400,
+      "test_oracle_peak": 38.45000076293945,
+      "best_round": 339,
+      "final_accuracy": 37.779998779296875,
+      "last20_mean": 37.65849914550781,
+      "last50_mean": 37.605599060058594,
+      "final_ce": 3.5871944427490234,
+      "peak_ce": 3.4508187770843506,
+      "peak_ce_window_start": 337,
+      "peak_ce_window_end": 341,
+      "peak_window_ce_mean": 3.4600050926208494,
+      "test_oracle_peak_minus_B00_D": 1.7700004577636719,
+      "final_accuracy_minus_B00_D": 1.75,
+      "last20_mean_minus_B00_D": 1.3395004272460938,
+      "last50_mean_minus_B00_D": 1.4902000427246094,
+      "final_ce_minus_B00_D": -0.08558869361877441
+    },
+    {
+      "id": "G06",
+      "method": "g06",
+      "rounds": 400,
+      "test_oracle_peak": 36.86000061035156,
+      "best_round": 301,
+      "final_accuracy": 36.32999801635742,
+      "last20_mean": 36.28049926757812,
+      "last50_mean": 36.1749991607666,
+      "final_ce": 3.6667745113372803,
+      "peak_ce": 3.480414390563965,
+      "peak_ce_window_start": 299,
+      "peak_ce_window_end": 303,
+      "peak_window_ce_mean": 3.476975107192993,
+      "test_oracle_peak_minus_B00_D": 0.18000030517578125,
+      "final_accuracy_minus_B00_D": 0.2999992370605469,
+      "last20_mean_minus_B00_D": -0.03849945068359517,
+      "last50_mean_minus_B00_D": 0.059600143432618324,
+      "final_ce_minus_B00_D": -0.006008625030517578
+    },
+    {
+      "id": "G04",
+      "method": "g04",
+      "rounds": 400,
+      "test_oracle_peak": 36.619998931884766,
+      "best_round": 385,
+      "final_accuracy": 35.61000061035156,
+      "last20_mean": 36.04899940490723,
+      "last50_mean": 35.793999099731444,
+      "final_ce": 3.663545608520508,
+      "peak_ce": 3.6280312538146973,
+      "peak_ce_window_start": 383,
+      "peak_ce_window_end": 387,
+      "peak_window_ce_mean": 3.6349004745483398,
+      "test_oracle_peak_minus_B00_D": -0.060001373291015625,
+      "final_accuracy_minus_B00_D": -0.4199981689453125,
+      "last20_mean_minus_B00_D": -0.26999931335448935,
+      "last50_mean_minus_B00_D": -0.32139991760254105,
+      "final_ce_minus_B00_D": -0.009237527847290039
+    },
+    {
+      "id": "G05",
+      "method": "g05",
+      "rounds": 400,
+      "test_oracle_peak": 36.98999786376953,
+      "best_round": 326,
+      "final_accuracy": 36.29999923706055,
+      "last20_mean": 36.38899917602539,
+      "last50_mean": 36.287399215698244,
+      "final_ce": 3.5929222106933594,
+      "peak_ce": 3.4454686641693115,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.4797083854675295,
+      "test_oracle_peak_minus_B00_D": 0.30999755859375,
+      "final_accuracy_minus_B00_D": 0.2700004577636719,
+      "last20_mean_minus_B00_D": 0.07000045776367614,
+      "last50_mean_minus_B00_D": 0.17200019836425895,
+      "final_ce_minus_B00_D": -0.07986092567443848
+    },
+    {
+      "id": "G07",
+      "method": "g07",
+      "rounds": 400,
+      "test_oracle_peak": 36.31999969482422,
+      "best_round": 387,
+      "final_accuracy": 35.34000015258789,
+      "last20_mean": 35.68899917602539,
+      "last50_mean": 35.44099937438965,
+      "final_ce": 3.778043270111084,
+      "peak_ce": 3.7267158031463623,
+      "peak_ce_window_start": 385,
+      "peak_ce_window_end": 389,
+      "peak_window_ce_mean": 3.746701145172119,
+      "test_oracle_peak_minus_B00_D": -0.3600006103515625,
+      "final_accuracy_minus_B00_D": -0.6899986267089844,
+      "last20_mean_minus_B00_D": -0.6299995422363267,
+      "last50_mean_minus_B00_D": -0.6743996429443371,
+      "final_ce_minus_B00_D": 0.10526013374328613
+    },
+    {
+      "id": "G08",
+      "method": "g08",
+      "rounds": 400,
+      "test_oracle_peak": 36.37999725341797,
+      "best_round": 326,
+      "final_accuracy": 35.65999984741211,
+      "last20_mean": 35.55149917602539,
+      "last50_mean": 35.62059928894043,
+      "final_ce": 3.6289565563201904,
+      "peak_ce": 3.4968061447143555,
+      "peak_ce_window_start": 324,
+      "peak_ce_window_end": 328,
+      "peak_window_ce_mean": 3.534584093093872,
+      "test_oracle_peak_minus_B00_D": -0.3000030517578125,
+      "final_accuracy_minus_B00_D": -0.3699989318847656,
+      "last20_mean_minus_B00_D": -0.7674995422363295,
+      "last50_mean_minus_B00_D": -0.49479972839355213,
+      "final_ce_minus_B00_D": -0.04382658004760742
+    },
+    {
+      "id": "G09",
+      "method": "g09",
+      "rounds": 400,
+      "test_oracle_peak": 27.959999084472656,
+      "best_round": 337,
+      "final_accuracy": 27.65999984741211,
+      "last20_mean": 27.070999240875246,
+      "last50_mean": 27.001599197387694,
+      "final_ce": 3.106663227081299,
+      "peak_ce": 3.083512306213379,
+      "peak_ce_window_start": 335,
+      "peak_ce_window_end": 339,
+      "peak_window_ce_mean": 3.091049003601074,
+      "test_oracle_peak_minus_B00_D": -8.720001220703125,
+      "final_accuracy_minus_B00_D": -8.369998931884766,
+      "last20_mean_minus_B00_D": -9.247999477386472,
+      "last50_mean_minus_B00_D": -9.11379981994629,
+      "final_ce_minus_B00_D": -0.566119909286499
+    },
+    {
+      "id": "G10",
+      "method": "g10",
+      "rounds": 400,
+      "test_oracle_peak": 32.34000015258789,
+      "best_round": 351,
+      "final_accuracy": 32.11000061035156,
+      "last20_mean": 31.982999324798584,
+      "last50_mean": 31.9251993560791,
+      "final_ce": 3.0557379722595215,
+      "peak_ce": 3.009087324142456,
+      "peak_ce_window_start": 349,
+      "peak_ce_window_end": 353,
+      "peak_window_ce_mean": 3.0110850811004637,
+      "test_oracle_peak_minus_B00_D": -4.340000152587891,
+      "final_accuracy_minus_B00_D": -3.9199981689453125,
+      "last20_mean_minus_B00_D": -4.335999393463133,
+      "last50_mean_minus_B00_D": -4.1901996612548835,
+      "final_ce_minus_B00_D": -0.6170451641082764
+    }
+  ],
+  "baseline": {
+    "id": "B00-D",
+    "method": "baseline",
+    "rounds": 400,
+    "test_oracle_peak": 36.68000030517578,
+    "best_round": 350,
+    "final_accuracy": 36.029998779296875,
+    "last20_mean": 36.31899871826172,
+    "last50_mean": 36.115399017333985,
+    "final_ce": 3.672783136367798,
+    "peak_ce": 3.5913326740264893,
+    "peak_ce_window_start": 348,
+    "peak_ce_window_end": 352,
+    "peak_window_ce_mean": 3.6195816516876222
+  },
+  "mechanisms": {
+    "G01": {
+      "first_round": {
+        "mode": "g01",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.39326242902517516,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.3849274257233421,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.36727928142725397,
+          "actually_changed_rounds": 398,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.36764369338410974,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.34207982391026787,
+          "actually_changed_rounds": 393,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.2794945511030401,
+          "actually_changed_rounds": 369,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.347273673841042,
+          "actually_changed_rounds": 396,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.16464051724423734,
+          "actually_changed_rounds": 256,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.16308410633770662,
+      "later_update_l2_ratio_native_mean": 1.0668956588670475,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": null
+    },
+    "G02": {
+      "first_round": {
+        "mode": "g02",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.08398542121013441,
+          "actually_changed_rounds": 164,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.07515263966954466,
+          "actually_changed_rounds": 135,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.05927404958311997,
+          "actually_changed_rounds": 97,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.07310108024427346,
+          "actually_changed_rounds": 120,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.05570590935694376,
+          "actually_changed_rounds": 83,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.04060891116430154,
+          "actually_changed_rounds": 56,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.060470673055251105,
+          "actually_changed_rounds": 91,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.024755231926970885,
+          "actually_changed_rounds": 32,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0071180315470624565,
+          "actually_changed_rounds": 9,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 164,
+      "later_difference_from_native_l2_mean": 0.034909624455306834,
+      "later_update_l2_ratio_native_mean": 1.0125046976901606,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": null
+    },
+    "G03": {
+      "first_round": {
+        "mode": "g03",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.4007470433107797,
+          "actually_changed_rounds": 398,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.40740382545068665,
+          "actually_changed_rounds": 396,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.38844485342978746,
+          "actually_changed_rounds": 390,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.3828537872322538,
+          "actually_changed_rounds": 391,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.3592171818401203,
+          "actually_changed_rounds": 376,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.3053888681170107,
+          "actually_changed_rounds": 335,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.2992485910237207,
+          "actually_changed_rounds": 356,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.14291515871689495,
+          "actually_changed_rounds": 192,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 398,
+      "later_difference_from_native_l2_mean": 0.21072145235074957,
+      "later_update_l2_ratio_native_mean": 1.186351306924794,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": null
+    },
+    "G06": {
+      "first_round": {
+        "mode": "g06",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.14178570527503886,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.14271453242767568,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.13976271387617284,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.141186474652373,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.13770871558932826,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.12830252208266732,
+          "actually_changed_rounds": 389,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.1414028449822867,
+          "actually_changed_rounds": 397,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.10708835846885993,
+          "actually_changed_rounds": 333,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.05441995148951969,
+          "actually_changed_rounds": 172,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.06303512152177662,
+      "later_update_l2_ratio_native_mean": 0.9614144107939884,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": null
+    },
+    "G04": {
+      "first_round": {
+        "mode": "g04",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.39326242902517516,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.10676573455480273,
+      "later_update_l2_ratio_native_mean": 1.0431770675371435,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": null
+    },
+    "G05": {
+      "first_round": {
+        "mode": "g05",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.3849274257233421,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.36727928142725397,
+          "actually_changed_rounds": 398,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.36764369338410974,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.34207982391026787,
+          "actually_changed_rounds": 393,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.2794945511030401,
+          "actually_changed_rounds": 369,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.347273673841042,
+          "actually_changed_rounds": 396,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.16464051724423734,
+          "actually_changed_rounds": 256,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.0,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 0,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.11691863203067723,
+      "later_update_l2_ratio_native_mean": 1.0335246014774597,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": null
+    },
+    "G07": {
+      "first_round": {
+        "mode": "g07",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": [
+          9,
+          7,
+          5,
+          5,
+          3,
+          2,
+          5,
+          2,
+          0
+        ],
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 0.8,
+          "gain_mean": 0.8005,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 0.8,
+          "gain_mean": 0.8316458945646856,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 0.8480187512485415,
+          "gain_mean": 0.9042445865261821,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 0.8938354428762595,
+          "gain_mean": 0.9095154488653973,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 0.9654526220545981,
+          "gain_mean": 1.0080448825352186,
+          "gain_max": 1.048938035686583,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 397,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.1654707102329571,
+          "gain_max": 1.2,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 398,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 0.9934425522269335,
+          "gain_mean": 1.0143665770209924,
+          "gain_max": 1.0425720702853738,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 398,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.1985,
+          "gain_max": 1.2,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 397,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.1644999999999999,
+          "gain_max": 1.2,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 329,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.07004819795876673,
+      "later_update_l2_ratio_native_mean": 0.9227254055450718,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ]
+    },
+    "G08": {
+      "first_round": {
+        "mode": "g08",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": [
+          9,
+          7,
+          5,
+          5,
+          3,
+          2,
+          5,
+          2,
+          0
+        ],
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": 0.0,
+        "scale_norm_relative_error": 0.0,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 0.8,
+          "gain_mean": 0.8005,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 0.8,
+          "gain_mean": 0.8316458945646856,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 0.8480187512485415,
+          "gain_mean": 0.9042445865261821,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 0.8938354428762595,
+          "gain_mean": 0.9095154488653973,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 0.9654526220545981,
+          "gain_mean": 1.0080448825352186,
+          "gain_max": 1.048938035686583,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 1.0,
+          "gain_mean": 1.1654707102329571,
+          "gain_max": 1.2,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 398,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 0.9934425522269335,
+          "gain_mean": 1.0143665770209924,
+          "gain_max": 1.0425720702853738,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 1.0,
+          "gain_mean": 1.1985,
+          "gain_max": 1.2,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 397,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 1.0,
+          "gain_mean": 1.1644999999999999,
+          "gain_max": 1.2,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 329,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": null
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.026813920948083613,
+      "later_update_l2_ratio_native_mean": 0.920968800056097,
+      "scale_norm_relative_error_max": 5.736716917456899e-08,
+      "cumulative_final": [
+        3797,
+        3259,
+        2743,
+        2735,
+        2214,
+        1681,
+        2188,
+        1121,
+        571
+      ]
+    },
+    "G09": {
+      "first_round": {
+        "mode": "g09",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": null,
+        "scale_norm_relative_error": null,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 0.0,
+          "gain_mean": 0.0793603615364081,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.10596532203093223
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 0.0,
+          "gain_mean": 0.034923497302976704,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.031844753043048624
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 0.0,
+          "gain_mean": 0.03533471187451076,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.06172383933687874
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 0.0,
+          "gain_mean": 0.04092639695319621,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.04353972065235903
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 0.0,
+          "gain_mean": 0.03742096652556691,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.003410974612807565
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 0.0,
+          "gain_mean": 0.07357847211872004,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 389,
+          "single_client_neutral_rounds": 9,
+          "estimated_noise_energy_mean": 0.08283263224155268
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 0.0,
+          "gain_mean": 0.08728431936734271,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 397,
+          "single_client_neutral_rounds": 2,
+          "estimated_noise_energy_mean": 0.02936238402855586
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 0.0,
+          "gain_mean": 0.20827943816456645,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 333,
+          "single_client_neutral_rounds": 64,
+          "estimated_noise_energy_mean": 0.0032076773299526
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 0.0,
+          "gain_mean": 0.6121301018110298,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 172,
+          "single_client_neutral_rounds": 157,
+          "estimated_noise_energy_mean": 0.06611289647018714
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.5880544421200175,
+      "later_update_l2_ratio_native_mean": 0.2582844965440999,
+      "scale_norm_relative_error_max": null,
+      "cumulative_final": null
+    },
+    "G10": {
+      "first_round": {
+        "mode": "g10",
+        "round": 1,
+        "first_round_native": true,
+        "regions": [
+          {
+            "region_id": 0,
+            "numel": 2120985,
+            "support_profiles": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "actual_profiles": [
+              0,
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 9,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "applied_slot_shares": [
+              0.1257075932071052,
+              0.09018153425727113,
+              0.08373999609603748,
+              0.09681827054460278,
+              0.10892055436267811,
+              0.09994144056217061,
+              0.08022642982627366,
+              0.09896544993168066,
+              0.09681827054460278,
+              0.11868046066757759
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 1,
+            "numel": 185955,
+            "support_profiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 7,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "applied_slot_shares": [
+              0.17770419426048564,
+              0.12748344370860928,
+              0.1183774834437086,
+              0.15397350993377484,
+              0.141280353200883,
+              0.11341059602649006,
+              0.16777041942604856
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 2,
+            "numel": 339416,
+            "support_profiles": [
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            "actual_profiles": [
+              1,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              0,
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "applied_slot_shares": [
+              0.24301886792452831,
+              0.1618867924528302,
+              0.21056603773584906,
+              0.15509433962264152,
+              0.22943396226415094
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 3,
+            "numel": 671880,
+            "support_profiles": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 4,
+            "numel": 29040,
+            "support_profiles": [
+              2,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              2,
+              6
+            ],
+            "actual_profiles": [
+              4,
+              5
+            ],
+            "distinct_physical_clients": 3,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "applied_slot_shares": [
+              0.4339622641509434,
+              0.2890835579514825,
+              0.27695417789757415
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 5,
+            "numel": 1300464,
+            "support_profiles": [
+              2,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 6,
+            "numel": 2180801,
+            "support_profiles": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              5,
+              6
+            ],
+            "actual_profiles": [
+              3,
+              4,
+              5
+            ],
+            "distinct_physical_clients": 5,
+            "capability_tiers": [
+              1,
+              2
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "applied_slot_shares": [
+              0.26200162733930027,
+              0.18795768917819367,
+              0.17453213995117983,
+              0.2082994304312449,
+              0.16720911310008138
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 7,
+            "numel": 117040,
+            "support_profiles": [
+              5,
+              6
+            ],
+            "slots": [
+              0,
+              6
+            ],
+            "actual_profiles": [
+              5
+            ],
+            "distinct_physical_clients": 2,
+            "capability_tiers": [
+              1
+            ],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "native_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "applied_slot_shares": [
+              0.6104265402843602,
+              0.38957345971563984
+            ],
+            "actual_changed_coordinates": 0
+          },
+          {
+            "region_id": 8,
+            "numel": 4478775,
+            "support_profiles": [
+              6
+            ],
+            "slots": [],
+            "actual_profiles": [],
+            "distinct_physical_clients": 0,
+            "capability_tiers": [],
+            "gain": 1.0,
+            "weight_share_l1_change": 0.0,
+            "reason": "first_round_native",
+            "actual_changed_coordinates": 0
+          }
+        ],
+        "cumulative_physical_coverage": null,
+        "covered_parameter_fraction": 0.6079625844992925,
+        "actual_update_l2": 44.45042465979867,
+        "native_update_l2": 44.45042465979867,
+        "virtual_regional_update_l2": 44.45042465979867,
+        "global_scale": 1.0,
+        "scale_norm_absolute_error": 0.0,
+        "scale_norm_relative_error": 0.0,
+        "difference_from_native_l2": 0.0,
+        "changed_from_native_fraction": 0.0,
+        "actual_update_l2_ratio_native": 1.0,
+        "source": "Native uploads and actual server dispatches; no direction cosine, semantic score or client history"
+      },
+      "regions": {
+        "0": {
+          "numel": 2120985,
+          "support_profiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3797,
+          "mean_covered_distinct_profiles": 5.5425,
+          "mean_distinct_physical_clients": 9.4925,
+          "gain_min": 0.0,
+          "gain_mean": 0.057437205387036235,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.09409152119562146
+        },
+        "1": {
+          "numel": 185955,
+          "support_profiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 3259,
+          "mean_covered_distinct_profiles": 4.745,
+          "mean_distinct_physical_clients": 8.1475,
+          "gain_min": 0.0,
+          "gain_mean": 0.02794848258342292,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.026443255040798554
+        },
+        "2": {
+          "numel": 339416,
+          "support_profiles": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2743,
+          "mean_covered_distinct_profiles": 3.97,
+          "mean_distinct_physical_clients": 6.8575,
+          "gain_min": 0.0,
+          "gain_mean": 0.02845301264880993,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.04912400499799382
+        },
+        "3": {
+          "numel": 671880,
+          "support_profiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2735,
+          "mean_covered_distinct_profiles": 3.955,
+          "mean_distinct_physical_clients": 6.8375,
+          "gain_min": 0.0,
+          "gain_mean": 0.031470311436436645,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.04288859933727157
+        },
+        "4": {
+          "numel": 29040,
+          "support_profiles": [
+            2,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2214,
+          "mean_covered_distinct_profiles": 3.18,
+          "mean_distinct_physical_clients": 5.535,
+          "gain_min": 0.0,
+          "gain_mean": 0.030430811716166038,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 0,
+          "estimated_noise_energy_mean": 0.0031739861731593776
+        },
+        "5": {
+          "numel": 1300464,
+          "support_profiles": [
+            2,
+            5,
+            6
+          ],
+          "covered_rounds": 399,
+          "total_unique_physical_coverages": 1681,
+          "mean_covered_distinct_profiles": 2.41,
+          "mean_distinct_physical_clients": 4.2025,
+          "gain_min": 0.0,
+          "gain_mean": 0.05936376616330421,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 398,
+          "single_client_neutral_rounds": 9,
+          "estimated_noise_energy_mean": 0.06584481455718569
+        },
+        "6": {
+          "numel": 2180801,
+          "support_profiles": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "covered_rounds": 400,
+          "total_unique_physical_coverages": 2188,
+          "mean_covered_distinct_profiles": 3.1825,
+          "mean_distinct_physical_clients": 5.47,
+          "gain_min": 0.0,
+          "gain_mean": 0.07427079022228754,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 399,
+          "single_client_neutral_rounds": 2,
+          "estimated_noise_energy_mean": 0.023152537656792028
+        },
+        "7": {
+          "numel": 117040,
+          "support_profiles": [
+            5,
+            6
+          ],
+          "covered_rounds": 398,
+          "total_unique_physical_coverages": 1121,
+          "mean_covered_distinct_profiles": 1.6375,
+          "mean_distinct_physical_clients": 2.8025,
+          "gain_min": 0.0,
+          "gain_mean": 0.20226738767067423,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 397,
+          "single_client_neutral_rounds": 64,
+          "estimated_noise_energy_mean": 0.0020267011411577744
+        },
+        "8": {
+          "numel": 4478775,
+          "support_profiles": [
+            6
+          ],
+          "covered_rounds": 329,
+          "total_unique_physical_coverages": 571,
+          "mean_covered_distinct_profiles": 0.8225,
+          "mean_distinct_physical_clients": 1.4275,
+          "gain_min": 0.0,
+          "gain_mean": 0.6007038300239691,
+          "gain_max": 1.0,
+          "mean_weight_share_l1_change": 0.0,
+          "actually_changed_rounds": 329,
+          "single_client_neutral_rounds": 157,
+          "estimated_noise_energy_mean": 0.035546069253808266
+        }
+      },
+      "changed_rounds": 399,
+      "later_difference_from_native_l2_mean": 0.45342296475512883,
+      "later_update_l2_ratio_native_mean": 0.19751772805759293,
+      "scale_norm_relative_error_max": 0.0001109501960780202,
+      "cumulative_final": null
+    }
+  },
+  "pairing": "all completed initial models, original partition,400 actual schedules and strict execution match B00-D; first Native evaluation identical",
+  "scale_control": "same-input virtual norm per own trajectory; G07 vs G08 and G09 vs G10 do not share subsequent trained models",
+  "peak_label": "official test-oracle peak, single seed exploration"
+}
