@@ -12,7 +12,7 @@ from tools.report_tonight10 import validate,diagnostic_summary
 from tools.report_next10_m2_m3 import describe
 
 
-def report(root):
+def report(root,output=None):
     cfg=json.loads((ROOT/'configs/e03_local12_400.json').read_text())
     records=[];accuracy={};ce={};mechanisms={};manifests=[];schedules=[]
     for name in sum(cfg['batches'],[]):
@@ -34,7 +34,7 @@ def report(root):
     for r in records:
         for field in ('test_oracle_peak','final_accuracy','last20_mean','last50_mean'):
             r[field+'_minus_local_REF_pp']=r[field]-ref[field]
-    output=root/'report';output.mkdir(exist_ok=False)
+    output=output if output is not None else root/'report';output.mkdir(exist_ok=False)
     def csv_write(path,rows,fields):
         with path.open('w',newline='',encoding='utf-8') as f:
             w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
@@ -52,14 +52,17 @@ def report(root):
         fig,ax=plt.subplots(figsize=(12,6))
         for name,values in data.items():ax.plot(range(1,401),values,label=name,linewidth=2 if name=='REF' else 1,linestyle='--' if name=='REF' else '-')
         ax.set(xlabel='Communication round',ylabel=label);ax.grid(alpha=.2);ax.legend(ncol=6);fig.tight_layout();fig.savefig(output/(filename+'.png'),dpi=170);plt.close(fig)
-    peak=max(records[1:],key=lambda r:r['test_oracle_peak']);late=max(records[1:],key=lambda r:r['last20_mean'])
+    # L02 is algebraically REF: retain it in the table as a numeric control,
+    # rather than ranking it as an independently changed algorithm.
+    candidates=[r for r in records[1:] if r['id']!='L02']
+    peak=max(candidates,key=lambda r:r['test_oracle_peak']);late=max(candidates,key=lambda r:r['last20_mean'])
     text=['# 本地E03参考与11组固定机制实验','',
         '全部12组完成400轮、seed1。主要对照为本地REF，不以Linux E03的37.29%作为优劣判据。峰值均为官方测试集test-oracle peak；单种子探索不等于独立验证的泛化优势。','',
         '|方法|test-oracle peak %|轮次|Final %|Last20 %|Last50 %|Final CE|Peak−REF pp|',
         '|---|---:|---:|---:|---:|---:|---:|---:|']
     for r in records:text.append(f"|{r['id']}|{r['test_oracle_peak']:.4f}|{r['best_round']}|{r['final_accuracy']:.4f}|{r['last20_mean']:.4f}|{r['last50_mean']:.4f}|{r['final_ce']:.6f}|{r['test_oracle_peak_minus_local_REF_pp']:+.4f}|")
-    text+=['',f"新组最高观察峰值：{peak['id']}，{peak['test_oracle_peak']:.4f}%；是否超过本地REF：{'是' if peak['test_oracle_peak']>ref['test_oracle_peak'] else '否'}。",
-        f"新组最高Last20：{late['id']}，{late['last20_mean']:.4f}%；REF Last20为{ref['last20_mean']:.4f}%。",
+    text+=['',f"排除代数等价中性对照L02后，新机制最高观察峰值：{peak['id']}，{peak['test_oracle_peak']:.4f}%；是否超过本地REF：{'是' if peak['test_oracle_peak']>ref['test_oracle_peak'] else '否'}。",
+        f"非中性新机制最高Last20：{late['id']}，{late['last20_mean']:.4f}%；REF Last20为{ref['last20_mean']:.4f}%。",
         '', 'L02在原全七档同步后与REF代数等价，是数值一致性对照，不构成新机制；CUDA独立进程可能存在原有非确定性。',
         'L01隔离的主要是首轮独立初始化融合。L03/L04/L05保护的参数类由真实模块识别；L06保护物理能力ID，L07保护实际Full槽位，两者不是同一划分。',
         'L09先等权平均有效分块余弦再取负风险。L10对其他物理客户端内的有效slot余弦取中位数，再对不同客户端中位数取中位数；不同物理客户端不重复计数。',
@@ -69,4 +72,5 @@ def report(root):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(__doc__);p.add_argument('--root',type=Path,required=True);a=p.parse_args();report(a.root)
+    p=argparse.ArgumentParser(__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path)
+    a=p.parse_args();report(a.root,a.output)
