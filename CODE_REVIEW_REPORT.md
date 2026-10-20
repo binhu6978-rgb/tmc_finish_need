@@ -685,3 +685,11 @@ P01只用Native方向匹配同输入虚拟G03整体L2；P02用G03方向匹配Nat
 组质量均正、P03/P04等质量直接复用G03；P06按当前区域的覆盖slot去重，不合并真实SGD；P07不生成缺席组。P01/P02零源与零目标中性，零源非零目标无可缩放方向时明确失败，不用epsilon造更新。每候选只读计算同输入G03作为诊断，记录实际/Native/G03的L2、差异和更新余弦；余弦不进入决策，不消耗RNG。P01实际来源份额Native、虚拟G03份额单列；P10来源份额注明classifier排除，避免把日志误读为全参数统一权重。
 
 本地111 tests通过，覆盖十候选首轮/作用范围/重复客户端/尺度/分类器、原训练循环两轮小模型Full-only及旧AdaptiveFL/M2和评估路径兼容。真实七ResNet形状合成GPU检查通过，九区域/参数有限、P01/P02范数相对误差约4.03e-8/4.32e-8。这些是正确性和内存检查，不是CIFAR性能结果。固定配置configs/g03_refinements10_400.json，完整公式docs/G03_REFINEMENTS10_DESIGN.md。启动后另存Linux测试、真实argv/PID与初始化配对证据，实际400轮完成前不宣称方法有效。
+
+### P01/P02首批存储配额失败，未完成正式十组
+
+同一服务器checkout冻结0da1ed2cb38953476bf3400cf025876485f5bf7e，Linux111 tests及七形状GPU检查通过，reserved1076MiB。父PID3399638、子P01=3399672/P02=3399673在GPU0并行启动。两组第1/2轮真实记录已写，但第2轮写best_full.pending时hh账户配额用尽，出现PytorchStreamWriter写文件错误及Errno122 Disk quota exceeded；队列按规则失败停止，P03–P10未启动。无OOM、自动重试或修改数学规则。
+
+直接quota显示hh用户102400M已用、100G硬限制，虽df还有123G物理空间，账户无法继续写入。直接加载两组latest/best仍有效但只对应第1轮，日志已到第2轮，不能宣称已完整保存2轮或直接续训。两组初始化、训练/确定性配置与G03/B00-D一致，首轮严格Native；原CSV、诊断、manifest及完整stderr证据已下载。没有删除或覆盖旧结果。自动完成检查已暂停，等待用户解决存储及重启安排。
+
+当前只交付算法、测试和诚实失败状态，不作400轮性能结论，不按2轮测试数据改参数。完整证据与后续存储条件见docs/G03_REFINEMENTS10_RUN_STATUS.md。

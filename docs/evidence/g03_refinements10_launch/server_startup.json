@@ -1,0 +1,107 @@
+{
+  "parent_pid": 3399638,
+  "argv": [
+    "/home/hh/miniconda3/envs/hh/bin/python",
+    "-u",
+    "tools/run_native_groups10.py",
+    "--execute",
+    "--config",
+    "configs/g03_refinements10_400.json",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--output-root",
+    "runs/g03_refinements10_full400_seed1"
+  ],
+  "source_commit": "0da1ed2cb38953476bf3400cf025876485f5bf7e",
+  "gpu_shapes": {
+    "type": "synthetic uploads on actual seven ResNet shapes, not CIFAR training",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "torch": "2.7.1+cu118",
+    "checks": {
+      "p01": {
+        "regions": 9,
+        "actual_update_l2": 10.906400251181914,
+        "difference_from_native_l2": 1.346787225380367,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0,
+        "matched_norm_relative_error": 3.2625188877263424e-08
+      },
+      "p02": {
+        "regions": 9,
+        "actual_update_l2": 12.25318802506263,
+        "difference_from_native_l2": 2.6440455372556673,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0,
+        "matched_norm_relative_error": 4.434545079056749e-08
+      },
+      "p03": {
+        "regions": 9,
+        "actual_update_l2": 11.5556222503919,
+        "difference_from_native_l2": 1.3190798782151818,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "p04": {
+        "regions": 9,
+        "actual_update_l2": 10.45536161787883,
+        "difference_from_native_l2": 4.26872737054938,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "p05": {
+        "regions": 9,
+        "actual_update_l2": 10.744564112293,
+        "difference_from_native_l2": 3.4211719319486193,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "p06": {
+        "regions": 9,
+        "actual_update_l2": 11.07715578728492,
+        "difference_from_native_l2": 2.560719000390011,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "p07": {
+        "regions": 9,
+        "actual_update_l2": 10.923720351006944,
+        "difference_from_native_l2": 2.785890457721755,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "p08": {
+        "regions": 9,
+        "actual_update_l2": 12.006546704622531,
+        "difference_from_native_l2": 1.27581411413246,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "p09": {
+        "regions": 9,
+        "actual_update_l2": 11.177343081816334,
+        "difference_from_native_l2": 2.531543237233602,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      },
+      "p10": {
+        "regions": 9,
+        "actual_update_l2": 10.910535856290354,
+        "difference_from_native_l2": 2.8316830873647603,
+        "scale_norm_relative_error": null,
+        "gain_min": 1.0,
+        "gain_max": 1.0
+      }
+    },
+    "peak_allocated_mib": 1036.8720703125,
+    "peak_reserved_mib": 1076.0
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "source": "Direct SSH quota/df and checkpoint observations plus downloaded original scalar records",
+  "training_commit": "0da1ed2cb38953476bf3400cf025876485f5bf7e",
+  "queue_state": "failed",
+  "failed": [
+    "P01",
+    "P02"
+  ],
+  "not_started": [
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10"
+  ],
+  "user_quota_hard_gib": 100,
+  "user_quota_used_mib": 102400,
+  "filesystem_available_display": "123G",
+  "failure": "Errno 122 Disk quota exceeded while serializing best_full.pending in round 2",
+  "checks": {
+    "P01": {
+      "recorded_rounds": 2,
+      "latest_checkpoint_round": 1,
+      "best_checkpoint_round": 1,
+      "formal_400_completed": false,
+      "initialization_and_protocol_match_B00D_G03": true,
+      "first_round_exact_Native": true,
+      "second_round_norm_relative_error": 3.788304762090573e-08,
+      "full_data_train": 50000,
+      "gpu_visible": "0"
+    },
+    "P02": {
+      "recorded_rounds": 2,
+      "latest_checkpoint_round": 1,
+      "best_checkpoint_round": 1,
+      "formal_400_completed": false,
+      "initialization_and_protocol_match_B00D_G03": true,
+      "first_round_exact_Native": true,
+      "second_round_norm_relative_error": 2.6171549857747874e-08,
+      "full_data_train": 50000,
+      "gpu_visible": "0"
+    }
+  },
+  "action": "No retry, no deletion, no formula change. Completion automation paused; waiting for storage resolution and restart arrangement."
+}

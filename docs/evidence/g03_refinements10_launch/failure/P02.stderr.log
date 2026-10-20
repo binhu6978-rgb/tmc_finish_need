@@ -1,0 +1,41 @@
+/home/hh/TMC_re_e03_scope_components400_20261019/utils/options.py:106: SyntaxWarning: invalid escape sequence '\ '
+  parser.add_argument("--client_chosen_mode", default='available', type=str, help="available \ fit \ random \ RL 客户端的资源是否是固定 还是以高斯分布动态的")
+  0%|          | 0/400 [00:00<?, ?it/s]  0%|          | 1/400 [00:10<1:11:53, 10.81s/it]  0%|          | 1/400 [00:23<2:36:39, 23.56s/it]
+Traceback (most recent call last):
+  File "/home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/torch/serialization.py", line 965, in save
+    _save(
+  File "/home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/torch/serialization.py", line 1266, in _save
+    zip_file.write_record(name, storage, num_bytes)
+RuntimeError: [enforce fail at inline_container.cc:857] . PytorchStreamWriter failed writing file data/57: file write failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/tools/run_evidence_candidate.py", line 64, in main
+    AdaptiveFL(args,train,test,users)
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/Algorithm/Training_AdaptiveFL.py", line 166, in AdaptiveFL
+    method_run.record(iter, net_glob_list, evaluations, max_time, total_time,
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/adapterfl_methods.py", line 649, in record
+    torch.save(best,temp);temp.replace(self.path/'best_full.pt')
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/torch/serialization.py", line 964, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/torch/serialization.py", line 798, in __exit__
+    self.file_like.write_end_of_file()
+RuntimeError: [enforce fail at inline_container.cc:659] . unexpected pos 26628032 vs 26627920
+
+During handling of the above exception, another exception occurred:
+
+OSError: [Errno 122] Disk quota exceeded
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/tools/run_evidence_candidate.py", line 75, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/tools/run_evidence_candidate.py", line 71, in main
+    (path/'resources.json').write_text(json.dumps({'wall_seconds':time.perf_counter()-started,
+  File "/home/hh/miniconda3/envs/hh/lib/python3.12/pathlib.py", line 1048, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+OSError: [Errno 122] Disk quota exceeded
