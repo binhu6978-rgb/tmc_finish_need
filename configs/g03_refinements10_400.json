@@ -1,0 +1,22 @@
+{
+  "batches":[["P01","P02"],["P03","P04"],["P05","P06"],["P07","P08"],["P09","P10"]],
+  "epochs":400,"seed":1,"gpu":0,"max_parallel":2,"first_native_rounds":1,
+  "deterministic_execution":true,
+  "P01":"Native direction, same-input virtual G03 full update L2; source weights remain Native",
+  "P02":"G03 direction, same-input Native full update L2",
+  "P03":"Tier sample-slot mass M: target tier shares proportional to sqrt(M)",
+  "P04":"Tier sample-slot mass M: target tier shares proportional to 1/sqrt(M)",
+  "P05":"Present tiers target shares proportional to fixed physical population 4:3:3",
+  "P06":"Equal present tiers; average covered repeated physical slots, original dataset mass counted once inside tier",
+  "P07":"Equal present tiers; equal present profiles inside tier; sample weighted inside tier/profile",
+  "P08":"G03 only STATIC all-seven common coverage region",
+  "P09":"G03 only complement of STATIC all-seven common region",
+  "P10":"G03 except classifier.weight and classifier.bias use Native",
+  "single_tier":"Source weighting returns Native including P06/P07; P01/P02 global norm controls may still rescale covered single-tier regions",
+  "baseline_csv":"runs/e03_l04_final_pair400_seed1/baseline/B00-D_full_only_400_seed1_deterministic/accuracy_each_round.csv",
+  "baseline_manifest":"runs/e03_l04_final_pair400_seed1/baseline/B00-D_full_only_400_seed1_deterministic/manifest.json",
+  "reference_id":"G03",
+  "reference_csv":"runs/native_groups10_full400_seed1/g03/G03_full_only_400_seed1_deterministic/accuracy_each_round.csv",
+  "failure":"Preserve logs/checkpoints; finish batch peer, then stop later batches. No retry or parameter change.",
+  "no_extensions":"Exactly P01-P10; no G03/baseline rerun, other seed, scoring, Memory or unplanned combination"
+}

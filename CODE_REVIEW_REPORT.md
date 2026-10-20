@@ -675,3 +675,13 @@ G03同输入Native反事实的更新L2比均值1.18635，差异能量约95.78%�
 本次只新增tools/analyze_native_groups_results.py、实际证据回归tests/test_native_groups_results.py、中文docs/NATIVE_GROUPS10_RESULTS.md和原始标量证据。原聚合/客户端/采样/训练源码均未改。报告与相关算法/队列31tests通过；四张结果图已视觉检查。通信相同，每组float32状态上行88,387,695,816字节、下行同量，无额外客户端计算/通信；模型权重仅留原服务器目录，不上传私人资料。
 
 最终最多保留G03为主候选、G05为低优先级次选。停止本轮G01/G04公共区档位均衡、G07/G08固定机会补偿、G09/G10固定离散度收缩的继续调参，不追加新实验。全部峰值为单seed官方test-oracle探索，来源/能力/Non-IID效应尚未完全分离，不能宣称统计泛化验证或功能语义可靠性创新已经成立。完整表、400轮曲线、对照差值及证据见docs/NATIVE_GROUPS10_RESULTS.md和docs/evidence/native_groups10_results/。
+
+## G03固定十组候选实现与启动前检查（2026-10-20）
+
+本节为用户后续授权P01–P10，围绕G03来源均衡，不重跑B00-D/G03，不新增评分或客户端机制。复用native_group_aggregation.py及原双进程/报告脚本，仅增加可选config、十个固定分支和诊断；原聚合、客户端SGD、模型、采样、同步与评估函数不改。G01–G10规则保持兼容。
+
+P01只用Native方向匹配同输入虚拟G03整体L2；P02用G03方向匹配Native L2。P03/P04组间质量分别sqrt(M)/inverse sqrt(M)，组内原样本；P05为参与能力层4:3:3先验；P06组内物理数据质量去重；P07能力层/实际档位两级等权；P08/P09只限静态共同区/补集；P10只让classifier.weight/bias Native，BN和特征仍G03。全部首轮严格Native。按明确的单能力层中性要求，P06/P07也在单能力层区域返回Native；P01/P02最后的全局尺度可能缩放已覆盖的单层区域，保持其预定范数对照定义。
+
+组质量均正、P03/P04等质量直接复用G03；P06按当前区域的覆盖slot去重，不合并真实SGD；P07不生成缺席组。P01/P02零源与零目标中性，零源非零目标无可缩放方向时明确失败，不用epsilon造更新。每候选只读计算同输入G03作为诊断，记录实际/Native/G03的L2、差异和更新余弦；余弦不进入决策，不消耗RNG。P01实际来源份额Native、虚拟G03份额单列；P10来源份额注明classifier排除，避免把日志误读为全参数统一权重。
+
+本地111 tests通过，覆盖十候选首轮/作用范围/重复客户端/尺度/分类器、原训练循环两轮小模型Full-only及旧AdaptiveFL/M2和评估路径兼容。真实七ResNet形状合成GPU检查通过，九区域/参数有限、P01/P02范数相对误差约4.03e-8/4.32e-8。这些是正确性和内存检查，不是CIFAR性能结果。固定配置configs/g03_refinements10_400.json，完整公式docs/G03_REFINEMENTS10_DESIGN.md。启动后另存Linux测试、真实argv/PID与初始化配对证据，实际400轮完成前不宣称方法有效。

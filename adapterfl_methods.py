@@ -515,7 +515,7 @@ class RunLog:
     def __init__(self,args,models):
         self.args=args
         self.path=prepare_output(args)
-        if args.method in [f'g{i:02d}' for i in range(1,11)]:
+        if args.method in [f'g{i:02d}' for i in range(1,11)]+[f'p{i:02d}' for i in range(1,11)]:
             from native_group_aggregation import NativeGroupHooks
             self.hooks=NativeGroupHooks(args,models)
         elif args.method=='m2' and getattr(args,'_local12_reference',False):
@@ -561,7 +561,9 @@ class RunLog:
         if getattr(self.hooks,'is_tonight',False):files=(*files,'tonight_aggregation.py','tools/run_evidence_candidate.py','configs/e03_tonight10_400.json')
         if getattr(self.hooks,'is_local12',False):files=(*files,'local12_aggregation.py','tonight_aggregation.py','tools/run_evidence_candidate.py','configs/e03_local12_400.json')
         if getattr(args,'deterministic_execution',False):files=(*files,'utils/reproducibility.py')
-        if getattr(self.hooks,'is_native_groups',False):files=(*files,'native_group_aggregation.py','semcons_scope.py','tools/run_evidence_candidate.py','configs/native_groups10_400.json')
+        if getattr(self.hooks,'is_native_groups',False):
+            files=(*files,'native_group_aggregation.py','semcons_scope.py','tools/run_evidence_candidate.py',
+                'configs/g03_refinements10_400.json' if args.method.startswith('p') else 'configs/native_groups10_400.json')
         self.identity['source_sha256']={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}
         if args.method_resume:
             # Local, user-selected research checkpoint includes RNG tuples.

@@ -27,7 +27,7 @@ def main():
     try:
         sys.argv=['main_fed_ori.py',*remaining];args=args_parser()
     finally:sys.argv=argv
-    if args.method not in ('baseline','m2','c1','c2',*[f't{i:02d}' for i in range(1,11)],*[f'l{i:02d}' for i in range(1,12)],*[f'g{i:02d}' for i in range(1,11)]) or args.seed!=1 or args.epochs!=400 or args.generate_data!=0 or args.eval_profiles!='full':
+    if args.method not in ('baseline','m2','c1','c2',*[f't{i:02d}' for i in range(1,11)],*[f'l{i:02d}' for i in range(1,12)],*[f'g{i:02d}' for i in range(1,11)],*[f'p{i:02d}' for i in range(1,11)]) or args.seed!=1 or args.epochs!=400 or args.generate_data!=0 or args.eval_profiles!='full':
         raise ValueError('Fixed seed1 full-only400 protocol required')
     args.model='resnet';args.dataset='cifar100';args.algorithm='AdaptiveFL'
     args._local12_reference=opt.local_reference

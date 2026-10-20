@@ -12,12 +12,13 @@ sys.path.insert(0,str(ROOT))
 
 
 def main():
-    p=argparse.ArgumentParser(__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser(__doc__);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--refinements',action='store_true');a=p.parse_args()
     import torch
     from utils.reproducibility import configure_deterministic_execution
     from utils.options import args_parser
     from models.Fed import get_model_list,Aggregation_AdaptiveFL,split_model
-    from native_group_aggregation import NativeGroupHooks,MODES,update_norm
+    from native_group_aggregation import NativeGroupHooks,MODES,REFINEMENTS,update_norm
     configure_deterministic_execution(True);torch.set_num_threads(2)
     from utils.set_seed import set_random_seed
     set_random_seed(1)
@@ -29,7 +30,7 @@ def main():
     uploads=[{k:v+(i-3)*.001 for k,v in s.items()} for i,s in enumerate(sent)]
     native=Aggregation_AdaptiveFL(uploads,lens,previous)
     torch.cuda.reset_peak_memory_stats();records={};outputs={}
-    for mode in MODES:
+    for mode in REFINEMENTS if a.refinements else MODES:
         args.method=mode;hook=NativeGroupHooks(args,models);hook.set_slots(zip(cids,profiles))
         first=hook.aggregate(uploads,lens,previous,sent)
         assert all(torch.equal(first[k],native[k]) for k in previous)
@@ -44,6 +45,13 @@ def main():
         if mode in ('g08','g10'):
             target=outputs['g07' if mode=='g08' else 'g09']
             assert abs(update_norm(out,previous)-target)<max(1e-7,target*1e-5)
+        if mode in ('p01','p02'):
+            target=d['matched_norm_target']
+            assert abs(update_norm(out,previous)-target)<max(1e-7,target*1e-5)
+            records[mode]['matched_norm_relative_error']=d['matched_norm_relative_error']
+        if mode=='p10':
+            assert torch.equal(out['classifier.weight'],native['classifier.weight'])
+            assert torch.equal(out['classifier.bias'],native['classifier.bias'])
         del out,hook
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(dict(type='synthetic uploads on actual seven ResNet shapes, not CIFAR training',

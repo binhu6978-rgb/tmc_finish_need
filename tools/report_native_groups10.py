@@ -33,22 +33,55 @@ def diagnostic_summary(path):
     error=[s['scale_norm_relative_error'] for s in servers if s['scale_norm_relative_error'] is not None]
     ratios=[s['actual_update_l2_ratio_native'] for s in servers[1:] if s['actual_update_l2_ratio_native'] is not None]
     if servers[0]['difference_from_native_l2']!=0:raise ValueError('First-round Native control differs')
-    return dict(first_round=servers[0],regions=regions,
+    summary=dict(first_round=servers[0],regions=regions,
         changed_rounds=sum(s['difference_from_native_l2']>0 for s in servers),
         later_difference_from_native_l2_mean=statistics.mean(s['difference_from_native_l2'] for s in servers[1:]),
         later_update_l2_ratio_native_mean=statistics.mean(ratios) if ratios else None,
         scale_norm_relative_error_max=max(error) if error else None,
-        cumulative_final=servers[-1]['cumulative_physical_coverage']),[m['slots'] for m in logs]
+        cumulative_final=servers[-1]['cumulative_physical_coverage'])
+    if 'difference_from_g03_l2' in servers[-1]:
+        for key in ('actual_update_cosine_native','actual_update_cosine_g03','difference_from_g03_l2','global_scale'):
+            values=[s[key] for s in servers[1:] if s[key] is not None]
+            summary['later_'+key+'_mean']=statistics.mean(values) if values else None
+        values=[s['matched_norm_relative_error'] for s in servers if s['matched_norm_relative_error'] is not None]
+        summary['matched_norm_relative_error_max']=max(values) if values else None
+        summary['source_shares']={}
+        for rid in regions:
+            shares={}
+            for key in ('native_slot_shares','applied_slot_shares','virtual_g03_slot_shares'):
+                triples=[]
+                for log,s in zip(logs[1:],servers[1:]):
+                    detail=s['regions'][rid]
+                    if key not in detail:continue
+                    tier=[0.,0.,0.]
+                    for i,w in zip(detail['slots'],detail[key]):
+                        cid=log['slots'][i][0];tier[int(cid>=40)+int(cid>=70)]+=w
+                    triples.append(tier)
+                shares[key]=[statistics.mean(x[t] for x in triples) for t in range(3)] if triples else None
+            summary['source_shares'][rid]=shares
+        summary['source_share_scope']='P10 applied shares refer to nonclassifier cells; classifier is Native. P01 applied shares are Native, virtual G03 shares are counterfactual. Global scales act on anchored increments.'
+    return summary,[m['slots'] for m in logs]
 
 
-def report(root):
-    config=json.loads((ROOT/'configs/native_groups10_400.json').read_text())
+def report(root,config_path=None):
+    config=json.loads((config_path or ROOT/'configs/native_groups10_400.json').read_text())
     baseline_path=ROOT/config['baseline_csv'];base_manifest=json.loads((ROOT/config['baseline_manifest']).read_text())
     reference,reference_curve=describe('B00-D','baseline',baseline_path,2)
     with (baseline_path.parent/'method_diagnostics.csv').open() as f:base_schedule=[json.loads(r['metrics_json'])['slots'] for r in csv.DictReader(f)]
     with baseline_path.open() as f:base_ce=[float(r['full_ce']) for r in csv.DictReader(f)]
     curves={'B00-D':reference_curve};ce_curves={'B00-D':base_ce};records=[];mechanisms={};costs=[]
     common_identity={k:v for k,v in base_manifest['identity'].items() if k not in ('method','options','source_sha256')}
+    competitor=None
+    if 'reference_csv' in config:
+        p=ROOT/config['reference_csv'];validate(p.parent)
+        competitor,curve=describe(config['reference_id'],config['reference_id'].lower(),p,2)
+        curves[competitor['id']]=curve
+        with p.open() as f:ce_curves[competitor['id']]=[float(r['full_ce']) for r in csv.DictReader(f)]
+        m=json.loads((p.parent/'manifest.json').read_text())
+        with (p.parent/'method_diagnostics.csv').open() as f:schedule=[json.loads(r['metrics_json'])['slots'] for r in csv.DictReader(f)]
+        if ({k:v for k,v in m['identity'].items() if k not in ('method','options','source_sha256')}!=common_identity
+            or m['initial_state_sha256']!=base_manifest['initial_state_sha256'] or schedule!=base_schedule):
+            raise ValueError('Existing G03 reference protocol or initial schedule differs')
     for name in sum(config['batches'],[]):
         p=root/name.lower()/(name+'_full_only_400_seed1_deterministic');validate(p)
         manifest=json.loads((p/'manifest.json').read_text())
@@ -58,6 +91,7 @@ def report(root):
         item,curve=describe(name,name.lower(),p/'accuracy_each_round.csv',2)
         for key in ('test_oracle_peak','final_accuracy','last20_mean','last50_mean','final_ce'):
             item[key+'_minus_B00_D']=item[key]-reference[key]
+            if competitor:item[key+'_minus_'+competitor['id']]=item[key]-competitor[key]
         records.append(item);curves[name]=curve
         with (p/'accuracy_each_round.csv').open() as f:rounds=list(csv.DictReader(f))
         ce_curves[name]=[float(r['full_ce']) for r in rounds]
@@ -72,7 +106,7 @@ def report(root):
     for filename,rows in [('comparison.csv',records),('costs.csv',costs)]:
         with (output/filename).open('w',newline='') as f:
             w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
-    (output/'summary.json').write_text(json.dumps(dict(comparison=records,baseline=reference,mechanisms=mechanisms,
+    (output/'summary.json').write_text(json.dumps(dict(comparison=records,baseline=reference,competitor=competitor,mechanisms=mechanisms,
         pairing='all completed initial models, original partition,400 actual schedules and strict execution match B00-D; first Native evaluation identical',
         scale_control='same-input virtual norm per own trajectory; G07 vs G08 and G09 vs G10 do not share subsequent trained models',
         peak_label='official test-oracle peak, single seed exploration'),indent=2))
@@ -85,11 +119,12 @@ def report(root):
         fig,axes=plt.subplots(2,3,figsize=(16,9))
         for ax,batch in zip(axes.flat,config['batches']):
             ax.plot(range(1,401),values['B00-D'],label='B00-D',color='black',linewidth=1,linestyle='--')
+            if competitor:ax.plot(range(1,401),values[competitor['id']],label=competitor['id'],color='purple',linewidth=1.2,linestyle='--')
             for name in batch:ax.plot(range(1,401),values[name],label=name,linewidth=1)
             ax.set(xlabel='Round',ylabel=label);ax.grid(alpha=.2);ax.legend()
         axes.flat[-1].axis('off');fig.tight_layout();fig.savefig(output/(filename+'.png'),dpi=150);plt.close(fig)
     lines=['# Native coverage/source experiments','', '| ID | test-oracle peak | round | Final | Last20 | Last50 | CE |','|---|---:|---:|---:|---:|---:|---:|']
-    for r in [reference,*records]:lines.append(f"|{r['id']}|{r['test_oracle_peak']:.4f}|{r['best_round']}|{r['final_accuracy']:.4f}|{r['last20_mean']:.4f}|{r['last50_mean']:.4f}|{r['final_ce']:.6f}|")
+    for r in [reference,*([competitor] if competitor else []),*records]:lines.append(f"|{r['id']}|{r['test_oracle_peak']:.4f}|{r['best_round']}|{r['final_accuracy']:.4f}|{r['last20_mean']:.4f}|{r['last50_mean']:.4f}|{r['final_ce']:.6f}|")
     (output/'report.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     return records
 
