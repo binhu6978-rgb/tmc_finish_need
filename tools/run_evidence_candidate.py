@@ -32,6 +32,8 @@ def main():
     args.model='resnet';args.dataset='cifar100';args.algorithm='AdaptiveFL'
     args._local12_reference=opt.local_reference
     if opt.local_reference and args.method!='m2':raise ValueError('Local REF must use original M2')
+    from utils.reproducibility import configure_deterministic_execution
+    policy=configure_deterministic_execution(args.deterministic_execution)
     args.device=torch.device('cuda:0');torch.set_num_threads(2)
     path=prepare_output(args);started=time.perf_counter()
     try:
@@ -54,7 +56,8 @@ def main():
         if len(train)!=50000 or len(test)!=10000 or len(users)!=100:raise ValueError('Original full data required')
         (path/'run_environment.json').write_text(json.dumps({'pid':os.getpid(),'argv':argv,'dataset_root':str(opt.dataset_root),
             'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'gpu':torch.cuda.get_device_name(),
-            'torch':torch.__version__,'train_examples':len(train),'test_examples':len(test)},indent=2))
+            'torch':torch.__version__,'train_examples':len(train),'test_examples':len(test),
+            'deterministic_execution':policy},indent=2))
         # Match the original entry's unused Full construction BEFORE get_model_list.
         unused=ResNet18_cifar(num_channels=args.num_channels,num_classes=args.num_classes)
         torch.cuda.reset_peak_memory_stats()

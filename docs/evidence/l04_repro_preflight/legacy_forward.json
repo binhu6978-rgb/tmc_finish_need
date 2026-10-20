@@ -1,0 +1,84 @@
+[
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 0,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_forward_logits": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "first_backward_gradients": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "final_client_weights": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "partition_examples": 644,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 1,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_forward_logits": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "first_backward_gradients": {
+      "equal": false,
+      "changed_tensors": 33,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 7.102265954017639e-05,
+      "difference_l2": 0.0015460067484487862
+    },
+    "final_client_weights": {
+      "equal": false,
+      "changed_tensors": 65,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 0.01055935025215149,
+      "difference_l2": 1.3382652722377832
+    },
+    "partition_examples": 462,
+    "local_epochs": 5,
+    "batch_size": 50
+  }
+]

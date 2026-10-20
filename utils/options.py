@@ -31,6 +31,10 @@ def args_parser():
                         help='Seven models still train and synchronize; full tests only P6')
     parser.add_argument('--isolate-eval-rng', action='store_true',
                         help='Preserve training RNG across evaluation; always enabled by eval-profiles full')
+    parser.add_argument('--deterministic-execution', action='store_true',
+                        help='Strict deterministic CUDA execution; unsupported operations raise an error')
+    parser.add_argument('--classifier-protection-start-round', type=int, choices=[1,2], default=1,
+                        help='L04 only: first 1-based round using Native classifier aggregation')
     parser.add_argument('--coverage-gamma', type=float, default=0.5)
     parser.add_argument('--coverage-eta-min', type=float, default=0.8)
     parser.add_argument('--coverage-eta-max', type=float, default=1.2)

@@ -1,0 +1,15 @@
+{
+  "order": ["R0", "R1", "R2"],
+  "epochs": 400,
+  "seed": 1,
+  "gpu": 0,
+  "concurrency": 1,
+  "deterministic_execution": true,
+  "conflict_lambda": 4.0,
+  "R0": "Original E03 M2; read-only REF diagnostics",
+  "R1": "Original L04; classifier Native from round 1",
+  "R2": "Exact E03 round 1; classifier Native from round 2",
+  "protocol": "Original full CIFAR100 cached alpha0.3 partition, seven models, 100 clients, 10 slots, 5 local epochs, batch50, original SGD; Full-only every round with isolated evaluation RNG",
+  "precondition": "Strict REF/L02 real GPU 3-round comparison passes; record its actual host. Cross-host bitwise equivalence is not assumed",
+  "failure": "Stop subsequent runs, retain all logs and checkpoints; no retry or parameter changes"
+}

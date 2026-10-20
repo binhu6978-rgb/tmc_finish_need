@@ -548,12 +548,16 @@ class RunLog:
         self.identity['eval_profiles']=self.eval_profiles
         self.identity['eval_rng_policy']=self.eval_rng_policy
         self.identity['logging_schema']=2
+        if getattr(args,'deterministic_execution',False):
+            from utils.reproducibility import execution_policy
+            self.identity['execution_policy']=execution_policy()
         self.identity['partition_sha256']=getattr(args,'_method_partition_sha256',None)
         files=('main_fed_ori.py','Algorithm/Training_AdaptiveFL.py','models/Update.py','models/Fed.py','models/resnet.py','models/test.py','utils/options.py','adapterfl_methods.py','utils/get_datatset_new.py','utils/set_seed.py')
         if getattr(self.hooks,'is_scope',False):files=(*files,'semcons_scope.py')
         if getattr(self.hooks,'is_evidence',False):files=(*files,'evidence_aggregation.py','tools/run_evidence_candidate.py','configs/e03_scope_components400.json')
         if getattr(self.hooks,'is_tonight',False):files=(*files,'tonight_aggregation.py','tools/run_evidence_candidate.py','configs/e03_tonight10_400.json')
         if getattr(self.hooks,'is_local12',False):files=(*files,'local12_aggregation.py','tonight_aggregation.py','tools/run_evidence_candidate.py','configs/e03_local12_400.json')
+        if getattr(args,'deterministic_execution',False):files=(*files,'utils/reproducibility.py')
         self.identity['source_sha256']={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}
         if args.method_resume:
             # Local, user-selected research checkpoint includes RNG tuples.

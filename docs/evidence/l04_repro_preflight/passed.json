@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "rounds": [
+    {
+      "round": 1,
+      "weights": {
+        "equal": true,
+        "changed_tensors": 0,
+        "first_changed": null,
+        "max_abs": 0.0,
+        "difference_l2": 0.0
+      },
+      "rng_equal": true,
+      "slots_equal": true,
+      "evaluation_equal": true,
+      "left_evaluation": {
+        "6": [
+          1.0699999332427979,
+          4.728956699371338
+        ]
+      },
+      "right_evaluation": {
+        "6": [
+          1.0699999332427979,
+          4.728956699371338
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "weights": {
+        "equal": true,
+        "changed_tensors": 0,
+        "first_changed": null,
+        "max_abs": 0.0,
+        "difference_l2": 0.0
+      },
+      "rng_equal": true,
+      "slots_equal": true,
+      "evaluation_equal": true,
+      "left_evaluation": {
+        "6": [
+          2.8299999237060547,
+          4.643388748168945
+        ]
+      },
+      "right_evaluation": {
+        "6": [
+          2.8299999237060547,
+          4.643388748168945
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "weights": {
+        "equal": true,
+        "changed_tensors": 0,
+        "first_changed": null,
+        "max_abs": 0.0,
+        "difference_l2": 0.0
+      },
+      "rng_equal": true,
+      "slots_equal": true,
+      "evaluation_equal": true,
+      "left_evaluation": {
+        "6": [
+          4.730000019073486,
+          4.651865005493164
+        ]
+      },
+      "right_evaluation": {
+        "6": [
+          4.730000019073486,
+          4.651865005493164
+        ]
+      }
+    }
+  ],
+  "host": "DESKTOP-NC6DEDL",
+  "torch": "2.7.1+cu128",
+  "policy": "strict deterministic execution, TF32 off, cuBLAS4096:8",
+  "timestamp": 1792459034.9397311
+}

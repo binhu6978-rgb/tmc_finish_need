@@ -1,0 +1,80 @@
+{
+  "passed": false,
+  "rounds": [
+    {
+      "round": 1,
+      "weights": {
+        "equal": false,
+        "changed_tensors": 65,
+        "first_changed": "features.0.0.weight",
+        "max_abs": 0.003552153008058667,
+        "difference_l2": 0.33958625246163276
+      },
+      "rng_equal": true,
+      "slots_equal": true,
+      "evaluation_equal": false,
+      "left_evaluation": {
+        "6": [
+          1.0799999237060547,
+          4.729298114776611
+        ]
+      },
+      "right_evaluation": {
+        "6": [
+          1.0899999141693115,
+          4.729519844055176
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "weights": {
+        "equal": false,
+        "changed_tensors": 65,
+        "first_changed": "features.0.0.weight",
+        "max_abs": 0.007661115378141403,
+        "difference_l2": 0.8578189290528945
+      },
+      "rng_equal": true,
+      "slots_equal": true,
+      "evaluation_equal": false,
+      "left_evaluation": {
+        "6": [
+          2.5899999141693115,
+          4.640770435333252
+        ]
+      },
+      "right_evaluation": {
+        "6": [
+          2.879999876022339,
+          4.639875888824463
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "weights": {
+        "equal": false,
+        "changed_tensors": 65,
+        "first_changed": "features.0.0.weight",
+        "max_abs": 0.012776859104633331,
+        "difference_l2": 1.2041611621321457
+      },
+      "rng_equal": true,
+      "slots_equal": true,
+      "evaluation_equal": false,
+      "left_evaluation": {
+        "6": [
+          4.739999771118164,
+          4.645482540130615
+        ]
+      },
+      "right_evaluation": {
+        "6": [
+          4.739999771118164,
+          4.649155139923096
+        ]
+      }
+    }
+  ]
+}

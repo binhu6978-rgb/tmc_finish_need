@@ -1,0 +1,342 @@
+[
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 0,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "final_client_weights": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "partition_examples": 644,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 1,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": false,
+      "changed_tensors": 33,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 8.724629878997803e-05,
+      "difference_l2": 0.0016616008023808506
+    },
+    "final_client_weights": {
+      "equal": false,
+      "changed_tensors": 65,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 0.011366918683052063,
+      "difference_l2": 1.3506175044970403
+    },
+    "partition_examples": 462,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 2,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "final_client_weights": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "partition_examples": 429,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 3,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": false,
+      "changed_tensors": 2,
+      "first_changed": "features.2.0.left1.0.weight",
+      "max_abs": 1.862645149230957e-08,
+      "difference_l2": 4.621173724059912e-07
+    },
+    "final_client_weights": {
+      "equal": false,
+      "changed_tensors": 65,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 0.014384962618350983,
+      "difference_l2": 1.0605683529781442
+    },
+    "partition_examples": 496,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 4,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "final_client_weights": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "partition_examples": 558,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 5,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": false,
+      "changed_tensors": 33,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 5.8770179748535156e-05,
+      "difference_l2": 0.001284442517797463
+    },
+    "final_client_weights": {
+      "equal": false,
+      "changed_tensors": 65,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 0.01428079605102539,
+      "difference_l2": 1.4302127869564312
+    },
+    "partition_examples": 512,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 6,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "final_client_weights": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "partition_examples": 411,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 7,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": false,
+      "changed_tensors": 2,
+      "first_changed": "features.2.0.left1.0.weight",
+      "max_abs": 1.862645149230957e-08,
+      "difference_l2": 4.4559440687054743e-07
+    },
+    "final_client_weights": {
+      "equal": false,
+      "changed_tensors": 65,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 0.016448691487312317,
+      "difference_l2": 1.2102726134432995
+    },
+    "partition_examples": 507,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 8,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": false,
+      "changed_tensors": 2,
+      "first_changed": "features.2.0.left1.0.weight",
+      "max_abs": 2.60770320892334e-08,
+      "difference_l2": 4.945791308509792e-07
+    },
+    "final_client_weights": {
+      "equal": false,
+      "changed_tensors": 65,
+      "first_changed": "features.0.0.weight",
+      "max_abs": 0.019509553909301758,
+      "difference_l2": 1.0655268727967642
+    },
+    "partition_examples": 496,
+    "local_epochs": 5,
+    "batch_size": 50
+  },
+  {
+    "mode": "same actual client, two complete 5-epoch SGD repeats",
+    "slot": 9,
+    "policy": {
+      "deterministic_algorithms": false,
+      "warn_only": false,
+      "cudnn_deterministic": false,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": null
+    },
+    "torch": "2.7.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "same_first_images": true,
+    "same_end_rng": true,
+    "first_backward_gradients": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "final_client_weights": {
+      "equal": true,
+      "changed_tensors": 0,
+      "first_changed": null,
+      "max_abs": 0.0,
+      "difference_l2": 0.0
+    },
+    "partition_examples": 608,
+    "local_epochs": 5,
+    "batch_size": 50
+  }
+]

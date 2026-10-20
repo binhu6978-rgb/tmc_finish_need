@@ -147,6 +147,8 @@ if __name__ == '__main__':
         for data_beta in data_betas:
             try:
                 args = args_parser()
+                from utils.reproducibility import configure_deterministic_execution
+                configure_deterministic_execution(args.deterministic_execution)
                 if (args.eval_profiles == 'full' or args.isolate_eval_rng) and not args.method:
                     args.method = 'baseline'
                 if args.method:
