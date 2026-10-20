@@ -1,0 +1,98 @@
+"""Final fixed comparisons and actual diagnostics, without model/data tuning."""
+import argparse
+import csv
+import json
+from pathlib import Path
+import statistics
+import sys
+
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from tools.report_tonight10 import validate
+from tools.report_next10_m2_m3 import describe
+
+
+def diagnostic_summary(path):
+    with path.open() as f:logs=[json.loads(r['metrics_json']) for r in csv.DictReader(f)]
+    servers=[m['server'] for m in logs]
+    if len(servers)!=400:raise ValueError('Expected 400 diagnostic rows')
+    regions={}
+    for rid in range(len(servers[0]['regions'])):
+        items=[s['regions'][rid] for s in servers]
+        regions[rid]=dict(numel=items[0]['numel'],support_profiles=items[0]['support_profiles'],
+            covered_rounds=sum(bool(r['slots']) for r in items),
+            total_unique_physical_coverages=sum(r['distinct_physical_clients'] for r in items),
+            mean_covered_distinct_profiles=statistics.mean(len(r['actual_profiles']) for r in items),
+            mean_distinct_physical_clients=statistics.mean(r['distinct_physical_clients'] for r in items),
+            gain_min=min(r['gain'] for r in items),gain_mean=statistics.mean(r['gain'] for r in items),
+            gain_max=max(r['gain'] for r in items),
+            mean_weight_share_l1_change=statistics.mean(r['weight_share_l1_change'] for r in items),
+            actually_changed_rounds=sum(r['actual_changed_coordinates']>0 for r in items),
+            single_client_neutral_rounds=sum(r['reason']=='one_physical_client' for r in items),
+            estimated_noise_energy_mean=statistics.mean(r['estimated_mean_noise_energy'] for r in items if 'estimated_mean_noise_energy' in r) if any('estimated_mean_noise_energy' in r for r in items) else None)
+    error=[s['scale_norm_relative_error'] for s in servers if s['scale_norm_relative_error'] is not None]
+    ratios=[s['actual_update_l2_ratio_native'] for s in servers[1:] if s['actual_update_l2_ratio_native'] is not None]
+    if servers[0]['difference_from_native_l2']!=0:raise ValueError('First-round Native control differs')
+    return dict(first_round=servers[0],regions=regions,
+        changed_rounds=sum(s['difference_from_native_l2']>0 for s in servers),
+        later_difference_from_native_l2_mean=statistics.mean(s['difference_from_native_l2'] for s in servers[1:]),
+        later_update_l2_ratio_native_mean=statistics.mean(ratios) if ratios else None,
+        scale_norm_relative_error_max=max(error) if error else None,
+        cumulative_final=servers[-1]['cumulative_physical_coverage']),[m['slots'] for m in logs]
+
+
+def report(root):
+    config=json.loads((ROOT/'configs/native_groups10_400.json').read_text())
+    baseline_path=ROOT/config['baseline_csv'];base_manifest=json.loads((ROOT/config['baseline_manifest']).read_text())
+    reference,reference_curve=describe('B00-D','baseline',baseline_path,2)
+    with (baseline_path.parent/'method_diagnostics.csv').open() as f:base_schedule=[json.loads(r['metrics_json'])['slots'] for r in csv.DictReader(f)]
+    with baseline_path.open() as f:base_ce=[float(r['full_ce']) for r in csv.DictReader(f)]
+    curves={'B00-D':reference_curve};ce_curves={'B00-D':base_ce};records=[];mechanisms={};costs=[]
+    common_identity={k:v for k,v in base_manifest['identity'].items() if k not in ('method','options','source_sha256')}
+    for name in sum(config['batches'],[]):
+        p=root/name.lower()/(name+'_full_only_400_seed1_deterministic');validate(p)
+        manifest=json.loads((p/'manifest.json').read_text())
+        identity={k:v for k,v in manifest['identity'].items() if k not in ('method','options','source_sha256')}
+        if identity!=common_identity or manifest['initial_state_sha256']!=base_manifest['initial_state_sha256'] or manifest['torch']!=base_manifest['torch']:
+            raise ValueError('Training, numerical execution or initialization differs from B00-D')
+        item,curve=describe(name,name.lower(),p/'accuracy_each_round.csv',2)
+        for key in ('test_oracle_peak','final_accuracy','last20_mean','last50_mean','final_ce'):
+            item[key+'_minus_B00_D']=item[key]-reference[key]
+        records.append(item);curves[name]=curve
+        with (p/'accuracy_each_round.csv').open() as f:rounds=list(csv.DictReader(f))
+        ce_curves[name]=[float(r['full_ce']) for r in rounds]
+        mechanisms[name],schedule=diagnostic_summary(p/'method_diagnostics.csv')
+        if schedule!=base_schedule:raise ValueError('400-round actual slots differ from B00-D')
+        if curve[0]!=reference_curve[0] or ce_curves[name][0]!=base_ce[0]:raise ValueError('First Native evaluation differs from B00-D')
+        resource=json.loads((p/'resources.json').read_text())
+        costs.append(dict(id=name,wall_seconds=resource['wall_seconds'],peak_allocated_mib=resource['peak_allocated_bytes']/2**20,
+            peak_reserved_mib=resource['peak_reserved_bytes']/2**20,
+            server_seconds=sum(float(r['server_seconds']) for r in rounds),evaluation_seconds=sum(float(r['evaluation_seconds']) for r in rounds)))
+    output=root/'report';output.mkdir(exist_ok=False)
+    for filename,rows in [('comparison.csv',records),('costs.csv',costs)]:
+        with (output/filename).open('w',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+    (output/'summary.json').write_text(json.dumps(dict(comparison=records,baseline=reference,mechanisms=mechanisms,
+        pairing='all completed initial models, original partition,400 actual schedules and strict execution match B00-D; first Native evaluation identical',
+        scale_control='same-input virtual norm per own trajectory; G07 vs G08 and G09 vs G10 do not share subsequent trained models',
+        peak_label='official test-oracle peak, single seed exploration'),indent=2))
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    for values,label,filename in [(curves,'Full test Accuracy (%)','accuracy'),(ce_curves,'Full test CE','ce')]:
+        with (output/(filename+'_all_rounds.csv')).open('w',newline='') as f:
+            w=csv.writer(f);w.writerow(['round',*values]);w.writerows([i+1,*[v[i] for v in values.values()]] for i in range(400))
+        fig,axes=plt.subplots(2,3,figsize=(16,9))
+        for ax,batch in zip(axes.flat,config['batches']):
+            ax.plot(range(1,401),values['B00-D'],label='B00-D',color='black',linewidth=1,linestyle='--')
+            for name in batch:ax.plot(range(1,401),values[name],label=name,linewidth=1)
+            ax.set(xlabel='Round',ylabel=label);ax.grid(alpha=.2);ax.legend()
+        axes.flat[-1].axis('off');fig.tight_layout();fig.savefig(output/(filename+'.png'),dpi=150);plt.close(fig)
+    lines=['# Native coverage/source experiments','', '| ID | test-oracle peak | round | Final | Last20 | Last50 | CE |','|---|---:|---:|---:|---:|---:|---:|']
+    for r in [reference,*records]:lines.append(f"|{r['id']}|{r['test_oracle_peak']:.4f}|{r['best_round']}|{r['final_accuracy']:.4f}|{r['last20_mean']:.4f}|{r['last50_mean']:.4f}|{r['final_ce']:.6f}|")
+    (output/'report.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+    return records
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(__doc__);p.add_argument('--root',type=Path,required=True);report(p.parse_args().root)

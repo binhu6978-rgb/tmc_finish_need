@@ -1,0 +1,89 @@
+{
+  "type": "synthetic uploads on actual seven ResNet shapes, not CIFAR training",
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "torch": "2.7.1+cu128",
+  "checks": {
+    "g01": {
+      "regions": 9,
+      "actual_update_l2": 10.37156340158909,
+      "difference_from_native_l2": 3.7744977580560373,
+      "scale_norm_relative_error": null,
+      "gain_min": 1.0,
+      "gain_max": 1.0
+    },
+    "g02": {
+      "regions": 9,
+      "actual_update_l2": 12.692553764086604,
+      "difference_from_native_l2": 0.776855568940564,
+      "scale_norm_relative_error": null,
+      "gain_min": 1.0,
+      "gain_max": 1.0
+    },
+    "g03": {
+      "regions": 9,
+      "actual_update_l2": 10.906399777302953,
+      "difference_from_native_l2": 2.8348567494725607,
+      "scale_norm_relative_error": null,
+      "gain_min": 1.0,
+      "gain_max": 1.0
+    },
+    "g04": {
+      "regions": 9,
+      "actual_update_l2": 11.92431995956608,
+      "difference_from_native_l2": 2.0101081963244303,
+      "scale_norm_relative_error": null,
+      "gain_min": 1.0,
+      "gain_max": 1.0
+    },
+    "g05": {
+      "regions": 9,
+      "actual_update_l2": 10.74804734671892,
+      "difference_from_native_l2": 3.1947297795962966,
+      "scale_norm_relative_error": null,
+      "gain_min": 1.0,
+      "gain_max": 1.0
+    },
+    "g06": {
+      "regions": 9,
+      "actual_update_l2": 11.763388052892854,
+      "difference_from_native_l2": 0.986873850930332,
+      "scale_norm_relative_error": null,
+      "gain_min": 1.0,
+      "gain_max": 1.0
+    },
+    "g07": {
+      "regions": 9,
+      "actual_update_l2": 13.755578369383276,
+      "difference_from_native_l2": 2.0503403559969793,
+      "scale_norm_relative_error": null,
+      "gain_min": 0.8089010988089465,
+      "gain_max": 1.2
+    },
+    "g08": {
+      "regions": 9,
+      "actual_update_l2": 13.755577922978473,
+      "difference_from_native_l2": 1.5023905533310666,
+      "scale_norm_relative_error": 3.2452637825414535e-08,
+      "gain_min": 0.8089010988089465,
+      "gain_max": 1.2
+    },
+    "g09": {
+      "regions": 9,
+      "actual_update_l2": 11.420710113231737,
+      "difference_from_native_l2": 1.1444690703601275,
+      "scale_norm_relative_error": null,
+      "gain_min": 0.7191800342566917,
+      "gain_max": 0.9668383597027529
+    },
+    "g10": {
+      "regions": 9,
+      "actual_update_l2": 11.420710437844141,
+      "difference_from_native_l2": 0.8324769315035656,
+      "scale_norm_relative_error": 2.8423136678330877e-08,
+      "gain_min": 0.7191800342566917,
+      "gain_max": 0.9668383597027529
+    }
+  },
+  "peak_allocated_mib": 1246.82861328125,
+  "peak_reserved_mib": 1580.0
+}

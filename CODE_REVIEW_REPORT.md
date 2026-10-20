@@ -645,3 +645,15 @@ R1/R2实际212/228轮改变聚合，classifier范围不超过Full的0.44904%；R
 新增纯离线tools/analyze_l04_results.py核对五组原始标量、checkpoint核验证据、调度/执行设置和2x2差值，不读取训练图像或测试集生成评分，不创建新SGD。实际结果与相关聚合回归4tests通过；完整证据、曲线和中文报告见docs/evidence/e03_l04_final_results及docs/E03_L04_FINAL_RESULTS.md。所有best/latest在服务器验证实际400轮/首次峰值对应，Full参数形状一致且有限，权重未上传。完成检查自动任务已暂停。
 
 最终以Native B00-D为该确定性环境的优先参考，保留原E03作为历史参考和对照代码；不将M2或任何classifier保护策略选为下一版核心，停止当前路线的无目的调参。后续核心创新应重新审视问题与功能影响证据，本轮不实施新算法或追加训练。单seed官方test-oracle探索不证明所有环境下M2均无效，也不证明独立泛化收益。
+
+## Native来源/覆盖/离散度十组实现与启动前检查（2026-10-20）
+
+本节为用户后续明确授权的新固定研究范围：G01–G10全部从Native AdaptiveFL起步，不组合M2/M3/Q/S03决策或分类器保护。原七模型、抽样、SGD、同步、分区及确定性Full-only协议不改。原训练循环仅增加opt-in hook工厂、必要的服务器下发快照和真实槽位传递；原Aggregation_AdaptiveFL和models/Update.py未改。build_regions仅用于真实九区域几何。
+
+G01模型档位组内样本加权、组间等权；G02在每个区域按物理客户端合并覆盖slot并将原数据质量计一次；G03按ID0–39/40–69/70–99能力组内Native、组间等权；G04/G05为G01的静态七模型共同区与补集；G06为覆盖slot等权。中性成比例权重直接保持Native，避免把额外舍入误差当作机制。
+
+G07只存九个累计整数，每轮每区域物理身份去重计数，第1轮照计数但不干预；以九区域累计次数算术均值Cbar计算clip(sqrt(Cbar/C_r),.8,1.2)。G09将重复槽位汇为物理统计块、保留Native总slot质量，以加权跨客户端离散度估计均值噪声N，使用非负信号S=max(norm(mu)^2-N,0)的固定Wiener系数S/(S+N)；单客户端和全零信号/噪声直接Native。该交换性噪声近似不能被称为已验证的Non-IID更新有害性。G08/G10仅在自身相同上传上匹配虚拟G07/G09的全局更新L2，不声称两条后续训练轨迹始终同范数。
+
+全部方法第一轮严格Native，第2轮开始新方法，覆盖为空绝不更新。G07–G10显式核对同步后的实际下发与原Full prefix一致，再作用于Native锚定学习变化，不更改首轮初始化融合。本地93项检查通过，含十种hook两轮小模型原循环与旧baseline/all/full路径回归；真实七ResNet形状合成GPU检查通过，9区域、全参数有限，G08/G10尺度相对误差约3.25e-8/2.84e-8，allocated1246.8MiB、reserved1580MiB。这是合成上传正确性/内存检查，不是CIFAR性能实验。
+
+固定配置configs/native_groups10_400.json及完整公式docs/NATIVE_GROUPS10_DESIGN.md，轻量启动tools/run_native_groups10.py。指定五批G01/G02、G03/G06、G04/G05、G07/G08、G09/G10，GPU0每批最多两进程；只有调度可因显存改为串行，训练协议不变。复用已完成B00-D，不重复基线。全部400后自动汇总原始日志、Peak/Final/Last20/50/CE、区域权重/覆盖/增益、L2控制误差与成本；阶段最高值标test-oracle，最终最多保留1–2候选或全部否定，不据结果改公式/追种子。

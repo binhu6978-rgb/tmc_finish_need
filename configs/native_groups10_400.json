@@ -1,0 +1,19 @@
+{
+  "batches": [["G01","G02"],["G03","G06"],["G04","G05"],["G07","G08"],["G09","G10"]],
+  "epochs":400,"seed":1,"gpu":0,"max_parallel":2,"first_native_rounds":1,
+  "deterministic_execution":true,
+  "G01":"Equal present profile groups per real coverage region; sample weighted inside each profile",
+  "G02":"Mean covered repeated slots per physical client; original dataset mass once per client",
+  "G03":"Equal present physical capability tiers [0,40),[40,70),[70,100); sample-slot weighting inside each tier",
+  "G04":"G01 only in the STATIC all-seven-model common region",
+  "G05":"G01 only outside the STATIC all-seven-model common region",
+  "G06":"Equal covered slots, no sample weighting",
+  "G07":"Native anchored learning delta times clip(sqrt(mean(all region cumulative unique-client counts)/own count),.8,1.2); counters include round1",
+  "G08":"Global Native update rescaled to same-input virtual G07 full update norm; own cumulative counters",
+  "G09":"Cluster repeated slots by physical client with Native slot masses; unbiased weighted cross-client dispersion estimates mean noise N; shrink gain max(norm(mean)^2-N,0)/(max(norm(mean)^2-N,0)+N); no noise -> Native, one physical client -> Native",
+  "G10":"Global Native update rescaled to same-input virtual G09 full update norm",
+  "baseline_csv":"runs/e03_l04_final_pair400_seed1/baseline/B00-D_full_only_400_seed1_deterministic/accuracy_each_round.csv",
+  "baseline_manifest":"runs/e03_l04_final_pair400_seed1/baseline/B00-D_full_only_400_seed1_deterministic/manifest.json",
+  "failure":"Preserve failed logs/checkpoints; finish the other independent job in that batch, then stop later batches. No automatic retry or parameter change.",
+  "no_extensions":"Exactly ten new runs; no baseline rerun, other seed, scores, memory or combinations"
+}
