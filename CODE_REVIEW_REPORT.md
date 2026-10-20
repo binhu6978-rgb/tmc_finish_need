@@ -605,3 +605,15 @@ C1实际完成400轮，test-oracle peak为36.0200%（387轮），Final35.5300%�
 正式六批已在本地4080 SUPER启动，conda fd为D:/software/minicoonda/envs/fd/python.exe，PyTorch2.7.1+cu128。数据根C:/Users/admin/Desktop/submissioning/code/ori/AAAITMC_finish_need_code/data/cifar100，完整50000/10000，原有分区。套件PID18468，第一批REF PID40452、L01 PID50084，实际双进程使用GPU0且初始七档、分区一致，只评P6。启动后GPU总占约5882MiB/16GB，剩余10166MiB；没有改batch或训练协议。Windows使用fd激活所需Library/bin和Scripts路径，并保留原main已有KMP_DUPLICATE_LIB_OK设置，报告绘图已验证可用。
 
 输出根为runs/e03_local12_full400_seed1；按REF/L01、L02/L03、L04/L05、L06/L07、L08/L09、L10/L11自动执行。每批两组真实完成400轮后才进入下一批；失败保存错误/checkpoint并等待同批另一组结束后停止后续批次，不自动重试。结束自动生成以本地REF为对照的表格、全部400轮Accuracy/CE曲线及冲突/权重/更新L2统计。启动证据在docs/evidence/e03_local12_launch/。本节仅确认启动，不预报任何精度收益；完成后再按真实结果给出最多两个建议机制或保留REF，并停止本批扩展。
+
+## 服务器C2重跑与T01–T10最终交付（2026-10-20）
+
+冻结7577f422e92f3b7490785b10c210b6515d098156的11组新训练在北京时间06:43:21全部成功完成400轮，status finished、failed为空；无重试或临时改参数。checkpoint完成性与首次峰值best对齐已在服务器逐组检查。下载原始标量日志、manifest、完成与资源记录和图，不下载或提交权重。C1/C2/T全部12条实际初始化与400轮slot调度一致，原初始化和models/Fed.py也与历史E03一致。
+
+没有新组超过E03的37.29% test-oracle peak。T04追平37.29%，Final36.6300%、Last20 36.8410%、Last50 36.7704%；相对E03，Final低.2100pp，末段高.0525/.0758pp，未全面占优。T04只有首轮相对同输入E03差异L2=.302450，第2–400轮差异严格0；原首轮加权融合不是达到该峰值的必要条件。其他T组峰值36.42–36.83%，全部Last20/50低于E03。C1/C2峰值36.02/36.32%，同样没有提升。
+
+T09在215轮实际恢复373个负冲突槽位剩余分量，C2在209轮调整423个负投影槽位，不能将失败解释为未激活。修正离线报告的口径：原protected_components仅是T09字段，新增C2独立投影计数；训练源码和输出数据不变。T09后续L2比均值1.001329，同输入差异主要含方向成分，却未带来性能收益。T07负余弦增至33.20%、权重最小.3378，更多冲突也未改善精度。T05物理去重和T06成对支持规则改变评分/聚合，但仍落后；T01/T02/T03/T10均未显示可保留的尺度协同。
+
+新增只读tools/analyze_tonight_results.py，从日志范数/内积分解同输入更新差异的平行与垂直成分，并生成对照图与成本统计；不读取训练图像或测试集作决策、不创建新模型/SGD、无算法修改。报告与分析专项检查通过。保留E03为最强参考，T04仅作初始化控制，当前无新机制足以作为优于E03的SemConsFL核心；本服务器任务停止，不追加实验。
+
+完整15组对比、固定10组设定、首轮/后续诊断、因果限制和曲线见docs/E03_TONIGHT10_RESULTS.md，原始400轮CSV及诊断见docs/evidence/e03_tonight10_results/。所有峰值明确为官方test-oracle peak，单种子探索不构成独立泛化证据。本地REF/L系列保持独立，以本地REF另行判断，不混用服务器峰值。

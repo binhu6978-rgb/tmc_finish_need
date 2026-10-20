@@ -43,3 +43,19 @@ def test_diagnostic_summary_actual_conflicts_and_later_scale(tmp_path):
     assert d['conflict_slots']==100 and d['protected_components']==100
     assert d['later_l2_ratio_e03_mean']==pytest.approx(.98)
     assert d['phases']['301-400']['conflict_slots']==100 and len(s)==400
+
+
+def test_c2_projection_activity_is_distinct_from_t09_restoration(tmp_path):
+    path=tmp_path/'c2.csv'
+    with path.open('w',newline='') as f:
+        writer=csv.DictWriter(f,fieldnames=['round','metrics_json']);writer.writeheader()
+        for i in range(1,401):
+            server={'conflict_slot_count':2 if i==2 else 0,'conflict_weights':[1.]*10,
+                'adjusted_projection_slot_count':2 if i==2 else 0,
+                'difference_from_e03_l2':100. if i==1 else .5}
+            writer.writerow({'round':i,'metrics_json':json.dumps({'server':server,'slots':[(1,0)]*10})})
+    result,_=diagnostic_summary(path)
+    assert result['negative_projection_adjusted_slots']==2
+    assert result['negative_projection_active_rounds']==1
+    assert result['protected_components']==0 and result['restoration_active_rounds']==0
+    assert result['later_same_input_e03_difference_l2_mean']==.5
