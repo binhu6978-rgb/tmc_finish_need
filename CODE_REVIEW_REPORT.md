@@ -657,3 +657,5 @@ G07只存九个累计整数，每轮每区域物理身份去重计数，第1轮�
 全部方法第一轮严格Native，第2轮开始新方法，覆盖为空绝不更新。G07–G10显式核对同步后的实际下发与原Full prefix一致，再作用于Native锚定学习变化，不更改首轮初始化融合。本地93项检查通过，含十种hook两轮小模型原循环与旧baseline/all/full路径回归；真实七ResNet形状合成GPU检查通过，9区域、全参数有限，G08/G10尺度相对误差约3.25e-8/2.84e-8，allocated1246.8MiB、reserved1580MiB。这是合成上传正确性/内存检查，不是CIFAR性能实验。
 
 固定配置configs/native_groups10_400.json及完整公式docs/NATIVE_GROUPS10_DESIGN.md，轻量启动tools/run_native_groups10.py。指定五批G01/G02、G03/G06、G04/G05、G07/G08、G09/G10，GPU0每批最多两进程；只有调度可因显存改为串行，训练协议不变。复用已完成B00-D，不重复基线。全部400后自动汇总原始日志、Peak/Final/Last20/50/CE、区域权重/覆盖/增益、L2控制误差与成本；阶段最高值标test-oracle，最终最多保留1–2候选或全部否定，不据结果改公式/追种子。
+
+服务器同一checkout冻结训练代码36b84b858b6a03c038ad8a142ededf870c5b5ce6，Linux93tests通过；实际七形状GPU合成聚合检查通过，reserved1598MiB。正式父PID3243806，首批G01/G02子PID3243837/3243838，GPU0实际concurrency2后台启动。首次manifest核对初始化七档、原分区、训练及确定性策略均与B00-D相同，真实50k/10k，仅P6测试。证据docs/evidence/native_groups10_launch/server_startup.json含真实argv、预检和资源检查，不含逐轮性能结果。此处仅交付启动，不宣称400轮已完成或方法有效；完成后再基于真实十组结果作最终研究判断。
