@@ -42,8 +42,11 @@ class Local12Hooks:
             raise ValueError('Fixed local controls require L01-L11 and lambda4')
         self.method=args.method
         self.classifier_start=getattr(args,'classifier_protection_start_round',1)
+        self.classifier_end=getattr(args,'classifier_protection_end_round',None)
         if self.method!='l04' and self.classifier_start!=1:
             raise ValueError('Delayed classifier protection applies only to L04')
+        if self.classifier_end is not None and (self.method!='l04' or self.classifier_end<self.classifier_start):
+            raise ValueError('First-round-only protection requires L04 starting at round 1')
         native=copy.copy(args);native.method='m2';self.legacy=MethodHooks(native,models)
         full=models[-1]
         self.bn={f'{name}.{p}' for name,module in full.named_modules() if isinstance(module,_BatchNorm)
@@ -60,6 +63,8 @@ class Local12Hooks:
             amplitude_epsilon=EPS)
         if self.classifier_start!=1:
             self.config['classifier_protection_start_round']=self.classifier_start
+        if self.classifier_end is not None:
+            self.config['classifier_protection_end_round']=self.classifier_end
         self.rounds_seen=0;self.slots=None;self.round_diagnostics={}
 
     def configure_local(self,local):pass
@@ -99,7 +104,8 @@ class Local12Hooks:
                 result={k:e03[k]+(native_fusion[k]-m2_fusion[k]) for k in previous}
             # Synced dispatches have the SAME fusion mathematically: keep exact
             # E03 rather than introducing a false post-init mechanism by rounding.
-        classifier_active=self.method!='l04' or self.rounds_seen+1>=self.classifier_start
+        classifier_active=self.method!='l04' or (self.rounds_seen+1>=self.classifier_start and
+            (self.classifier_end is None or self.rounds_seen+1<=self.classifier_end))
         if self.method in ('l03','l04','l05') and classifier_active:
             protected=self.bn if self.method=='l03' else self.classifier if self.method=='l04' else self.bn|self.classifier
             native=Aggregation_AdaptiveFL(uploads,lens,previous)
@@ -108,6 +114,7 @@ class Local12Hooks:
         if self.method=='l04':
             diag['classifier_protection_active']=classifier_active
             diag['classifier_protection_start_round']=self.classifier_start
+            if self.classifier_end is not None:diag['classifier_protection_end_round']=self.classifier_end
         if self.method in ('l06','l07'):
             if self.slots is None or len(self.slots)!=len(uploads):raise ValueError('Actual slot identities required')
             protected=[i for i,(cid,profile) in enumerate(self.slots) if

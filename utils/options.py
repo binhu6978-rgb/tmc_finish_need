@@ -35,6 +35,8 @@ def args_parser():
                         help='Strict deterministic CUDA execution; unsupported operations raise an error')
     parser.add_argument('--classifier-protection-start-round', type=int, choices=[1,2], default=1,
                         help='L04 only: first 1-based round using Native classifier aggregation')
+    parser.add_argument('--classifier-protection-end-round', type=int, choices=[1], default=None,
+                        help='L04 only: Native classifier in round 1 only; otherwise M2')
     parser.add_argument('--coverage-gamma', type=float, default=0.5)
     parser.add_argument('--coverage-eta-min', type=float, default=0.8)
     parser.add_argument('--coverage-eta-max', type=float, default=1.2)

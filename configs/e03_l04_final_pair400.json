@@ -1,0 +1,14 @@
+{
+  "jobs": ["B00-D", "R3"],
+  "epochs": 400,
+  "seed": 1,
+  "gpu": 0,
+  "max_parallel": 2,
+  "deterministic_execution": true,
+  "B00-D": "Original Native AdaptiveFL; no M2 direction computation or weights",
+  "R3": "Original M2 lambda4; classifier Native only in round1; rounds2-400 exact M2",
+  "reuse_only": ["R0", "R1", "R2"],
+  "prior_root": "runs/e03_l04_control400_seed1",
+  "output_root": "runs/e03_l04_final_pair400_seed1",
+  "no_extensions": "Exactly two new 400-round runs; no new seed, score or search"
+}
