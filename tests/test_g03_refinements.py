@@ -167,3 +167,52 @@ def test_original_loop_two_round_full_only_all_ten(tmp_path,monkeypatch):
         assert len(rows)==2 and set(k for k in rows[0] if k.startswith('P'))=={'P6_accuracy','P6_ce'}
         state=torch.load(folder/'latest.pt',map_location='cpu',weights_only=False)
         assert state['next_round']==2 and state['method_state']['rounds_seen']==2
+
+
+def test_no_pt_changes_only_persistence_not_training_or_rng(tmp_path,monkeypatch):
+    import json
+    from adapterfl_methods import rng_state
+    import Algorithm.Training_AdaptiveFL as training
+    from utils.set_seed import set_random_seed
+    data=torch.utils.data.TensorDataset(torch.arange(4*3*8*8).reshape(4,3,8,8).float()/1000,torch.tensor([0,1,0,1]))
+    monkeypatch.setattr(training,'tqdm',lambda x:x)
+    outcomes=[]
+    for no_pt in (False,True):
+        built=[]
+        def factory(args):
+            models=tiny_models();built.extend(models)
+            return models,[(.4,2,i+1.) for i in range(7)]
+        monkeypatch.setattr(training,'get_model_list',factory)
+        args=args_for('p01',tmp_path/str(no_pt),epochs=2,eval_profiles='full',frac=.1,no_save_pt=no_pt)
+        set_random_seed(1)
+        with contextlib.redirect_stdout(io.StringIO()):training.AdaptiveFL(args,data,data,{i:[0,1,2,3] for i in range(100)})
+        folder=next((tmp_path/str(no_pt)/'p01').iterdir())
+        with (folder/'accuracy_each_round.csv').open() as f:rows=list(csv.DictReader(f))
+        outcomes.append((copy.deepcopy(built[-1].state_dict()),[(r['full_accuracy'],r['full_ce']) for r in rows],rng_state()))
+        assert bool(list(folder.glob('*.pt')))==(not no_pt)
+        if no_pt:
+            assert not list(folder.glob('*.pending'))
+            assert json.loads((folder/'final_model_check.json').read_text())['finite_full_parameters']
+            assert json.loads((folder/'completed.json').read_text())['checkpoint'] is None
+    assert_states(outcomes[0][0],outcomes[1][0])
+    assert outcomes[0][1]==outcomes[1][1]
+    assert_rng(outcomes[0][2],outcomes[1][2])
+
+
+def test_checkpoint_free_formal_completion_requires_actual_400_logs_and_final_check(tmp_path):
+    import json
+    import shutil
+    from tools.report_native_groups10 import validate_run
+    source=Path(__file__).resolve().parents[1]/'docs/evidence/native_groups10_results/raw/G03'
+    for name in ('completed.json','accuracy_each_round.csv','method_diagnostics.csv','manifest.json','summary.json'):
+        shutil.copyfile(source/name,tmp_path/name)
+    m=json.loads((tmp_path/'manifest.json').read_text());m['save_pt']=False
+    (tmp_path/'manifest.json').write_text(json.dumps(m))
+    done=json.loads((tmp_path/'completed.json').read_text());done.update(checkpoint=None,checkpoint_policy='disabled_by_user')
+    (tmp_path/'completed.json').write_text(json.dumps(done))
+    check=dict(round=400,finite_full_parameters=True,full_numel=sum(r['numel'] for r in m['structural_regions']))
+    (tmp_path/'final_model_check.json').write_text(json.dumps(check))
+    assert validate_run(tmp_path)['rounds']==400
+    check['finite_full_parameters']=False
+    (tmp_path/'final_model_check.json').write_text(json.dumps(check))
+    with pytest.raises(ValueError,match='Final in-memory'):validate_run(tmp_path)

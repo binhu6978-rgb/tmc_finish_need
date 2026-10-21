@@ -116,3 +116,16 @@ nohup python -u tools/run_native_groups10.py \
 启动器增加`--physical-gpu 1`，每个子进程仍`--gpu 0`指其第一个可见GPU。增加`--continue-suite`仅接受显式`migration_paused`状态，不能自动重试失败实验；原日志追加、原输出目录继续使用，原GPU0资源快照保留。未开始的P03–P10在GPU1正常fresh启动。
 只改外层队列，不改checkpoint指纹中的训练源文件、算法公式、400轮设定或保存状态。恢复后的run_environment表示GPU1，初始manifest仍记录最初GPU0，`gpu1_migration.json`单列两阶段。
 资源文件的wall/peak只覆盖恢复后的进程阶段；最终成本分析应结合所有逐轮时间和累计journal elapsed，不能把新进程wall误当GPU0+GPU1全程耗时。
+
+## 最新用户要求覆盖上述恢复计划：GPU1 fresh且不保存模型（2026-10-21）
+
+不执行38轮恢复；旧P01/P02被用户取消，保留原始日志、删除其4个无用.pt。新根`runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021/`，P01–P10全部fresh seed1、GPU1每批2组，仍是原五批400轮。
+
+固定配置`save_pt=false, physical_gpu=1`，子进程增加`--no-save-pt`；其他配置默认不受影响。只取消best/latest及任何checkpoint序列化，保留全量标量日志与峰值。第400轮对仍在内存的Full做形状/参数数目/有限性检查，写final_model_check.json，正式成功仍要求400次真实测试和400条聚合诊断。用户明确不保存模型，因此不提供best/latest或恢复能力，不将标量peak声称为可下载的选模checkpoint。
+
+```bash
+python -u tools/run_native_groups10.py --execute \
+  --config configs/g03_refinements10_400.json --physical-gpu 1 \
+  --dataset-root /home/hh/ICML_finish/data \
+  --output-root runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021
+```

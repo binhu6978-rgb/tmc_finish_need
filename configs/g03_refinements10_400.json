@@ -1,7 +1,7 @@
 {
   "batches":[["P01","P02"],["P03","P04"],["P05","P06"],["P07","P08"],["P09","P10"]],
   "epochs":400,"seed":1,"gpu":0,"max_parallel":2,"first_native_rounds":1,
-  "deterministic_execution":true,
+  "deterministic_execution":true,"save_pt":false,"physical_gpu":1,
   "P01":"Native direction, same-input virtual G03 full update L2; source weights remain Native",
   "P02":"G03 direction, same-input Native full update L2",
   "P03":"Tier sample-slot mass M: target tier shares proportional to sqrt(M)",

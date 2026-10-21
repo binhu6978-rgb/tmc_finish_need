@@ -27,6 +27,7 @@ def args_parser():
     parser.add_argument('--method-run-name', default=None)
     parser.add_argument('--method-output-root', default='runs/adapterfl_methods')
     parser.add_argument('--method-resume', default=None, help='Explicit round-boundary checkpoint; no automatic resume')
+    parser.add_argument('--no-save-pt', action='store_true', help='Keep scalar logs and final in-memory validity check, without model checkpoint files')
     parser.add_argument('--eval-profiles', choices=['all','full'], default='all',
                         help='Seven models still train and synchronize; full tests only P6')
     parser.add_argument('--isolate-eval-rng', action='store_true',

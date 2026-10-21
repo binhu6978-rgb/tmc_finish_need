@@ -1,6 +1,6 @@
 # P01–P10启动与存储处理记录
 
-当前不是完成后的性能报告。**用户授权清理旧.pt后，原定十组已在新输出根fresh启动，首批P01/P02在GPU0并行运行。尚未完成400轮，不能作候选排序。** 以下保留首次配额失败的完整事实。
+当前不是完成后的性能报告。**最新用户要求为GPU1从头训练、不保存.pt；之前38轮已停止并保留日志，不用于本次正式比较。新一轮十组采用完全fresh seed1、仅保存标量与最终内存有效性检查。** 以下按时间保留首次失败、清理与早期启动事实；最新运行目录和版本以文末记录为准。
 
 ## 已完成的准备
 
@@ -50,3 +50,13 @@ OSError: [Errno 122] Disk quota exceeded
 - 首次失败目录原样保留（其中.pt按用户要求删除）；新的权重正常保存，未安排继续删除新checkpoint。
 
 [清理清单、删除前历史核验及真实启动证据](evidence/g03_refinements10_launch/after_cleanup_startup.json)。用户要求无实时监控；仅安排2026年10月21日18:00完成后检查，仍运行则静默顺延，全部完成后再制作真实400轮统一对比与研究决策。
+
+## 最新覆盖要求：GPU1全部从头、不保存.pt
+
+用户在GPU迁移准备后明确要求“从头训练，不需要保存pt文件”，因此不执行第39轮恢复。先前P01/P02各38轮由用户取消，日志保留；其4个已无用途的.pt删除。新输出根为`runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021/`，十组均从原seed1初始化开始，GPU1每批两组，不再使用continue-suite或method-resume。
+
+新增默认关闭的`--no-save-pt`，固定P配置启用；旧baseline/其他配置仍默认保存。只跳过模型/RNG checkpoint复制及写入，CSV、Full CE/Accuracy、test-oracle peak、诊断、manifest、summary和完成标记正常保留。第400轮直接检查内存Full参数形状/数量和有限性，写`final_model_check.json`，不保存任何模型权重或.pt/.pending checkpoint。
+
+正式成功依据改为：实际1–400轮有限Accuracy/CE、400条聚合诊断、completed成功、标量summary与峰值轮次一致、最终Full内存检查通过。无checkpoint模式不支持断点续训，不能伪造或声称存在best/latest模型；峰值只有标量记录。
+
+115项专项检查通过，额外验证关闭保存后两轮最终Full权重、Accuracy/CE与训练RNG均与正常保存模式完全一致。没有改算法公式、SGD、模型、原分区或400轮协议。

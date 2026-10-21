@@ -25,6 +25,27 @@ def validate_reference(path):
     return item
 
 
+def validate_run(path):
+    manifest=json.loads((path/'manifest.json').read_text())
+    if manifest.get('save_pt',True):return validate(path)
+    item=validate_reference(path)
+    done=json.loads((path/'completed.json').read_text())
+    if done.get('checkpoint_policy')!='disabled_by_user' or done['checkpoint'] is not None:
+        raise ValueError('Checkpoint-free completion policy mismatch')
+    if list(path.glob('*.pt')) or list(path.glob('*.pending')):
+        raise ValueError('Checkpoint-free run contains unexpected model/pending files')
+    with (path/'method_diagnostics.csv').open() as f:diags=list(csv.DictReader(f))
+    if [int(r['round']) for r in diags]!=list(range(1,401)):
+        raise ValueError('Incomplete actual aggregation diagnostics')
+    check=json.loads((path/'final_model_check.json').read_text())
+    if check['round']!=400 or not check['finite_full_parameters'] or check['full_numel']!=sum(r['numel'] for r in manifest['structural_regions']):
+        raise ValueError('Final in-memory Full validity check differs')
+    summary=json.loads((path/'summary.json').read_text())
+    if summary['rounds_completed']!=400 or summary['best_round']!=item['best_round'] or summary['best_full_accuracy']!=item['test_oracle_peak']:
+        raise ValueError('Final scalar summary differs from 400-round logs')
+    return item
+
+
 def diagnostic_summary(path):
     with path.open() as f:logs=[json.loads(r['metrics_json']) for r in csv.DictReader(f)]
     servers=[m['server'] for m in logs]
@@ -96,7 +117,7 @@ def report(root,config_path=None):
             or m['initial_state_sha256']!=base_manifest['initial_state_sha256'] or schedule!=base_schedule):
             raise ValueError('Existing G03 reference protocol or initial schedule differs')
     for name in sum(config['batches'],[]):
-        p=root/name.lower()/(name+'_full_only_400_seed1_deterministic');validate(p)
+        p=root/name.lower()/(name+'_full_only_400_seed1_deterministic');validate_run(p)
         manifest=json.loads((p/'manifest.json').read_text())
         identity={k:v for k,v in manifest['identity'].items() if k not in ('method','options','source_sha256')}
         if identity!=common_identity or manifest['initial_state_sha256']!=base_manifest['initial_state_sha256'] or manifest['torch']!=base_manifest['torch']:

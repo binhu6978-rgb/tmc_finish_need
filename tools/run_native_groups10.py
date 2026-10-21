@@ -19,7 +19,7 @@ def jobs(python,dataset,root,config_path=None):
         argv=[str(python),'-u','tools/run_evidence_candidate.py','--dataset-root',str(dataset),'--method',name.lower(),
             '--epochs','400','--seed','1','--gpu','0','--generate_data','0','--data_beta','.3','--eval-profiles','full',
             '--deterministic-execution','--method-run-name',name+'_full_only_400_seed1_deterministic',
-            '--method-output-root',str(root)]) for name in batch] for batch in config['batches']]
+            '--method-output-root',str(root),*(['--no-save-pt'] if not config.get('save_pt',True) else [])]) for name in batch] for batch in config['batches']]
 
 
 def migration_resume_job(job,previous):
@@ -30,10 +30,10 @@ def migration_resume_job(job,previous):
         previous_pid=previous['pid'],resume_round=previous['saved_round'])
 
 
-def execute(python,dataset,root,config_path=None,physical_gpu=0,continue_suite=False):
-    from tools.report_tonight10 import validate
-    from tools.report_native_groups10 import validate_reference
+def execute(python,dataset,root,config_path=None,physical_gpu=None,continue_suite=False):
+    from tools.report_native_groups10 import validate_reference,validate_run
     config=json.loads((config_path or ROOT/'configs/native_groups10_400.json').read_text())
+    if physical_gpu is None:physical_gpu=config.get('physical_gpu',0)
     validate_reference((ROOT/config['baseline_csv']).parent)
     if 'reference_csv' in config:validate_reference((ROOT/config['reference_csv']).parent)
     if continue_suite:
@@ -74,7 +74,7 @@ def execute(python,dataset,root,config_path=None,physical_gpu=0,continue_suite=F
                 code=child.wait();out.close();err.close();error=None
                 try:
                     if code:raise RuntimeError(f'Process exit {code}; original stderr/checkpoint retained')
-                    validate(Path(job['output']))
+                    validate_run(Path(job['output']))
                 except Exception as exc:error=str(exc)
                 state['jobs'][job['id']].update(state='failed' if error else 'completed',exit_code=code,error=error)
                 state['failed' if error else 'completed'].append(job['id']);save()
@@ -91,7 +91,7 @@ def main():
     p.add_argument('--python',type=Path,default=Path(sys.executable));p.add_argument('--dataset-root',type=Path,required=True)
     p.add_argument('--output-root',type=Path,default=Path('runs/native_groups10_full400_seed1'))
     p.add_argument('--config',type=Path,default=None,help='Fixed suite JSON; original G01-G10 remains default')
-    p.add_argument('--physical-gpu',type=int,choices=[0,1],default=0)
+    p.add_argument('--physical-gpu',type=int,choices=[0,1],default=None)
     p.add_argument('--continue-suite',action='store_true',help='Continue only a checkpoint-aligned user-requested GPU migration')
     a=p.parse_args();os.chdir(ROOT)
     if a.execute:raise SystemExit(execute(a.python,a.dataset_root,a.output_root,a.config,a.physical_gpu,a.continue_suite))

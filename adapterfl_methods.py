@@ -514,6 +514,9 @@ class RunLog:
     """Journal/checkpoint hook called by the native loop, not a training engine."""
     def __init__(self,args,models):
         self.args=args
+        self.save_pt=not getattr(args,'no_save_pt',False)
+        if not self.save_pt and args.method_resume:
+            raise ValueError('Checkpoint-free runs must start fresh; resume is disabled')
         self.path=prepare_output(args)
         if args.method in [f'g{i:02d}' for i in range(1,11)]+[f'p{i:02d}' for i in range(1,11)]:
             from native_group_aggregation import NativeGroupHooks
@@ -599,7 +602,8 @@ class RunLog:
                       'cuda_visible_devices':__import__('os').environ.get('CUDA_VISIBLE_DEVICES'),
                       'training_configuration':{k:str(v) if isinstance(v,(torch.device,Path)) else v for k,v in vars(args).items() if not k.startswith('_')},
                       'rng_compatibility':'isolated evaluation changes the legacy training RNG trajectory; not bitwise identical to historical 300-round runs' if self.eval_rng_policy=='isolated' else 'legacy evaluation RNG consumption',
-                      'checkpoint_selection':'latest.pt for resume; best_full.pt is an exploratory official-test-oracle selection, not validation-selected'}
+                      'save_pt':self.save_pt,
+                      'checkpoint_selection':'latest.pt for resume; best_full.pt is an exploratory official-test-oracle selection, not validation-selected' if self.save_pt else 'No checkpoint files by user request; test-oracle peak recorded as scalar only'}
             if getattr(self.hooks,'is_scope',False):
                 manifest['structural_regions']=self.hooks.regions
                 manifest['scope_geometry_sha256']=self.hooks.geometry_hash
@@ -638,6 +642,17 @@ class RunLog:
         self.diagnostics.flush()
         is_best=not self.rows or row['full_accuracy']>max(r['full_accuracy'] for r in self.rows)
         self.rows.append(row);self.total_time=total_time;self.next_round=round_index+1
+        if not self.save_pt:
+            if self.next_round==self.args.epochs:
+                full=models[-1].state_dict()
+                check=dict(round=self.next_round,full_numel=sum(v.numel() for v in full.values()),
+                    full_shapes={k:list(v.shape) for k,v in full.items()},
+                    finite_full_parameters=all(bool(torch.isfinite(v).all()) for v in full.values()),
+                    source='In-memory final Full state; no tensors or checkpoint saved')
+                (self.path/'final_model_check.json').write_text(json.dumps(check,indent=2),encoding='utf-8')
+                if not check['finite_full_parameters']:raise FloatingPointError('Nonfinite final Full state')
+            self.write_summary()
+            return
         checkpoint={'identity':self.identity,'next_round':self.next_round,'total_time':total_time,
                     'elapsed_seconds':self.elapsed_before+time.perf_counter()-self.started,'rows':self.rows,
                     'global':cpu_copy(models[-1].state_dict()),'method_state':self.hooks.state_dict(),'rng':rng_state()}
@@ -664,7 +679,7 @@ class RunLog:
                  'last20_full_std':statistics.pstdev(values[-20:]),'last20_count':len(values[-20:]),
                  'last50_full_mean':statistics.mean(values[-50:]),
                  'elapsed_seconds':self.elapsed_before+time.perf_counter()-self.started,
-                 'selection':'best_full.pt is exploratory official-test selection; latest.pt is the resume checkpoint'}
+                 'selection':'best_full.pt is exploratory official-test selection; latest.pt is the resume checkpoint' if self.save_pt else 'Checkpoint files disabled by user; scalar test-oracle peak only'}
         pending=self.path/'summary.pending'
         pending.write_text(json.dumps(summary,indent=2),encoding='utf-8');pending.replace(self.path/'summary.json')
 
@@ -683,7 +698,9 @@ class RunLog:
                    'success':len(self.rows)==self.args.epochs,
                    'formal_300_success':len(self.rows)==self.args.epochs==300,
                    'elapsed_seconds':self.elapsed_before+time.perf_counter()-self.started,
-                   'checkpoint':'latest.pt','selection':'latest/final round, no test selection'}
+                   'checkpoint':'latest.pt' if self.save_pt else None,
+                   'checkpoint_policy':'saved' if self.save_pt else 'disabled_by_user',
+                   'selection':'latest/final round, no test selection'}
         (self.path/'completed.json').write_text(json.dumps(completed,indent=2),encoding='utf-8')
         self.write_summary()
         self.accuracy.close();self.diagnostics.close()
