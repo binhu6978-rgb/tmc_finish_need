@@ -22,20 +22,38 @@ def jobs(python,dataset,root,config_path=None):
             '--method-output-root',str(root)]) for name in batch] for batch in config['batches']]
 
 
-def execute(python,dataset,root,config_path=None):
+def migration_resume_job(job,previous):
+    """Only a user-requested, checkpoint-aligned GPU move can continue a job."""
+    if previous['state']!='paused_for_gpu_migration':
+        raise ValueError('Only explicitly paused GPU-migration jobs can continue; no failure retry')
+    return dict(job,argv=[*job['argv'],'--method-resume',str(Path(job['output'])/'latest.pt')],
+        previous_pid=previous['pid'],resume_round=previous['saved_round'])
+
+
+def execute(python,dataset,root,config_path=None,physical_gpu=0,continue_suite=False):
     from tools.report_tonight10 import validate
     from tools.report_native_groups10 import validate_reference
     config=json.loads((config_path or ROOT/'configs/native_groups10_400.json').read_text())
     validate_reference((ROOT/config['baseline_csv']).parent)
     if 'reference_csv' in config:validate_reference((ROOT/config['reference_csv']).parent)
-    root.mkdir(parents=True,exist_ok=False)
-    state=dict(parent_pid=os.getpid(),state='starting',completed=[],failed=[],jobs={})
+    if continue_suite:
+        state=json.loads((root/'status.json').read_text())
+        if state['state']!='migration_paused' or state['failed']:
+            raise ValueError('Continuation requires a deliberate GPU-migration pause, not a failed suite')
+        state['previous_parent_pid']=state['parent_pid'];state['parent_pid']=os.getpid()
+    else:
+        root.mkdir(parents=True,exist_ok=False)
+        state=dict(parent_pid=os.getpid(),state='starting',completed=[],failed=[],jobs={})
+    state['physical_gpu']=physical_gpu
     def save():
         state['updated']=time.time();p=root/'status.pending';p.write_text(json.dumps(state,indent=2));p.replace(root/'status.json')
-    save();env=environment(python);env['PYTHONHASHSEED']='1'
+    save();env=environment(python);env['PYTHONHASHSEED']='1';env['CUDA_VISIBLE_DEVICES']=str(physical_gpu)
     for number,batch in enumerate(jobs(python,dataset,root,config_path),1):
-        (root/f'gpu_before_batch{number}.txt').write_text(subprocess.check_output(['nvidia-smi'],text=True))
-        free=int(subprocess.check_output(['nvidia-smi','--id=0','--query-gpu=memory.free','--format=csv,noheader,nounits'],text=True).strip())
+        batch=[job for job in batch if job['id'] not in state['completed']]
+        if not batch:continue
+        gpu_record=f'gpu_before_batch{number}'+(f'_continued_gpu{physical_gpu}' if continue_suite else '')+'.txt'
+        (root/gpu_record).write_text(subprocess.check_output(['nvidia-smi'],text=True))
+        free=int(subprocess.check_output(['nvidia-smi','--id='+str(physical_gpu),'--query-gpu=memory.free','--format=csv,noheader,nounits'],text=True).strip())
         if free<3500:
             state.update(state='resource_blocked',batch=number,free_mib=free);save();return 2
         concurrency=2 if free>=8000 else 1
@@ -43,7 +61,10 @@ def execute(python,dataset,root,config_path=None):
         for start in range(0,len(batch),concurrency):
             active=[]
             for job in batch[start:start+concurrency]:
-                out=(root/(job['id']+'.stdout.log')).open('x');err=(root/(job['id']+'.stderr.log')).open('x')
+                old=state['jobs'].get(job['id'])
+                if old:job=migration_resume_job(job,old)
+                mode='a' if old else 'x'
+                out=(root/(job['id']+'.stdout.log')).open(mode);err=(root/(job['id']+'.stderr.log')).open(mode)
                 try:child=subprocess.Popen(job['argv'],cwd=ROOT,env=env,stdout=out,stderr=err)
                 except Exception as exc:
                     out.close();err.close();state['jobs'][job['id']]=dict(job,state='launch_failed',error=str(exc))
@@ -70,8 +91,10 @@ def main():
     p.add_argument('--python',type=Path,default=Path(sys.executable));p.add_argument('--dataset-root',type=Path,required=True)
     p.add_argument('--output-root',type=Path,default=Path('runs/native_groups10_full400_seed1'))
     p.add_argument('--config',type=Path,default=None,help='Fixed suite JSON; original G01-G10 remains default')
+    p.add_argument('--physical-gpu',type=int,choices=[0,1],default=0)
+    p.add_argument('--continue-suite',action='store_true',help='Continue only a checkpoint-aligned user-requested GPU migration')
     a=p.parse_args();os.chdir(ROOT)
-    if a.execute:raise SystemExit(execute(a.python,a.dataset_root,a.output_root,a.config))
+    if a.execute:raise SystemExit(execute(a.python,a.dataset_root,a.output_root,a.config,a.physical_gpu,a.continue_suite))
     for batch in jobs(a.python,a.dataset_root,a.output_root,a.config):
         for job in batch:print(shlex.join(job['argv']))
 

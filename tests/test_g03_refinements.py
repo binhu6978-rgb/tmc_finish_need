@@ -141,6 +141,18 @@ def test_completed_reference_remains_usable_after_user_checkpoint_cleanup(tmp_pa
     with pytest.raises(ValueError,match='Expected completed 400'):validate_reference(tmp_path)
 
 
+def test_gpu_migration_adds_only_existing_checkpoint_option_and_refuses_failure_retry():
+    from tools.run_native_groups10 import migration_resume_job
+    original=dict(id='P01',output='runs/original/p01/P01_full_only_400_seed1_deterministic',
+        argv=['python','tools/run_evidence_candidate.py','--epochs','400','--gpu','0','--method','p01'])
+    resumed=migration_resume_job(original,dict(state='paused_for_gpu_migration',pid=123,saved_round=20))
+    assert resumed['argv'][:-2]==original['argv']
+    assert resumed['argv'][-2:] == ['--method-resume',str(Path(original['output'])/'latest.pt')]
+    assert resumed['resume_round']==20 and resumed['output']==original['output']
+    with pytest.raises(ValueError,match='no failure retry'):
+        migration_resume_job(original,dict(state='failed',pid=123))
+
+
 def test_original_loop_two_round_full_only_all_ten(tmp_path,monkeypatch):
     import Algorithm.Training_AdaptiveFL as training
     from utils.set_seed import set_random_seed

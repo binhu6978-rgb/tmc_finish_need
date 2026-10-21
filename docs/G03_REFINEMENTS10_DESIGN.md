@@ -107,3 +107,12 @@ nohup python -u tools/run_native_groups10.py \
 历史B00-D/G03比较仅依赖已有完成标记与400轮有限值CSV，不再要求被授权删除的权重文件。**本批新实验的400轮完成检查仍要求实际latest/best checkpoint，不降低成功条件。** 聚合、模型及训练代码不变。
 
 失败目录保持原状，新输出根固定为`runs/g03_refinements10_full400_seed1_after_cleanup_20261021/`，十组全部从seed1初始状态开始，不从不对齐的2轮日志恢复，也不重跑历史方法。命令同上，仅替换`--output-root`为这个新根并使用独立launcher日志。
+
+## 用户要求迁移至GPU1（2026-10-21）
+
+用户随后明确改为物理GPU1。P01/P02已保存的38轮与CSV、diagnostics、best/latest和方法状态核对一致，仅停止本套件旧父/子进程，保留checkpoint中的模型和Python/NumPy/Torch CPU/CUDA RNG。
+复用原`--method-resume`从第39轮恢复，总计仍400轮；中断时尚未保存的本地计算丢弃，不额外形成结果轮次。
+
+启动器增加`--physical-gpu 1`，每个子进程仍`--gpu 0`指其第一个可见GPU。增加`--continue-suite`仅接受显式`migration_paused`状态，不能自动重试失败实验；原日志追加、原输出目录继续使用，原GPU0资源快照保留。未开始的P03–P10在GPU1正常fresh启动。
+只改外层队列，不改checkpoint指纹中的训练源文件、算法公式、400轮设定或保存状态。恢复后的run_environment表示GPU1，初始manifest仍记录最初GPU0，`gpu1_migration.json`单列两阶段。
+资源文件的wall/peak只覆盖恢复后的进程阶段；最终成本分析应结合所有逐轮时间和累计journal elapsed，不能把新进程wall误当GPU0+GPU1全程耗时。
