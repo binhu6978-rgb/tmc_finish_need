@@ -64,3 +64,7 @@ OSError: [Errno 122] Disk quota exceeded
 GPU1 fresh/no-PT已实际后台启动：冻结源码`d3ced897482ff34062d422a47efadeda22612ae9`，父PID3592112，首批子3592118/3592119。Linux115tests通过；首批manifest确认save_pt=false、CUDA_VISIBLE_DEVICES=1、无method-resume、七初始化与原分区/训练配置匹配参考、完整数据且仅P6测试。启动证据见[evidence/g03_refinements10_launch/fresh_gpu1_nopt_startup.json](evidence/g03_refinements10_launch/fresh_gpu1_nopt_startup.json)。
 
 全部新候选使用GPU1、旧参考使用同型号GPU0，记录这一物理设备差异，不声称已完成跨卡bitwise验证；与旧方法的墙钟成本差异还包含取消checkpoint I/O，不能将其全部归因于聚合算法加速。按用户要求不发送本次启动回复，完成后再交付原任务要求的真实结果。
+
+## 最终状态：十组全部完成
+
+最新GPU1 fresh/no-PT根中P01–P10全部实际400轮成功，失败0；此前2轮失败和38轮取消记录仅作历史，不混用。只读完成核验和最终内存Full检查全部通过，未保存模型权重。P05最高test-oracle peak为38.64%（r330），P04的Last20最高为37.9480%。完整表、机制比较和证据见[G03_REFINEMENTS10_RESULTS.md](G03_REFINEMENTS10_RESULTS.md)。完成自动检查已暂停，不再追加训练。

@@ -1,0 +1,12 @@
+{
+  "pid": 3603457,
+  "state": "completed",
+  "method": "g03",
+  "epochs": 1000,
+  "seed": 1,
+  "physical_gpu": 0,
+  "save_pt": false,
+  "output": "runs/g03_full1000_seed1_gpu0_nopt_20261021/g03/G03_full_only_1000_seed1_deterministic",
+  "source_commit": "d64fa99d43a2cc01918852b0918073204bd3be6a",
+  "updated": 1792553067.255525
+}

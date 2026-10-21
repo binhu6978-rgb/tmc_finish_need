@@ -1,0 +1,310 @@
+{
+  "comparison": [
+    {
+      "id": "G03 historical 400",
+      "rounds": 400,
+      "test_oracle_peak": 38.45000076293945,
+      "best_round": 339,
+      "final_accuracy": 37.779998779296875,
+      "last20_mean": 37.65849914550781,
+      "last20_std": 0.2840472467387619,
+      "last50_mean": 37.605599060058594,
+      "final_ce": 3.5871944427490234,
+      "peak_ce": 3.4508187770843506
+    },
+    {
+      "id": "G03 new first 400",
+      "rounds": 400,
+      "test_oracle_peak": 38.45000076293945,
+      "best_round": 339,
+      "final_accuracy": 37.779998779296875,
+      "last20_mean": 37.65849914550781,
+      "last20_std": 0.2840472467387619,
+      "last50_mean": 37.605599060058594,
+      "final_ce": 3.5871944427490234,
+      "peak_ce": 3.4508187770843506
+    },
+    {
+      "id": "G03 new full 1000",
+      "rounds": 1000,
+      "test_oracle_peak": 38.57999801635742,
+      "best_round": 774,
+      "final_accuracy": 38.189998626708984,
+      "last20_mean": 38.096999168395996,
+      "last20_std": 0.11296466937064605,
+      "last50_mean": 37.992199172973635,
+      "final_ce": 3.9379732608795166,
+      "peak_ce": 3.8564088344573975
+    }
+  ],
+  "peak_label": "official test-oracle peak",
+  "interpretation": "Same G03 algorithm; 1000 versus 400 has more training and test-oracle opportunities, not an equal-budget algorithm gain",
+  "final_in_memory_check": {
+    "round": 1000,
+    "full_numel": 11424356,
+    "full_shapes": {
+      "features.0.0.weight": [
+        64,
+        3,
+        3,
+        3
+      ],
+      "features.0.1.weight": [
+        64
+      ],
+      "features.0.1.bias": [
+        64
+      ],
+      "features.1.0.left1.0.weight": [
+        96,
+        64,
+        3,
+        3
+      ],
+      "features.1.0.left1.1.weight": [
+        96
+      ],
+      "features.1.0.left1.1.bias": [
+        96
+      ],
+      "features.1.0.left2.0.weight": [
+        96,
+        96,
+        3,
+        3
+      ],
+      "features.1.0.left2.1.weight": [
+        96
+      ],
+      "features.1.0.left2.1.bias": [
+        96
+      ],
+      "features.1.0.shortcut.0.weight": [
+        96,
+        64,
+        1,
+        1
+      ],
+      "features.1.0.shortcut.1.weight": [
+        96
+      ],
+      "features.1.0.shortcut.1.bias": [
+        96
+      ],
+      "features.1.1.left1.0.weight": [
+        96,
+        96,
+        3,
+        3
+      ],
+      "features.1.1.left1.1.weight": [
+        96
+      ],
+      "features.1.1.left1.1.bias": [
+        96
+      ],
+      "features.1.1.left2.0.weight": [
+        96,
+        96,
+        3,
+        3
+      ],
+      "features.1.1.left2.1.weight": [
+        96
+      ],
+      "features.1.1.left2.1.bias": [
+        96
+      ],
+      "features.2.0.left1.0.weight": [
+        128,
+        96,
+        3,
+        3
+      ],
+      "features.2.0.left1.1.weight": [
+        128
+      ],
+      "features.2.0.left1.1.bias": [
+        128
+      ],
+      "features.2.0.left2.0.weight": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "features.2.0.left2.1.weight": [
+        128
+      ],
+      "features.2.0.left2.1.bias": [
+        128
+      ],
+      "features.2.0.shortcut.0.weight": [
+        128,
+        96,
+        1,
+        1
+      ],
+      "features.2.0.shortcut.1.weight": [
+        128
+      ],
+      "features.2.0.shortcut.1.bias": [
+        128
+      ],
+      "features.2.1.left1.0.weight": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "features.2.1.left1.1.weight": [
+        128
+      ],
+      "features.2.1.left1.1.bias": [
+        128
+      ],
+      "features.2.1.left2.0.weight": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "features.2.1.left2.1.weight": [
+        128
+      ],
+      "features.2.1.left2.1.bias": [
+        128
+      ],
+      "features.3.0.left1.0.weight": [
+        256,
+        128,
+        3,
+        3
+      ],
+      "features.3.0.left1.1.weight": [
+        256
+      ],
+      "features.3.0.left1.1.bias": [
+        256
+      ],
+      "features.3.0.left2.0.weight": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "features.3.0.left2.1.weight": [
+        256
+      ],
+      "features.3.0.left2.1.bias": [
+        256
+      ],
+      "features.3.0.shortcut.0.weight": [
+        256,
+        128,
+        1,
+        1
+      ],
+      "features.3.0.shortcut.1.weight": [
+        256
+      ],
+      "features.3.0.shortcut.1.bias": [
+        256
+      ],
+      "features.3.1.left1.0.weight": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "features.3.1.left1.1.weight": [
+        256
+      ],
+      "features.3.1.left1.1.bias": [
+        256
+      ],
+      "features.3.1.left2.0.weight": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "features.3.1.left2.1.weight": [
+        256
+      ],
+      "features.3.1.left2.1.bias": [
+        256
+      ],
+      "features.4.0.left1.0.weight": [
+        512,
+        256,
+        3,
+        3
+      ],
+      "features.4.0.left1.1.weight": [
+        512
+      ],
+      "features.4.0.left1.1.bias": [
+        512
+      ],
+      "features.4.0.left2.0.weight": [
+        512,
+        512,
+        3,
+        3
+      ],
+      "features.4.0.left2.1.weight": [
+        512
+      ],
+      "features.4.0.left2.1.bias": [
+        512
+      ],
+      "features.4.0.shortcut.0.weight": [
+        512,
+        256,
+        1,
+        1
+      ],
+      "features.4.0.shortcut.1.weight": [
+        512
+      ],
+      "features.4.0.shortcut.1.bias": [
+        512
+      ],
+      "features.4.1.left1.0.weight": [
+        512,
+        512,
+        3,
+        3
+      ],
+      "features.4.1.left1.1.weight": [
+        512
+      ],
+      "features.4.1.left1.1.bias": [
+        512
+      ],
+      "features.4.1.left2.0.weight": [
+        512,
+        512,
+        3,
+        3
+      ],
+      "features.4.1.left2.1.weight": [
+        512
+      ],
+      "features.4.1.left2.1.bias": [
+        512
+      ],
+      "classifier.weight": [
+        100,
+        512
+      ],
+      "classifier.bias": [
+        100
+      ]
+    },
+    "finite_full_parameters": true,
+    "source": "In-memory final Full state; no tensors or checkpoint saved"
+  },
+  "save_pt": false
+}
