@@ -1,0 +1,58 @@
+{
+  "pid": 3603457,
+  "argv": [
+    "/home/hh/miniconda3/envs/hh/bin/python",
+    "-u",
+    "tools/run_g03_1000.py",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--output-root",
+    "runs/g03_full1000_seed1_gpu0_nopt_20261021"
+  ],
+  "physical_gpu": 0,
+  "save_pt": false,
+  "fresh": true,
+  "source_commit": "d64fa99d43a2cc01918852b0918073204bd3be6a",
+  "P_source_fingerprint_files_unchanged": 15,
+  "linux_tests": "...                                                                      [100%]\n=============================== warnings summary ===============================\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) < LooseVersion(\"1.0.0\"):\n\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) >= LooseVersion(\"1.1.0\"):\n\nutils/options.py:107\n  /home/hh/TMC_re_e03_scope_components400_20261019/utils/options.py:107: SyntaxWarning: invalid escape sequence '\\ '\n    parser.add_argument(\"--client_chosen_mode\", default='available', type=str, help=\"available \\ fit \\ random \\ RL \u5ba2\u6237\u7aef\u7684\u8d44\u6e90\u662f\u5426\u662f\u56fa\u5b9a \u8fd8\u662f\u4ee5\u9ad8\u65af\u5206\u5e03\u52a8\u6001\u7684\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n3 passed, 5 warnings in 1.23s\n",
+  "status_at_launch": {
+    "pid": 3603457,
+    "state": "running",
+    "method": "g03",
+    "epochs": 1000,
+    "seed": 1,
+    "physical_gpu": 0,
+    "save_pt": false,
+    "output": "runs/g03_full1000_seed1_gpu0_nopt_20261021/g03/G03_full_only_1000_seed1_deterministic",
+    "source_commit": "d64fa99d43a2cc01918852b0918073204bd3be6a",
+    "updated": 1792546153.6235478
+  },
+  "environment": {
+    "pid": 3603457,
+    "argv": [
+      "tools/run_g03_1000.py",
+      "--dataset-root",
+      "/home/hh/ICML_finish/data",
+      "--output-root",
+      "runs/g03_full1000_seed1_gpu0_nopt_20261021"
+    ],
+    "dataset_root": "/home/hh/ICML_finish/data",
+    "cuda_visible_devices": "0",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "torch": "2.7.1+cu118",
+    "train_examples": 50000,
+    "test_examples": 10000,
+    "deterministic_execution": {
+      "deterministic_algorithms": true,
+      "warn_only": false,
+      "cudnn_deterministic": true,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": false,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": ":4096:8"
+    },
+    "actual_entry_sha256": "f757965912b7db6db1e3d9082fdb9223675cf61b567ebd3b809c7739c824cbfd",
+    "save_pt": false
+  },
+  "initialization_and_protocol_match_old_G03_except_budget": true
+}
