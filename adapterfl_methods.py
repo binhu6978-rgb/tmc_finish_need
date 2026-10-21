@@ -518,7 +518,12 @@ class RunLog:
         if not self.save_pt and args.method_resume:
             raise ValueError('Checkpoint-free runs must start fresh; resume is disabled')
         self.path=prepare_output(args)
-        if args.method in [f'g{i:02d}' for i in range(1,11)]+[f'p{i:02d}' for i in range(1,11)]:
+        if getattr(args,'_final40_context',None):
+            from capability_final40 import Final40Hooks
+            self.hooks=Final40Hooks(args,models)
+        elif args.method.startswith('a'):
+            raise ValueError('A01-A20 require the fixed final40 prepared-condition entry')
+        elif args.method in [f'g{i:02d}' for i in range(1,11)]+[f'p{i:02d}' for i in range(1,11)]:
             from native_group_aggregation import NativeGroupHooks
             self.hooks=NativeGroupHooks(args,models)
         elif args.method=='m2' and getattr(args,'_local12_reference',False):
@@ -558,6 +563,9 @@ class RunLog:
             from utils.reproducibility import execution_policy
             self.identity['execution_policy']=execution_policy()
         self.identity['partition_sha256']=getattr(args,'_method_partition_sha256',None)
+        if getattr(args,'_final40_context',None):
+            self.identity['num_classes']=args.num_classes
+            self.identity['condition']=args._final40_context['condition']
         files=('main_fed_ori.py','Algorithm/Training_AdaptiveFL.py','models/Update.py','models/Fed.py','models/resnet.py','models/test.py','utils/options.py','adapterfl_methods.py','utils/get_datatset_new.py','utils/set_seed.py')
         if getattr(self.hooks,'is_scope',False):files=(*files,'semcons_scope.py')
         if getattr(self.hooks,'is_evidence',False):files=(*files,'evidence_aggregation.py','tools/run_evidence_candidate.py','configs/e03_scope_components400.json')
@@ -567,6 +575,9 @@ class RunLog:
         if getattr(self.hooks,'is_native_groups',False):
             files=(*files,'native_group_aggregation.py','semcons_scope.py','tools/run_evidence_candidate.py',
                 'configs/g03_refinements10_400.json' if args.method.startswith('p') else 'configs/native_groups10_400.json')
+        if getattr(args,'_final40_context',None):
+            files=(*files,'capability_final40.py','tools/run_final40_job.py','tools/final40_data.py','configs/capability_final40_400.json',
+                   'configs/native_groups10_400.json','configs/g03_refinements10_400.json')
         self.identity['source_sha256']={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files}
         if args.method_resume:
             # Local, user-selected research checkpoint includes RNG tuples.

@@ -1,0 +1,15 @@
+{
+  "epochs": 400,
+  "seed": 1,
+  "save_pt": false,
+  "conditions": {
+    "A": {"dataset": "cifar100", "alpha": 0.3, "ratio": "4:3:3", "classes": 100},
+    "S1": {"dataset": "cifar100", "alpha": 0.2, "ratio": "4:3:3", "classes": 100},
+    "S2": {"dataset": "cifar100", "alpha": 0.5, "ratio": "4:3:3", "classes": 100},
+    "S3": {"dataset": "cifar100", "alpha": 1.0, "ratio": "4:3:3", "classes": 100},
+    "S4": {"dataset": "cifar100", "alpha": 0.3, "ratio": "2:3:5", "classes": 100},
+    "S5": {"dataset": "cifar10", "alpha": 0.3, "ratio": "4:3:3", "classes": 10}
+  },
+  "gpu0_batches": [["A01","A02"],["A03","A04"],["A05","A06"],["A07","A08"],["A09","A10"],["A11","A12"],["A13","A14"],["A15","A16"],["A17","A18"],["A19","A20"]],
+  "gpu1_batches": [["S1-Native","S1-G03"],["S1-P04","S1-P05"],["S2-Native","S2-G03"],["S2-P04","S2-P05"],["S3-Native","S3-G03"],["S3-P04","S3-P05"],["S4-Native","S4-G03"],["S4-P04","S4-P05"],["S5-Native","S5-G03"],["S5-P04","S5-P05"]]
+}

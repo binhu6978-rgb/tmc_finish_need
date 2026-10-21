@@ -34,7 +34,7 @@ def balanced_weights(method,members,slots,lens,boundaries):
     return [result[i] for i in members]
 
 
-def capability_weights(method,members,slots,lens,boundaries):
+def capability_weights(method,members,slots,lens,boundaries,population=(4.,3.,3.)):
     """Fixed P03-P07 group masses, on covered slots only.
 
     Per the prespecified neutral safeguard, one physical capability tier uses
@@ -48,7 +48,7 @@ def capability_weights(method,members,slots,lens,boundaries):
         masses={g:sum(lens[i] for i in ids) for g,ids in groups.items()}
         if len(set(masses.values()))==1:return balanced_weights('g03',members,slots,lens,boundaries)
         targets={g:math.sqrt(m) if method=='p03' else 1/math.sqrt(m) for g,m in masses.items()}
-    elif method=='p05':targets={g:(4.,3.,3.)[g] for g in groups}
+    elif method=='p05':targets={g:population[g] for g in groups}
     else:targets={g:1. for g in groups}
     denominator=sum(targets.values());result={}
     for g,ids in groups.items():

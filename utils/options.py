@@ -23,7 +23,7 @@ def args_parser():
     parser.add_argument("--algorithm", type=str, default="AdaptiveFL")
     # Opt-in research hooks in the original seven-model AdapterFL path.
     # None leaves the legacy path (including its result files) entirely intact.
-    parser.add_argument('--method', choices=['baseline','m1','m2','m3','m4','m5','m6','c1','c2']+[f's{i:02d}' for i in range(10)]+[f't{i:02d}' for i in range(1,11)]+[f'l{i:02d}' for i in range(1,12)]+[f'g{i:02d}' for i in range(1,11)]+[f'p{i:02d}' for i in range(1,11)], default=None)
+    parser.add_argument('--method', choices=['baseline','m1','m2','m3','m4','m5','m6','c1','c2']+[f's{i:02d}' for i in range(10)]+[f't{i:02d}' for i in range(1,11)]+[f'l{i:02d}' for i in range(1,12)]+[f'g{i:02d}' for i in range(1,11)]+[f'p{i:02d}' for i in range(1,11)]+[f'a{i:02d}' for i in range(1,21)], default=None)
     parser.add_argument('--method-run-name', default=None)
     parser.add_argument('--method-output-root', default='runs/adapterfl_methods')
     parser.add_argument('--method-resume', default=None, help='Explicit round-boundary checkpoint; no automatic resume')
