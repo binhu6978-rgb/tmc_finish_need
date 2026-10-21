@@ -1,0 +1,469 @@
+{
+  "parent_pid": 3586425,
+  "argv": [
+    "/home/hh/miniconda3/envs/hh/bin/python",
+    "-u",
+    "tools/run_native_groups10.py",
+    "--execute",
+    "--config",
+    "configs/g03_refinements10_400.json",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--output-root",
+    "runs/g03_refinements10_full400_seed1_after_cleanup_20261021"
+  ],
+  "source_commit": "7d686b6993e4d81306508f75788733ffdc879cd4",
+  "cleanup": {
+    "authorization": "User explicitly requested deletion of all .pt files under this project runs; scalar logs/results retained",
+    "root": "/home/hh/TMC_re_e03_scope_components400_20261019/runs",
+    "time": 1792543671.414782,
+    "deleted_count": 59,
+    "deleted_logical_bytes": 2699665844,
+    "files": [
+      {
+        "path": "e03_tonight10_400_seed1/t10/T10_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t10/T10_full_only_400_seed1/latest.pt",
+        "bytes": 45798033
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t02/T02_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t02/T02_full_only_400_seed1/latest.pt",
+        "bytes": 45797969
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t09/T09_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t09/T09_full_only_400_seed1/latest.pt",
+        "bytes": 45797969
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t01/T01_full_only_400_seed1/latest.pt",
+        "bytes": 45797905
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t07/T07_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t07/T07_full_only_400_seed1/latest.pt",
+        "bytes": 45798033
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t05/T05_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t05/T05_full_only_400_seed1/latest.pt",
+        "bytes": 45798033
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t04/T04_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t04/T04_full_only_400_seed1/latest.pt",
+        "bytes": 45797969
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t08/T08_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t08/T08_full_only_400_seed1/latest.pt",
+        "bytes": 45798033
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t06/T06_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t06/T06_full_only_400_seed1/latest.pt",
+        "bytes": 45798033
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t03/T03_full_only_400_seed1/best_full.pt",
+        "bytes": 45720814
+      },
+      {
+        "path": "e03_tonight10_400_seed1/t03/T03_full_only_400_seed1/latest.pt",
+        "bytes": 45798033
+      },
+      {
+        "path": "e03_tonight10_400_seed1/c2/C2_full_only_400_seed1_after_update/best_full.pt",
+        "bytes": 45721070
+      },
+      {
+        "path": "e03_tonight10_400_seed1/c2/C2_full_only_400_seed1_after_update/latest.pt",
+        "bytes": 45798225
+      },
+      {
+        "path": "e03_l04_final_pair400_seed1/l04/R3_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45723886
+      },
+      {
+        "path": "e03_l04_final_pair400_seed1/l04/R3_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45801105
+      },
+      {
+        "path": "e03_l04_final_pair400_seed1/baseline/B00-D_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45720622
+      },
+      {
+        "path": "e03_l04_final_pair400_seed1/baseline/B00-D_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45797777
+      },
+      {
+        "path": "g03_refinements10_full400_seed1/p02/P02_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721582
+      },
+      {
+        "path": "g03_refinements10_full400_seed1/p02/P02_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45731153
+      },
+      {
+        "path": "g03_refinements10_full400_seed1/p01/P01_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721582
+      },
+      {
+        "path": "g03_refinements10_full400_seed1/p01/P01_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45731153
+      },
+      {
+        "path": "e03_l04_control400_seed1/l04/R2_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45723886
+      },
+      {
+        "path": "e03_l04_control400_seed1/l04/R2_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45801105
+      },
+      {
+        "path": "e03_l04_control400_seed1/l04/R1_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45723822
+      },
+      {
+        "path": "e03_l04_control400_seed1/l04/R1_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45801041
+      },
+      {
+        "path": "e03_l04_control400_seed1/m2/R0_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721134
+      },
+      {
+        "path": "e03_l04_control400_seed1/m2/R0_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45798289
+      },
+      {
+        "path": "e03_scope_components400_seed1/c1/C1_full_only_400_seed1/best_full.pt",
+        "bytes": 45721070
+      },
+      {
+        "path": "e03_scope_components400_seed1/c1/C1_full_only_400_seed1/latest.pt",
+        "bytes": 45798225
+      },
+      {
+        "path": "e03_scope_components400_seed1/c2/C2_full_only_400_seed1/best_full.pt",
+        "bytes": 45721070
+      },
+      {
+        "path": "e03_scope_components400_seed1/c2/C2_full_only_400_seed1/latest.pt",
+        "bytes": 45752721
+      },
+      {
+        "path": "native_groups10_full400_seed1/g08/G08_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g08/G08_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g06/G06_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g06/G06_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g10/G10_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g10/G10_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g03/G03_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g03/G03_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g02/G02_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g02/G02_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g04/G04_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g04/G04_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g09/G09_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g09/G09_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g07/G07_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g07/G07_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g05/G05_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g05/G05_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      },
+      {
+        "path": "native_groups10_full400_seed1/g01/G01_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721454
+      },
+      {
+        "path": "native_groups10_full400_seed1/g01/G01_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45795345
+      }
+    ],
+    "skipped_symlinks": [],
+    "reference_checkpoints_verified_before_deletion": {
+      "B00-D": {
+        "id": "B00-D_full_only_400_seed1_deterministic",
+        "method": "baseline",
+        "rounds": 400,
+        "test_oracle_peak": 36.68000030517578,
+        "best_round": 350,
+        "final_accuracy": 36.029998779296875,
+        "last20_mean": 36.31899871826172,
+        "last50_mean": 36.115399017333985,
+        "final_ce": 3.672783136367798,
+        "peak_ce": 3.5913326740264893,
+        "peak_ce_window_start": 348,
+        "peak_ce_window_end": 352,
+        "peak_window_ce_mean": 3.6195816516876222
+      },
+      "G03": {
+        "id": "G03_full_only_400_seed1_deterministic",
+        "method": "g03",
+        "rounds": 400,
+        "test_oracle_peak": 38.45000076293945,
+        "best_round": 339,
+        "final_accuracy": 37.779998779296875,
+        "last20_mean": 37.65849914550781,
+        "last50_mean": 37.605599060058594,
+        "final_ce": 3.5871944427490234,
+        "peak_ce": 3.4508187770843506,
+        "peak_ce_window_start": 337,
+        "peak_ce_window_end": 341,
+        "peak_window_ce_mean": 3.4600050926208494
+      }
+    },
+    "quota_before": "Disk quotas for user hh (uid 1020): \n   \u6587\u4ef6\u7cfb\u7edf   space  \u914d\u989d  \u89c4\u9650\u5bbd\u9650\u671f\u6587\u4ef6\u8282\u70b9  \u914d\u989d  \u89c4\u9650\u5bbd\u9650\u671f\n /dev/nvme0n1p2 102357M      0K    100G            727k       0       0        \n",
+    "quota_after": "Disk quotas for user hh (uid 1020): \n   \u6587\u4ef6\u7cfb\u7edf   space  \u914d\u989d  \u89c4\u9650\u5bbd\u9650\u671f\u6587\u4ef6\u8282\u70b9  \u914d\u989d  \u89c4\u9650\u5bbd\u9650\u671f\n /dev/nvme0n1p2  99782M      0K    100G            727k       0       0        \n"
+  },
+  "linux_tests": "........................................................................ [ 64%]\n........................................                                 [100%]\n=============================== warnings summary ===============================\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) < LooseVersion(\"1.0.0\"):\n\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) >= LooseVersion(\"1.1.0\"):\n\nutils/options.py:106\n  /home/hh/TMC_re_e03_scope_components400_20261019/utils/options.py:106: SyntaxWarning: invalid escape sequence '\\ '\n    parser.add_argument(\"--client_chosen_mode\", default='available', type=str, help=\"available \\ fit \\ random \\ RL \u5ba2\u6237\u7aef\u7684\u8d44\u6e90\u662f\u5426\u662f\u56fa\u5b9a \u8fd8\u662f\u4ee5\u9ad8\u65af\u5206\u5e03\u52a8\u6001\u7684\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n112 passed, 5 warnings in 9.66s\n",
+  "status_at_launch": {
+    "parent_pid": 3586425,
+    "state": "running",
+    "completed": [],
+    "failed": [],
+    "jobs": {
+      "P01": {
+        "id": "P01",
+        "method": "p01",
+        "output": "runs/g03_refinements10_full400_seed1_after_cleanup_20261021/p01/P01_full_only_400_seed1_deterministic",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p01",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P01_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_after_cleanup_20261021"
+        ],
+        "pid": 3586431,
+        "state": "running"
+      },
+      "P02": {
+        "id": "P02",
+        "method": "p02",
+        "output": "runs/g03_refinements10_full400_seed1_after_cleanup_20261021/p02/P02_full_only_400_seed1_deterministic",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p02",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P02_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_after_cleanup_20261021"
+        ],
+        "pid": 3586432,
+        "state": "running"
+      }
+    },
+    "updated": 1792543869.860318,
+    "batch": 1,
+    "concurrency": 2,
+    "free_mib": 23994
+  },
+  "checks": {
+    "P01": {
+      "pid": 3586431,
+      "initialization_and_protocol_match_B00D_G03": true,
+      "environment": {
+        "pid": 3586431,
+        "argv": [
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p01",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P01_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_after_cleanup_20261021"
+        ],
+        "dataset_root": "/home/hh/ICML_finish/data",
+        "cuda_visible_devices": "0",
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.7.1+cu118",
+        "train_examples": 50000,
+        "test_examples": 10000,
+        "deterministic_execution": {
+          "deterministic_algorithms": true,
+          "warn_only": false,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "matmul_allow_tf32": false,
+          "cublas_workspace_config": ":4096:8"
+        }
+      }
+    },
+    "P02": {
+      "pid": 3586432,
+      "initialization_and_protocol_match_B00D_G03": true,
+      "environment": {
+        "pid": 3586432,
+        "argv": [
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p02",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P02_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_after_cleanup_20261021"
+        ],
+        "dataset_root": "/home/hh/ICML_finish/data",
+        "cuda_visible_devices": "0",
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.7.1+cu118",
+        "train_examples": 50000,
+        "test_examples": 10000,
+        "deterministic_execution": {
+          "deterministic_algorithms": true,
+          "warn_only": false,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "matmul_allow_tf32": false,
+          "cublas_workspace_config": ":4096:8"
+        }
+      }
+    }
+  }
+}

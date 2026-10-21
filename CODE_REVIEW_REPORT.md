@@ -699,3 +699,5 @@ P01只用Native方向匹配同输入虚拟G03整体L2；P02用G03方向匹配Nat
 用户明确要求删除runs下全部.pt。仅在服务器绝对目录/home/hh/TMC_re_e03_scope_components400_20261019/runs内处理普通.pt文件，先核对根路径和每个目标，跳过符号链接；实际无符号链接，删除59个文件、逻辑总量2.51426GiB。全部非.pt文件和历史标量保留，没有删除目录、训练数据或其他项目。删除前直接验证B00-D/G03实际400轮latest/best与峰值记录一致，删除清单及quota前后证据保留服务器。
 
 仅修改历史参考检查：B00-D/G03读取真实completed标记与完整1–400有限Accuracy/CE CSV，不再依赖被用户删除的权重；本批新训练仍必须通过latest/best实际400轮核验。追加回归确认无.pt的真实G03历史可比，2轮或未完成参考仍拒绝。本地112 tests通过；聚合、SGD、模型、配置公式及RNG策略均不改。失败目录保留，原定十组fresh seed1使用新输出根runs/g03_refinements10_full400_seed1_after_cleanup_20261021，避免日志/权重轮次不一致的错误续训；不重跑B00-D/G03。
+
+清理后quota为99782M/100G，约2.56GiB可用；Linux112 tests通过。服务器同一checkout冻结7d686b6993e4d81306508f75788733ffdc879cd4，父PID3586425、首批子3586431/3586432在GPU0后台concurrency2启动。首批七模型初始化、训练/原分区与确定性配置均匹配保留的B00-D/G03 manifest，完整数据且仅Full测试。真实删除清单、历史删除前checkpoint核验、Linux测试和启动证据见docs/evidence/g03_refinements10_launch/after_cleanup_startup.json；当前仅确认启动，不报400轮结果。完成后检查安排2026-10-21 18:00，非实时逐轮监控；未再授权自动清理新checkpoint。
