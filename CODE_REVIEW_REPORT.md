@@ -705,3 +705,5 @@ P01只用Native方向匹配同输入虚拟G03整体L2；P02用G03方向匹配Nat
 用户随后指定物理GPU1。确认GPU1空闲；对本套件父/子PID先验证cwd和命令身份，暂停后核对两组latest/best、CSV和diagnostics均对应38轮、方法状态轮次一致，再仅停止本套件GPU0进程，保留模型与RNG。外层队列新增显式physical-gpu及仅限migration_paused的continue-suite，使用既有method-resume继续400轮，不改训练源指纹、不重跑38轮、不自动重试失败；后续批次GPU1。checkpoint迁移状态与原GPU0环境单独记录，保留日志追加和资源快照。局部未保存计算被丢弃，正式总轮数仍400。新增调度回归及原专项本地113tests通过；新进程资源wall/peak只代表恢复阶段，最终成本需结合完整逐轮与累计日志。
 
 以上恢复计划随后被用户“从头训练，不需要保存pt文件”覆盖，未实际启动GPU1续训。已将旧38轮队列标记为用户取消、删除其4个.pt、保留标量。新十组GPU1 fresh seed1，不从38轮继续。新增默认关闭no-save-pt，仅P固定config启用；不复制模型/RNG到CPU、不序列化checkpoint，保留每轮测试、diagnostics、manifest和summary。第400轮内存Full有限性及形状/数量写JSON；完成检查要求真实400行、400次诊断、完成标记和最终内存检查，不假装有best/latest。新增两轮保存/不保存的参数、准确率/CE及RNG完全等价检查，真实400轮标量验证回归，专项115tests通过。原聚合、本地SGD、七模型及数据协议不改。新输出根runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021，仍五批各两组，仅此十组。
+
+实际GPU1 fresh/no-PT父PID3592112、P01/P02子3592118/3592119，冻结d3ced897482ff34062d422a47efadeda22612ae9；Linux115tests通过。启动核对首批原初始化和分区/训练配置，save_pt=false、无恢复参数、GPU可见1，只有P6测试且完整50k/10k。新运行与旧GPU0参考的物理卡差异及取消checkpoint I/O的成本差异单列，不声称跨卡bitwise验证。真实启动记录保存，18:00仅完成后检查，不实时监控或追加其他实验。

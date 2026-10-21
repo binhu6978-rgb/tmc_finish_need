@@ -1,0 +1,225 @@
+{
+  "reason": "Latest user request: fresh training on GPU1, no PT files, no startup reply",
+  "parent_pid": 3592112,
+  "argv": [
+    "/home/hh/miniconda3/envs/hh/bin/python",
+    "-u",
+    "tools/run_native_groups10.py",
+    "--execute",
+    "--config",
+    "configs/g03_refinements10_400.json",
+    "--physical-gpu",
+    "1",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--output-root",
+    "runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021"
+  ],
+  "source_commit": "d3ced897482ff34062d422a47efadeda22612ae9",
+  "linux_tests": "........................................................................ [ 62%]\n...........................................                              [100%]\n=============================== warnings summary ===============================\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) < LooseVersion(\"1.0.0\"):\n\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68\n  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    if LooseVersion(torch.__version__) >= LooseVersion(\"1.1.0\"):\n\nutils/options.py:107\n  /home/hh/TMC_re_e03_scope_components400_20261019/utils/options.py:107: SyntaxWarning: invalid escape sequence '\\ '\n    parser.add_argument(\"--client_chosen_mode\", default='available', type=str, help=\"available \\ fit \\ random \\ RL \u5ba2\u6237\u7aef\u7684\u8d44\u6e90\u662f\u5426\u662f\u56fa\u5b9a \u8fd8\u662f\u4ee5\u9ad8\u65af\u5206\u5e03\u52a8\u6001\u7684\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n115 passed, 5 warnings in 9.79s\n",
+  "discarded_previous": {
+    "reason": "User explicitly requested fresh training on GPU1 and no PT saves",
+    "discarded_saved_rounds": 38,
+    "removed_pt_files": [
+      {
+        "path": "p01/P01_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721582
+      },
+      {
+        "path": "p01/P01_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45736977
+      },
+      {
+        "path": "p02/P02_full_only_400_seed1_deterministic/best_full.pt",
+        "bytes": 45721582
+      },
+      {
+        "path": "p02/P02_full_only_400_seed1_deterministic/latest.pt",
+        "bytes": 45736977
+      }
+    ],
+    "logs_retained": true,
+    "time": 1792544619.922273
+  },
+  "status_at_launch": {
+    "parent_pid": 3592112,
+    "state": "running",
+    "completed": [],
+    "failed": [],
+    "jobs": {
+      "P01": {
+        "id": "P01",
+        "method": "p01",
+        "output": "runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021/p01/P01_full_only_400_seed1_deterministic",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p01",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P01_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021",
+          "--no-save-pt"
+        ],
+        "pid": 3592118,
+        "state": "running"
+      },
+      "P02": {
+        "id": "P02",
+        "method": "p02",
+        "output": "runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021/p02/P02_full_only_400_seed1_deterministic",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p02",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P02_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021",
+          "--no-save-pt"
+        ],
+        "pid": 3592119,
+        "state": "running"
+      }
+    },
+    "physical_gpu": 1,
+    "updated": 1792544821.5479307,
+    "batch": 1,
+    "concurrency": 2,
+    "free_mib": 24067
+  },
+  "checks": {
+    "P01": {
+      "pid": 3592118,
+      "fresh": true,
+      "save_pt": false,
+      "initialization_and_training_protocol_match": true,
+      "environment": {
+        "pid": 3592118,
+        "argv": [
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p01",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P01_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021",
+          "--no-save-pt"
+        ],
+        "dataset_root": "/home/hh/ICML_finish/data",
+        "cuda_visible_devices": "1",
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.7.1+cu118",
+        "train_examples": 50000,
+        "test_examples": 10000,
+        "deterministic_execution": {
+          "deterministic_algorithms": true,
+          "warn_only": false,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "matmul_allow_tf32": false,
+          "cublas_workspace_config": ":4096:8"
+        }
+      }
+    },
+    "P02": {
+      "pid": 3592119,
+      "fresh": true,
+      "save_pt": false,
+      "initialization_and_training_protocol_match": true,
+      "environment": {
+        "pid": 3592119,
+        "argv": [
+          "tools/run_evidence_candidate.py",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--method",
+          "p02",
+          "--epochs",
+          "400",
+          "--seed",
+          "1",
+          "--gpu",
+          "0",
+          "--generate_data",
+          "0",
+          "--data_beta",
+          ".3",
+          "--eval-profiles",
+          "full",
+          "--deterministic-execution",
+          "--method-run-name",
+          "P02_full_only_400_seed1_deterministic",
+          "--method-output-root",
+          "runs/g03_refinements10_full400_seed1_gpu1_nopt_20261021",
+          "--no-save-pt"
+        ],
+        "dataset_root": "/home/hh/ICML_finish/data",
+        "cuda_visible_devices": "1",
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.7.1+cu118",
+        "train_examples": 50000,
+        "test_examples": 10000,
+        "deterministic_execution": {
+          "deterministic_algorithms": true,
+          "warn_only": false,
+          "cudnn_deterministic": true,
+          "cudnn_benchmark": false,
+          "cudnn_allow_tf32": false,
+          "matmul_allow_tf32": false,
+          "cublas_workspace_config": ":4096:8"
+        }
+      }
+    }
+  }
+}

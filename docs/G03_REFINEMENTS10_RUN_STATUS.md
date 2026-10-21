@@ -60,3 +60,7 @@ OSError: [Errno 122] Disk quota exceeded
 正式成功依据改为：实际1–400轮有限Accuracy/CE、400条聚合诊断、completed成功、标量summary与峰值轮次一致、最终Full内存检查通过。无checkpoint模式不支持断点续训，不能伪造或声称存在best/latest模型；峰值只有标量记录。
 
 115项专项检查通过，额外验证关闭保存后两轮最终Full权重、Accuracy/CE与训练RNG均与正常保存模式完全一致。没有改算法公式、SGD、模型、原分区或400轮协议。
+
+GPU1 fresh/no-PT已实际后台启动：冻结源码`d3ced897482ff34062d422a47efadeda22612ae9`，父PID3592112，首批子3592118/3592119。Linux115tests通过；首批manifest确认save_pt=false、CUDA_VISIBLE_DEVICES=1、无method-resume、七初始化与原分区/训练配置匹配参考、完整数据且仅P6测试。启动证据见[evidence/g03_refinements10_launch/fresh_gpu1_nopt_startup.json](evidence/g03_refinements10_launch/fresh_gpu1_nopt_startup.json)。
+
+全部新候选使用GPU1、旧参考使用同型号GPU0，记录这一物理设备差异，不声称已完成跨卡bitwise验证；与旧方法的墙钟成本差异还包含取消checkpoint I/O，不能将其全部归因于聚合算法加速。按用户要求不发送本次启动回复，完成后再交付原任务要求的真实结果。
