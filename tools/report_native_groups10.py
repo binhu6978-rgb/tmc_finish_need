@@ -12,6 +12,19 @@ from tools.report_tonight10 import validate
 from tools.report_next10_m2_m3 import describe
 
 
+def validate_reference(path):
+    """Historical comparisons use retained scalar results, not deleted weights.
+
+    User-authorized checkpoint cleanup does not invalidate completed CSVs.
+    Current experiments still use the strict checkpoint-aware validate().
+    """
+    done=json.loads((path/'completed.json').read_text())
+    if not done['success'] or done['rounds_completed']!=400:
+        raise ValueError('Historical reference did not complete 400 rounds: '+str(path))
+    item,_=describe(path.name,path.parent.name,path/'accuracy_each_round.csv',2)
+    return item
+
+
 def diagnostic_summary(path):
     with path.open() as f:logs=[json.loads(r['metrics_json']) for r in csv.DictReader(f)]
     servers=[m['server'] for m in logs]
@@ -73,7 +86,7 @@ def report(root,config_path=None):
     common_identity={k:v for k,v in base_manifest['identity'].items() if k not in ('method','options','source_sha256')}
     competitor=None
     if 'reference_csv' in config:
-        p=ROOT/config['reference_csv'];validate(p.parent)
+        p=ROOT/config['reference_csv'];validate_reference(p.parent)
         competitor,curve=describe(config['reference_id'],config['reference_id'].lower(),p,2)
         curves[competitor['id']]=curve
         with p.open() as f:ce_curves[competitor['id']]=[float(r['full_ce']) for r in csv.DictReader(f)]

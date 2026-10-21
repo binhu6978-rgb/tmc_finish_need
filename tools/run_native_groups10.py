@@ -24,9 +24,10 @@ def jobs(python,dataset,root,config_path=None):
 
 def execute(python,dataset,root,config_path=None):
     from tools.report_tonight10 import validate
+    from tools.report_native_groups10 import validate_reference
     config=json.loads((config_path or ROOT/'configs/native_groups10_400.json').read_text())
-    validate((ROOT/config['baseline_csv']).parent)
-    if 'reference_csv' in config:validate((ROOT/config['reference_csv']).parent)
+    validate_reference((ROOT/config['baseline_csv']).parent)
+    if 'reference_csv' in config:validate_reference((ROOT/config['reference_csv']).parent)
     root.mkdir(parents=True,exist_ok=False)
     state=dict(parent_pid=os.getpid(),state='starting',completed=[],failed=[],jobs={})
     def save():

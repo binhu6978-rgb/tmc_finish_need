@@ -1,0 +1,19 @@
+........................................................................ [ 64%]
+........................................                                 [100%]
+============================== warnings summary ===============================
+D:\software\minicoonda\envs\fd\Lib\site-packages\thop\profile.py:12
+D:\software\minicoonda\envs\fd\Lib\site-packages\thop\profile.py:12
+  D:\software\minicoonda\envs\fd\Lib\site-packages\thop\profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+
+D:\software\minicoonda\envs\fd\Lib\site-packages\thop\profile.py:68
+D:\software\minicoonda\envs\fd\Lib\site-packages\thop\profile.py:68
+  D:\software\minicoonda\envs\fd\Lib\site-packages\thop\profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    if LooseVersion(torch.__version__) >= LooseVersion("1.1.0"):
+
+utils\options.py:106
+  C:\Users\admin\Desktop\submissioning\code\AAAITMC_finish_need_code\utils\options.py:106: SyntaxWarning: invalid escape sequence '\ '
+    parser.add_argument("--client_chosen_mode", default='available', type=str, help="available \ fit \ random \ RL �ͻ��˵���Դ�Ƿ��ǹ̶� �����Ը�˹�ֲ���̬��")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+112 passed, 5 warnings in 16.35s

@@ -124,6 +124,23 @@ def test_fixed_queue_has_only_requested_ten_and_no_historical_repeats():
     assert len({j['output'] for b in batches for j in b})==10
 
 
+def test_completed_reference_remains_usable_after_user_checkpoint_cleanup(tmp_path):
+    import json
+    import shutil
+    from tools.report_native_groups10 import validate_reference
+    source=Path(__file__).resolve().parents[1]/'docs/evidence/native_groups10_results/raw/G03'
+    for name in ('completed.json','accuracy_each_round.csv'):shutil.copyfile(source/name,tmp_path/name)
+    assert not list(tmp_path.glob('*.pt'))
+    assert validate_reference(tmp_path)['test_oracle_peak']==pytest.approx(38.45,abs=1e-5)
+    done=json.loads((tmp_path/'completed.json').read_text());done['rounds_completed']=2
+    (tmp_path/'completed.json').write_text(json.dumps(done))
+    with pytest.raises(ValueError,match='did not complete'):validate_reference(tmp_path)
+    shutil.copyfile(source/'completed.json',tmp_path/'completed.json')
+    with (tmp_path/'accuracy_each_round.csv').open() as f:lines=f.readlines()
+    (tmp_path/'accuracy_each_round.csv').write_text(''.join(lines[:3]))
+    with pytest.raises(ValueError,match='Expected completed 400'):validate_reference(tmp_path)
+
+
 def test_original_loop_two_round_full_only_all_ten(tmp_path,monkeypatch):
     import Algorithm.Training_AdaptiveFL as training
     from utils.set_seed import set_random_seed
