@@ -1,0 +1,200 @@
+{
+  "frozen_source_commit": "24e79dbb26ce718b533e7bc2c440a91c628caa25",
+  "root": "runs/capability_final40_400_seed1_20261021",
+  "status": {
+    "parent_pid": 3985127,
+    "state": "running",
+    "queues": {
+      "0": {
+        "pid": 3985128,
+        "state": "running",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_final40.py",
+          "--queue",
+          "0",
+          "--python",
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--output-root",
+          "runs/capability_final40_400_seed1_20261021"
+        ]
+      },
+      "1": {
+        "pid": 3985129,
+        "state": "running",
+        "argv": [
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "-u",
+          "tools/run_final40.py",
+          "--queue",
+          "1",
+          "--python",
+          "/home/hh/miniconda3/envs/hh/bin/python",
+          "--dataset-root",
+          "/home/hh/ICML_finish/data",
+          "--output-root",
+          "runs/capability_final40_400_seed1_20261021"
+        ]
+      }
+    },
+    "requested_jobs": 40,
+    "epochs": 400,
+    "seed": 1,
+    "save_pt": false,
+    "updated": 1792576684.9032981
+  },
+  "queues": {
+    "0": {
+      "parent_pid": 3985128,
+      "physical_gpu": 0,
+      "state": "running",
+      "completed": [],
+      "failed": [],
+      "jobs": {
+        "A01": {
+          "id": "A01",
+          "condition": "A",
+          "method": "a01",
+          "physical_gpu": 0,
+          "output": "runs/capability_final40_400_seed1_20261021/gpu0/a01/A01_full_only_400_seed1",
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_final40_job.py",
+            "--job",
+            "A01",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/capability_final40_400_seed1_20261021/gpu0"
+          ],
+          "state": "running",
+          "pid": 3985138
+        },
+        "A02": {
+          "id": "A02",
+          "condition": "A",
+          "method": "a02",
+          "physical_gpu": 0,
+          "output": "runs/capability_final40_400_seed1_20261021/gpu0/a02/A02_full_only_400_seed1",
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_final40_job.py",
+            "--job",
+            "A02",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/capability_final40_400_seed1_20261021/gpu0"
+          ],
+          "state": "running",
+          "pid": 3985139
+        }
+      },
+      "updated": 1792576685.006879,
+      "batch": 1,
+      "concurrency": 2,
+      "free_mib": 23999
+    },
+    "1": {
+      "parent_pid": 3985129,
+      "physical_gpu": 1,
+      "state": "running",
+      "completed": [],
+      "failed": [],
+      "jobs": {
+        "S1-Native": {
+          "id": "S1-Native",
+          "condition": "S1",
+          "method": "baseline",
+          "physical_gpu": 1,
+          "output": "runs/capability_final40_400_seed1_20261021/gpu1/baseline/S1-Native_full_only_400_seed1",
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_final40_job.py",
+            "--job",
+            "S1-Native",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/capability_final40_400_seed1_20261021/gpu1"
+          ],
+          "state": "running",
+          "pid": 3985140
+        },
+        "S1-G03": {
+          "id": "S1-G03",
+          "condition": "S1",
+          "method": "g03",
+          "physical_gpu": 1,
+          "output": "runs/capability_final40_400_seed1_20261021/gpu1/g03/S1-G03_full_only_400_seed1",
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_final40_job.py",
+            "--job",
+            "S1-G03",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/capability_final40_400_seed1_20261021/gpu1"
+          ],
+          "state": "running",
+          "pid": 3985141
+        }
+      },
+      "updated": 1792576685.0091796,
+      "batch": 1,
+      "concurrency": 2,
+      "free_mib": 24067
+    }
+  },
+  "initial_pairing": {
+    "A01": {
+      "physical_gpu": "0",
+      "classes": 100,
+      "partition": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "rows_at_launch_check": 6,
+      "pid": 3985138,
+      "no_pt": true
+    },
+    "A02": {
+      "physical_gpu": "0",
+      "classes": 100,
+      "partition": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "rows_at_launch_check": 6,
+      "pid": 3985139,
+      "no_pt": true
+    },
+    "S1-Native": {
+      "physical_gpu": "1",
+      "classes": 100,
+      "partition": "01b3342dec897ea37a073507b1630aa7f6db64552521f51692ff789b522e0f0b",
+      "rows_at_launch_check": 5,
+      "pid": 3985140,
+      "no_pt": true
+    },
+    "S1-G03": {
+      "physical_gpu": "1",
+      "classes": 100,
+      "partition": "01b3342dec897ea37a073507b1630aa7f6db64552521f51692ff789b522e0f0b",
+      "rows_at_launch_check": 5,
+      "pid": 3985141,
+      "no_pt": true
+    }
+  },
+  "gpu_snapshot": "Wed Oct 21 17:59:18 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 4090        Off |   00000000:01:00.0 Off |                  Off |\n| 45%   68C    P2            345W /  450W |    3340MiB /  24564MiB |     99%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  NVIDIA GeForce RTX 4090        Off |   00000000:08:00.0 Off |                  Off |\n| 35%   65C    P2            307W /  450W |    3273MiB /  24564MiB |     99%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A            1848      G   /usr/lib/xorg/Xorg                       39MiB |\n|    0   N/A  N/A            2126      G   /usr/bin/gnome-shell                     15MiB |\n|    0   N/A  N/A         3985138      C   ...miniconda3/envs/hh/bin/python       1622MiB |\n|    0   N/A  N/A         3985139      C   ...miniconda3/envs/hh/bin/python       1622MiB |\n|    1   N/A  N/A            1848      G   /usr/lib/xorg/Xorg                        4MiB |\n|    1   N/A  N/A         3985140      C   ...miniconda3/envs/hh/bin/python       1622MiB |\n|    1   N/A  N/A         3985141      C   ...miniconda3/envs/hh/bin/python       1622MiB |\n+-----------------------------------------------------------------------------------------+\n"
+}

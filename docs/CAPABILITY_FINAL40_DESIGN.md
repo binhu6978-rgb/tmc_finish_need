@@ -69,3 +69,13 @@ nohup /home/hh/miniconda3/envs/hh/bin/python -u tools/run_final40.py --execute -
 成功必须有实际400条连续有限评估、400条诊断、completed成功、峰值summary一致和最终内存Full形状/有限性检查；不依赖不存在的.pt，也不支持续训。两卡均真实完成20组后自动生成report/comparison40.csv、summary.json、四张400轮曲线、来源/覆盖/更新几何、服务器时间和各条件相对Native的变化。只统计各方法在五条件的胜负与条件内差值，不混排跨数据集绝对精度。
 
 最终最多一个主方法、一个次方法，区分来源重加权与更新尺度。所有Peak标为test-oracle peak，seed1探索不作独立泛化保证。若没有实质超过P04，保留P04并停止指数搜索；完成后由离线报告作最终科学判断，不自动追加训练。
+
+## 检查与实际启动记录
+
+冻结训练版本`24e79dbb26ce718b533e7bc2c440a91c628caa25`。本地及Linux均178项检查通过；旧G03/P04/P05与新入口在相同上传上的聚合逐张量精确相同。全部40配置实际七ResNet形状检查通过，100类与10类七档前向/反向均有限；GPU检查峰值allocated862.82MiB、reserved896MiB（不是正式训练显存峰值）。A01–A04范数匹配相对误差最大2.87e-8。
+
+准备已完成：A/S4保持原分区；S1/S2/S3/S5分别生成新分区，每条件完整50000样本且100客户端，无重复遗漏；实际CIFAR-10已存在且完整，七档分类头均为10，Full为11,378,186个参数。分区元信息及SHA见[evidence/final40_launch/final40_prepared_manifest.json](evidence/final40_launch/final40_prepared_manifest.json)，不向仓库复制训练图片。
+
+实际后台父PID3985127，GPU0队列3985128、首批A01/A02子3985138/3985139；GPU1首批S1-Native/S1-G03子3985140/3985141。以真实status后续PID为准。启动核对四个进程物理GPU正确、no-PT、两组各自初始化一致，A初始化同旧G03，首轮Native评价在各条件内部一致。运行根及真实argv见[evidence/final40_launch/final40_startup.json](evidence/final40_launch/final40_startup.json)，完整40条dry-run命令见[evidence/final40_launch/final40_commands.txt](evidence/final40_launch/final40_commands.txt)。
+
+本节仅证明启动成功，尚未完成400轮，不作性能结论。按用户偏好不实时监控；已将原完成检查更新为2026-10-22 10:00只读终态检查，若正常运行则静默顺延，结束后暂停并汇总。完成后必须另交真实40组报告、曲线、科研判断和结果commit，不将本启动交付当作任务最终结果。

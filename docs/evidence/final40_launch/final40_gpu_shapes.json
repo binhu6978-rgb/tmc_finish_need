@@ -1,0 +1,649 @@
+{
+  "type": "actual shapes and synthetic uploads, not a CIFAR performance experiment",
+  "checks": {
+    "A01": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 1.7418119142794624,
+      "norm_matching_relative_error": 2.8666437690434383e-08,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A02": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.052556023551809,
+      "norm_matching_relative_error": 1.9584474855960636e-08,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A03": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 1.4688559806280654,
+      "norm_matching_relative_error": 1.25379060544899e-08,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A04": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.2284822302196616,
+      "norm_matching_relative_error": 9.350424234101126e-10,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A05": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 1.8982930391085964,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A06": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.6754695147945378,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A07": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.131906291937342,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A08": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 0.1998574771199428,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A09": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.134443755668236,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A10": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.129610412329875,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A11": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.656892817700255,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A12": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.3546841486184054,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A13": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.640388465697983,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A14": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.6372336507060603,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A15": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.3185473271325003,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A16": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.721304476652728,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A17": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.744948349779107,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A18": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 2.0683684855776066,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A19": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.480933705110985,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "A20": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.7228056338163595,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S1-Native": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 0.0,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S1-G03": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 2.770940364544779,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S1-P04": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.136736952782004,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S1-P05": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.3653892075626892,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S2-Native": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 0.0,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S2-G03": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 2.770940364544779,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S2-P04": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.136736952782004,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S2-P05": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.3653892075626892,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S3-Native": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 0.0,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S3-G03": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 2.770940364544779,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S3-P04": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 4.136736952782004,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S3-P05": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.3653892075626892,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11424356
+    },
+    "S4-Native": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 0.0,
+      "norm_matching_relative_error": null,
+      "population": [
+        20,
+        30,
+        50
+      ],
+      "boundaries": [
+        20,
+        50
+      ],
+      "full_numel": 11424356
+    },
+    "S4-G03": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 2.6375123943811216,
+      "norm_matching_relative_error": null,
+      "population": [
+        20,
+        30,
+        50
+      ],
+      "boundaries": [
+        20,
+        50
+      ],
+      "full_numel": 11424356
+    },
+    "S4-P04": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 3.882579100821245,
+      "norm_matching_relative_error": null,
+      "population": [
+        20,
+        30,
+        50
+      ],
+      "boundaries": [
+        20,
+        50
+      ],
+      "full_numel": 11424356
+    },
+    "S4-P05": {
+      "classes": 100,
+      "regions": 9,
+      "difference_from_native_l2": 1.0562030214587814,
+      "norm_matching_relative_error": null,
+      "population": [
+        20,
+        30,
+        50
+      ],
+      "boundaries": [
+        20,
+        50
+      ],
+      "full_numel": 11424356
+    },
+    "S5-Native": {
+      "classes": 10,
+      "regions": 9,
+      "difference_from_native_l2": 0.0,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11378186
+    },
+    "S5-G03": {
+      "classes": 10,
+      "regions": 9,
+      "difference_from_native_l2": 2.7680182725654263,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11378186
+    },
+    "S5-P04": {
+      "classes": 10,
+      "regions": 9,
+      "difference_from_native_l2": 4.132389610308919,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11378186
+    },
+    "S5-P05": {
+      "classes": 10,
+      "regions": 9,
+      "difference_from_native_l2": 3.361186901332289,
+      "norm_matching_relative_error": null,
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "full_numel": 11378186
+    }
+  },
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "torch": "2.7.1+cu118",
+  "peak_allocated_mib": 862.81787109375,
+  "peak_reserved_mib": 896.0
+}

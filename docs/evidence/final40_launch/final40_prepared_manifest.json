@@ -1,0 +1,182 @@
+{
+  "A": {
+    "condition": {
+      "dataset": "cifar100",
+      "alpha": 0.3,
+      "ratio": "4:3:3",
+      "classes": 100
+    },
+    "path": "runs/capability_final40_400_seed1_20261021/prepared/A.json",
+    "sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+    "context": {
+      "condition": "A",
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "data_mass": [
+        19931,
+        15373,
+        14696
+      ],
+      "partition_rule": "original dirichlet_split_unbalanced, seed1/min_size10/max_retry500; original alpha.3 retained verbatim"
+    },
+    "train_examples": 50000,
+    "test_examples": 10000
+  },
+  "S1": {
+    "condition": {
+      "dataset": "cifar100",
+      "alpha": 0.2,
+      "ratio": "4:3:3",
+      "classes": 100
+    },
+    "path": "runs/capability_final40_400_seed1_20261021/prepared/S1.json",
+    "sha256": "01b3342dec897ea37a073507b1630aa7f6db64552521f51692ff789b522e0f0b",
+    "context": {
+      "condition": "S1",
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "data_mass": [
+        21333,
+        14376,
+        14291
+      ],
+      "partition_rule": "original dirichlet_split_unbalanced, seed1/min_size10/max_retry500; original alpha.3 retained verbatim"
+    },
+    "train_examples": 50000,
+    "test_examples": 10000
+  },
+  "S2": {
+    "condition": {
+      "dataset": "cifar100",
+      "alpha": 0.5,
+      "ratio": "4:3:3",
+      "classes": 100
+    },
+    "path": "runs/capability_final40_400_seed1_20261021/prepared/S2.json",
+    "sha256": "3f5e55d9f1bcbf09fac805d04581b0514439cbd292170ae77f3dfbe53ade466a",
+    "context": {
+      "condition": "S2",
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "data_mass": [
+        20292,
+        14490,
+        15218
+      ],
+      "partition_rule": "original dirichlet_split_unbalanced, seed1/min_size10/max_retry500; original alpha.3 retained verbatim"
+    },
+    "train_examples": 50000,
+    "test_examples": 10000
+  },
+  "S3": {
+    "condition": {
+      "dataset": "cifar100",
+      "alpha": 1.0,
+      "ratio": "4:3:3",
+      "classes": 100
+    },
+    "path": "runs/capability_final40_400_seed1_20261021/prepared/S3.json",
+    "sha256": "0007abcf4a3d1311c6116278750d36d1ad5667cc93106bb16b47bd3ecf703b72",
+    "context": {
+      "condition": "S3",
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "data_mass": [
+        20102,
+        15061,
+        14837
+      ],
+      "partition_rule": "original dirichlet_split_unbalanced, seed1/min_size10/max_retry500; original alpha.3 retained verbatim"
+    },
+    "train_examples": 50000,
+    "test_examples": 10000
+  },
+  "S4": {
+    "condition": {
+      "dataset": "cifar100",
+      "alpha": 0.3,
+      "ratio": "2:3:5",
+      "classes": 100
+    },
+    "path": "runs/capability_final40_400_seed1_20261021/prepared/S4.json",
+    "sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+    "context": {
+      "condition": "S4",
+      "population": [
+        20,
+        30,
+        50
+      ],
+      "boundaries": [
+        20,
+        50
+      ],
+      "data_mass": [
+        10166,
+        15045,
+        24789
+      ],
+      "partition_rule": "original dirichlet_split_unbalanced, seed1/min_size10/max_retry500; original alpha.3 retained verbatim"
+    },
+    "train_examples": 50000,
+    "test_examples": 10000
+  },
+  "S5": {
+    "condition": {
+      "dataset": "cifar10",
+      "alpha": 0.3,
+      "ratio": "4:3:3",
+      "classes": 10
+    },
+    "path": "runs/capability_final40_400_seed1_20261021/prepared/S5.json",
+    "sha256": "d36bdfd690e5caf7d2ef421d04519a30bbb5536cfce191d2d7071edbcb06341b",
+    "context": {
+      "condition": "S5",
+      "population": [
+        40,
+        30,
+        30
+      ],
+      "boundaries": [
+        40,
+        70
+      ],
+      "data_mass": [
+        19808,
+        16087,
+        14105
+      ],
+      "partition_rule": "original dirichlet_split_unbalanced, seed1/min_size10/max_retry500; original alpha.3 retained verbatim"
+    },
+    "train_examples": 50000,
+    "test_examples": 10000
+  }
+}
