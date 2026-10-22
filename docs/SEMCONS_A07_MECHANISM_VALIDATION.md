@@ -1,31 +1,45 @@
-# Mechanism validation: execution checkpoint
+# A07四阶段整合：最终机制验证
 
-As of2026-10-22, real2-round and20-round original-A07/observer regressions pass for both the initial sampling pilot and the outcome-blind corrected fixed budget. All seven main models, actual slot uploads, training RNG, schedules and Full metrics match exactly at every checked round. See `SEMCONS_A07_REGRESSION.md` and its raw evidence.
+**结论：No-Go。停止正式语义Gate实验，保留冻结A07。** 观测栈运行正常，但预选Prototype评分没有提供可复现的独立更新效用信息，两类Memory未共同通过预定判别。没有改评分、放宽门槛或追加训练。
 
-## Completed real pilot
+实际运行源码 `01e8a92049fc096dc977fbbbe64d029ad4de887e`；配置SHA `a8baa1ccd5cfe65a7f689d51a5f3acabf2a199b4957c99d059686500bccfb0d0`；原分区SHA `41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41`。执行命令在最终证据的status.json和observation_manifest.json。
 
-The V2 full-data20-round pilot generated994 physical sender–receiver–region pairs, each evaluated under the same fixed receiver training probe and Native injection coefficient. It covered30 physical senders,30 receivers and all seven sender profiles. There were370 CE deteriorations,624 improvements and no exact zero outcomes. Seven pairs had genuinely negative other-physical-client LOO cosine. Three head records per pair are sensitivity observations, not2982 independent utility labels.
+## 样本与独立性
 
-The pilot analyzer ran successfully. There are no middle/late held-out records in20 rounds. Its status is **Pilot only: no scientific Go**; a development-only provisional ranking cannot establish predictive value, select a measurement head or authorize a Gate. Raw pair records remain in the V2 regression archive; derived pilot statistics and command/source provenance are in `docs/evidence/semcons_a07/pilot_launch/`.
+真实完成400轮。固定14个诊断点获得3996个发送者–接收者–区域配对，覆盖76个物理发送者和76个接收者；1441次接收端训练probe CE恶化、2555次改善。11988条head记录是同3996对的三头敏感性观测，不是独立样本。原始记录保留逐类CE、身份、容量、区域、Native注入系数及score。
 
-## Fixed full observation now running
+开发集140个有效配对，独立确认集652对、25个发送者及25个接收者，其中213次恶化、439次改善。确认集包括中期386对、晚期266对，与开发物理身份分离。其余记录只作描述。开发为低/中能力参与者，确认为高能力参与者，包含容量和训练阶段分布转移；结论限于该冻结设计。
 
-One fresh A07 trajectory is running in `/home/hh/TMC_re_e03_scope_components400_20261019/runs/semcons_a07_mechanism_v2_20261022`. ParentPID4188329; real training childPID4188333; physicalGPU0. Actual frozen execution commit `01e8a92049fc096dc977fbbbe64d029ad4de887e`. All gamma are1; no semantic Gate experiment is running. The source/config/partition proof is checked before training. No PT or historical weight reconstruction is used.
+全体226对存在真正负LOO方向，其中102次CE恶化、124次改善；确认负LOO仅33对，10恶化/23改善，来自8个发送者、17个接收者。不能凭33对对负方向子群作稳健结论，也不能把负余弦等同有害。配对选择不读取CE、方向或语义结果。
 
-The14 diagnostic points and all scientific thresholds were frozen before this run. A maximum3996 identity/geometry-defined pairs is available in the historical deterministic schedule; actual missing probes or anchors can reduce valid counts. This is a budget, not a target that authorizes adding cases. The analysis uses disjoint physical identities and stages, bootstrap intervals, three heads, current-only/Memory controls and permutation. The participant split also shifts capability composition; interpret extrapolation under that shift explicitly.
+## 评分与留出结果
 
-At actual400-round completion, `tools/run_semcons_a07_mechanism.py` invokes `tools/analyze_semcons_a07.py` and writes `analysis/mechanism_summary.json` and `analysis/report.md`. The parent records success or failure without retries. Completion follow-up is quiet until terminal state. No formal-gated400 run is queued. If scientific Go fails, the task ends with the measured negative or inconclusive result and frozen A07 is retained.
+|评分|含义|确认AUC|Spearman|相对完整控制模型MSE改善|预定Go|
+|---|---|---:|---:|---:|---|
+|S0|训练后嵌入Prototype与旧Anchor距离|0.52225|0.00680|−0.0280%|失败|
+|S1|同Adapter前后Prototype相对旧Anchor距离的有符号变化|0.59187|0.16558|−22.6623%|失败|
+|S2|原任务输出类别概率相对旧Anchor的JS变化|0.50448|0.13864|+1.7832%|失败|
 
-## Unresolved scientific statuses
+控制包括方向、注入L2、Native系数、注入前CE、发送者自身收益、样本量、模型档位、能力层及区域。仅方向的描述性AUC为0.60863，仅幅度为0.47815；这是解释变量对照，不是重新批准方向Gate。
 
-|Question|Current evidence status|
-|---|---|
-|A07 main training preserved|Real2/20-round exact regression passed|
-|Backbone gradient isolation|Unit checks and every real observed local step's gradient preservation checks passed|
-|Shared frozen-head state|Deterministic identity checked across clients/profiles for each of three seeds|
-|Embedding prototypes semantically comparable|Unproven; shared dimension/head is insufficient|
-|S0/S1/S2 predict real recipient utility beyond direction/L2|Held-out full-stage decision pending|
-|Semantic Memory independently useful|Pending; existence/timing tests are not predictive evidence|
-|Reliability Memory independently useful|Pending; past support/stability is not measured correctness|
-|Full method outperforms A07|Not tested; no active gamma method qualified yet|
-|Paper-ready four-stage algorithm|Not established|
+开发分组CV预选的是S0，不能事后改选确认AUC较高的S1。S0发送者聚类95% AUC区间[0.4518,0.6009]、接收者[0.4633,0.5740]，增量MSE区间均跨0。三头S0 AUC为0.52225/0.53282/0.53430，均低于0.60。S1有弱正相关，但误差增量及置换不支持Go。S2的1.7832%误差改善低于预定2%，AUC接近0.5、中晚期关联不一致，亦未通过置换判别。原始统计包含500次分别按发送者/接收者聚类Bootstrap及100次分层置换；没有将配对、类别和头当成独立重复。
+
+## Prototype与Memory
+
+三头跨客户端同类/异类平均余弦差为0.01263/0.01289/0.01295，Prototype类别判别率约12.6%–13.0%。观测有类别信息，但没有证明嵌入余弦能判断真实效用。共享随机头和相同维度不保证功能对齐；100×128 Decoder还存在不由类别CE唯一确定的嵌入自由度。
+
+Semantic Memory真实执行156212次类别/channel提交，最终四个channel各有100类Anchor；当前轮不进入本轮评分，首轮独立初始化被排除。预选S0的Anchor相对current-only观察误差改善−2.811%，没有正面增量支持。S2任务概率Anchor有有限正面迹象：误差改善4.547%，两种聚类区间均为正；但不是预选评分，也未通过整个分类、阶段和置换门槛，不能据此恢复Gate。
+
+Reliability Memory中晚期已积累：第370–400轮310个slot中，client历史ready309个、client/profile ready188个。其预测增量未通过。必须区分本次外推失败与Memory在任何场景都无用：开发个人support为0–5，确认11–19，100%超出开发范围；client/profile开发0–1、确认0–10，71.0%超过开发范围。冻结无正则线性验证器加入历史后外推误差明显增大，不能称为Memory使FL精度下降——它从未进入聚合。没有事后重拟合来挽救Go。
+
+## A07保留、成本与复核
+
+真实2/20轮两版回归均全模型状态、RNG、调度、Full指标一致。本次400轮Full Accuracy、CE及客户端/profile调度与历史A07逐轮完全一致；历史400轮权重未保存，因此不声称比较了其全部历史权重。原训练、模型、A07源码未改，gamma恒1，非中性Gate及干预参数数目均为0。
+
+实际4357.30s，峰值allocated1,327,138,816bytes、reserved1,512,046,592bytes。额外主模型前向768068个样本，Adapter反向1152102个样本；测量291.57s。离线接收probe前向255744个样本、70.73s；服务器聚合170.62s包含该离线probe，不能全部归为在线Gate成本。三头Prototype逻辑tensor payload共1,204,330,624bytes，约每轮3.01MB，不含metadata/编码/物理网络。Adapter bank合计211,553,280bytes，为模拟器汇总的客户端状态。本次无真实网络传输。
+
+本地从原始配对重算同一冻结程序，779个数值字段与Linux最大绝对差1.015×10⁻¹¹，No-Go和预选S0一致。原始标量以无损gzip归档，raw_scalar_index.json提供解压前后SHA；不含图像、原始更新张量或PT。
+
+## 决策
+
+阶段C失败，D/E不启动：没有实际语义gamma、六臂400轮或seed1/2/3正式验证。软件观测完成不等于机制有效。当前四阶段语义聚合不具备论文正式算法资格；A07保留为有性能证据的来源贡献聚合参考，不将其classifier Native解释为已验证的语义保护。本轮停止，不新增评分、Memory或训练。

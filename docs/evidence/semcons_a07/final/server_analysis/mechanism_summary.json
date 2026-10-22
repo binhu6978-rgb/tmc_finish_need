@@ -1,0 +1,1449 @@
+{
+  "status": "No-Go",
+  "rounds": 400,
+  "source_commit": "01e8a92049fc096dc977fbbbe64d029ad4de887e",
+  "config_sha256": "a8baa1ccd5cfe65a7f689d51a5f3acabf2a199b4957c99d059686500bccfb0d0",
+  "analysis_commit": "01e8a92049fc096dc977fbbbe64d029ad4de887e",
+  "analysis_source_sha256": "a6b2a6f6f9f91c8f4628703590b47278479c21cd41a3f3f6ca59f29f02cad925",
+  "analysis_command": [
+    "tools/analyze_semcons_a07.py",
+    "runs/semcons_a07_mechanism_v2_20261022/a07/observe_400_seed1",
+    "--output",
+    "runs/semcons_a07_mechanism_v2_20261022/analysis"
+  ],
+  "scoring_input": "training-side paired CE only; official-test CSV is not read by this tool",
+  "selected_by_development": "S0",
+  "actual_pairs": {
+    "pairs": 3996,
+    "senders": 76,
+    "receivers": 76,
+    "harmful": 1441,
+    "beneficial": 2555,
+    "zero": 0,
+    "negative_loo": 226,
+    "stages": {
+      "early": 1442,
+      "middle": 1360,
+      "late": 1194
+    },
+    "profiles": {
+      "6": 720,
+      "4": 869,
+      "1": 417,
+      "5": 608,
+      "2": 823,
+      "0": 174,
+      "3": 385
+    }
+  },
+  "scores": {
+    "S0": {
+      "development": {
+        "pairs": 140,
+        "senders": 17,
+        "receivers": 17,
+        "harmful": 46,
+        "beneficial": 94,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 140
+        },
+        "profiles": {
+          "0": 28,
+          "5": 17,
+          "1": 26,
+          "2": 47,
+          "4": 22
+        },
+        "auc": 0.4759481961147086,
+        "pearson": -0.08595450723127997,
+        "spearman": -0.025251222909553114
+      },
+      "confirmation": {
+        "pairs": 652,
+        "senders": 25,
+        "receivers": 25,
+        "harmful": 213,
+        "beneficial": 439,
+        "zero": 0,
+        "negative_loo": 33,
+        "stages": {
+          "middle": 386,
+          "late": 266
+        },
+        "profiles": {
+          "6": 192,
+          "3": 99,
+          "1": 31,
+          "5": 102,
+          "2": 82,
+          "4": 146
+        },
+        "auc": 0.5222496711476147,
+        "pearson": 0.005528194097449578,
+        "spearman": 0.006804671516371935
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.0008051629068826416,
+        "evaluated_pairs": 140
+      },
+      "control_mse": 0.000501268834983247,
+      "augmented_mse": 0.0005014091557899089,
+      "relative_mse_gain": -0.00027993124022296026,
+      "direction_only": {
+        "mse": 2.175860174976935e-05,
+        "auc": 0.6086335782347846,
+        "pairs": 652,
+        "spearman": 0.27136590787270326,
+        "definition": "negative cosine; missing has a separate model indicator"
+      },
+      "magnitude_only": {
+        "mse": 5.5550873589127634e-05,
+        "auc": 0.4781460211534965,
+        "pairs": 652,
+        "spearman": -0.23785397567256006,
+        "definition": "log scaled regional update L2"
+      },
+      "memory_increment_gain": -0.028109606726771656,
+      "reliability_increment_gain": -6.537032414962874,
+      "bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45178219466389236,
+            0.6008925184077623
+          ],
+          "spearman_ci95": [
+            -0.14410758858457748,
+            0.15098381294081792
+          ],
+          "relative_mse_gain_ci95": [
+            -0.04626301703425669,
+            0.038220416802841856
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4632672772852256,
+            0.5739758346661823
+          ],
+          "spearman_ci95": [
+            -0.1109720537748705,
+            0.10770573389701954
+          ],
+          "relative_mse_gain_ci95": [
+            -0.017835647283367104,
+            0.0147541636484803
+          ]
+        }
+      },
+      "memory_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45178219466389236,
+            0.6008925184077623
+          ],
+          "spearman_ci95": [
+            -0.14410758858457748,
+            0.15098381294081792
+          ],
+          "relative_mse_gain_ci95": [
+            -0.1134031072039814,
+            0.04831437983571864
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4632672772852256,
+            0.5739758346661823
+          ],
+          "spearman_ci95": [
+            -0.1109720537748705,
+            0.10770573389701954
+          ],
+          "relative_mse_gain_ci95": [
+            -0.06245723316364876,
+            0.004388044116123918
+          ]
+        }
+      },
+      "reliability_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45178219466389236,
+            0.6008925184077623
+          ],
+          "spearman_ci95": [
+            -0.14410758858457748,
+            0.15098381294081792
+          ],
+          "relative_mse_gain_ci95": [
+            -11.149112300167477,
+            -3.9687644852531627
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4632672772852256,
+            0.5739758346661823
+          ],
+          "spearman_ci95": [
+            -0.1109720537748705,
+            0.10770573389701954
+          ],
+          "relative_mse_gain_ci95": [
+            -8.384093619571292,
+            -5.275732499357996
+          ]
+        }
+      },
+      "stages": {
+        "middle": {
+          "pairs": 386,
+          "senders": 17,
+          "receivers": 17,
+          "harmful": 117,
+          "beneficial": 269,
+          "zero": 0,
+          "negative_loo": 21,
+          "stages": {
+            "middle": 386
+          },
+          "profiles": {
+            "6": 166,
+            "3": 39,
+            "1": 28,
+            "5": 58,
+            "2": 29,
+            "4": 66
+          },
+          "auc": 0.5463730816890668,
+          "pearson": 0.05693007345672632,
+          "spearman": 0.08596297739241125
+        },
+        "late": {
+          "pairs": 266,
+          "senders": 14,
+          "receivers": 14,
+          "harmful": 96,
+          "beneficial": 170,
+          "zero": 0,
+          "negative_loo": 12,
+          "stages": {
+            "late": 266
+          },
+          "profiles": {
+            "2": 53,
+            "4": 80,
+            "6": 26,
+            "5": 44,
+            "1": 3,
+            "3": 60
+          },
+          "auc": 0.520281862745098,
+          "pearson": -0.026056680238973815,
+          "spearman": 0.0020757764012395035
+        }
+      },
+      "permutation": {
+        "replicates": 100,
+        "mean_changed_scores": 414.62,
+        "relative_mse_gain_ci95": [
+          -0.4440162843467447,
+          0.011624328767965202
+        ],
+        "true_gain_greater_fraction": 0.86
+      },
+      "checks": {
+        "sufficient_disjoint_sample": true,
+        "auc": false,
+        "auc_intervals": false,
+        "incremental_error": false,
+        "stages_positive": true,
+        "permutation": false,
+        "semantic_memory": false,
+        "reliability_memory": false
+      },
+      "go": false
+    },
+    "S1": {
+      "development": {
+        "pairs": 140,
+        "senders": 17,
+        "receivers": 17,
+        "harmful": 46,
+        "beneficial": 94,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 140
+        },
+        "profiles": {
+          "0": 28,
+          "5": 17,
+          "1": 26,
+          "2": 47,
+          "4": 22
+        },
+        "auc": 0.5196577243293247,
+        "pearson": 0.015087724762557628,
+        "spearman": 0.03978423789665212
+      },
+      "confirmation": {
+        "pairs": 652,
+        "senders": 25,
+        "receivers": 25,
+        "harmful": 213,
+        "beneficial": 439,
+        "zero": 0,
+        "negative_loo": 33,
+        "stages": {
+          "middle": 386,
+          "late": 266
+        },
+        "profiles": {
+          "6": 192,
+          "3": 99,
+          "1": 31,
+          "5": 102,
+          "2": 82,
+          "4": 146
+        },
+        "auc": 0.5918701273701434,
+        "pearson": 0.16128965269551868,
+        "spearman": 0.1655795753197247
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.0008668065844159916,
+        "evaluated_pairs": 140
+      },
+      "control_mse": 0.000501268834983247,
+      "augmented_mse": 0.0006148680271996211,
+      "relative_mse_gain": -0.2266232893177386,
+      "direction_only": {
+        "mse": 2.175860174976935e-05,
+        "auc": 0.6086335782347846,
+        "pairs": 652,
+        "spearman": 0.27136590787270326,
+        "definition": "negative cosine; missing has a separate model indicator"
+      },
+      "magnitude_only": {
+        "mse": 5.5550873589127634e-05,
+        "auc": 0.4781460211534965,
+        "pairs": 652,
+        "spearman": -0.23785397567256006,
+        "definition": "log scaled regional update L2"
+      },
+      "memory_increment_gain": -0.32104533529882007,
+      "reliability_increment_gain": -1.960227445400304,
+      "bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.5168102156111073,
+            0.660496875356432
+          ],
+          "spearman_ci95": [
+            0.026413589983779302,
+            0.2900112320696848
+          ],
+          "relative_mse_gain_ci95": [
+            -0.42431770829202503,
+            0.017757014985996484
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.5307911916112174,
+            0.65226944913031
+          ],
+          "spearman_ci95": [
+            0.04755031376510601,
+            0.2878468449866192
+          ],
+          "relative_mse_gain_ci95": [
+            -0.3295714867263687,
+            -0.11848871249154173
+          ]
+        }
+      },
+      "memory_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.5168102156111073,
+            0.660496875356432
+          ],
+          "spearman_ci95": [
+            0.026413589983779302,
+            0.2900112320696848
+          ],
+          "relative_mse_gain_ci95": [
+            -0.5427630517352466,
+            -0.0475329769696396
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.5307911916112174,
+            0.65226944913031
+          ],
+          "spearman_ci95": [
+            0.04755031376510601,
+            0.2878468449866192
+          ],
+          "relative_mse_gain_ci95": [
+            -0.4417005957226562,
+            -0.19613895885355748
+          ]
+        }
+      },
+      "reliability_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.5168102156111073,
+            0.660496875356432
+          ],
+          "spearman_ci95": [
+            0.026413589983779302,
+            0.2900112320696848
+          ],
+          "relative_mse_gain_ci95": [
+            -3.2184626192494195,
+            -1.0732967264562077
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.5307911916112174,
+            0.65226944913031
+          ],
+          "spearman_ci95": [
+            0.04755031376510601,
+            0.2878468449866192
+          ],
+          "relative_mse_gain_ci95": [
+            -2.38761977881197,
+            -1.5684339333155373
+          ]
+        }
+      },
+      "stages": {
+        "middle": {
+          "pairs": 386,
+          "senders": 17,
+          "receivers": 17,
+          "harmful": 117,
+          "beneficial": 269,
+          "zero": 0,
+          "negative_loo": 21,
+          "stages": {
+            "middle": 386
+          },
+          "profiles": {
+            "6": 166,
+            "3": 39,
+            "1": 28,
+            "5": 58,
+            "2": 29,
+            "4": 66
+          },
+          "auc": 0.5757951259809996,
+          "pearson": 0.14156082878970164,
+          "spearman": 0.13927154242302395
+        },
+        "late": {
+          "pairs": 266,
+          "senders": 14,
+          "receivers": 14,
+          "harmful": 96,
+          "beneficial": 170,
+          "zero": 0,
+          "negative_loo": 12,
+          "stages": {
+            "late": 266
+          },
+          "profiles": {
+            "2": 53,
+            "4": 80,
+            "6": 26,
+            "5": 44,
+            "1": 3,
+            "3": 60
+          },
+          "auc": 0.6188725490196079,
+          "pearson": 0.36925579249940466,
+          "spearman": 0.2706531830713534
+        }
+      },
+      "permutation": {
+        "replicates": 100,
+        "mean_changed_scores": 414.62,
+        "relative_mse_gain_ci95": [
+          -0.16665428490549652,
+          0.08314772436332624
+        ],
+        "true_gain_greater_fraction": 0.02
+      },
+      "checks": {
+        "sufficient_disjoint_sample": true,
+        "auc": false,
+        "auc_intervals": true,
+        "incremental_error": false,
+        "stages_positive": true,
+        "permutation": false,
+        "semantic_memory": false,
+        "reliability_memory": false
+      },
+      "go": false
+    },
+    "S2": {
+      "development": {
+        "pairs": 140,
+        "senders": 17,
+        "receivers": 17,
+        "harmful": 46,
+        "beneficial": 94,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 140
+        },
+        "profiles": {
+          "0": 28,
+          "5": 17,
+          "1": 26,
+          "2": 47,
+          "4": 22
+        },
+        "auc": 0.45582793709528213,
+        "pearson": -0.014483791123802808,
+        "spearman": -0.037133121977873676
+      },
+      "confirmation": {
+        "pairs": 652,
+        "senders": 25,
+        "receivers": 25,
+        "harmful": 213,
+        "beneficial": 439,
+        "zero": 0,
+        "negative_loo": 33,
+        "stages": {
+          "middle": 386,
+          "late": 266
+        },
+        "profiles": {
+          "6": 192,
+          "3": 99,
+          "1": 31,
+          "5": 102,
+          "2": 82,
+          "4": 146
+        },
+        "auc": 0.5044756007571626,
+        "pearson": 0.028815292891762854,
+        "spearman": 0.13863976462081148
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.0009179741482352376,
+        "evaluated_pairs": 140
+      },
+      "control_mse": 0.000501268834983247,
+      "augmented_mse": 0.0004923303318227194,
+      "relative_mse_gain": 0.01783175521140528,
+      "direction_only": {
+        "mse": 2.175860174976935e-05,
+        "auc": 0.6086335782347846,
+        "pairs": 652,
+        "spearman": 0.27136590787270326,
+        "definition": "negative cosine; missing has a separate model indicator"
+      },
+      "magnitude_only": {
+        "mse": 5.5550873589127634e-05,
+        "auc": 0.4781460211534965,
+        "pairs": 652,
+        "spearman": -0.23785397567256006,
+        "definition": "log scaled regional update L2"
+      },
+      "memory_increment_gain": 0.04547361336769908,
+      "reliability_increment_gain": -29.647668022108668,
+      "bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.4106971998698722,
+            0.5885195656066313
+          ],
+          "spearman_ci95": [
+            -0.0225776049408547,
+            0.2734594056719419
+          ],
+          "relative_mse_gain_ci95": [
+            0.0009239842169767134,
+            0.030072220281489568
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4275052950678489,
+            0.5771659414061044
+          ],
+          "spearman_ci95": [
+            0.013947005514246087,
+            0.2556889855282685
+          ],
+          "relative_mse_gain_ci95": [
+            0.010366744716844126,
+            0.025199882524112743
+          ]
+        }
+      },
+      "memory_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.4106971998698722,
+            0.5885195656066313
+          ],
+          "spearman_ci95": [
+            -0.0225776049408547,
+            0.2734594056719419
+          ],
+          "relative_mse_gain_ci95": [
+            0.00766930175002999,
+            0.07237835011767099
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4275052950678489,
+            0.5771659414061044
+          ],
+          "spearman_ci95": [
+            0.013947005514246087,
+            0.2556889855282685
+          ],
+          "relative_mse_gain_ci95": [
+            0.028523052516625673,
+            0.06120914303628396
+          ]
+        }
+      },
+      "reliability_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.4106971998698722,
+            0.5885195656066313
+          ],
+          "spearman_ci95": [
+            -0.0225776049408547,
+            0.2734594056719419
+          ],
+          "relative_mse_gain_ci95": [
+            -45.07973442671866,
+            -18.911908824467588
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4275052950678489,
+            0.5771659414061044
+          ],
+          "spearman_ci95": [
+            0.013947005514246087,
+            0.2556889855282685
+          ],
+          "relative_mse_gain_ci95": [
+            -37.372367228332934,
+            -24.56882951082762
+          ]
+        }
+      },
+      "stages": {
+        "middle": {
+          "pairs": 386,
+          "senders": 17,
+          "receivers": 17,
+          "harmful": 117,
+          "beneficial": 269,
+          "zero": 0,
+          "negative_loo": 21,
+          "stages": {
+            "middle": 386
+          },
+          "profiles": {
+            "6": 166,
+            "3": 39,
+            "1": 28,
+            "5": 58,
+            "2": 29,
+            "4": 66
+          },
+          "auc": 0.4692593651701458,
+          "pearson": -0.0824975733380042,
+          "spearman": -0.03343090466377739
+        },
+        "late": {
+          "pairs": 266,
+          "senders": 14,
+          "receivers": 14,
+          "harmful": 96,
+          "beneficial": 170,
+          "zero": 0,
+          "negative_loo": 12,
+          "stages": {
+            "late": 266
+          },
+          "profiles": {
+            "2": 53,
+            "4": 80,
+            "6": 26,
+            "5": 44,
+            "1": 3,
+            "3": 60
+          },
+          "auc": 0.48707107843137254,
+          "pearson": 0.12550034727804016,
+          "spearman": 0.10866673517505689
+        }
+      },
+      "permutation": {
+        "replicates": 100,
+        "mean_changed_scores": 414.62,
+        "relative_mse_gain_ci95": [
+          -0.9668589813497525,
+          0.09927937187780365
+        ],
+        "true_gain_greater_fraction": 0.82
+      },
+      "checks": {
+        "sufficient_disjoint_sample": true,
+        "auc": false,
+        "auc_intervals": false,
+        "incremental_error": false,
+        "stages_positive": false,
+        "permutation": false,
+        "semantic_memory": true,
+        "reliability_memory": false
+      },
+      "go": false
+    }
+  },
+  "head_sensitivity": {
+    "17": {
+      "development": {
+        "pairs": 140,
+        "senders": 17,
+        "receivers": 17,
+        "harmful": 46,
+        "beneficial": 94,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 140
+        },
+        "profiles": {
+          "0": 28,
+          "5": 17,
+          "1": 26,
+          "2": 47,
+          "4": 22
+        },
+        "auc": 0.4759481961147086,
+        "pearson": -0.08595450723127997,
+        "spearman": -0.025251222909553114
+      },
+      "confirmation": {
+        "pairs": 652,
+        "senders": 25,
+        "receivers": 25,
+        "harmful": 213,
+        "beneficial": 439,
+        "zero": 0,
+        "negative_loo": 33,
+        "stages": {
+          "middle": 386,
+          "late": 266
+        },
+        "profiles": {
+          "6": 192,
+          "3": 99,
+          "1": 31,
+          "5": 102,
+          "2": 82,
+          "4": 146
+        },
+        "auc": 0.5222496711476147,
+        "pearson": 0.005528194097449578,
+        "spearman": 0.006804671516371935
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.0008051629068826416,
+        "evaluated_pairs": 140
+      },
+      "control_mse": 0.000501268834983247,
+      "augmented_mse": 0.0005014091557899089,
+      "relative_mse_gain": -0.00027993124022296026,
+      "direction_only": {
+        "mse": 2.175860174976935e-05,
+        "auc": 0.6086335782347846,
+        "pairs": 652,
+        "spearman": 0.27136590787270326,
+        "definition": "negative cosine; missing has a separate model indicator"
+      },
+      "magnitude_only": {
+        "mse": 5.5550873589127634e-05,
+        "auc": 0.4781460211534965,
+        "pairs": 652,
+        "spearman": -0.23785397567256006,
+        "definition": "log scaled regional update L2"
+      },
+      "memory_increment_gain": -0.028109606726771656,
+      "reliability_increment_gain": -6.537032414962874,
+      "bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45178219466389236,
+            0.6008925184077623
+          ],
+          "spearman_ci95": [
+            -0.14410758858457748,
+            0.15098381294081792
+          ],
+          "relative_mse_gain_ci95": [
+            -0.04626301703425669,
+            0.038220416802841856
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4632672772852256,
+            0.5739758346661823
+          ],
+          "spearman_ci95": [
+            -0.1109720537748705,
+            0.10770573389701954
+          ],
+          "relative_mse_gain_ci95": [
+            -0.017835647283367104,
+            0.0147541636484803
+          ]
+        }
+      },
+      "memory_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45178219466389236,
+            0.6008925184077623
+          ],
+          "spearman_ci95": [
+            -0.14410758858457748,
+            0.15098381294081792
+          ],
+          "relative_mse_gain_ci95": [
+            -0.1134031072039814,
+            0.04831437983571864
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4632672772852256,
+            0.5739758346661823
+          ],
+          "spearman_ci95": [
+            -0.1109720537748705,
+            0.10770573389701954
+          ],
+          "relative_mse_gain_ci95": [
+            -0.06245723316364876,
+            0.004388044116123918
+          ]
+        }
+      },
+      "reliability_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45178219466389236,
+            0.6008925184077623
+          ],
+          "spearman_ci95": [
+            -0.14410758858457748,
+            0.15098381294081792
+          ],
+          "relative_mse_gain_ci95": [
+            -11.149112300167477,
+            -3.9687644852531627
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4632672772852256,
+            0.5739758346661823
+          ],
+          "spearman_ci95": [
+            -0.1109720537748705,
+            0.10770573389701954
+          ],
+          "relative_mse_gain_ci95": [
+            -8.384093619571292,
+            -5.275732499357996
+          ]
+        }
+      },
+      "stages": {
+        "middle": {
+          "pairs": 386,
+          "senders": 17,
+          "receivers": 17,
+          "harmful": 117,
+          "beneficial": 269,
+          "zero": 0,
+          "negative_loo": 21,
+          "stages": {
+            "middle": 386
+          },
+          "profiles": {
+            "6": 166,
+            "3": 39,
+            "1": 28,
+            "5": 58,
+            "2": 29,
+            "4": 66
+          },
+          "auc": 0.5463730816890668,
+          "pearson": 0.05693007345672632,
+          "spearman": 0.08596297739241125
+        },
+        "late": {
+          "pairs": 266,
+          "senders": 14,
+          "receivers": 14,
+          "harmful": 96,
+          "beneficial": 170,
+          "zero": 0,
+          "negative_loo": 12,
+          "stages": {
+            "late": 266
+          },
+          "profiles": {
+            "2": 53,
+            "4": 80,
+            "6": 26,
+            "5": 44,
+            "1": 3,
+            "3": 60
+          },
+          "auc": 0.520281862745098,
+          "pearson": -0.026056680238973815,
+          "spearman": 0.0020757764012395035
+        }
+      },
+      "permutation": {
+        "replicates": 100,
+        "mean_changed_scores": 414.62,
+        "relative_mse_gain_ci95": [
+          -0.4440162843467447,
+          0.011624328767965202
+        ],
+        "true_gain_greater_fraction": 0.86
+      },
+      "checks": {
+        "sufficient_disjoint_sample": true,
+        "auc": false,
+        "auc_intervals": false,
+        "incremental_error": false,
+        "stages_positive": true,
+        "permutation": false,
+        "semantic_memory": false,
+        "reliability_memory": false
+      },
+      "go": false
+    },
+    "29": {
+      "development": {
+        "pairs": 140,
+        "senders": 17,
+        "receivers": 17,
+        "harmful": 46,
+        "beneficial": 94,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 140
+        },
+        "profiles": {
+          "0": 28,
+          "5": 17,
+          "1": 26,
+          "2": 47,
+          "4": 22
+        },
+        "auc": 0.5143385753931545,
+        "pearson": 0.05351238812089372,
+        "spearman": 0.026113054322093304
+      },
+      "confirmation": {
+        "pairs": 652,
+        "senders": 25,
+        "receivers": 25,
+        "harmful": 213,
+        "beneficial": 439,
+        "zero": 0,
+        "negative_loo": 33,
+        "stages": {
+          "middle": 386,
+          "late": 266
+        },
+        "profiles": {
+          "6": 192,
+          "3": 99,
+          "1": 31,
+          "5": 102,
+          "2": 82,
+          "4": 146
+        },
+        "auc": 0.5328157250259339,
+        "pearson": 0.022864990903742367,
+        "spearman": 0.0403440129946861
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.0007911125849422472,
+        "evaluated_pairs": 140
+      },
+      "control_mse": 0.000501268834983247,
+      "augmented_mse": 0.0006356466998160368,
+      "relative_mse_gain": -0.2680754426659718,
+      "direction_only": {
+        "mse": 2.175860174976935e-05,
+        "auc": 0.6086335782347846,
+        "pairs": 652,
+        "spearman": 0.27136590787270326,
+        "definition": "negative cosine; missing has a separate model indicator"
+      },
+      "magnitude_only": {
+        "mse": 5.5550873589127634e-05,
+        "auc": 0.4781460211534965,
+        "pairs": 652,
+        "spearman": -0.23785397567256006,
+        "definition": "log scaled regional update L2"
+      },
+      "memory_increment_gain": -0.4270428403895917,
+      "reliability_increment_gain": -13.623698513950133,
+      "bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.462144692704439,
+            0.6229413714045808
+          ],
+          "spearman_ci95": [
+            -0.09980807681136138,
+            0.1866540433006771
+          ],
+          "relative_mse_gain_ci95": [
+            -0.5908086362702841,
+            0.01975051468091114
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4693404517059269,
+            0.597401991432938
+          ],
+          "spearman_ci95": [
+            -0.08333630119563183,
+            0.15090945977553216
+          ],
+          "relative_mse_gain_ci95": [
+            -0.41438985503270376,
+            -0.13996869019000754
+          ]
+        }
+      },
+      "memory_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.462144692704439,
+            0.6229413714045808
+          ],
+          "spearman_ci95": [
+            -0.09980807681136138,
+            0.1866540433006771
+          ],
+          "relative_mse_gain_ci95": [
+            -1.0338258458052716,
+            0.050190181579159804
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4693404517059269,
+            0.597401991432938
+          ],
+          "spearman_ci95": [
+            -0.08333630119563183,
+            0.15090945977553216
+          ],
+          "relative_mse_gain_ci95": [
+            -0.6682100186034408,
+            -0.2185031179719255
+          ]
+        }
+      },
+      "reliability_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.462144692704439,
+            0.6229413714045808
+          ],
+          "spearman_ci95": [
+            -0.09980807681136138,
+            0.1866540433006771
+          ],
+          "relative_mse_gain_ci95": [
+            -22.328711689890348,
+            -9.290820387274332
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.4693404517059269,
+            0.597401991432938
+          ],
+          "spearman_ci95": [
+            -0.08333630119563183,
+            0.15090945977553216
+          ],
+          "relative_mse_gain_ci95": [
+            -17.075062059067037,
+            -11.23410843196699
+          ]
+        }
+      },
+      "stages": {
+        "middle": {
+          "pairs": 386,
+          "senders": 17,
+          "receivers": 17,
+          "harmful": 117,
+          "beneficial": 269,
+          "zero": 0,
+          "negative_loo": 21,
+          "stages": {
+            "middle": 386
+          },
+          "profiles": {
+            "6": 166,
+            "3": 39,
+            "1": 28,
+            "5": 58,
+            "2": 29,
+            "4": 66
+          },
+          "auc": 0.5605757315794491,
+          "pearson": 0.1185500281277164,
+          "spearman": 0.16923755104217444
+        },
+        "late": {
+          "pairs": 266,
+          "senders": 14,
+          "receivers": 14,
+          "harmful": 96,
+          "beneficial": 170,
+          "zero": 0,
+          "negative_loo": 12,
+          "stages": {
+            "late": 266
+          },
+          "profiles": {
+            "2": 53,
+            "4": 80,
+            "6": 26,
+            "5": 44,
+            "1": 3,
+            "3": 60
+          },
+          "auc": 0.5234068627450981,
+          "pearson": -0.06887327694014246,
+          "spearman": 0.018120794605597696
+        }
+      },
+      "permutation": {
+        "replicates": 100,
+        "mean_changed_scores": 414.62,
+        "relative_mse_gain_ci95": [
+          -1.0646279462318473,
+          -0.06413846558144784
+        ],
+        "true_gain_greater_fraction": 0.69
+      },
+      "checks": {
+        "sufficient_disjoint_sample": true,
+        "auc": false,
+        "auc_intervals": false,
+        "incremental_error": false,
+        "stages_positive": true,
+        "permutation": false,
+        "semantic_memory": false,
+        "reliability_memory": false
+      },
+      "go": false
+    },
+    "43": {
+      "development": {
+        "pairs": 140,
+        "senders": 17,
+        "receivers": 17,
+        "harmful": 46,
+        "beneficial": 94,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 140
+        },
+        "profiles": {
+          "0": 28,
+          "5": 17,
+          "1": 26,
+          "2": 47,
+          "4": 22
+        },
+        "auc": 0.47224791859389453,
+        "pearson": -0.09700531482730436,
+        "spearman": -0.08775368682306409
+      },
+      "confirmation": {
+        "pairs": 652,
+        "senders": 25,
+        "receivers": 25,
+        "harmful": 213,
+        "beneficial": 439,
+        "zero": 0,
+        "negative_loo": 33,
+        "stages": {
+          "middle": 386,
+          "late": 266
+        },
+        "profiles": {
+          "6": 192,
+          "3": 99,
+          "1": 31,
+          "5": 102,
+          "2": 82,
+          "4": 146
+        },
+        "auc": 0.5343022447517298,
+        "pearson": 0.01586809179010518,
+        "spearman": 0.037078343917852793
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.0007813821954486619,
+        "evaluated_pairs": 140
+      },
+      "control_mse": 0.000501268834983247,
+      "augmented_mse": 0.0005130187760214405,
+      "relative_mse_gain": -0.023440398082171365,
+      "direction_only": {
+        "mse": 2.175860174976935e-05,
+        "auc": 0.6086335782347846,
+        "pairs": 652,
+        "spearman": 0.27136590787270326,
+        "definition": "negative cosine; missing has a separate model indicator"
+      },
+      "magnitude_only": {
+        "mse": 5.5550873589127634e-05,
+        "auc": 0.4781460211534965,
+        "pairs": 652,
+        "spearman": -0.23785397567256006,
+        "definition": "log scaled regional update L2"
+      },
+      "memory_increment_gain": -0.08535353432330588,
+      "reliability_increment_gain": -25.62906112822406,
+      "bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45189691170332674,
+            0.6143793260541266
+          ],
+          "spearman_ci95": [
+            -0.13365910403362605,
+            0.18422554084642875
+          ],
+          "relative_mse_gain_ci95": [
+            -0.3572295098234433,
+            0.17687238054341722
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.46564270633317384,
+            0.6025381060152634
+          ],
+          "spearman_ci95": [
+            -0.108941463629812,
+            0.1649320979252244
+          ],
+          "relative_mse_gain_ci95": [
+            -0.13309544479641464,
+            0.08373027993001878
+          ]
+        }
+      },
+      "memory_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45189691170332674,
+            0.6143793260541266
+          ],
+          "spearman_ci95": [
+            -0.13365910403362605,
+            0.18422554084642875
+          ],
+          "relative_mse_gain_ci95": [
+            -0.43352133982270485,
+            0.1090455415446456
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.46564270633317384,
+            0.6025381060152634
+          ],
+          "spearman_ci95": [
+            -0.108941463629812,
+            0.1649320979252244
+          ],
+          "relative_mse_gain_ci95": [
+            -0.1893546357350862,
+            0.02239452435234256
+          ]
+        }
+      },
+      "reliability_bootstrap": {
+        "sender": {
+          "auc_ci95": [
+            0.45189691170332674,
+            0.6143793260541266
+          ],
+          "spearman_ci95": [
+            -0.13365910403362605,
+            0.18422554084642875
+          ],
+          "relative_mse_gain_ci95": [
+            -38.436023845758584,
+            -17.16264831023787
+          ]
+        },
+        "receiver": {
+          "auc_ci95": [
+            0.46564270633317384,
+            0.6025381060152634
+          ],
+          "spearman_ci95": [
+            -0.108941463629812,
+            0.1649320979252244
+          ],
+          "relative_mse_gain_ci95": [
+            -30.98529870452667,
+            -22.13372623103523
+          ]
+        }
+      },
+      "stages": {
+        "middle": {
+          "pairs": 386,
+          "senders": 17,
+          "receivers": 17,
+          "harmful": 117,
+          "beneficial": 269,
+          "zero": 0,
+          "negative_loo": 21,
+          "stages": {
+            "middle": 386
+          },
+          "profiles": {
+            "6": 166,
+            "3": 39,
+            "1": 28,
+            "5": 58,
+            "2": 29,
+            "4": 66
+          },
+          "auc": 0.5410351730054332,
+          "pearson": 0.06262675954344195,
+          "spearman": 0.10514406928195405
+        },
+        "late": {
+          "pairs": 266,
+          "senders": 14,
+          "receivers": 14,
+          "harmful": 96,
+          "beneficial": 170,
+          "zero": 0,
+          "negative_loo": 12,
+          "stages": {
+            "late": 266
+          },
+          "profiles": {
+            "2": 53,
+            "4": 80,
+            "6": 26,
+            "5": 44,
+            "1": 3,
+            "3": 60
+          },
+          "auc": 0.5512254901960785,
+          "pearson": 0.008973941652295744,
+          "spearman": 0.0339547277135472
+        }
+      },
+      "permutation": {
+        "replicates": 100,
+        "mean_changed_scores": 414.62,
+        "relative_mse_gain_ci95": [
+          -1.0954466997241525,
+          -0.015765825810087383
+        ],
+        "true_gain_greater_fraction": 0.96
+      },
+      "checks": {
+        "sufficient_disjoint_sample": true,
+        "auc": false,
+        "auc_intervals": false,
+        "incremental_error": false,
+        "stages_positive": true,
+        "permutation": true,
+        "semantic_memory": false,
+        "reliability_memory": false
+      },
+      "go": false
+    }
+  },
+  "comparability": {
+    "17": {
+      "mean_same_minus_different_cosine": 0.012632859946323204,
+      "mean_classification_accuracy": 0.1278359231076649
+    },
+    "29": {
+      "mean_same_minus_different_cosine": 0.012892356006088202,
+      "mean_classification_accuracy": 0.1298326639331279
+    },
+    "43": {
+      "mean_same_minus_different_cosine": 0.012947059930906812,
+      "mean_classification_accuracy": 0.1263149649474146
+    }
+  },
+  "adapter_space_minimal_checks": true,
+  "memory_roles": "Increment tests above; support is not measured correctness",
+  "pair_dependence": "Each pair once per head; sender and receiver cluster bootstrap separately; repeated classes/regions are dependent",
+  "overhead": {
+    "backbone_forward_examples": 768068,
+    "adapter_backward_examples": 1152102,
+    "logical_upload_bytes": 1204330624,
+    "measurement_seconds": 291.5708002697211,
+    "final_adapter_storage_bytes": 211553280
+  },
+  "formal_gate_authorized": false,
+  "formal_training_started": false
+}

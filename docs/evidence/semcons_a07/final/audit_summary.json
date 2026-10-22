@@ -1,0 +1,125 @@
+{
+  "decision": "No-Go",
+  "source_commit": "01e8a92049fc096dc977fbbbe64d029ad4de887e",
+  "config_sha256": "a8baa1ccd5cfe65a7f689d51a5f3acabf2a199b4957c99d059686500bccfb0d0",
+  "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+  "actual_rounds": 400,
+  "physical_pairs": 3996,
+  "head_records": 11988,
+  "all400_full_accuracy_ce_identical_to_frozen_a07": true,
+  "all400_schedule_identical": true,
+  "all7_initial_states_identical": true,
+  "exact400_historical_weights_comparison": "Unavailable: historical tensors were not saved; exact all-state evidence is the separate 2/20 regression",
+  "head_hashes": {
+    "17": "475dd52ee2d2865b057fc8ca28f5f339b93bf3f9d927ca8dde0fbbae255de268",
+    "29": "9763f46c0f96860f669be64ddea529b9d022b0e2670a1a58451b0517ad1728a7",
+    "43": "ee83516ec1e26e7bee5f6a6c5b11153bbea8d601746af9754d0ff4b953ac936b"
+  },
+  "no_pt": true,
+  "nonneutral_gates": 0,
+  "semantic_updates": 156212,
+  "final_anchor_classes": {
+    "task": 100,
+    "17": 100,
+    "29": 100,
+    "43": 100
+  },
+  "subgroups": {
+    "all": {
+      "False": {
+        "pairs": 3770,
+        "harmful": 1339,
+        "beneficial": 2431,
+        "senders": 75,
+        "receivers": 76
+      },
+      "True": {
+        "pairs": 226,
+        "harmful": 102,
+        "beneficial": 124,
+        "senders": 23,
+        "receivers": 51
+      }
+    },
+    "development": {
+      "False": {
+        "pairs": 188,
+        "harmful": 58,
+        "beneficial": 130,
+        "senders": 21,
+        "receivers": 21
+      },
+      "True": {
+        "pairs": 2,
+        "harmful": 1,
+        "beneficial": 1,
+        "senders": 1,
+        "receivers": 2
+      }
+    },
+    "confirmation": {
+      "False": {
+        "pairs": 619,
+        "harmful": 203,
+        "beneficial": 416,
+        "senders": 25,
+        "receivers": 25
+      },
+      "True": {
+        "pairs": 33,
+        "harmful": 10,
+        "beneficial": 23,
+        "senders": 8,
+        "receivers": 17
+      }
+    }
+  },
+  "readiness": {
+    "early": {
+      "slots": 400,
+      "missing_score": 20,
+      "client_ready": 204,
+      "client_profile_ready": 23
+    },
+    "middle": {
+      "slots": 310,
+      "missing_score": 0,
+      "client_ready": 306,
+      "client_profile_ready": 198
+    },
+    "late": {
+      "slots": 310,
+      "missing_score": 0,
+      "client_ready": 309,
+      "client_profile_ready": 188
+    }
+  },
+  "support_shift": {
+    "client": {
+      "development_range": [
+        0,
+        5
+      ],
+      "confirmation_range": [
+        11,
+        19
+      ],
+      "confirmation_above_development_fraction": 1.0
+    },
+    "client_profile": {
+      "development_range": [
+        0,
+        1
+      ],
+      "confirmation_range": [
+        0,
+        10
+      ],
+      "confirmation_above_development_fraction": 0.7101226993865031
+    }
+  },
+  "utility_seconds": 70.73263015865814,
+  "utility_forward_examples": 255744,
+  "server_seconds_including_utility": 170.6199554017512,
+  "evaluation_seconds": 252.93117899715435
+}

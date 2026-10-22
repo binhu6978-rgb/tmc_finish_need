@@ -1,0 +1,42 @@
+[
+  {
+    "file": "utility_pairs.jsonl.gz",
+    "raw_file": "utility_pairs.jsonl",
+    "raw_bytes": 40693051,
+    "raw_sha256": "c09dc72475eed3c22628f17244b049e5ad9e7c17935f4a273905384a9a37d441",
+    "gzip_bytes": 3419356,
+    "gzip_sha256": "0a4e9b914154e1c9b877eb01162b67cec1ef36cbe2ee014735cb9aafdac7c29e"
+  },
+  {
+    "file": "observation_rounds.jsonl.gz",
+    "raw_file": "observation_rounds.jsonl",
+    "raw_bytes": 12159125,
+    "raw_sha256": "9747d0f6258fac550b0c908714167de253d0b69cd8e87d7cb1b810f4a8f2793a",
+    "gzip_bytes": 1774640,
+    "gzip_sha256": "169d78a63425cd97480dce51f5c6409bd0ff508cae7e918e6d88e4d47dcf77ab"
+  },
+  {
+    "file": "method_diagnostics.csv.gz",
+    "raw_file": "method_diagnostics.csv",
+    "raw_bytes": 15282325,
+    "raw_sha256": "2ea146213f14426b3cf5fa75248e6cc9d8143e8438b181763952dec2cd2cc4dd",
+    "gzip_bytes": 2440449,
+    "gzip_sha256": "534658049617b126728314926ae976e8b1f637b7cd41d22c82d2da876912a4ea"
+  },
+  {
+    "file": "regression.jsonl.gz",
+    "raw_file": "regression.jsonl",
+    "raw_bytes": 1276163,
+    "raw_sha256": "6ebfa25503b5184608b11c4576cb3493b75ee888d1aadd89a4dcb9b32a16da41",
+    "gzip_bytes": 362075,
+    "gzip_sha256": "12af79092d2cc1b3f853a73fe6106b9ef6c3861cb45832013848a451b77f94aa"
+  },
+  {
+    "file": "observation_400.log.gz",
+    "raw_file": "observation_400.log",
+    "raw_bytes": 255471,
+    "raw_sha256": "f1c24d70c2e4297288bb0af1e0bd7be20b6c02d665f47168e389bcea59a6a03e",
+    "gzip_bytes": 28921,
+    "gzip_sha256": "e0e4b9550f10e5f3273a256f14fe2da4cba552d9bb33f2152959e441e50d03dd"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "pid": 4188329,
+  "status": "completed",
+  "phase": "C",
+  "formal_gate_started": false,
+  "source_commit": "01e8a92049fc096dc977fbbbe64d029ad4de887e",
+  "child_pid": 4188333,
+  "argv": [
+    "/home/hh/miniconda3/envs/hh/bin/python",
+    "-u",
+    "tools/run_semcons_a07_observation.py",
+    "--mode",
+    "observe",
+    "--rounds",
+    "400",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--prepared",
+    "runs/capability_final40_400_seed1_20261021/prepared",
+    "--output-root",
+    "runs/semcons_a07_mechanism_v2_20261022",
+    "--equivalence-evidence",
+    "runs/semcons_a07_regression_v2_20261022/equivalence_20.json"
+  ],
+  "exit_code": 0,
+  "scientific_decision": "No-Go",
+  "next": "Stop semantic Gate experiments"
+}

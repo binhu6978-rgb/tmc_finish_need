@@ -6,3 +6,4 @@ __pycache__/
 /tmp/
 /data/cifar100/
 *.pt
+/docs/evidence/semcons_a07/completed/

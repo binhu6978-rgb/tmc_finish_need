@@ -1,28 +1,30 @@
-# Reviewer and AE evidence map
+# 审稿意见最终证据映射
 
-This map follows the actual local review letter's AE summary, R1 major1–3/minor, R2 weakness1–5, R3 comment1–6. The private letter and identifying correspondence are not uploaded. Status at the observational implementation checkpoint; mechanism results will update this table after the fixed-budget run.
+依据本地真实审稿信中的AE总结、R1 major1–3/minor、R2 weakness1–5、R3 comment1–6逐项映射。私人审稿信未上传。**本次结论为No-Go，不能将观测模块运行成功写成完整SemConsFL已验证。**
 
-|Issue|Implemented or observed evidence|Status and remaining work|
+|问题|实际证据|最终状态|
 |---|---|---|
-|AE: prototype trust versus update compatibility|Fixed paired train-side recipient CE utility, direction/amplitude/self-gain controls and disjoint participant/stage confirmation; no test-derived utility|Implemented; scientific relation unverified|
-|AE: model/data heterogeneity separation|Completed40 includes alpha changes and physical capability-ratio changes; A07 was tested only at original condition|Partially supported for source weighting; no controlled homogeneous-model factorial for semantic mismatch|
-|AE: Adapter comparability|Audit identifies old auxiliary Backbone gradients and private decoder problem; new detached shared class decoder, pre/post snapshot and head sensitivity|Implemented; comparable embedding space unproven|
-|AE: stronger baselines/broader evaluation|Frozen A07/P04/P05/Native evidence and limitations archived|Relevant functional-matching baselines and nonvisual evaluation remain unverified|
-|AE: sensitivity, theory, scalability|Three precommitted head seeds, resource counters, no inherited convergence claim|Measurement experiment pending; larger-scale and adaptive-gate theory unverified|
-|R1.1: high prototype consistency predicts beneficial updates|S0/S1/S2 versus signed regional recipient train CE, held-out physical IDs/stages, clustered uncertainty and permutation|Implemented; empirical decision pending|
-|R1.2: model heterogeneity versus Non-IID effects|Forty-run alpha/resource-ratio conditions retain actual partitions and class counts|Partial; model-homogeneous versus seven-model factorial has not been run|
-|R1.3: Adapter may mask Backbone conflict|Backbone task probability control S2, current-only change controls, frozen pre/post Adapter, separate calibration drift|Implemented; utility and head sensitivity pending|
-|R1 minor: critical-layer structural selection|Top-K selection removed from integration. Nine regions describe actual support geometry; no claim that structural width identifies harmful layers|Implemented scope definition; no active semantic layer-selection claim|
-|R2.1: OTFusion, Git Re-Basin, FedMA missing|Acknowledge relevant requested comparisons. A future protocol must resolve matching, seven-width prefix support, local compute and communication fairly before comparing|Not implemented or empirically validated; no invented baseline results|
-|R2.2: CNN/image-scale generality|Existing evidence: real CIFAR100/CIFAR10 seven-model runs. A07 cross-condition and nonvisual tests not run|Partial for weighting family; unverified for integrated semantics, Tiny-ImageNet/second Backbone/nonvision|
-|R2.3: large hyperparameter surface|One observational config, fixed support/budget/heads/EMA, no test-guided search. No gate rule activated|Implemented fixed design; these measurement choices remain assumptions, not demonstrated insensitive constants|
-|R2.4: assumed descent/residual and excluded protective branch|Old theorem not used for new algorithm. Read-only utility is a finite train-probe observation, not a proof of global descent. Protective branch absent|Theoretical gap explicitly recorded; full adaptive theorem unverified|
-|R2.5: overhead scaling with classes/client pool/participation|Real extra forward/backward examples, duration, logical prototype payload and Adapter state counted. Class prototypes scale as O(Cd+C²) per head/client observation; Adapter bank O(N_profiles*input_dim*d*heads); participating probes scale with observed classes and slots|Implemented counters; measured scaling sweeps at larger C/N/q unverified. Logical payload is not measured network transport|
-|R3.1: Adapter location, loss, classifier roles and comparability|Client/profile/seed Adapter trained with detached features and measurement CE; original task classifier stays TaskCE-only and Native-aggregated. Fixed shared decoder row c represents class c|Implemented/tested gradient isolation; inter-client embedding comparability pending|
-|R3.2: mismatch-conflict evidence and accuracy–suppression tradeoff|Signed recipient CE, direction/amplitude controls and permutation implemented; gamma remains1 until scientific Go|Utility evidence pending; suppression curve not performed and must not be invented or obtained by test threshold search|
-|R3.3: Eq29 descent alignment assumption|Direction and signed train-probe CE directly measured with actual updates|Finite proxy experiment pending; global descent assumption remains unproved|
-|R3.4: adaptive gates versus fixed-gate analysis|No fixed-gate theorem claimed for a learned rule; no active gate in observation|Unverified theory; cannot label full algorithm convergent|
-|R3.5: frozen-head initialization sensitivity|Deterministic orthogonal projection plus normalized class decoder, seeds17/29/43; fixed shared state digests across clients, profiles|Implemented/tested; actual sensitivity pending. Three head seeds are not three FL seeds|
-|R3.6: Tiny-ImageNet mean±std across seeds|No new Tiny-ImageNet run or multi-seed performance in this integration|Unverified; seed1/2/3 A07/final method is conditional on mechanism Go and actual dataset compatibility|
+|AE：Prototype trust与更新兼容性|3996对真实训练侧CE反事实；独立确认652对；预选S0 AUC0.522、无增量误差改善|负结果，正式Gate停止|
+|AE：模型/数据异构分离|既有40组有alpha和能力比例变化；没有同构模型×数据异构完整因子实验|部分支持来源加权；语义原因未验证|
+|AE：Adapter与Prototype可比性|detach测量、固定前后快照、三种冻结头、实际类别统计|实现及隔离已实证；效用可比性未获支持|
+|AE：更强相关基线、广度、敏感性|历史Native/G03/P04/P05及三头诊断；A07只有原条件正式结果|部分支持；功能匹配基线和更广模态未验证|
+|AE：理论、可扩展性|真实100类/100客户端计时、payload、存储；不沿用旧定理|单规模实测；扩展和全算法收敛未证明|
+|R1.1：高一致性是否意味着有益更新|S0/S1/S2及方向、幅度、profile/region/样本量控制、置换、物理聚类区间|均未通过冻结Go；S1弱相关不等于独立效用|
+|R1.2：区分Non-IID与模型异构|保留真实七模型及分区，已有跨alpha/能力比例对照|部分；同构模型控制未完成，不能归因功能不匹配|
+|R1.3：Adapter是否掩盖Backbone冲突|主模型梯度隔离、同Adapter测前后；S2独立任务输出对照；记录Adapter自身校准变化|工程已实证；三头S0仍无稳定效用增量|
+|R1 minor：关键层结构规则|新路径删除Top-K，仅使用真实九区域覆盖描述|已实现；不声称宽度本身定位冲突层|
+|R2.1：OTFusion/Git Re-Basin/FedMA基线缺失|未实现公平匹配/通信预算对照；没有虚构数据|未验证。后续须先解决七宽前缀支持及代价可比性|
+|R2.2：视觉/CNN规模局限|既有真实CIFAR100/10；本次只CIFAR100 ResNet|未覆盖Tiny-ImageNet、第二Backbone和非视觉/生产规模|
+|R2.3：超参数数量和敏感性|冻结单配置/评分/预算；三个测量头；不依据测试集改规则|实现与可复核冻结已完成；其他参数不敏感尚未证明|
+|R2.4：下降/残差假设、protective分支未覆盖|旧定理不用于新算法，移除protective；CE仅局部训练侧有限探针|全局下降和动态Gate收敛未证明|
+|R2.5：C/N/q开销扩展|测量291.57s、逻辑payload1.204GB、Adapter bank211.55MB；当前100类/100客户端|实测单规模；未做1000类/千客户端/q扫描。计数不是网络链路测量|
+|R3.1：Adapter位置/损失/分类器职责、可比性|客户端/profile/seed独立Adapter；detach特征上测量CE；任务CE/SGD与classifier Native不变|实现及2/20回归已实证；embedding效用对齐未证明|
+|R3.2：mismatch与真实冲突、精度–抑制折中|全体226对真正负LOO、确认仅33对；S0无Go；不启动Gate|效用验证完成且负结果；没有虚构抑制曲线或搜索阈值|
+|R3.3：Eq29全局下降对齐|实际区域方向/有符号接收CE，只是有限训练侧观测|不能支持全局下降保证|
+|R3.4：动态Gate与固定Gate理论差距|gamma恒1；没有激活动态Gate或宣称全算法收敛|未解决理论，明确移除不适用的结论|
+|R3.5：冻结头初始化及随机性|固定17/29/43，逐客户端/profile验证同头SHA；S0确认AUC0.522/0.533/0.534|三头敏感性实证完成；全部未通过。不是三个FL种子|
+|R3.6：Tiny-ImageNet多seed mean±std|未运行；C失败后不启动条件性seed1/2/3|未验证|
 
-Paper readiness requires more than this implementation. A negative utility result is a scientifically relevant answer to AE/R1/R3, not support for a semantic-gated performance claim. A07 remains a source-contribution aggregation candidate with single-seed exploratory evidence. Its classifier choice does not establish semantic knowledge protection.
+Semantic Memory：真实提交和因果时序已测试；预选S0没有增量，S2任务Anchor有有限回归信号，整体不足。Reliability Memory：支持/稳定性因果记录已实现并积累；留出增量未通过，且早晚support外推明显，不能解释为真实聚合使精度下降。
+
+最终论文资格：观测实现及负结果可复核，完整四阶段有效算法资格未成立。A07保留为单seed探索中有效的来源贡献聚合参考；其39.94%是test-oracle peak，既不是语义模块提升，也不是独立验证的泛化优势。

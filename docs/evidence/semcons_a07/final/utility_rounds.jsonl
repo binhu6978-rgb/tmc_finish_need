@@ -1,0 +1,14 @@
+{"round": 2, "physical_pairs": 402, "negative_loo_pairs": 7, "seconds": 5.99620702303946, "receiver_forward_examples": 25728}
+{"round": 5, "physical_pairs": 170, "negative_loo_pairs": 0, "seconds": 2.971885334001854, "receiver_forward_examples": 10880}
+{"round": 10, "physical_pairs": 222, "negative_loo_pairs": 0, "seconds": 4.086633468978107, "receiver_forward_examples": 14208}
+{"round": 20, "physical_pairs": 200, "negative_loo_pairs": 0, "seconds": 4.719334403984249, "receiver_forward_examples": 12800}
+{"round": 30, "physical_pairs": 170, "negative_loo_pairs": 4, "seconds": 3.0313731759088114, "receiver_forward_examples": 10880}
+{"round": 40, "physical_pairs": 278, "negative_loo_pairs": 0, "seconds": 5.0734552189242095, "receiver_forward_examples": 17792}
+{"round": 180, "physical_pairs": 302, "negative_loo_pairs": 49, "seconds": 5.305177132016979, "receiver_forward_examples": 19328}
+{"round": 190, "physical_pairs": 296, "negative_loo_pairs": 47, "seconds": 5.662120105000213, "receiver_forward_examples": 18944}
+{"round": 200, "physical_pairs": 426, "negative_loo_pairs": 10, "seconds": 7.331831669900566, "receiver_forward_examples": 27264}
+{"round": 210, "physical_pairs": 336, "negative_loo_pairs": 0, "seconds": 5.767417591996491, "receiver_forward_examples": 21504}
+{"round": 370, "physical_pairs": 356, "negative_loo_pairs": 14, "seconds": 6.015949870925397, "receiver_forward_examples": 22784}
+{"round": 380, "physical_pairs": 192, "negative_loo_pairs": 67, "seconds": 3.4184367350535467, "receiver_forward_examples": 12288}
+{"round": 390, "physical_pairs": 316, "negative_loo_pairs": 12, "seconds": 5.594054250977933, "receiver_forward_examples": 20224}
+{"round": 400, "physical_pairs": 330, "negative_loo_pairs": 16, "seconds": 5.758754177950323, "receiver_forward_examples": 21120}
