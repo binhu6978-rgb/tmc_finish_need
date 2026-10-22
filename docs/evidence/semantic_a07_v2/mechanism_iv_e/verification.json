@@ -1,0 +1,17 @@
+{
+  "linux_local_statistical_recomputation": true,
+  "maximum_absolute_difference": 9.159339953157541e-16,
+  "numeric_fields": 221,
+  "figure7_csv_rows": 436,
+  "figure8_csv_rows": 480,
+  "figure8_strict_memory_rows": "120 exact A07 fallback reuses, 360 independently evaluated counterfactual entries",
+  "training_rounds": 22,
+  "formal_400_runs": 0,
+  "pt_files": 0,
+  "source_sha": "5ca91c90fb15d494ad81444c8696ae4fc873c959",
+  "archive_sha256": "54309e66b8a19b8f950359c2fde40aa66bb04822f9348bb4400cb130bbd21346",
+  "raw_pair_math_and_coverage_checks": 436,
+  "region_share_max_normalization_error": 2.220446049250313e-16,
+  "pdf_render_review": "Both final PDFs rendered by Poppler and inspected; no clipping or hidden points",
+  "no_official_test_labels_used_for_utility": true
+}

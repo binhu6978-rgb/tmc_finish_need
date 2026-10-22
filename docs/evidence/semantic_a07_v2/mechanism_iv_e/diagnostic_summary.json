@@ -1,0 +1,410 @@
+{
+  "protocol": {
+    "version": "iv-e-v2-read-only-1",
+    "seed": 1,
+    "pilot_rounds": 2,
+    "diagnostic_rounds": 20,
+    "figure7_rounds": "every round 2..20, never selected by U or CE",
+    "probe_classes": 16,
+    "probe_samples_per_class": 2,
+    "probe_batch_size": 50,
+    "probe_independence": "exclude all fixed V2 measurement indices; different physical receivers; still training-side, not SGD-held-out",
+    "figure7_unit": "capability-tier A07-weighted actual SGD contribution, feature-only region, one hash-selected receiver per other covering tier",
+    "figure8_unit": "Full model; one fixed-priority nonparticipating physical receiver per tier per round",
+    "controls": [
+      "A07",
+      "V2",
+      "no_semantic_reference_matched_mask",
+      "no_reliability_calibration_matched_mask",
+      "permuted_semantics",
+      "A07_global_L2_matched"
+    ],
+    "ablation_scope": "same full-V2 eligible classes and validity mask; remove anchor advantage or rho only; not a new online algorithm",
+    "bins": [
+      0.0,
+      0.1,
+      0.2,
+      1.0
+    ],
+    "bootstrap_repetitions": 1000,
+    "analysis_seed": 20261022,
+    "regression": "fixed ridge=1, train-fold standardization; leave-round-out and receiver-group folds; no tuning",
+    "save_pt": false,
+    "feedback_to_training": false,
+    "formal_400_allowed": false
+  },
+  "completion": {
+    "success": true,
+    "rounds": 20,
+    "exact_old_v2_states_uploads_rng_evaluations": true,
+    "pt_files": 0
+  },
+  "source": {
+    "commit": "5ca91c90fb15d494ad81444c8696ae4fc873c959",
+    "argv": [
+      "tools/run_semantic_a07_iv_e.py",
+      "--rounds",
+      "20",
+      "--dataset-root",
+      "/home/hh/ICML_finish/data",
+      "--prepared",
+      "runs/capability_final40_400_seed1_20261021/prepared",
+      "--output-root",
+      "runs/semantic_a07_iv_e_20261022/diagnostic_20",
+      "--reference",
+      "runs/semantic_a07_v2_short_20261022/a07/active_20_seed1"
+    ],
+    "budget": 20,
+    "reference": "runs/semantic_a07_v2_short_20261022/a07/active_20_seed1",
+    "no_pt": true,
+    "no_official_test_data_in_diagnostic": true
+  },
+  "figure7": {
+    "total_pairs": 436,
+    "semantic_valid_pairs": 88,
+    "primary_pairs": 84,
+    "missing_common_probe_classes": 4,
+    "source_round_units": 11,
+    "effective_rounds": [
+      7,
+      12,
+      13,
+      15,
+      19
+    ],
+    "distinct_source_clients": 37,
+    "distinct_receivers": 29,
+    "primary_benefit_pairs": 54,
+    "primary_harm_pairs": 30,
+    "source_round_mean_utility": 0.007838741402713324,
+    "direction_negative_pairs": 0,
+    "association": {
+      "D": {
+        "pearson": 0.0005216589666389526,
+        "spearman": 0.2636363636363636,
+        "spearman_cluster95": [
+          -0.5813196297143789,
+          1.0
+        ],
+        "benefit_auc": 0.7083333333333334,
+        "source_round_units": 11
+      },
+      "M": {
+        "pearson": 0.6681062611735427,
+        "spearman": 0.7,
+        "spearman_cluster95": [
+          0.15039380932486493,
+          1.0
+        ],
+        "benefit_auc": 0.9166666666666666,
+        "source_round_units": 11
+      },
+      "U": {
+        "pearson": 0.753888599801342,
+        "spearman": 0.7909090909090909,
+        "spearman_cluster95": [
+          0.24960958774146136,
+          1.0
+        ],
+        "benefit_auc": 0.9583333333333334,
+        "source_round_units": 11
+      },
+      "permuted_U": {
+        "pearson": 0.295092851394551,
+        "spearman": 0.5363636363636364,
+        "spearman_cluster95": [
+          -1.0,
+          0.779825142958751
+        ],
+        "benefit_auc": 0.6666666666666666,
+        "source_round_units": 11
+      }
+    },
+    "bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "n": 2,
+        "mean": -0.023954680278187708,
+        "ci95": [
+          -0.04564394553502401,
+          -0.0022654150213514057
+        ]
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "n": 5,
+        "mean": 0.006315363516907818,
+        "ci95": [
+          -0.007926488271952453,
+          0.019617385807491484
+        ]
+      },
+      {
+        "lower": 0.2,
+        "upper": 1.0,
+        "n": 4,
+        "mean": 0.025639674600420725,
+        "ci95": [
+          0.021604701966421787,
+          0.029478169941077277
+        ]
+      }
+    ],
+    "incremental": {
+      "round": {
+        "status": "exploratory_only_few_independent_rounds",
+        "fold_kind": "round",
+        "models": {
+          "controls": {
+            "weighted_mse": 0.0037862998083194248,
+            "reduction_vs_controls": 0.0
+          },
+          "current_D": {
+            "weighted_mse": 0.004166351644464481,
+            "reduction_vs_controls": -0.10037552634104409
+          },
+          "D_plus_memory": {
+            "weighted_mse": 0.004135871408471998,
+            "reduction_vs_controls": -0.09232538833414058
+          },
+          "D_M_plus_reliability": {
+            "weighted_mse": 0.003970862013478323,
+            "reduction_vs_controls": -0.0487447414368429
+          },
+          "D_M_plus_permuted": {
+            "weighted_mse": 0.004571206873363937,
+            "reduction_vs_controls": -0.20730187908519024
+          }
+        },
+        "pairs": 84,
+        "source_round_units": 11,
+        "rounds": 5,
+        "warning": "weighted dependent responses; not independent validation of a score"
+      },
+      "receiver": {
+        "status": "exploratory_only_few_independent_rounds",
+        "fold_kind": "receiver",
+        "models": {
+          "controls": {
+            "weighted_mse": 0.004159334038499247,
+            "reduction_vs_controls": 0.0
+          },
+          "current_D": {
+            "weighted_mse": 0.004159784724536503,
+            "reduction_vs_controls": -0.00010835533599486068
+          },
+          "D_plus_memory": {
+            "weighted_mse": 0.004218161210569029,
+            "reduction_vs_controls": -0.014143411307019672
+          },
+          "D_M_plus_reliability": {
+            "weighted_mse": 0.0042682164499466425,
+            "reduction_vs_controls": -0.026177847328338645
+          },
+          "D_M_plus_permuted": {
+            "weighted_mse": 0.0042992454068589685,
+            "reduction_vs_controls": -0.033637925462270346
+          }
+        },
+        "pairs": 84,
+        "source_round_units": 11,
+        "rounds": 5,
+        "warning": "weighted dependent responses; not independent validation of a score"
+      }
+    },
+    "by_source_tier": {
+      "0": {
+        "units": 1,
+        "mean_U": 0.06109914040008195,
+        "mean_utility": -0.04564394553502401,
+        "within_tier_spearman": null
+      },
+      "1": {
+        "units": 5,
+        "mean_U": 0.17937680686990487,
+        "mean_utility": 0.015452179144180955,
+        "within_tier_spearman": 0.5
+      },
+      "2": {
+        "units": 5,
+        "mean_U": 0.18574507692808107,
+        "mean_utility": 0.010921841048793162,
+        "within_tier_spearman": 0.9
+      }
+    },
+    "all_probe_secondary_association": {
+      "D": {
+        "pearson": -0.05687915545296867,
+        "spearman": 0.38181818181818183,
+        "spearman_cluster95": [
+          -1.0,
+          0.9911907721190181
+        ],
+        "benefit_auc": 0.6666666666666666,
+        "source_round_units": 11
+      },
+      "M": {
+        "pearson": 0.15363676395795803,
+        "spearman": 0.23636363636363636,
+        "spearman_cluster95": [
+          -1.0,
+          0.8143638344710293
+        ],
+        "benefit_auc": 0.5,
+        "source_round_units": 11
+      },
+      "U": {
+        "pearson": 0.1614794955239531,
+        "spearman": 0.32727272727272727,
+        "spearman_cluster95": [
+          -1.0,
+          0.8835099344492339
+        ],
+        "benefit_auc": 0.6111111111111112,
+        "source_round_units": 11
+      },
+      "permuted_U": {
+        "pearson": 0.05945333634346266,
+        "spearman": 0.20909090909090908,
+        "spearman_cluster95": [
+          -0.9585837767930796,
+          1.0
+        ],
+        "benefit_auc": 0.6111111111111112,
+        "source_round_units": 11
+      }
+    },
+    "U_round_spearman": -0.11576059165259939,
+    "common_probe_class_counts": {
+      "4": 12,
+      "3": 7,
+      "5": 6,
+      "2": 5,
+      "8": 6,
+      "6": 1,
+      "10": 3,
+      "7": 9,
+      "9": 6,
+      "11": 3,
+      "12": 5,
+      "1": 21
+    }
+  },
+  "figure8": {
+    "nonneutral_rounds": [
+      7,
+      12,
+      13,
+      15,
+      19
+    ],
+    "neutral_fraction": 0.75,
+    "methods": {
+      "A07": {
+        "all20_mean_utility_vs_a07": 0.0,
+        "active_mean_utility_vs_a07": 0.0,
+        "active_cluster95": [
+          0.0,
+          0.0
+        ],
+        "active_benefit_probes": 0,
+        "active_harm_probes": 0,
+        "mean_active_difference_l2": 0.0,
+        "mean_active_update_l2": 0.9964047061942989
+      },
+      "A07_L2_matched": {
+        "all20_mean_utility_vs_a07": -2.9329229922344285e-06,
+        "active_mean_utility_vs_a07": -1.1731691968937714e-05,
+        "active_cluster95": [
+          -0.00015707185957580805,
+          0.00022147607523947954
+        ],
+        "active_benefit_probes": 4,
+        "active_harm_probes": 11,
+        "mean_active_difference_l2": 0.00037503944122159097,
+        "mean_active_update_l2": 0.9965072108752222
+      },
+      "V2": {
+        "all20_mean_utility_vs_a07": -5.724641960114241e-06,
+        "active_mean_utility_vs_a07": -2.2898567840456964e-05,
+        "active_cluster95": [
+          -0.0003560879908036439,
+          0.0002592114421228568
+        ],
+        "active_benefit_probes": 5,
+        "active_harm_probes": 10,
+        "mean_active_difference_l2": 0.0022717403246008184,
+        "mean_active_update_l2": 0.9965072315551778
+      },
+      "no_rm": {
+        "all20_mean_utility_vs_a07": -1.6418641704755523e-05,
+        "active_mean_utility_vs_a07": -6.567456681902209e-05,
+        "active_cluster95": [
+          -0.00040623050881549716,
+          0.00023208636230265261
+        ],
+        "active_benefit_probes": 5,
+        "active_harm_probes": 10,
+        "mean_active_difference_l2": 0.0026028552517515934,
+        "mean_active_update_l2": 0.9966204047886273
+      },
+      "no_rm_strict_fallback": {
+        "all20_mean_utility_vs_a07": 0.0,
+        "active_mean_utility_vs_a07": 0.0,
+        "active_cluster95": [
+          0.0,
+          0.0
+        ],
+        "active_benefit_probes": 0,
+        "active_harm_probes": 0,
+        "mean_active_difference_l2": 0.0,
+        "mean_active_update_l2": 0.9964047061942989
+      },
+      "no_sm": {
+        "all20_mean_utility_vs_a07": 1.3135796568046013e-05,
+        "active_mean_utility_vs_a07": 5.254318627218405e-05,
+        "active_cluster95": [
+          -0.0003293746927132209,
+          0.0004625574051585442
+        ],
+        "active_benefit_probes": 7,
+        "active_harm_probes": 8,
+        "mean_active_difference_l2": 0.002445112806148497,
+        "mean_active_update_l2": 0.9963516361403255
+      },
+      "no_sm_strict_fallback": {
+        "all20_mean_utility_vs_a07": 0.0,
+        "active_mean_utility_vs_a07": 0.0,
+        "active_cluster95": [
+          0.0,
+          0.0
+        ],
+        "active_benefit_probes": 0,
+        "active_harm_probes": 0,
+        "mean_active_difference_l2": 0.0,
+        "mean_active_update_l2": 0.9964047061942989
+      },
+      "permuted": {
+        "all20_mean_utility_vs_a07": -5.19350190491726e-06,
+        "active_mean_utility_vs_a07": -2.077400761966904e-05,
+        "active_cluster95": [
+          -0.000699778980601372,
+          0.00034312100149691094
+        ],
+        "active_benefit_probes": 11,
+        "active_harm_probes": 4,
+        "mean_active_difference_l2": 0.0030615575786066564,
+        "mean_active_update_l2": 0.9965110671390927
+      }
+    }
+  },
+  "strict_memory_controls": "exact original missing-memory neutral A07; reuse same evaluated model, not new GPU forwards",
+  "costs": {
+    "diagnostic_seconds": 21.158040032954887,
+    "recipient_forward_examples": 37056,
+    "hypothetical_region_downlink_bytes": 1620285664,
+    "hypothetical_class_feedback_bytes": 83712
+  }
+}
