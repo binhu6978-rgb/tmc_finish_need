@@ -1,0 +1,22 @@
+{
+  "version": "iv-e-v2-read-only-1",
+  "seed": 1,
+  "pilot_rounds": 2,
+  "diagnostic_rounds": 20,
+  "figure7_rounds": "every round 2..20, never selected by U or CE",
+  "probe_classes": 16,
+  "probe_samples_per_class": 2,
+  "probe_batch_size": 50,
+  "probe_independence": "exclude all fixed V2 measurement indices; different physical receivers; still training-side, not SGD-held-out",
+  "figure7_unit": "capability-tier A07-weighted actual SGD contribution, feature-only region, one hash-selected receiver per other covering tier",
+  "figure8_unit": "Full model; one fixed-priority nonparticipating physical receiver per tier per round",
+  "controls": ["A07", "V2", "no_semantic_reference_matched_mask", "no_reliability_calibration_matched_mask", "permuted_semantics", "A07_global_L2_matched"],
+  "ablation_scope": "same full-V2 eligible classes and validity mask; remove anchor advantage or rho only; not a new online algorithm",
+  "bins": [0.0, 0.1, 0.2, 1.0],
+  "bootstrap_repetitions": 1000,
+  "analysis_seed": 20261022,
+  "regression": "fixed ridge=1, train-fold standardization; leave-round-out and receiver-group folds; no tuning",
+  "save_pt": false,
+  "feedback_to_training": false,
+  "formal_400_allowed": false
+}
