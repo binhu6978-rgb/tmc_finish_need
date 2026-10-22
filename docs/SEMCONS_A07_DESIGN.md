@@ -28,6 +28,8 @@ Scores are signed harmfulness predictions, averaged uniformly over valid receive
 
 Also record Adapter probability JS changes, class support, anchor age and instrument drift. S0/S1 are evaluated for all three head seeds, without choosing a head by test score. Scores describe client functional observations; no claim of per-kernel semantics is made.
 
+For the separate Memory increment test, also record current-only embedding pre/post cosine distance and task pre/post JS, without any anchor. Compare controls+these current-only observations against the same features+selected anchor score. This contrast is frozen before real GPU data are collected.
+
 Semantic Memory contains category references. Independent Reliability Memory contains past per-client and per-client/profile valid-evidence counts, age and dispersion; it is read before scoring and committed afterwards, with one observation per physical identity per round. Group summaries remain group summaries. At least two prior valid rounds and age<=100 are required for readiness. It does not infer correctness from repeated disagreement. Stage C explicitly tests whether past support/stability adds held-out utility information; no reliability Gate is enabled here.
 
 ## Real utility and controls

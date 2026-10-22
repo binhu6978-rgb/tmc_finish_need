@@ -25,11 +25,14 @@ def js(a, b):
 
 
 def scores(before, after, task_before, task_after, anchors, task_anchors, round_number, max_age, classes=None):
-    values = dict(S0=[], S1=[], S2=[], adapter_probability_drift=[])
+    values = dict(S0=[], S1=[], S2=[], adapter_probability_drift=[], current_embedding_change=[], current_task_change=[])
     ages = []; valid_classes = []
     for y in sorted(after if classes is None else classes):
         if y not in before or y not in after:
             continue
+        values['current_embedding_change'].append(1-float(F.cosine_similarity(before[y]['embedding'], after[y]['embedding'], dim=0)))
+        if y in task_before and y in task_after:
+            values['current_task_change'].append(js(task_after[y]['probability'], task_before[y]['probability']))
         anchor = anchors.get(y)
         if anchor and 0 < round_number - anchor['round'] <= max_age:
             z = anchor['embedding']

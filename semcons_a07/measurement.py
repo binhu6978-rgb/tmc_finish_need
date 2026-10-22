@@ -71,7 +71,10 @@ class Measurement:
 
     def before(self, net, cid):
         with isolated_evaluation_rng():
-            return features(net, self.batches(cid))
+            value = features(net, self.batches(cid))
+            if next(net.parameters()).is_cuda:
+                torch.cuda.synchronize(next(net.parameters()).device)
+            return value
 
     def after(self, net, cid, profile, round_number, before, anchors, reliability):
         started = time.perf_counter()
