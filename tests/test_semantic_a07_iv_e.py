@@ -85,3 +85,47 @@ def test_actual_diagnostic_preserves_upload_dispatch_model_rng_and_pair_identiti
     assert all(r['receiver'] not in {c for c,p in h.slots} for r in row['figure8'])
     assert all(r['utility_vs_a07']==0 for r in row['figure8'] if r['method']=='A07')
     assert not list(tmp_path.rglob('*.pt'))
+
+
+def test_analysis_sign_ranks_auc_and_missingness():
+    from tools.analyze_semantic_a07_iv_e import rank,corr,auc
+    assert np.allclose(rank(np.array([1.,1.,3.])),[.5,.5,2.])
+    assert corr([1,2,3],[3,2,1],spearman=True)==-1
+    assert corr([1,1,1],[1,2,3],spearman=True) is None
+    assert auc([.8,.1],[.01,-.02])==1
+    assert auc([.8,.1],[.01,.02]) is None
+
+
+def test_source_round_units_not_repeated_regions():
+    from tools.analyze_semantic_a07_iv_e import points_from
+    rows=[dict(round=7,source_tier=1,region=r,receiver=c,common_utility=y,source_clients=[40,41],
+        D=.2,M=.1,U=.06,rho=.6,permuted_U=.07) for r,c,y in [(0,70,.1),(0,71,.3),(1,70,-.1)]]
+    points=points_from(rows)
+    assert len(points)==1 and points[0]['pairs']==3 and abs(points[0]['utility']-.05)<1e-12
+    assert points[0]['receivers']==[70,71] and points[0]['regions']==2
+
+
+def test_grouped_ridge_has_fixed_models_and_source_balancing():
+    from tools.analyze_semantic_a07_iv_e import incremental
+    rows=[]
+    for rd in (7,12,13,15,19):
+        for g in (1,2):
+            for i in range(2):
+                rows.append(dict(round=rd,source_tier=g,receiver=70+i,region=i,
+                    common_utility=.001*(rd-g+i),source_delta_l2=.01*rd,direction_cosine=.5,
+                    receiver_tier=2,receiver_profile=6,source_mass=100,region_numel=20,
+                    source_receiver_label_js=.1,source_profile_mean=2,source_own_gain=.2,before_ce=2.,
+                    D=.1*rd,M=.05*rd,U=.02*rd,permuted_U=.03*rd))
+    result=incremental(rows,'round')
+    assert result['source_round_units']==10 and len(result['models'])==5
+    assert len(result['predictions'])==100 and all(p['weight']==.5 for p in result['predictions'])
+
+
+def test_strict_memory_knockouts_are_identical_a07_models_not_new_measurements():
+    from test_semantic_a07_v2 import past,records
+    from semcons_a07_v2.scoring import complementarity
+    cfg,sem,rel=past();h,u,n,w,_=setup('a07');h.aggregate(u,n,w);base=h.aggregate(u,n,w)
+    for anchors,history in (({},rel.tier_snapshot()),(sem.tier_snapshot(),{})):
+        missing=complementarity(records(),anchors,history,rel,4,[0,1,2],cfg)
+        actual,report=fuse(base,w,u,n,h,missing,.2,False)
+        assert actual is base and report['changed_parameters']==0
