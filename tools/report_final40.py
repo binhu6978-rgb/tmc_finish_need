@@ -80,14 +80,15 @@ def summarize_diagnostics(logs):
         matched_norm_relative_error_max=max((s['matched_norm_relative_error'] for s in servers if s['matched_norm_relative_error'] is not None), default=None))
 
 
-def report(root):
+def report(root, output=None, reference_paths=None):
     prepared = load(root / 'prepared/manifest.json')
     references, curves, records, mechanisms, costs, first = {}, {}, [], {}, [], {}
-    for name, relative in REFERENCES.items():
+    reference_paths = reference_paths or REFERENCES
+    for name, relative in reference_paths.items():
         path = ROOT / relative
         references[name], _ = describe(name, name.lower(), path / 'accuracy_each_round.csv', 2)
         curves[name], _ = read_logs(path)
-    a_schedule = read_logs(ROOT / REFERENCES['P04'])[1]
+    a_schedule = read_logs(ROOT / reference_paths['P04'])[1]
     for gpu in (0, 1):
         status = load(root / f'gpu{gpu}/status.json')
         if status['state'] != 'completed' or status['failed'] or len(status['completed']) != 20:
@@ -142,7 +143,7 @@ def report(root):
             last50_wins=sum(r['last50_mean_minus_native'] > 0 for r in selected),
             final_wins=sum(r['final_accuracy_minus_native'] > 0 for r in selected),
             final_ce_lower=sum(r['final_ce_minus_native'] < 0 for r in selected)))
-    output = root / 'report'
+    output = output or root / 'report'
     output.mkdir(exist_ok=False)
     write_csv(output / 'comparison40.csv', records)
     write_csv(output / 'costs.csv', costs)
@@ -166,7 +167,9 @@ def report(root):
             for method in ('Native', 'G03', 'P04', 'P05'):
                 name = condition + '-' + method
                 ax.plot(range(1, 401), [float(r[key]) for r in curves[name]], label=method, linewidth=1)
-            ax.set(title=condition + ' ' + str(prepared[condition]['condition']), xlabel='Round', ylabel=label)
+            setting = prepared[condition]['condition']
+            title = f"{condition}: {setting['dataset'].replace('cifar','CIFAR-')}\nalpha={setting['alpha']}, capacity={setting['ratio']}"
+            ax.set(title=title, xlabel='Round', ylabel=label)
             ax.legend(); ax.grid(alpha=.2)
         axes.flat[-1].axis('off'); fig.tight_layout(); fig.savefig(output / ('gpu1_' + key + '.png'), dpi=150); plt.close(fig)
         write_csv(output / (key + '_all_rounds.csv'), [dict(round=i+1, **{name: data[i][key] for name, data in curves.items()}) for i in range(400)])
@@ -186,4 +189,14 @@ def report(root):
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(__doc__); p.add_argument('--root', type=Path, required=True)
-    report(p.parse_args().root)
+    p.add_argument('--output', type=Path)
+    p.add_argument('--local-evidence', action='store_true', help='Read retained scalar references under docs/evidence')
+    args = p.parse_args()
+    references = None
+    if args.local_evidence:
+        references = {
+            'B00-D': 'docs/evidence/native_groups10_results/baseline',
+            'G03': 'docs/evidence/native_groups10_results/raw/G03',
+            **{n: 'docs/evidence/g03_completed_results/p400/' + n.lower() + '/' + n + '_full_only_400_seed1_deterministic' for n in ('P04','P05')}
+        }
+    report(args.root, args.output, references)

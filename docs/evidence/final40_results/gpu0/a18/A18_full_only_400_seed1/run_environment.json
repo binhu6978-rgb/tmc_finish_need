@@ -1,0 +1,38 @@
+{
+  "pid": 4089613,
+  "argv": [
+    "tools/run_final40_job.py",
+    "--job",
+    "A18",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--prepared",
+    "runs/capability_final40_400_seed1_20261021/prepared",
+    "--output-root",
+    "runs/capability_final40_400_seed1_20261021/gpu0"
+  ],
+  "job": "A18",
+  "condition": {
+    "dataset": "cifar100",
+    "alpha": 0.3,
+    "ratio": "4:3:3",
+    "classes": 100
+  },
+  "dataset_root": "/home/hh/ICML_finish/data",
+  "cuda_visible_devices": "0",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "torch": "2.7.1+cu118",
+  "train_examples": 50000,
+  "test_examples": 10000,
+  "deterministic_execution": {
+    "deterministic_algorithms": true,
+    "warn_only": false,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "cublas_workspace_config": ":4096:8"
+  },
+  "prepared_partition": "runs/capability_final40_400_seed1_20261021/prepared",
+  "save_pt": false
+}

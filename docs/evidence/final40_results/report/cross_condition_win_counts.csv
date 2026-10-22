@@ -1,0 +1,4 @@
+method,conditions,peak_wins,last20_wins,last50_wins,final_wins,final_ce_lower
+G03,5,5,4,4,4,4
+P04,5,5,4,4,4,4
+P05,5,5,5,5,3,4

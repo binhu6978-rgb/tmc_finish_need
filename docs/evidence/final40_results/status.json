@@ -1,0 +1,47 @@
+{
+  "parent_pid": 3985127,
+  "state": "completed",
+  "queues": {
+    "0": {
+      "pid": 3985128,
+      "state": "completed",
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_final40.py",
+        "--queue",
+        "0",
+        "--python",
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--output-root",
+        "runs/capability_final40_400_seed1_20261021"
+      ],
+      "exit_code": 0
+    },
+    "1": {
+      "pid": 3985129,
+      "state": "completed",
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_final40.py",
+        "--queue",
+        "1",
+        "--python",
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--output-root",
+        "runs/capability_final40_400_seed1_20261021"
+      ],
+      "exit_code": 0
+    }
+  },
+  "requested_jobs": 40,
+  "epochs": 400,
+  "seed": 1,
+  "save_pt": false,
+  "updated": 1792628201.3727171
+}
