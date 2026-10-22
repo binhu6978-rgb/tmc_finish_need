@@ -1,0 +1,23 @@
+{
+  "version": "semantic-a07-pair500-v1",
+  "seed": 1,
+  "rounds": 500,
+  "semantic_lambda": 0.2,
+  "stages": {"early": [8, 24], "middle": [242, 258], "late": [484, 500]},
+  "diagnostic_rounds": [1, 2],
+  "window_stride": 1,
+  "probe_samples_per_class": 2,
+  "probe_classes": 100,
+  "probe_batch_size": 50,
+  "probe_scope": "original client training partition, exclude semantic measurement indices; NOT SGD-independent",
+  "evaluation": "official test, Full only, once each round; no feedback to scores",
+  "checkpoint_interval": 50,
+  "checkpoint_retention": "one rolling latest recovery checkpoint per trajectory, no best-test checkpoint",
+  "controls": ["A07", "V2", "no_sm", "no_rm", "permuted", "A07_L2_matched"],
+  "analysis_seed": 20261023,
+  "bootstrap_repetitions": 1000,
+  "score_selection": false,
+  "new_score_candidate": false,
+  "crd": {"status": "omitted_by_user", "value": null},
+  "completion": "exactly 500 continuous finite Full Accuracy and CE rows per trajectory"
+}
