@@ -2,7 +2,7 @@ import hashlib
 import json
 from pathlib import Path
 
-DEFAULT = Path(__file__).resolve().parents[1] / 'configs/semcons_a07_observation.json'
+DEFAULT = Path(__file__).resolve().parents[1] / 'configs/semcons_a07_observation_v2.json'
 
 
 def load(path=DEFAULT):

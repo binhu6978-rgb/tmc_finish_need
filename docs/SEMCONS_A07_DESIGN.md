@@ -1,12 +1,18 @@
 # Frozen A07 observational design v1
 
-Frozen before new GPU observations. Machine-readable constants: `configs/semcons_a07_observation.json`. Stage B/C are read-only; gamma is exactly1 and actual aggregation calls the unchanged `Final40Hooks.aggregate`. No formal Gate is authorized by an implementation test alone.
+Original design was frozen before new GPU observations in `configs/semcons_a07_observation.json`. The outcome-blind sampling amendment below produces the Stage C config `configs/semcons_a07_observation_v2.json`. Stage B/C are read-only; gamma is exactly1 and actual aggregation calls the unchanged `Final40Hooks.aggregate`. No formal Gate is authorized by an implementation test alone.
 
 ## Budget and separation
 
 Two fresh seed1 A07 runs of20 rounds: original reference and instrumented observation. Compare all seven states, slot identities, Full test CE/accuracy and training RNG at initialization and every round, including round2. No checkpoint is written. Any mismatch stops further observation runs pending diagnosis.
 
 After successful equivalence, one fresh400-round **observation-only A07 trajectory** generates actual uploads in memory. Fixed diagnostic rounds: early2/5/10/20, middle180/190/200/210, late370/380/390/400. Up to two senders per covered multi-physical region, two other physical receivers each, hash ordering fixed independently of scores/CE/direction. The first round is excluded. No additional trajectories or cases are added to remedy insufficient samples. A short20-round observed run is the utility pipeline pilot, not held-out efficacy evidence. No historical upload is reconstructed from CSV.
+
+### Sampling feasibility amendment, before any utility-score analysis
+
+V1 completed real2/20 exact regression at `dd583b70859167a557b3583a88e8c87b3d388657`. A separate identity-only count over the archived A07 schedule found that the original2x2 sampling could yield at most19 development and68 confirmation pairs, even before missing semantic evidence. It cannot meet the unchanged100-pair criterion. This is a design feasibility failure, not evidence against any score. No utility CE, semantic values or test accuracy were used to choose the correction.
+
+V2 uses10 physical senders and9 other physical receivers per region: all actual ordered physical pairs, one pre-fixed representative upload per identity. Round2 has no past anchor because first-round initialization is excluded, which removes50 of the150 possible development pairs. Therefore V2 also precommits two additional early diagnostic points30/40, giving14 fixed points in the same single400-round A07 trajectory. The identity-only upper counts become190 development and652 confirmation pairs (3996 total including descriptive pairs); development has140 opportunities after the known round2 cold start. There is no extra SGD trajectory, score, threshold, head or hyperparameter search. Missing anchor/classes can still make the analysis inconclusive. V2 repeats the real2/20 neutral regression under its own source/config proof before Stage C. Original V1 code/config/evidence remain traceable in Git and their run directory. The following analysis and stopping criteria are unchanged.
 
 Development: early-stage pairs whose sender and receiver IDs are both <70. Select at most one of S0/S1/S2 on development grouped cross-validation error (tie order S0,S1,S2). Confirmation: middle/late pairs whose sender and receiver IDs are both >=70. The remaining records are descriptive only. This separates both stages and physical participants. The partition can yield too few pairs; that is an explicit inconclusive/No-Go outcome, not permission to relax it.
 
