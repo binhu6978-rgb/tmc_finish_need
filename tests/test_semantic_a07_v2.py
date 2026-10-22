@@ -154,3 +154,51 @@ def test_missingness_is_not_tier_inferiority(case):
     if case=='one_class':current={key:v for key,v in current.items() if key[1]==0}
     if case=='nonfinite':current[0,0]['post']=float('nan');current[0,1]['pre']=float('inf')
     assert not complementarity(current,anchors,history,rel,4,tiers,cfg)['valid']
+
+
+def test_strongest_unreliable_reference_is_not_replaced_by_easier_tier():
+    cfg,sem,rel=past();anchors=sem.tier_snapshot();history=rel.tier_snapshot()
+    for y in (0,1):
+        anchors[1,y]['q']=.9
+        del history[1,y]
+    d=complementarity(records(),anchors,history,rel,4,[0,1,2],cfg)
+    assert not d['valid']
+    assert not any(v['tier']==0 for v in d['details'])
+
+
+def test_zero_confidence_is_missing_not_a_weak_source_score():
+    cfg,sem,rel=past();history=rel.tier_snapshot()
+    for values in history.values():
+        for v in values:v['change']=1.
+    d=complementarity(records(),sem.tier_snapshot(),history,rel,4,[0,1,2],cfg)
+    assert not d['valid'] and d['scores']=={}
+
+
+def test_actual_seven_resnet_shapes_synthetic_semantics_activate_feature_only():
+    from types import SimpleNamespace
+    from models.resnet import ResNet18_cifar
+    from models.Fed import split_model
+    from capability_final40 import Final40Hooks
+    rates=[(.4,2),(.4,3),(.4,4),(.66,2),(.66,3),(.66,4),(1.,2)]
+    models=[ResNet18_cifar(num_channels=3,num_classes=100,track_running_stats=False,
+                          scale=w,slim_idx=d) for w,d in rates]
+    args=SimpleNamespace(method='a07',num_users=100,num_classes=100,_final40_context=dict(
+        population=[40,30,30],boundaries=[40,70],data_mass=[20000,15000,15000]))
+    hook=Final40Hooks(args,models)
+    hook.set_slots(zip((1,2,40,41,70,71,72),range(7)))
+    full={k:torch.full_like(v,.01) for k,v in models[-1].state_dict().items()}
+    uploads=[{k:v.clone()+.02*(i+1) for k,v in split_model(full,m.state_dict()).items()}
+             for i,m in enumerate(models)]
+    lens=[2,6,10,14,20,12,16]
+    hook.aggregate(uploads,lens,full);base=hook.aggregate(uploads,lens,full)
+    out,report=fuse(base,full,uploads,lens,hook,decision(),.2,False)
+    assert len(hook.regions)==9 and report['changed_parameters']>0
+    assert report['difference_from_a07_l2']>0
+    for key in hook.bn_keys|{'classifier.weight','classifier.bias'}:
+        assert torch.equal(out[key],base[key])
+    assert all(torch.isfinite(v).all() for v in out.values())
+    print('SYNTHETIC_ONLY_ACTIVATION',json.dumps(dict(
+        kind='constructed semantic records and constructed uploads; NOT real training benefit',
+        real_model_profiles=rates,region_count=len(hook.regions),scores=decision()['scores'],
+        changed_parameters=report['changed_parameters'],difference_from_a07_l2=report['difference_from_a07_l2'],
+        classifier_bn_unchanged=True,regions=report['regions'])))
