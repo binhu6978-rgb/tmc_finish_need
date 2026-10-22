@@ -1,0 +1,319 @@
+{
+  "status": "Pilot only: no scientific Go",
+  "rounds": 20,
+  "source_commit": "1c7699be63f22751fb28568f635dd9276ba7290c",
+  "config_sha256": "a8baa1ccd5cfe65a7f689d51a5f3acabf2a199b4957c99d059686500bccfb0d0",
+  "analysis_commit": "01e8a92049fc096dc977fbbbe64d029ad4de887e",
+  "analysis_source_sha256": "a6b2a6f6f9f91c8f4628703590b47278479c21cd41a3f3f6ca59f29f02cad925",
+  "analysis_command": [
+    "tools/analyze_semcons_a07.py",
+    "runs/semcons_a07_regression_v2_20261022/a07/observe_20_seed1",
+    "--output",
+    "runs/semcons_a07_regression_v2_20261022/pilot_analysis"
+  ],
+  "scoring_input": "training-side paired CE only; official-test CSV is not read by this tool",
+  "selected_by_development": "S2",
+  "actual_pairs": {
+    "pairs": 994,
+    "senders": 30,
+    "receivers": 30,
+    "harmful": 370,
+    "beneficial": 624,
+    "zero": 0,
+    "negative_loo": 7,
+    "stages": {
+      "early": 994
+    },
+    "profiles": {
+      "6": 203,
+      "4": 210,
+      "1": 100,
+      "5": 178,
+      "2": 181,
+      "0": 54,
+      "3": 68
+    }
+  },
+  "scores": {
+    "S0": {
+      "development": {
+        "pairs": 100,
+        "senders": 12,
+        "receivers": 12,
+        "harmful": 32,
+        "beneficial": 68,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 100
+        },
+        "profiles": {
+          "0": 19,
+          "5": 17,
+          "1": 18,
+          "2": 25,
+          "4": 21
+        },
+        "auc": 0.4060202205882353,
+        "pearson": -0.15796067054353372,
+        "spearman": -0.1294510744343171
+      },
+      "confirmation": {
+        "pairs": 0,
+        "senders": 0,
+        "receivers": 0,
+        "harmful": 0,
+        "beneficial": 0,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {},
+        "profiles": {}
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.0027103954341743002,
+        "evaluated_pairs": 100
+      },
+      "go": false,
+      "reason": "insufficient_disjoint_development_or_confirmation"
+    },
+    "S1": {
+      "development": {
+        "pairs": 100,
+        "senders": 12,
+        "receivers": 12,
+        "harmful": 32,
+        "beneficial": 68,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 100
+        },
+        "profiles": {
+          "0": 19,
+          "5": 17,
+          "1": 18,
+          "2": 25,
+          "4": 21
+        },
+        "auc": 0.5549172794117647,
+        "pearson": 0.1197285808738076,
+        "spearman": 0.11899074547687298
+      },
+      "confirmation": {
+        "pairs": 0,
+        "senders": 0,
+        "receivers": 0,
+        "harmful": 0,
+        "beneficial": 0,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {},
+        "profiles": {}
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.003076430252455351,
+        "evaluated_pairs": 100
+      },
+      "go": false,
+      "reason": "insufficient_disjoint_development_or_confirmation"
+    },
+    "S2": {
+      "development": {
+        "pairs": 100,
+        "senders": 12,
+        "receivers": 12,
+        "harmful": 32,
+        "beneficial": 68,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 100
+        },
+        "profiles": {
+          "0": 19,
+          "5": 17,
+          "1": 18,
+          "2": 25,
+          "4": 21
+        },
+        "auc": 0.46484375,
+        "pearson": 0.18891656683025504,
+        "spearman": 0.00022818168793506123
+      },
+      "confirmation": {
+        "pairs": 0,
+        "senders": 0,
+        "receivers": 0,
+        "harmful": 0,
+        "beneficial": 0,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {},
+        "profiles": {}
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.002140786166055357,
+        "evaluated_pairs": 100
+      },
+      "go": false,
+      "reason": "insufficient_disjoint_development_or_confirmation"
+    }
+  },
+  "head_sensitivity": {
+    "17": {
+      "development": {
+        "pairs": 100,
+        "senders": 12,
+        "receivers": 12,
+        "harmful": 32,
+        "beneficial": 68,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 100
+        },
+        "profiles": {
+          "0": 19,
+          "5": 17,
+          "1": 18,
+          "2": 25,
+          "4": 21
+        },
+        "auc": 0.46484375,
+        "pearson": 0.18891656683025504,
+        "spearman": 0.00022818168793506123
+      },
+      "confirmation": {
+        "pairs": 0,
+        "senders": 0,
+        "receivers": 0,
+        "harmful": 0,
+        "beneficial": 0,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {},
+        "profiles": {}
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.002140786166055357,
+        "evaluated_pairs": 100
+      },
+      "go": false,
+      "reason": "insufficient_disjoint_development_or_confirmation"
+    },
+    "29": {
+      "development": {
+        "pairs": 100,
+        "senders": 12,
+        "receivers": 12,
+        "harmful": 32,
+        "beneficial": 68,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 100
+        },
+        "profiles": {
+          "0": 19,
+          "5": 17,
+          "1": 18,
+          "2": 25,
+          "4": 21
+        },
+        "auc": 0.46484375,
+        "pearson": 0.18891656683025504,
+        "spearman": 0.00022818168793506123
+      },
+      "confirmation": {
+        "pairs": 0,
+        "senders": 0,
+        "receivers": 0,
+        "harmful": 0,
+        "beneficial": 0,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {},
+        "profiles": {}
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.002140786166055357,
+        "evaluated_pairs": 100
+      },
+      "go": false,
+      "reason": "insufficient_disjoint_development_or_confirmation"
+    },
+    "43": {
+      "development": {
+        "pairs": 100,
+        "senders": 12,
+        "receivers": 12,
+        "harmful": 32,
+        "beneficial": 68,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {
+          "early": 100
+        },
+        "profiles": {
+          "0": 19,
+          "5": 17,
+          "1": 18,
+          "2": 25,
+          "4": 21
+        },
+        "auc": 0.46484375,
+        "pearson": 0.18891656683025504,
+        "spearman": 0.00022818168793506123
+      },
+      "confirmation": {
+        "pairs": 0,
+        "senders": 0,
+        "receivers": 0,
+        "harmful": 0,
+        "beneficial": 0,
+        "zero": 0,
+        "negative_loo": 0,
+        "stages": {},
+        "profiles": {}
+      },
+      "missing": 402,
+      "development_cv": {
+        "mse": 0.002140786166055357,
+        "evaluated_pairs": 100
+      },
+      "go": false,
+      "reason": "insufficient_disjoint_development_or_confirmation"
+    }
+  },
+  "comparability": {
+    "17": {
+      "mean_same_minus_different_cosine": -0.0001803540091229906,
+      "mean_classification_accuracy": 0.011039032892484318
+    },
+    "29": {
+      "mean_same_minus_different_cosine": -0.0003910073970088456,
+      "mean_classification_accuracy": 0.010092766655166143
+    },
+    "43": {
+      "mean_same_minus_different_cosine": 0.00022508692184495778,
+      "mean_classification_accuracy": 0.013273445494005515
+    }
+  },
+  "adapter_space_minimal_checks": false,
+  "memory_roles": "Increment tests above; support is not measured correctness",
+  "pair_dependence": "Each pair once per head; sender and receiver cluster bootstrap separately; repeated classes/regions are dependent",
+  "overhead": {
+    "backbone_forward_examples": 38388,
+    "adapter_backward_examples": 57582,
+    "logical_upload_bytes": 60192384,
+    "measurement_seconds": 21.264631086145528,
+    "final_adapter_storage_bytes": 77068800
+  },
+  "formal_gate_authorized": false,
+  "formal_training_started": false
+}

@@ -1,0 +1,25 @@
+{
+  "status": "Pilot only: no scientific Go",
+  "selected": "S2",
+  "pairs": {
+    "pairs": 994,
+    "senders": 30,
+    "receivers": 30,
+    "harmful": 370,
+    "beneficial": 624,
+    "zero": 0,
+    "negative_loo": 7,
+    "stages": {
+      "early": 994
+    },
+    "profiles": {
+      "6": 203,
+      "4": 210,
+      "1": 100,
+      "5": 178,
+      "2": 181,
+      "0": 54,
+      "3": 68
+    }
+  }
+}
