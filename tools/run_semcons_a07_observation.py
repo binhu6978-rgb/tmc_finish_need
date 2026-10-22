@@ -44,6 +44,11 @@ def main():
     files = [*sorted((ROOT/'semcons_a07').glob('*.py')), Path(__file__), opt.config]
     source = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
     commit = subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip()
+    if opt.rounds == 400:
+        if proof['source_sha256'] != source or proof['partition_sha256'] != args._method_partition_sha256:
+            raise ValueError('Observer source/partition differs from the real regression proof')
+        if any(hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != sha for name, sha in proof['frozen_source_sha256'].items()):
+            raise ValueError('Frozen A07 source differs from the real regression proof')
     try:
         base.set_random_seed(1)
         train, test = datasets_for(condition, opt.dataset_root)

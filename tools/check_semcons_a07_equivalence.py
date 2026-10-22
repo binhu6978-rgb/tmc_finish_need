@@ -24,6 +24,8 @@ def compare(reference, observed):
                 mismatches.append(dict(round=a['round'], field=key))
     return dict(exact_match=success and not mismatches, rounds=rounds,
         config_sha256=manifests[0]['config']['config_sha256'], commit=manifests[0]['commit'],
+        source_sha256=manifests[0]['source_sha256'], partition_sha256=manifests[0]['partition_sha256'],
+        frozen_source_sha256=json.loads((reference/'manifest.json').read_text())['identity']['source_sha256'],
         reference=str(reference), observed=str(observed), round2_exact=not any(r['round']<=2 for r in mismatches) and success,
         mismatches=mismatches, checks='all seven numerical state digests, per-slot upload and RNG, round RNG, schedule, Full CE/accuracy')
 
