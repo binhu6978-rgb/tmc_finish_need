@@ -1,0 +1,22 @@
+{
+  "version": "iv-e-expanded-heldout-1",
+  "seed": 1,
+  "budget_rounds": 120,
+  "pilot_rounds": 2,
+  "stages": {"early": [8,24], "middle": [48,64], "later": [104,120]},
+  "heldout_fraction": 0.2,
+  "split_rule": "within each original client/class with n>=4: min(n-2,max(2,floor(n/5))) hash-selected eval indices; all others SGD",
+  "probe_samples_per_class": 2,
+  "probe_classes": "all heldout classes, no selection by U or utility",
+  "receiver_cohort": "seed_of(expanded-confirmation,cid)%2; frozen before outcomes",
+  "primary_cohort": "confirmation",
+  "semantic_formula": "unchanged V2; original task measurement uses SGD subset only",
+  "full_evaluation": "pooled heldout validation, never official test",
+  "diagnostic_controls": ["A07", "V2", "no_sm", "no_rm", "permuted", "A07_L2_matched"],
+  "analysis_seed": 20261023,
+  "bootstrap_repetitions": 1000,
+  "training_repeat_allowed": false,
+  "formal_400_allowed": false,
+  "new_score_candidate": false,
+  "save_pt": false
+}
