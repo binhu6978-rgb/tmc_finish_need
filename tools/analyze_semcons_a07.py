@@ -2,9 +2,11 @@
 import argparse
 from collections import defaultdict, Counter
 import json
+import hashlib
 import math
 from pathlib import Path
 import sys
+import subprocess
 import numpy as np
 import torch
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +96,22 @@ def grouped_cv(rows, score):
     return dict(mse=float(np.mean(errors)) if errors else None, evaluated_pairs=count)
 
 
+def simple_control(train, test, kind):
+    def xx(rows):
+        if kind=='direction':
+            return np.array([[1., r['direction_cosine'] or 0., float(r['direction_cosine'] is None)] for r in rows])
+        return np.array([[1., math.log(max(r['scaled_update_l2'], 1e-12))] for r in rows])
+    x, v = xx(train), xx(test)
+    beta = torch.linalg.lstsq(torch.from_numpy(x), torch.tensor([r['delta_ce'] for r in train],dtype=torch.float64),driver='gelsd').solution
+    prediction = (torch.from_numpy(v)@beta).numpy()
+    valid = [r for r in test if kind!='direction' or r['direction_cosine'] is not None]
+    score = [-r['direction_cosine'] if kind=='direction' else math.log(max(r['scaled_update_l2'],1e-12)) for r in valid]
+    return dict(mse=float(np.mean((prediction-np.array([r['delta_ce'] for r in test]))**2)),
+        auc=auc(score,[r['delta_ce']>0 for r in valid]), pairs=len(valid),
+        spearman=correlation(score,[r['delta_ce'] for r in valid], True),
+        definition='negative cosine; missing has a separate model indicator' if kind=='direction' else 'log scaled regional update L2')
+
+
 def interval(values):
     values = [v for v in values if v is not None and math.isfinite(v)]
     return [float(x) for x in np.quantile(values, [.025, .975])] if values else None
@@ -175,6 +193,7 @@ def score_result(rows, cfg, score):
         den = float(np.mean(a))
         return (den-float(np.mean(b)))/den if den>0 else None
     result.update(control_mse=float(b.mean()), augmented_mse=float(c.mean()), relative_mse_gain=gain(b,c),
+        direction_only=simple_control(dev, confirm, 'direction'), magnitude_only=simple_control(dev, confirm, 'magnitude'),
         memory_increment_gain=gain((current-yy)**2, (with_memory-yy)**2),
         reliability_increment_gain=gain((with_memory-yy)**2, (with_history-yy)**2),
         bootstrap=bootstrap(confirm, cfg, score, b, c),
@@ -230,6 +249,8 @@ def analyze(path, output):
     output.mkdir(parents=True, exist_ok=False)
     result = dict(status='Go' if go else 'No-Go' if full_budget else 'Pilot only: no scientific Go',
         rounds=complete['rounds_completed'], source_commit=manifest['commit'], config_sha256=cfg['config_sha256'],
+        analysis_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+        analysis_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), analysis_command=sys.argv,
         scoring_input='training-side paired CE only; official-test CSV is not read by this tool',
         selected_by_development=selected, actual_pairs=description(primary), scores=results,
         head_sensitivity=sensitivity, comparability= comparability,

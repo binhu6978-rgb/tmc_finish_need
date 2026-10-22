@@ -1,0 +1,103 @@
+{
+  "pid": 4185423,
+  "status": "completed",
+  "phase": "B",
+  "batches": [
+    {
+      "rounds": 2,
+      "jobs": [
+        {
+          "mode": "reference",
+          "pid": 4185426,
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_semcons_a07_observation.py",
+            "--mode",
+            "reference",
+            "--rounds",
+            "2",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/semcons_a07_regression_v2_20261022"
+          ],
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "mode": "observe",
+          "pid": 4185427,
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_semcons_a07_observation.py",
+            "--mode",
+            "observe",
+            "--rounds",
+            "2",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/semcons_a07_regression_v2_20261022"
+          ],
+          "status": "completed",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "rounds": 20,
+      "jobs": [
+        {
+          "mode": "reference",
+          "pid": 4185616,
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_semcons_a07_observation.py",
+            "--mode",
+            "reference",
+            "--rounds",
+            "20",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/semcons_a07_regression_v2_20261022"
+          ],
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "mode": "observe",
+          "pid": 4185617,
+          "argv": [
+            "/home/hh/miniconda3/envs/hh/bin/python",
+            "-u",
+            "tools/run_semcons_a07_observation.py",
+            "--mode",
+            "observe",
+            "--rounds",
+            "20",
+            "--dataset-root",
+            "/home/hh/ICML_finish/data",
+            "--prepared",
+            "runs/capability_final40_400_seed1_20261021/prepared",
+            "--output-root",
+            "runs/semcons_a07_regression_v2_20261022"
+          ],
+          "status": "completed",
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "formal_gate": false,
+  "equivalence_passed": true
+}

@@ -1,0 +1,4 @@
+{"round": 2, "physical_pairs": 402, "negative_loo_pairs": 7, "seconds": 10.045797637081705, "receiver_forward_examples": 25728}
+{"round": 5, "physical_pairs": 170, "negative_loo_pairs": 0, "seconds": 4.541120886919089, "receiver_forward_examples": 10880}
+{"round": 10, "physical_pairs": 222, "negative_loo_pairs": 0, "seconds": 6.327864160062745, "receiver_forward_examples": 14208}
+{"round": 20, "physical_pairs": 200, "negative_loo_pairs": 0, "seconds": 3.799774867016822, "receiver_forward_examples": 12800}

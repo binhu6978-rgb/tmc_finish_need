@@ -1,0 +1,106 @@
+{
+  "mode": "observe",
+  "rounds": 2,
+  "commit": "dd583b70859167a557b3583a88e8c87b3d388657",
+  "source_sha256": {
+    "semcons_a07/__init__.py": "38f7573ebc798f320a0a37ab5d79d83ed27586a0f35b944b94771f8bf602c7a4",
+    "semcons_a07/adapter.py": "a584fd1fbc76a9df2f7ca1efe11530166ae3cf2bd5af177a18dd31e788810ea3",
+    "semcons_a07/aggregation.py": "db4987808146f62ef34a9afa862652c488650c80aeb47b700627869701b436ce",
+    "semcons_a07/config.py": "bf5a930e9e51fc4ad35ed5e941706208587ad2896210fb042a4481b1583dfe4d",
+    "semcons_a07/diagnostics.py": "6a84efa381a3c886c386d3edfe0aded1d85d78c5c8c484956431fd947537a067",
+    "semcons_a07/measurement.py": "359768a971262a14e2db1900ced8a1df13611dc40d56f498b2796a44e093f08c",
+    "semcons_a07/prototypes.py": "bf131b9a2d0bafe64bebd1a78006eda5fe45db2430151f0e00b17941c210b9ca",
+    "semcons_a07/reliability_memory.py": "96e520d11e9a0faf955b0962f60bcda29447801ab3116941d6b6393a7293bbca",
+    "semcons_a07/semantic_memory.py": "52503f6b9aa40430c7e91e3291b92eb34e12f67fd69c7321af65a71d6e5a4bad",
+    "semcons_a07/trainer.py": "7ee6b62bf5113a498e2adc27a08132878cfadba13905d53bd5cdc66596067cae",
+    "tools/run_semcons_a07_observation.py": "076f37e21eb66a18ea33f6b01a0df956e63f22ca593144e8bae915c842bebbd4",
+    "configs/semcons_a07_observation.json": "ef166f4178ed32cf4112700f11afc734726013763e2dd638d964cc19e1c929a6"
+  },
+  "config": {
+    "version": 1,
+    "base_method": "a07",
+    "base_training_commit": "24e79dbb26ce718b533e7bc2c440a91c628caa25",
+    "seed": 1,
+    "head_seeds": [
+      17,
+      29,
+      43
+    ],
+    "embedding_dim": 128,
+    "samples_per_class": 2,
+    "minimum_class_support": 2,
+    "measurement_batch_size": 50,
+    "adapter_lr": 0.01,
+    "adapter_epochs": 1,
+    "anchor_ema": 0.9,
+    "anchor_max_age": 100,
+    "minimum_anchor_clients": 2,
+    "history_max_age": 100,
+    "history_min_rounds": 2,
+    "diagnostic_rounds": {
+      "early": [
+        2,
+        5,
+        10,
+        20
+      ],
+      "middle": [
+        180,
+        190,
+        200,
+        210
+      ],
+      "late": [
+        370,
+        380,
+        390,
+        400
+      ]
+    },
+    "senders_per_region": 2,
+    "receivers_per_sender_region": 2,
+    "utility_classes_per_receiver": 16,
+    "utility_samples_per_class": 2,
+    "bootstrap_replicates": 500,
+    "analysis_seed": 20261022,
+    "minimum_pairs_per_split": 100,
+    "minimum_senders_per_split": 10,
+    "minimum_receivers_per_split": 10,
+    "minimum_sign_labels_per_split": 20,
+    "minimum_auc": 0.6,
+    "minimum_incremental_relative_mse_gain": 0.02,
+    "gamma": 1.0,
+    "formal_gate_enabled": false,
+    "config_sha256": "ef166f4178ed32cf4112700f11afc734726013763e2dd638d964cc19e1c929a6"
+  },
+  "argv": [
+    "tools/run_semcons_a07_observation.py",
+    "--mode",
+    "observe",
+    "--rounds",
+    "2",
+    "--dataset-root",
+    "/home/hh/ICML_finish/data",
+    "--prepared",
+    "runs/capability_final40_400_seed1_20261021/prepared",
+    "--output-root",
+    "runs/semcons_a07_regression_v1_20261022"
+  ],
+  "pid": 4183667,
+  "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+  "deterministic_execution": {
+    "deterministic_algorithms": true,
+    "warn_only": false,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "cublas_workspace_config": ":4096:8"
+  },
+  "physical_gpu": "0",
+  "torch": "2.7.1+cu118",
+  "train_examples": 50000,
+  "test_examples": 10000,
+  "formal_gate": false,
+  "selection": "fixed train-side diagnostic design; Full test is never a score input"
+}
