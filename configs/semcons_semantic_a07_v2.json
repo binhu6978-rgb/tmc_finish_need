@@ -1,0 +1,23 @@
+{
+  "version": "semantic-a07-v2",
+  "semantic_lambda": 0.2,
+  "head_seeds": [17, 29, 43],
+  "embedding_dim": 128,
+  "samples_per_class": 2,
+  "minimum_class_support": 2,
+  "measurement_batch_size": 50,
+  "adapter_lr": 0.01,
+  "adapter_epochs": 1,
+  "anchor_ema": 0.9,
+  "anchor_max_age": 100,
+  "minimum_anchor_clients": 2,
+  "history_max_age": 100,
+  "history_min_rounds": 2,
+  "minimum_common_classes": 2,
+  "utility_samples_per_class": 2,
+  "utility_classes_per_receiver": 16,
+  "diagnostic_rounds": {},
+  "decision_input": "correct-class task probability only; Adapter auxiliary",
+  "first_round": "exact Native; no reference commit",
+  "scope": "shared non-BN feature cells; classifier Native, BN A07"
+}
