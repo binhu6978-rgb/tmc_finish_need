@@ -42,6 +42,8 @@ CUDA_VISIBLE_DEVICES=0 /home/hh/miniconda3/envs/hh/bin/python -u tools/run_semco
 
 finalize工具核对全部11988条head记录的配对身份、Native注入系数、支持区域、逐类CE加权、相同utility；验证3996对每对三头、14诊断点、无当前轮Anchor/历史年龄越界、四channel100类及全400中性。原始配对统计在本地独立重算，779数值字段最大差1.015e-11。245项当前专项测试结果见local_final_tests.log及linux_final_tests.log；此前Linux240项与真实GPU smoke均保留。
 
+最后Linux测试实际245通过（13.07s）；独立在服务器原始run目录执行finalize审计，退出码0。该次核验代码提交ed07801cf38465bc604038fb440e1c664b9c485c，后续提交只补齐其日志/交付记录，不改变评分或训练源码。两张交付图已完成视觉核验。原始展开记录仍在服务器run及本地ignored cache，发布gzip保留同一原始字节与SHA索引。
+
 历史400轮没有保存权重，因此只有2/20轮具备全状态精确对照；400轮可以核验全部指标/调度和初始状态，不伪称400轮历史权重逐bit比较。Probe使用私有训练样本，是条件性训练侧效用而非泛化标签。开发/确认同时有阶段与能力层转移；Reliability支持明显越界，不能把线性外推误差理解为Memory本质无用。负LOO确认33对不足以独立支持该子群结论。
 
 实现没有证明Prototype具有跨客户端效用可比性；S0无效用增量，S1仅弱关联，S2有少量Anchor回归迹象仍未过Go。完整方法未优于A07，因为没有获准激活或开展其性能实验。不能强行把无作用Memory写入论文有效模块。原型utility核心问题尚未解决，相关方法、模型×数据异构控制、其他模态、真实扩展成本、多seed及适用的新理论仍欠缺，详见审稿映射。

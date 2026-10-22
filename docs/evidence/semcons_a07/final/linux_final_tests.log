@@ -1,0 +1,21 @@
+........................................................................ [ 29%]
+........................................................................ [ 58%]
+........................................................................ [ 88%]
+.............................                                            [100%]
+=============================== warnings summary ===============================
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12
+  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68
+  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    if LooseVersion(torch.__version__) >= LooseVersion("1.1.0"):
+
+utils/options.py:107
+  /home/hh/TMC_re_e03_scope_components400_20261019/utils/options.py:107: SyntaxWarning: invalid escape sequence '\ '
+    parser.add_argument("--client_chosen_mode", default='available', type=str, help="available \ fit \ random \ RL 客户端的资源是否是固定 还是以高斯分布动态的")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+245 passed, 5 warnings in 13.07s
