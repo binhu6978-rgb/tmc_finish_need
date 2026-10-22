@@ -1,0 +1,345 @@
+{
+  "checks": {
+    "2": {
+      "rounds": 2,
+      "source_commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "neutral_exact_all_states_rng_evaluations": true,
+      "active_first_round_exact": true,
+      "active_schedule_rng_equal": true,
+      "nonneutral_rounds": [],
+      "valid_evidence_rounds": [],
+      "maximum_difference_from_same_input_a07_l2": 0.0,
+      "adapter_in_decision": false,
+      "short_correctness_only": true
+    },
+    "20": {
+      "rounds": 20,
+      "source_commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "neutral_exact_all_states_rng_evaluations": true,
+      "active_first_round_exact": true,
+      "active_schedule_rng_equal": true,
+      "nonneutral_rounds": [
+        7,
+        12,
+        13,
+        15,
+        19
+      ],
+      "valid_evidence_rounds": [
+        7,
+        12,
+        13,
+        15,
+        19
+      ],
+      "maximum_difference_from_same_input_a07_l2": 0.006568451452085205,
+      "adapter_in_decision": false,
+      "short_correctness_only": true
+    }
+  },
+  "runs": {
+    "reference_2": {
+      "commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "argv": [
+        "tools/run_semantic_a07_v2.py",
+        "--mode",
+        "reference",
+        "--rounds",
+        "2",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--output-root",
+        "runs/semantic_a07_v2_short_20261022"
+      ],
+      "resources": {
+        "wall_seconds": 31.044477072078735,
+        "peak_allocated_bytes": 1042416128,
+        "peak_reserved_bytes": 1140850688
+      }
+    },
+    "neutral_2": {
+      "commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "argv": [
+        "tools/run_semantic_a07_v2.py",
+        "--mode",
+        "neutral",
+        "--rounds",
+        "2",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--output-root",
+        "runs/semantic_a07_v2_short_20261022"
+      ],
+      "resources": {
+        "wall_seconds": 33.6512952670455,
+        "peak_allocated_bytes": 1039314432,
+        "peak_reserved_bytes": 1140850688
+      },
+      "decision_reasons": {
+        "no_fair_common_category_support": 2
+      },
+      "valid_evidence_rounds": [],
+      "nonneutral_rounds": [],
+      "maximum_changed_parameters": 0,
+      "maximum_difference_from_same_input_a07_l2": 0.0,
+      "maximum_tier_share_absolute_change": 0.0,
+      "mean_common_valid_classes": 0,
+      "maximum_common_valid_classes": 0,
+      "backbone_forward_examples": 3752,
+      "adapter_backward_examples": 5628,
+      "measurement_seconds": 2.292813173495233,
+      "local_train_seconds": 24.20107179216575,
+      "memory_commit_seconds": 0.03890483209397644,
+      "score_seconds": 0.009389854036271572,
+      "fusion_seconds": 3.0311057344079018e-05,
+      "auxiliary_logical_upload_bytes": 5883136,
+      "decision_message_json_bytes": 80735,
+      "final_adapter_tensor_bytes": 8971776,
+      "fixed_probe_image_label_tensor_bytes": 19722784,
+      "final_tier_anchor_json_bytes": 18512,
+      "final_tier_reliability_json_bytes": 20297,
+      "head_sha256": {
+        "17": [
+          "475dd52ee2d2865b057fc8ca28f5f339b93bf3f9d927ca8dde0fbbae255de268"
+        ],
+        "29": [
+          "9763f46c0f96860f669be64ddea529b9d022b0e2670a1a58451b0517ad1728a7"
+        ],
+        "43": [
+          "ee83516ec1e26e7bee5f6a6c5b11153bbea8d601746af9754d0ff4b953ac936b"
+        ]
+      },
+      "adapter_in_decision": false
+    },
+    "active_2": {
+      "commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "argv": [
+        "tools/run_semantic_a07_v2.py",
+        "--mode",
+        "active",
+        "--rounds",
+        "2",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--output-root",
+        "runs/semantic_a07_v2_short_20261022"
+      ],
+      "resources": {
+        "wall_seconds": 24.773478275048546,
+        "peak_allocated_bytes": 1039314432,
+        "peak_reserved_bytes": 1140850688
+      },
+      "decision_reasons": {
+        "no_fair_common_category_support": 2
+      },
+      "valid_evidence_rounds": [],
+      "nonneutral_rounds": [],
+      "maximum_changed_parameters": 0,
+      "maximum_difference_from_same_input_a07_l2": 0.0,
+      "maximum_tier_share_absolute_change": 0.0,
+      "mean_common_valid_classes": 0,
+      "maximum_common_valid_classes": 0,
+      "backbone_forward_examples": 3752,
+      "adapter_backward_examples": 5628,
+      "measurement_seconds": 1.6363525359192863,
+      "local_train_seconds": 17.815654946840368,
+      "memory_commit_seconds": 0.048502707039006054,
+      "score_seconds": 0.012637251056730747,
+      "fusion_seconds": 3.285706043243408e-05,
+      "auxiliary_logical_upload_bytes": 5883136,
+      "decision_message_json_bytes": 80735,
+      "final_adapter_tensor_bytes": 8971776,
+      "fixed_probe_image_label_tensor_bytes": 19722784,
+      "final_tier_anchor_json_bytes": 18512,
+      "final_tier_reliability_json_bytes": 20297,
+      "head_sha256": {
+        "17": [
+          "475dd52ee2d2865b057fc8ca28f5f339b93bf3f9d927ca8dde0fbbae255de268"
+        ],
+        "29": [
+          "9763f46c0f96860f669be64ddea529b9d022b0e2670a1a58451b0517ad1728a7"
+        ],
+        "43": [
+          "ee83516ec1e26e7bee5f6a6c5b11153bbea8d601746af9754d0ff4b953ac936b"
+        ]
+      },
+      "adapter_in_decision": false
+    },
+    "reference_20": {
+      "commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "argv": [
+        "tools/run_semantic_a07_v2.py",
+        "--mode",
+        "reference",
+        "--rounds",
+        "20",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--output-root",
+        "runs/semantic_a07_v2_short_20261022"
+      ],
+      "resources": {
+        "wall_seconds": 309.2849229199346,
+        "peak_allocated_bytes": 1104749056,
+        "peak_reserved_bytes": 1308622848
+      }
+    },
+    "neutral_20": {
+      "commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "argv": [
+        "tools/run_semantic_a07_v2.py",
+        "--mode",
+        "neutral",
+        "--rounds",
+        "20",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--output-root",
+        "runs/semantic_a07_v2_short_20261022"
+      ],
+      "resources": {
+        "wall_seconds": 351.7361373130698,
+        "peak_allocated_bytes": 1101883904,
+        "peak_reserved_bytes": 1312817152
+      },
+      "decision_reasons": {
+        "no_fair_common_category_support": 15,
+        "task_grounded_potential_complementarity": 5
+      },
+      "valid_evidence_rounds": [
+        7,
+        12,
+        13,
+        15,
+        19
+      ],
+      "nonneutral_rounds": [],
+      "maximum_changed_parameters": 0,
+      "maximum_difference_from_same_input_a07_l2": 0.0,
+      "maximum_tier_share_absolute_change": 0.0,
+      "mean_common_valid_classes": 6.6,
+      "maximum_common_valid_classes": 43,
+      "backbone_forward_examples": 38388,
+      "adapter_backward_examples": 57582,
+      "measurement_seconds": 27.52394560049288,
+      "local_train_seconds": 264.7619656776078,
+      "memory_commit_seconds": 1.1805977642070502,
+      "score_seconds": 0.16192619409412146,
+      "fusion_seconds": 0.00037545745726674795,
+      "auxiliary_logical_upload_bytes": 60192384,
+      "decision_message_json_bytes": 813670,
+      "final_adapter_tensor_bytes": 77068800,
+      "fixed_probe_image_label_tensor_bytes": 92097040,
+      "final_tier_anchor_json_bytes": 48836,
+      "final_tier_reliability_json_bytes": 359142,
+      "head_sha256": {
+        "17": [
+          "475dd52ee2d2865b057fc8ca28f5f339b93bf3f9d927ca8dde0fbbae255de268"
+        ],
+        "29": [
+          "9763f46c0f96860f669be64ddea529b9d022b0e2670a1a58451b0517ad1728a7"
+        ],
+        "43": [
+          "ee83516ec1e26e7bee5f6a6c5b11153bbea8d601746af9754d0ff4b953ac936b"
+        ]
+      },
+      "adapter_in_decision": false
+    },
+    "active_20": {
+      "commit": "863087e0bcead3e73f15f9317aa9fe79da1b0c92",
+      "config_sha256": "35b5f9783cba7c73d1ee65e05ee33d30cdb3312d7a0a261fe0d475915f45f71c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+      "argv": [
+        "tools/run_semantic_a07_v2.py",
+        "--mode",
+        "active",
+        "--rounds",
+        "20",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--output-root",
+        "runs/semantic_a07_v2_short_20261022"
+      ],
+      "resources": {
+        "wall_seconds": 266.56410568300635,
+        "peak_allocated_bytes": 1101883904,
+        "peak_reserved_bytes": 1312817152
+      },
+      "decision_reasons": {
+        "no_fair_common_category_support": 15,
+        "task_grounded_potential_complementarity": 5
+      },
+      "valid_evidence_rounds": [
+        7,
+        12,
+        13,
+        15,
+        19
+      ],
+      "nonneutral_rounds": [
+        7,
+        12,
+        13,
+        15,
+        19
+      ],
+      "maximum_changed_parameters": 6900120,
+      "maximum_difference_from_same_input_a07_l2": 0.006568451452085205,
+      "maximum_tier_share_absolute_change": 0.0051269656754471815,
+      "mean_common_valid_classes": 6.6,
+      "maximum_common_valid_classes": 43,
+      "backbone_forward_examples": 38388,
+      "adapter_backward_examples": 57582,
+      "measurement_seconds": 20.119341084267944,
+      "local_train_seconds": 204.2613824843429,
+      "memory_commit_seconds": 1.1079448758391663,
+      "score_seconds": 0.2113496079109609,
+      "fusion_seconds": 0.3710914623225108,
+      "auxiliary_logical_upload_bytes": 60192384,
+      "decision_message_json_bytes": 813625,
+      "final_adapter_tensor_bytes": 77068800,
+      "fixed_probe_image_label_tensor_bytes": 92097040,
+      "final_tier_anchor_json_bytes": 48800,
+      "final_tier_reliability_json_bytes": 359135,
+      "head_sha256": {
+        "17": [
+          "475dd52ee2d2865b057fc8ca28f5f339b93bf3f9d927ca8dde0fbbae255de268"
+        ],
+        "29": [
+          "9763f46c0f96860f669be64ddea529b9d022b0e2670a1a58451b0517ad1728a7"
+        ],
+        "43": [
+          "ee83516ec1e26e7bee5f6a6c5b11153bbea8d601746af9754d0ff4b953ac936b"
+        ]
+      },
+      "adapter_in_decision": false
+    }
+  },
+  "interpretation": "Software correctness only; no demonstrated utility or A07 performance benefit"
+}
