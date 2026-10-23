@@ -1,0 +1,5 @@
+{
+  "success": true,
+  "rounds": 2,
+  "models_slots_local_sgd_rng_official_test_exact_to_frozen_active500": true
+}
