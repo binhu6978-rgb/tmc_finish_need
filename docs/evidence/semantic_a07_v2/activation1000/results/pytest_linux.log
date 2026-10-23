@@ -1,0 +1,18 @@
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+........................................................................ [ 73%]
+........................................................................ [ 97%]
+.......                                                                  [100%]
+=============================== warnings summary ===============================
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12
+  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68
+../miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68
+  /home/hh/miniconda3/envs/hh/lib/python3.12/site-packages/thop/profile.py:68: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    if LooseVersion(torch.__version__) >= LooseVersion("1.1.0"):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+295 passed, 4 warnings in 15.98s

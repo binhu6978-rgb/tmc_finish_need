@@ -1,0 +1,3 @@
+index, name, memory.used [MiB], memory.free [MiB], utilization.gpu [%]
+0, NVIDIA GeForce RTX 4090, 603 MiB, 23479 MiB, 31 %
+1, NVIDIA GeForce RTX 4090, 22507 MiB, 1574 MiB, 39 %

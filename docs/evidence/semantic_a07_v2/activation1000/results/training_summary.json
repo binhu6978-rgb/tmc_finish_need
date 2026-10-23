@@ -1,0 +1,110 @@
+{
+  "method": "a07",
+  "configuration": {
+    "seed": 1,
+    "epochs": 1000,
+    "num_users": 100,
+    "frac": 0.1,
+    "local_ep": 5,
+    "local_bs": 50,
+    "bs": 128,
+    "lr": 0.01,
+    "lr_decay": 0.998,
+    "momentum": 0.5,
+    "weight_decay": 0.0001,
+    "optimizer": "sgd",
+    "dataset": "cifar100",
+    "model": "resnet",
+    "iid": 0,
+    "data_beta": 0.3,
+    "client_hetero_ration": "4:3:3",
+    "client_chosen_mode": "available",
+    "method": "a07",
+    "options": {
+      "version": 1,
+      "mode": "a07",
+      "first_round": "exact Native",
+      "context": {
+        "condition": "A",
+        "population": [
+          40,
+          30,
+          30
+        ],
+        "boundaries": [
+          40,
+          70
+        ],
+        "data_mass": [
+          19931,
+          15373,
+          14696
+        ],
+        "partition_rule": "original dirichlet_split_unbalanced, seed1/min_size10/max_retry500; original alpha.3 retained verbatim"
+      },
+      "region_count": 9,
+      "masses": "covered sample-slot mass except explicit A11-A15 definitions",
+      "normalization": "Native covered-coordinate normalization; original uploaded states, not a replacement delta rule",
+      "single_tier": "Native source weights; A01-A04 global norm control may rescale covered single-tier regions",
+      "scope": "A06 means partially shared only (1 < profile support < 7); BN keys from module types",
+      "scale": "same-input Full displacement from original Full anchor; zero source/nonzero target raises",
+      "semantic_v2": {
+        "lambda_value": 0.2,
+        "adapter_in_decision": false,
+        "reference": "past tier/category true-class task probability",
+        "bn": "unchanged A07",
+        "classifier": "Native"
+      }
+    },
+    "eval_profiles": "full",
+    "eval_rng_policy": "isolated",
+    "logging_schema": 2,
+    "execution_policy": {
+      "deterministic_algorithms": true,
+      "warn_only": false,
+      "cudnn_deterministic": true,
+      "cudnn_benchmark": false,
+      "cudnn_allow_tf32": false,
+      "matmul_allow_tf32": false,
+      "cublas_workspace_config": ":4096:8"
+    },
+    "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+    "num_classes": 100,
+    "condition": "A",
+    "source_sha256": {
+      "main_fed_ori.py": "2c63e10b02726a25cc28d15b84499f0f113a6c04de089bc645e17ea92ef8d5d6",
+      "Algorithm/Training_AdaptiveFL.py": "7ae50d253b4a665e3fa5aebc812d028697eae390bb1d7a0caf800503528b7b3f",
+      "models/Update.py": "6a88809934ed2b5ec7ac067ee1892e369836b3b6dd5f295e0756e2bd5941d985",
+      "models/Fed.py": "255ac2cb27f0855de9b93d6e74cb8b0f6ef06d5ecb771530464f529e455cba0b",
+      "models/resnet.py": "eab9d12f938040108ae772ff5422933e03551de382d3c2564a33cd99bc177ea5",
+      "models/test.py": "3b85d5781ec7f5d82eca34ab9e0deb2291a366e69de6382e7cd3beb700758a72",
+      "utils/options.py": "44610f5f2cd0a81a3385702c187a34a9419fd7fbe9183d5b0bd93d92bca4b5c6",
+      "adapterfl_methods.py": "babdd758b96d9f613f0837a964b91ce56d5bdd7888cda1adb3481ed0d40eeacf",
+      "utils/get_datatset_new.py": "72eb44f888133b60fd4aa86999bdfc36cc95adb42248ee56df4801a15d55afce",
+      "utils/set_seed.py": "60148d2a912a3889e06eac3765be4d65e66c19ef7d661057cc5fa5679358d866",
+      "utils/reproducibility.py": "64d74705285c3b409e895fe94ac478f062f07c5bc74fb55f308e0737ac471323",
+      "native_group_aggregation.py": "becc61c9c392cb7c2b88853de73d9dcbe74d2566c363ae611e4eae053ea83876",
+      "semcons_scope.py": "05241c654b9612fe3a960abf94e9f682d9972b430a17106c47f72a5aac3f0cda",
+      "tools/run_evidence_candidate.py": "b746ade6fc04041cb8b404d03957260b5a7aae4b6292e93d27e48976d4faf6c4",
+      "configs/native_groups10_400.json": "76b97f16f719427baaa38d07e6eef20b7b2240f427d68a81376f7d3134ecdb23",
+      "capability_final40.py": "fef87dc14ba7e728b004c0a00e166f6edd5080ddd04c55d2d222b7abced7ed56",
+      "tools/run_final40_job.py": "91f18b20d280c72e87220d3c22c0107882357123cfe99b416486b8d76681ec28",
+      "tools/final40_data.py": "5c3bc543119a1dbabfb71ff1775e9e0f9ba8e3bb7b5a58dc0c3861c2e25c0cde",
+      "configs/capability_final40_400.json": "059381d0e07ace2eea48fffe69a45df766d10e9b1567acd07a58ff32b81f3de7",
+      "configs/g03_refinements10_400.json": "518631efafb30f0cba10d99454436198b3a9fb31849685332aa49d5e63593f7e"
+    }
+  },
+  "rounds_completed": 1000,
+  "requested_epochs": 1000,
+  "best_full_accuracy": 39.32999801635742,
+  "best_round": 567,
+  "peak_label": "test-oracle peak",
+  "final_full_accuracy": 39.22999954223633,
+  "final_full_ce": 3.7504420280456543,
+  "last20_full_mean": 38.97249927520752,
+  "last20_full_std": 0.1268412738981656,
+  "last20_count": 20,
+  "last50_full_mean": 38.893599319458005,
+  "elapsed_seconds": 20667.263019531034,
+  "selection": "Checkpoint files disabled by user; scalar test-oracle peak only"
+}

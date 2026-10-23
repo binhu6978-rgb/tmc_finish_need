@@ -1,0 +1,25 @@
+{
+  "rounds": 1000,
+  "active_rounds": 602,
+  "valid_rounds": 602,
+  "fallback_counts": {
+    "first_round_native": 1,
+    "no_fair_common_category_support": 396,
+    "source_blend": 602,
+    "one_current_tier": 1
+  },
+  "source_round_observations": 1626,
+  "used_category_observations": 27085,
+  "semantic_memory_numerically_limits": 20790,
+  "reliability_numerically_modifies": 16225,
+  "changed_parameter_max": 6902454,
+  "difference_l2_max": 0.00832304666254995,
+  "region_share_change_pp_max": 0.630655998462798,
+  "case_rule": "first actually active round in each fixed stage; smallest all-profile shared region; never select by U magnitude, Accuracy or CE utility",
+  "scope": "computational participation and intervention, no utility or accuracy attribution",
+  "source_commit": "149c6713c339204ad23fe43952350ae2832b3cd0",
+  "config_sha256": "0452a08a6fb90e1bd95644c8c10dc1177e89ecdbcbe7c8f7ee13af3a12d0d441",
+  "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41",
+  "adapter_in_score": false,
+  "training_side_probes": true
+}

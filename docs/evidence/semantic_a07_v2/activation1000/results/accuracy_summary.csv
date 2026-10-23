@@ -1,0 +1,2 @@
+profile,rounds_completed,final_accuracy,final_ce,last20_count,last20_mean,last20_std_population
+P6,1000,39.22999954223633,3.7504420280456543,20,38.97249927520752,0.1268412738981656

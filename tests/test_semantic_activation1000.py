@@ -54,3 +54,11 @@ def test_real_smoke_comparison_rejects_any_changed_trace(tmp_path):
     assert verify_smoke(a,b)['success']
     rows[2]['rng']='changed';b.write_text('\n'.join(map(json.dumps,rows)))
     with pytest.raises(AssertionError):verify_smoke(a,b)
+
+
+def test_csv_redraw_preserves_all_values_and_rows(tmp_path):
+    from tools.report_semantic_activation import read_plot_csv,write_csv
+    rows=[dict(round=1,active=False,value=0.,nested={'age':0},missing=None),
+          dict(round=2,active=True,value=1e-14,nested={'age':50},missing='actual_missing')]
+    path=tmp_path/'data.csv';write_csv(path,rows);before=path.read_bytes()
+    assert read_plot_csv(path)==rows and path.read_bytes()==before

@@ -1,0 +1,15 @@
+{
+  "pdf_pages": {
+    "figure7_score_formation.pdf": 1,
+    "figure8_aggregation_activation.pdf": 1
+  },
+  "render_dpi": 150,
+  "visual_inspection": "Both final PDFs rendered and inspected; no overlapping annotations, labels or clipping",
+  "all_original_rows_preserved": true,
+  "layout_only_changes": [
+    "Before/after SGD legend wording",
+    "move annotation off data",
+    "fusion displacement title"
+  ],
+  "delivery_tests": "7 passed in4.16s"
+}

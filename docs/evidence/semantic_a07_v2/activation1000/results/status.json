@@ -1,0 +1,96 @@
+{
+  "pid": 366263,
+  "commit": "149c6713c339204ad23fe43952350ae2832b3cd0",
+  "physical_gpu": 0,
+  "formal_runs": 1,
+  "epochs": 1000,
+  "phase": "completed",
+  "success": true,
+  "processes": [
+    {
+      "name": "pytest_linux",
+      "pid": 366272,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_semantic_pair500.py",
+        "tests/test_semantic_iv_e_holdout.py",
+        "tests/test_semantic_a07_iv_e.py",
+        "tests/test_semantic_a07_v2.py",
+        "tests/test_semcons_a07.py",
+        "tests/test_semcons_a07_analysis.py",
+        "tests/test_semcons_a07_regression_evidence.py",
+        "tests/test_semcons_a07_final_evidence.py",
+        "tests/test_final40.py",
+        "tests/test_adapterfl_methods.py",
+        "tests/test_fd_semconsfl.py",
+        "tests/test_semcons_scope.py",
+        "tests/test_receiver_ce_probe.py",
+        "tests/test_semantic_pair500_report.py",
+        "tests/test_semantic_activation1000.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "smoke2",
+      "pid": 366388,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_semantic_pair500.py",
+        "--mode",
+        "active",
+        "--protocol",
+        "configs/semantic_a07_activation1000.json",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--rounds",
+        "2",
+        "--output-root",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_v2_activation1000_seed1_20261023/smoke"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "active1000",
+      "pid": 366572,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_semantic_pair500.py",
+        "--mode",
+        "active",
+        "--protocol",
+        "configs/semantic_a07_activation1000.json",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--rounds",
+        "1000",
+        "--execute1000",
+        "--pilot-proof",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_v2_activation1000_seed1_20261023/smoke_pass.json",
+        "--output-root",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_v2_activation1000_seed1_20261023/active"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "activation_report",
+      "pid": 543460,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "tools/report_semantic_activation.py",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_v2_activation1000_seed1_20261023/active"
+      ],
+      "returncode": 0
+    }
+  ],
+  "started": 1792725009.7005794,
+  "finished": 1792745734.9127936
+}

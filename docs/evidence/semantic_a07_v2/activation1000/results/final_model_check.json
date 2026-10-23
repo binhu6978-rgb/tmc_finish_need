@@ -1,0 +1,267 @@
+{
+  "round": 1000,
+  "full_numel": 11424356,
+  "full_shapes": {
+    "features.0.0.weight": [
+      64,
+      3,
+      3,
+      3
+    ],
+    "features.0.1.weight": [
+      64
+    ],
+    "features.0.1.bias": [
+      64
+    ],
+    "features.1.0.left1.0.weight": [
+      96,
+      64,
+      3,
+      3
+    ],
+    "features.1.0.left1.1.weight": [
+      96
+    ],
+    "features.1.0.left1.1.bias": [
+      96
+    ],
+    "features.1.0.left2.0.weight": [
+      96,
+      96,
+      3,
+      3
+    ],
+    "features.1.0.left2.1.weight": [
+      96
+    ],
+    "features.1.0.left2.1.bias": [
+      96
+    ],
+    "features.1.0.shortcut.0.weight": [
+      96,
+      64,
+      1,
+      1
+    ],
+    "features.1.0.shortcut.1.weight": [
+      96
+    ],
+    "features.1.0.shortcut.1.bias": [
+      96
+    ],
+    "features.1.1.left1.0.weight": [
+      96,
+      96,
+      3,
+      3
+    ],
+    "features.1.1.left1.1.weight": [
+      96
+    ],
+    "features.1.1.left1.1.bias": [
+      96
+    ],
+    "features.1.1.left2.0.weight": [
+      96,
+      96,
+      3,
+      3
+    ],
+    "features.1.1.left2.1.weight": [
+      96
+    ],
+    "features.1.1.left2.1.bias": [
+      96
+    ],
+    "features.2.0.left1.0.weight": [
+      128,
+      96,
+      3,
+      3
+    ],
+    "features.2.0.left1.1.weight": [
+      128
+    ],
+    "features.2.0.left1.1.bias": [
+      128
+    ],
+    "features.2.0.left2.0.weight": [
+      128,
+      128,
+      3,
+      3
+    ],
+    "features.2.0.left2.1.weight": [
+      128
+    ],
+    "features.2.0.left2.1.bias": [
+      128
+    ],
+    "features.2.0.shortcut.0.weight": [
+      128,
+      96,
+      1,
+      1
+    ],
+    "features.2.0.shortcut.1.weight": [
+      128
+    ],
+    "features.2.0.shortcut.1.bias": [
+      128
+    ],
+    "features.2.1.left1.0.weight": [
+      128,
+      128,
+      3,
+      3
+    ],
+    "features.2.1.left1.1.weight": [
+      128
+    ],
+    "features.2.1.left1.1.bias": [
+      128
+    ],
+    "features.2.1.left2.0.weight": [
+      128,
+      128,
+      3,
+      3
+    ],
+    "features.2.1.left2.1.weight": [
+      128
+    ],
+    "features.2.1.left2.1.bias": [
+      128
+    ],
+    "features.3.0.left1.0.weight": [
+      256,
+      128,
+      3,
+      3
+    ],
+    "features.3.0.left1.1.weight": [
+      256
+    ],
+    "features.3.0.left1.1.bias": [
+      256
+    ],
+    "features.3.0.left2.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "features.3.0.left2.1.weight": [
+      256
+    ],
+    "features.3.0.left2.1.bias": [
+      256
+    ],
+    "features.3.0.shortcut.0.weight": [
+      256,
+      128,
+      1,
+      1
+    ],
+    "features.3.0.shortcut.1.weight": [
+      256
+    ],
+    "features.3.0.shortcut.1.bias": [
+      256
+    ],
+    "features.3.1.left1.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "features.3.1.left1.1.weight": [
+      256
+    ],
+    "features.3.1.left1.1.bias": [
+      256
+    ],
+    "features.3.1.left2.0.weight": [
+      256,
+      256,
+      3,
+      3
+    ],
+    "features.3.1.left2.1.weight": [
+      256
+    ],
+    "features.3.1.left2.1.bias": [
+      256
+    ],
+    "features.4.0.left1.0.weight": [
+      512,
+      256,
+      3,
+      3
+    ],
+    "features.4.0.left1.1.weight": [
+      512
+    ],
+    "features.4.0.left1.1.bias": [
+      512
+    ],
+    "features.4.0.left2.0.weight": [
+      512,
+      512,
+      3,
+      3
+    ],
+    "features.4.0.left2.1.weight": [
+      512
+    ],
+    "features.4.0.left2.1.bias": [
+      512
+    ],
+    "features.4.0.shortcut.0.weight": [
+      512,
+      256,
+      1,
+      1
+    ],
+    "features.4.0.shortcut.1.weight": [
+      512
+    ],
+    "features.4.0.shortcut.1.bias": [
+      512
+    ],
+    "features.4.1.left1.0.weight": [
+      512,
+      512,
+      3,
+      3
+    ],
+    "features.4.1.left1.1.weight": [
+      512
+    ],
+    "features.4.1.left1.1.bias": [
+      512
+    ],
+    "features.4.1.left2.0.weight": [
+      512,
+      512,
+      3,
+      3
+    ],
+    "features.4.1.left2.1.weight": [
+      512
+    ],
+    "features.4.1.left2.1.bias": [
+      512
+    ],
+    "classifier.weight": [
+      100,
+      512
+    ],
+    "classifier.bias": [
+      100
+    ]
+  },
+  "finite_full_parameters": true,
+  "source": "In-memory final Full state; no tensors or checkpoint saved"
+}

@@ -86,14 +86,14 @@ def draw(output,timeline,categories,sources,shares):
         for key,offset,marker in [('q_pre',-.12,'o'),('q_post',.12,'s')]:
             values=[r[key] for r in vals];lo,hi=np.quantile(values,[.25,.75]);m=np.mean(values)
             ax[0].plot([lo,hi],[g+offset,g+offset],c=color,lw=3,alpha=.55)
-            ax[0].scatter(m,g+offset,marker=marker,c=color,s=28,label=key if g==0 else None)
+            ax[0].scatter(m,g+offset,marker=marker,c=color,s=28,label={'q_pre':'Before local SGD','q_post':'After local SGD'}[key] if g==0 else None)
         for i,key in enumerate(('d','memory_limited','U')):
             ax[1].bar(g+(i-1)*.23,np.mean([r[key] for r in vals]),width=.21,
                 color=['#98BED4','#5E99B9','#236986'][i],label=['Current gain d','Memory-limited m','Calibrated U'][i] if g==0 else None)
     ax[0].set(yticks=range(3),yticklabels=labels,xlim=(0,1),xlabel='Correct-class task probability',
         title='(a) Fixed pre/post task measurement')
-    ax[0].legend(frameon=False,fontsize=7);ax[0].text(.98,.02,'Markers: source-round means\nBars: interquartile range',
-        transform=ax[0].transAxes,ha='right',va='bottom',fontsize=6.7)
+    ax[0].legend(frameon=False,fontsize=7,loc='upper left');ax[0].text(.03,.42,'Markers: source-round means\nBars: interquartile range',
+        transform=ax[0].transAxes,ha='left',va='top',fontsize=6.7)
     ax[1].set(xticks=range(3),xticklabels=labels,ylabel='Mean source-round score',title='(b) Actual score construction')
     ax[1].legend(frameon=False,fontsize=7)
     if categories:
@@ -130,14 +130,32 @@ def draw(output,timeline,categories,sources,shares):
     ax[2].set(xlabel='Communication round',ylabel='Full coordinates changed (%)',title='(c) Effective feature-parameter intervention')
     ax[3].plot([r['round'] for r in timeline],[r['difference_l2'] for r in timeline],lw=.65,c='#26866E')
     ax[3].set_yscale('symlog',linthresh=1e-6)
-    ax[3].set(xlabel='Communication round',ylabel='Fusion-induced L2 (symlog; linear <1e-6)',title='(d) Nonzero fusion displacement')
+    ax[3].set(xlabel='Communication round',ylabel='Fusion-induced L2 (symlog; linear <1e-6)',title='(d) Fusion-induced displacement')
     for ext in ('png','pdf'):fig.savefig(output/f'figure8_aggregation_activation.{ext}')
     plt.close(fig)
 
 
+def read_plot_csv(path):
+    """Restore typed scalar/nested values without selecting or changing rows."""
+    def parse(value):
+        if value == '':return None
+        if value in ('True','False'):return value == 'True'
+        try:return json.loads(value)
+        except (json.JSONDecodeError,TypeError):return value
+    with path.open(newline='',encoding='utf-8') as stream:
+        return [{k:parse(v) for k,v in row.items()} for row in csv.DictReader(stream)]
+
+
 def main():
     p=argparse.ArgumentParser(__doc__);p.add_argument('root',type=Path);p.add_argument('--output',type=Path)
-    opt=p.parse_args();root=opt.root;manifest=json.loads((root/'manifest.json').read_text())
+    p.add_argument('--redraw-csv',action='store_true',help='Redraw all original CSV rows only; write a new output directory')
+    opt=p.parse_args();root=opt.root
+    if opt.redraw_csv:
+        assert opt.output is not None
+        opt.output.mkdir(parents=True,exist_ok=False)
+        draw(opt.output,*[read_plot_csv(root/f'{name}.csv') for name in ('all_rounds','used_categories','source_rounds','region_shares')])
+        return
+    manifest=json.loads((root/'manifest.json').read_text())
     protocol=manifest['identity']['protocol'];n=protocol['rounds']
     run=root/'training/a07'/f'active_{n}_seed1'
     complete=json.loads((run/'completed.json').read_text());assert complete['success'] and complete['rounds_completed']==n
