@@ -1,0 +1,46 @@
+{
+  "neutral": {
+    "checkpoint_round": 500,
+    "finite_full": true,
+    "full_sha256": "c7d933d554e46754a8e2a64c593486d7b3f3be0a5573bf06fa885d502db66912",
+    "final_journal_state_equal": true,
+    "identity_equal": true,
+    "adapter_entries": 1530,
+    "adapter_bytes": 211553280,
+    "semantic_tier_classes": 300,
+    "reliability_tier_classes": 300,
+    "rng_streams": [
+      "cuda",
+      "numpy",
+      "python",
+      "torch"
+    ],
+    "file_bytes": 260316716,
+    "note": "Complete saved state verified; no real resumed training was performed"
+  },
+  "active": {
+    "checkpoint_round": 500,
+    "finite_full": true,
+    "full_sha256": "2578b303f6e0d9b74579416b135bf0a0b41a2b53d2215ff14b17119cb6eb1225",
+    "final_journal_state_equal": true,
+    "identity_equal": true,
+    "adapter_entries": 1530,
+    "adapter_bytes": 211553280,
+    "semantic_tier_classes": 300,
+    "reliability_tier_classes": 300,
+    "rng_streams": [
+      "cuda",
+      "numpy",
+      "python",
+      "torch"
+    ],
+    "file_bytes": 260316716,
+    "note": "Complete saved state verified; no real resumed training was performed"
+  },
+  "historical_a07_first400": {
+    "rounds": 400,
+    "accuracy_ce_exact": true,
+    "path": "runs/capability_final40_400_seed1_20261021/gpu0/a07/A07_full_only_400_seed1/accuracy_each_round.csv",
+    "sha256": "4d10eda3727348666404eae1be86785ce106f3ece6f6c0e427394b5136ff1fd0"
+  }
+}

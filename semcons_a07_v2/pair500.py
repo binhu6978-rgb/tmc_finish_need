@@ -1,5 +1,6 @@
 """Read-only mechanism journal and bounded round-boundary recovery for frozen V2."""
 import copy
+from collections import defaultdict
 from contextlib import contextmanager
 import csv
 import hashlib
@@ -75,6 +76,10 @@ def restore_snapshot(state,log,observer,models,identity):
     for model in models:model.load_state_dict(split_model(state['full'],model.state_dict()))
     log.rows=state['rows'];log.next_round=n;log.total_time=state['total_time'];log.elapsed_before=state['elapsed']
     observer.semantic.__dict__=state['semantic'];observer.reliability.__dict__=state['reliability']
+    # cpu_copy serializes defaultdict as dict. Recreate missing-key behavior for
+    # future client/profile/category observations after an explicitly approved restore.
+    for key in ('clients','profiles','tiers'):
+        observer.reliability.__dict__[key]=defaultdict(list,observer.reliability.__dict__[key])
     observer.measurement.bank=state['adapter_bank'];observer.measurement.head_hashes=state['head_hashes']
     observer.round_number=n;methods.restore_rng(state['rng'])
 

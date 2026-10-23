@@ -51,6 +51,9 @@ def test_complete_recovery_round_trip_memories_adapters_rng_and_next_aggregate(t
     assert_rng(rng,rng_state());assert h.rounds_seen==1 and obs.round_number==1
     assert obs.semantic.tiers[0,1]['q']==.3 and obs.reliability.tiers[0,1][0]['support']==2
     assert torch.equal(obs.measurement.bank[1,0,17]['weight'],torch.ones(2,2))
+    obs.reliability.clients[99].append((2,.2))
+    obs.reliability.profiles[99,6].append((2,.2))
+    obs.reliability.tiers[2,99].append(dict(round=2,support=2,change=.1))
     assert_states(h.aggregate(u,n,w),expected)
     with pytest.raises(ValueError):restore_snapshot(state,log,obs,models,{'changed':True})
 

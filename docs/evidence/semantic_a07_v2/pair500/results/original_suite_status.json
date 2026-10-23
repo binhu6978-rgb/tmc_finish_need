@@ -1,0 +1,142 @@
+{
+  "pid": 216037,
+  "commit": "49b5b5f86fe61815aa47b09445b27a0c6db2fbee",
+  "physical_gpu": 0,
+  "started": 1792681840.020979,
+  "phase": "failed",
+  "processes": [
+    {
+      "name": "pytest_linux",
+      "pid": 216042,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_semantic_pair500.py",
+        "tests/test_semantic_iv_e_holdout.py",
+        "tests/test_semantic_a07_iv_e.py",
+        "tests/test_semantic_a07_v2.py",
+        "tests/test_semcons_a07.py",
+        "tests/test_semcons_a07_analysis.py",
+        "tests/test_semcons_a07_regression_evidence.py",
+        "tests/test_semcons_a07_final_evidence.py",
+        "tests/test_final40.py",
+        "tests/test_adapterfl_methods.py",
+        "tests/test_fd_semconsfl.py",
+        "tests/test_semcons_scope.py",
+        "tests/test_receiver_ce_probe.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "pilot_plain",
+      "pid": 216204,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_semantic_pair500.py",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--mode",
+        "neutral",
+        "--rounds",
+        "2",
+        "--output-root",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/pilot/plain",
+        "--no-diagnostic"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "pilot_diagnosed",
+      "pid": 216447,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_semantic_pair500.py",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--mode",
+        "neutral",
+        "--rounds",
+        "2",
+        "--output-root",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/pilot/diagnosed"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "pilot_verification",
+      "pid": 216719,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "tools/run_semantic_pair500.py",
+        "--verify-pilot",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/pilot"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "neutral_500",
+      "pid": 216727,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_semantic_pair500.py",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--mode",
+        "neutral",
+        "--rounds",
+        "500",
+        "--output-root",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/neutral",
+        "--pilot-proof",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/pilot/pilot_pass.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "active_500",
+      "pid": 216728,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "-u",
+        "tools/run_semantic_pair500.py",
+        "--prepared",
+        "runs/capability_final40_400_seed1_20261021/prepared",
+        "--dataset-root",
+        "/home/hh/ICML_finish/data",
+        "--mode",
+        "active",
+        "--rounds",
+        "500",
+        "--output-root",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/active",
+        "--pilot-proof",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/pilot/pilot_pass.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "report",
+      "pid": 254981,
+      "argv": [
+        "/home/hh/miniconda3/envs/hh/bin/python",
+        "tools/report_semantic_pair500.py",
+        "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022"
+      ],
+      "returncode": 1
+    }
+  ],
+  "success": false,
+  "error": "Traceback (most recent call last):\n  File \"/home/hh/TMC_re_e03_scope_components400_20261019/tools/run_semantic_pair500_suite.py\", line 61, in main\n    run([sys.executable,'tools/report_semantic_pair500.py',str(root)],'report')\n  File \"/home/hh/TMC_re_e03_scope_components400_20261019/tools/run_semantic_pair500_suite.py\", line 33, in run\n    if item['returncode']:raise RuntimeError(f'{name} failed; logs retained, no retry')\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: report failed; logs retained, no retry\n",
+  "finished": 1792693232.814125
+}

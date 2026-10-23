@@ -1,0 +1,1094 @@
+{
+  "raw_pairs": 1326,
+  "sampled_rounds": 53,
+  "probe_sgd_independent": false,
+  "cohorts": {
+    "confirmation": {
+      "source_round_units": 74,
+      "rounds": 29,
+      "pairs": 395,
+      "common_association": {
+        "D": {
+          "pearson": 0.10230147316813659,
+          "spearman": 0.34978156238430214,
+          "spearman_cluster95": [
+            0.01777476539969852,
+            0.6350213122899298
+          ],
+          "benefit_auc": 0.5550239234449761,
+          "source_round_units": 74
+        },
+        "M": {
+          "pearson": 0.0020208049358380084,
+          "spearman": 0.2548316870925166,
+          "spearman_cluster95": [
+            -0.17499092196803256,
+            0.5964310744503111
+          ],
+          "benefit_auc": 0.6698564593301436,
+          "source_round_units": 74
+        },
+        "U": {
+          "pearson": -0.002910257942306301,
+          "spearman": 0.24405017560281167,
+          "spearman_cluster95": [
+            -0.13220259522651767,
+            0.6144087593621022
+          ],
+          "benefit_auc": 0.661244019138756,
+          "source_round_units": 74
+        },
+        "permuted_U": {
+          "pearson": 0.02619761422183911,
+          "spearman": 0.2926558359176626,
+          "spearman_cluster95": [
+            -0.05469736007628461,
+            0.6061063540742752
+          ],
+          "benefit_auc": 0.5521531100478468,
+          "source_round_units": 74
+        }
+      },
+      "all_association": {
+        "D": {
+          "pearson": 0.45434289327692273,
+          "spearman": 0.4014365049981488,
+          "spearman_cluster95": [
+            0.0280181611415103,
+            0.679556118720898
+          ],
+          "benefit_auc": 0.6104006820119352,
+          "source_round_units": 74
+        },
+        "M": {
+          "pearson": 0.4617090800583953,
+          "spearman": 0.4513573154831538,
+          "spearman_cluster95": [
+            0.10960111775506934,
+            0.7250870253280247
+          ],
+          "benefit_auc": 0.6999147485080989,
+          "source_round_units": 74
+        },
+        "U": {
+          "pearson": 0.4351801011806696,
+          "spearman": 0.45274943372495635,
+          "spearman_cluster95": [
+            0.123804893152317,
+            0.7126905665345256
+          ],
+          "benefit_auc": 0.7007672634271099,
+          "source_round_units": 74
+        },
+        "permuted_U": {
+          "pearson": 0.4238834659674527,
+          "spearman": 0.35142099744396615,
+          "spearman_cluster95": [
+            -0.029810415599054868,
+            0.6543005493013089
+          ],
+          "benefit_auc": 0.670076726342711,
+          "source_round_units": 74
+        }
+      },
+      "stages": {
+        "early": {
+          "source_round_units": 15,
+          "rounds": 6,
+          "tiers": {
+            "1": 6,
+            "2": 6,
+            "0": 3
+          },
+          "association": {
+            "D": {
+              "pearson": -0.34274112746124175,
+              "spearman": -0.31785714285714284,
+              "spearman_cluster95": [
+                -0.9955031484696538,
+                0.7090679029956016
+              ],
+              "benefit_auc": 0.5555555555555556,
+              "source_round_units": 15
+            },
+            "M": {
+              "pearson": -0.4442036040565489,
+              "spearman": -0.29285714285714287,
+              "spearman_cluster95": [
+                -0.995251777087157,
+                0.8790798017249302
+              ],
+              "benefit_auc": 0.5555555555555556,
+              "source_round_units": 15
+            },
+            "U": {
+              "pearson": -0.49740007379136647,
+              "spearman": -0.35714285714285715,
+              "spearman_cluster95": [
+                -0.9769413366031375,
+                0.7340067072319073
+              ],
+              "benefit_auc": 0.4722222222222222,
+              "source_round_units": 15
+            },
+            "permuted_U": {
+              "pearson": 0.11431449450898509,
+              "spearman": -0.08571428571428572,
+              "spearman_cluster95": [
+                -0.7113971120073432,
+                0.8139238258596209
+              ],
+              "benefit_auc": 0.2222222222222222,
+              "source_round_units": 15
+            }
+          }
+        },
+        "middle": {
+          "source_round_units": 36,
+          "rounds": 13,
+          "tiers": {
+            "0": 11,
+            "1": 12,
+            "2": 13
+          },
+          "association": {
+            "D": {
+              "pearson": 0.12652543219319645,
+              "spearman": 0.02882882882882883,
+              "spearman_cluster95": [
+                -0.4380189864130076,
+                0.49699836320310226
+              ],
+              "benefit_auc": 0.43621399176954734,
+              "source_round_units": 36
+            },
+            "M": {
+              "pearson": -0.15221859281315425,
+              "spearman": 0.027548919553672092,
+              "spearman_cluster95": [
+                -0.5700376387596265,
+                0.5517753137976152
+              ],
+              "benefit_auc": 0.7242798353909465,
+              "source_round_units": 36
+            },
+            "U": {
+              "pearson": -0.15727800804706635,
+              "spearman": 0.0072090630607740055,
+              "spearman_cluster95": [
+                -0.6299527389410988,
+                0.5504803715592337
+              ],
+              "benefit_auc": 0.7119341563786008,
+              "source_round_units": 36
+            },
+            "permuted_U": {
+              "pearson": -0.1004232323746419,
+              "spearman": 0.20520083069417436,
+              "spearman_cluster95": [
+                -0.3724184017921703,
+                0.6728801038206872
+              ],
+              "benefit_auc": 0.5802469135802469,
+              "source_round_units": 36
+            }
+          }
+        },
+        "late": {
+          "source_round_units": 23,
+          "rounds": 10,
+          "tiers": {
+            "0": 4,
+            "1": 10,
+            "2": 9
+          },
+          "association": {
+            "D": {
+              "pearson": 0.6538447295021586,
+              "spearman": 0.4535573122529644,
+              "spearman_cluster95": [
+                -0.47836712643616136,
+                0.8664679656376996
+              ],
+              "benefit_auc": 0.5892857142857143,
+              "source_round_units": 23
+            },
+            "M": {
+              "pearson": -0.1077917851188821,
+              "spearman": 0.05434782608695652,
+              "spearman_cluster95": [
+                -0.5252937627303976,
+                0.6932903986661205
+              ],
+              "benefit_auc": 0.6785714285714286,
+              "source_round_units": 23
+            },
+            "U": {
+              "pearson": -0.10875736262716104,
+              "spearman": 0.043478260869565216,
+              "spearman_cluster95": [
+                -0.5717238924032583,
+                0.7343290832632177
+              ],
+              "benefit_auc": 0.6785714285714286,
+              "source_round_units": 23
+            },
+            "permuted_U": {
+              "pearson": 0.3318396383514436,
+              "spearman": -0.043478260869565216,
+              "spearman_cluster95": [
+                -0.85882260591571,
+                0.7401107372454061
+              ],
+              "benefit_auc": 0.5267857142857143,
+              "source_round_units": 23
+            }
+          }
+        }
+      },
+      "bins": [
+        {
+          "scope": "common",
+          "lower": 0,
+          "upper": 0.1,
+          "n": 61,
+          "mean": 0.018349343388675728,
+          "ci95": [
+            0.0024659410885800094,
+            0.08164314958697975
+          ]
+        },
+        {
+          "scope": "common",
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 7,
+          "mean": 0.020258631080847297,
+          "ci95": [
+            -0.005231972866944676,
+            0.04710508199059404
+          ]
+        },
+        {
+          "scope": "common",
+          "lower": 0.2,
+          "upper": 1.0,
+          "n": 6,
+          "mean": 0.013746984961854558,
+          "ci95": [
+            0.006258199162231904,
+            0.041965229910765456
+          ]
+        },
+        {
+          "scope": "all",
+          "lower": 0,
+          "upper": 0.1,
+          "n": 61,
+          "mean": 0.0017406071162924426,
+          "ci95": [
+            -0.000661750557195672,
+            0.004379154694697254
+          ]
+        },
+        {
+          "scope": "all",
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 7,
+          "mean": 0.005029966439182506,
+          "ci95": [
+            -0.0023966647378172584,
+            0.012066350508402523
+          ]
+        },
+        {
+          "scope": "all",
+          "lower": 0.2,
+          "upper": 1.0,
+          "n": 6,
+          "mean": 0.011970472207811849,
+          "ci95": [
+            0.004854675101456261,
+            0.026255516411082928
+          ]
+        }
+      ],
+      "decomposition_max_error": 1.3877787807814457e-17,
+      "source_tier_counts": {
+        "1": 28,
+        "2": 28,
+        "0": 18
+      },
+      "score_round_spearman": -0.5979092108403425,
+      "common_sample_fraction_mean": 0.19910152018379185,
+      "current_gain_vs_evaluation_gain": {
+        "source_own_training_mean": 0.9336981758520106,
+        "source_own_evaluation_mean": 0.9857065251006968
+      },
+      "incremental": {
+        "leave_round": {
+          "status": "exploratory_only_few_independent_rounds",
+          "fold_kind": "round",
+          "models": {
+            "controls": {
+              "weighted_mse": 0.006421445301385108,
+              "reduction_vs_controls": 0.0
+            },
+            "current_D": {
+              "weighted_mse": 0.006520136278656368,
+              "reduction_vs_controls": -0.015368966430341177
+            },
+            "D_plus_memory": {
+              "weighted_mse": 0.006590530512992422,
+              "reduction_vs_controls": -0.026331332538305944
+            },
+            "D_M_plus_reliability": {
+              "weighted_mse": 0.006608965063871022,
+              "reduction_vs_controls": -0.029202111625160995
+            },
+            "D_M_plus_permuted": {
+              "weighted_mse": 0.0068593664978375945,
+              "reduction_vs_controls": -0.06819667160569388
+            }
+          },
+          "pairs": 395,
+          "source_round_units": 74,
+          "rounds": 29,
+          "warning": "weighted dependent responses; not independent validation of a score"
+        },
+        "receiver_groups": {
+          "status": "exploratory_only_few_independent_rounds",
+          "fold_kind": "receiver",
+          "models": {
+            "controls": {
+              "weighted_mse": 0.006805939670115823,
+              "reduction_vs_controls": 0.0
+            },
+            "current_D": {
+              "weighted_mse": 0.006889397452367237,
+              "reduction_vs_controls": -0.012262492219534156
+            },
+            "D_plus_memory": {
+              "weighted_mse": 0.006778184640009813,
+              "reduction_vs_controls": 0.004078059966925528
+            },
+            "D_M_plus_reliability": {
+              "weighted_mse": 0.006763469516614389,
+              "reduction_vs_controls": 0.006240160148335728
+            },
+            "D_M_plus_permuted": {
+              "weighted_mse": 0.007005414079055797,
+              "reduction_vs_controls": -0.029308871163793312
+            }
+          },
+          "pairs": 395,
+          "source_round_units": 74,
+          "rounds": 29,
+          "warning": "weighted dependent responses; not independent validation of a score"
+        },
+        "leave_stage": {
+          "status": "exploratory_only_few_independent_rounds",
+          "fold_kind": "stage",
+          "models": {
+            "controls": {
+              "weighted_mse": 0.01917289712619734,
+              "reduction_vs_controls": 0.0
+            },
+            "current_D": {
+              "weighted_mse": 0.026159518766623684,
+              "reduction_vs_controls": -0.3644009350511776
+            },
+            "D_plus_memory": {
+              "weighted_mse": 0.012966316655708349,
+              "reduction_vs_controls": 0.3237163601117164
+            },
+            "D_M_plus_reliability": {
+              "weighted_mse": 0.04391565761436283,
+              "reduction_vs_controls": -1.2905071322975825
+            },
+            "D_M_plus_permuted": {
+              "weighted_mse": 0.14764634898345283,
+              "reduction_vs_controls": -6.700784498640677
+            }
+          },
+          "pairs": 395,
+          "source_round_units": 74,
+          "rounds": 29,
+          "warning": "weighted dependent responses; not independent validation of a score"
+        }
+      },
+      "same_input_full": {
+        "V2": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": -4.204883677703026e-06,
+            "cluster95": [
+              -8.680359829775197e-05,
+              4.5476708651661545e-05
+            ],
+            "positive_responses": 53,
+            "negative_responses": 34
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": -7.684787410974493e-06,
+            "cluster95": [
+              -0.000158722447515189,
+              8.719991413029121e-05
+            ],
+            "positive_responses": 53,
+            "negative_responses": 34
+          }
+        },
+        "no_sm": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": -4.872004899950181e-05,
+            "cluster95": [
+              -0.00015137013179274074,
+              3.3290897216898373e-05
+            ],
+            "positive_responses": 36,
+            "negative_responses": 51
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": -8.904008955081367e-05,
+            "cluster95": [
+              -0.00029802249698861666,
+              4.300398831309831e-05
+            ],
+            "positive_responses": 36,
+            "negative_responses": 51
+          }
+        },
+        "no_rm": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": 1.4803476703328447e-05,
+            "cluster95": [
+              -8.137591036307633e-05,
+              0.0001191022719321244
+            ],
+            "positive_responses": 53,
+            "negative_responses": 34
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": 2.7054629837117518e-05,
+            "cluster95": [
+              -0.0001734253493361634,
+              0.00022689918880502147
+            ],
+            "positive_responses": 53,
+            "negative_responses": 34
+          }
+        },
+        "permuted": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": 3.522191813986309e-07,
+            "cluster95": [
+              -5.7944399269009733e-05,
+              8.60516375380398e-05
+            ],
+            "positive_responses": 40,
+            "negative_responses": 47
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": 6.437109177285321e-07,
+            "cluster95": [
+              -0.00011751650439166867,
+              0.0001679838637845258
+            ],
+            "positive_responses": 40,
+            "negative_responses": 47
+          }
+        },
+        "A07_L2_matched": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": 1.2650056088828012e-05,
+            "cluster95": [
+              -7.911456789180528e-06,
+              4.401217347296421e-05
+            ],
+            "positive_responses": 61,
+            "negative_responses": 26
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": 2.3119068024409815e-05,
+            "cluster95": [
+              -1.580340171274385e-05,
+              7.824067048985263e-05
+            ],
+            "positive_responses": 61,
+            "negative_responses": 26
+          }
+        }
+      }
+    },
+    "development": {
+      "source_round_units": 66,
+      "rounds": 28,
+      "pairs": 325,
+      "common_association": {
+        "D": {
+          "pearson": 0.2221809905040945,
+          "spearman": 0.29990606408516857,
+          "spearman_cluster95": [
+            -0.13613498197427748,
+            0.6717617118699566
+          ],
+          "benefit_auc": 0.48627450980392156,
+          "source_round_units": 66
+        },
+        "M": {
+          "pearson": 0.051367372894694556,
+          "spearman": 0.13458447290606104,
+          "spearman_cluster95": [
+            -0.3416453937759033,
+            0.5791263256149862
+          ],
+          "benefit_auc": 0.4823529411764706,
+          "source_round_units": 66
+        },
+        "U": {
+          "pearson": 0.017052018377660717,
+          "spearman": 0.12661002453470763,
+          "spearman_cluster95": [
+            -0.3412503254975871,
+            0.5537717251484646
+          ],
+          "benefit_auc": 0.48104575163398694,
+          "source_round_units": 66
+        },
+        "permuted_U": {
+          "pearson": 0.18702179440096853,
+          "spearman": 0.1566290212834149,
+          "spearman_cluster95": [
+            -0.2814320066658802,
+            0.48589201682326355
+          ],
+          "benefit_auc": 0.46797385620915033,
+          "source_round_units": 66
+        }
+      },
+      "all_association": {
+        "D": {
+          "pearson": 0.3039014168092623,
+          "spearman": 0.32887761350712974,
+          "spearman_cluster95": [
+            -0.11727738616329138,
+            0.7085223642963278
+          ],
+          "benefit_auc": 0.5260821309655938,
+          "source_round_units": 70
+        },
+        "M": {
+          "pearson": 0.26190676494571646,
+          "spearman": 0.26282084946017004,
+          "spearman_cluster95": [
+            -0.23691991243125105,
+            0.6515754116227702
+          ],
+          "benefit_auc": 0.5416204217536071,
+          "source_round_units": 70
+        },
+        "U": {
+          "pearson": 0.2699019011553101,
+          "spearman": 0.2548772594425336,
+          "spearman_cluster95": [
+            -0.19790153026212082,
+            0.6649028516397512
+          ],
+          "benefit_auc": 0.5394006659267481,
+          "source_round_units": 70
+        },
+        "permuted_U": {
+          "pearson": 0.26148292785335525,
+          "spearman": 0.15322030348996132,
+          "spearman_cluster95": [
+            -0.24725263954219362,
+            0.5600179273681231
+          ],
+          "benefit_auc": 0.51165371809101,
+          "source_round_units": 70
+        }
+      },
+      "stages": {
+        "early": {
+          "source_round_units": 12,
+          "rounds": 6,
+          "tiers": {
+            "2": 5,
+            "1": 4,
+            "0": 3
+          },
+          "association": {
+            "D": {
+              "pearson": -0.3800010701482979,
+              "spearman": -0.6293706293706294,
+              "spearman_cluster95": [
+                -1.0,
+                0.9320185983746355
+              ],
+              "benefit_auc": 0.03125,
+              "source_round_units": 12
+            },
+            "M": {
+              "pearson": -0.38265418521549355,
+              "spearman": -0.25874125874125875,
+              "spearman_cluster95": [
+                -1.0,
+                0.9888295414292962
+              ],
+              "benefit_auc": 0.4375,
+              "source_round_units": 12
+            },
+            "U": {
+              "pearson": -0.4554039494378016,
+              "spearman": -0.2097902097902098,
+              "spearman_cluster95": [
+                -0.8845798189219308,
+                1.0
+              ],
+              "benefit_auc": 0.46875,
+              "source_round_units": 12
+            },
+            "permuted_U": {
+              "pearson": 0.1304826750041044,
+              "spearman": 0.16083916083916083,
+              "spearman_cluster95": [
+                -0.8756557647185595,
+                1.0
+              ],
+              "benefit_auc": 0.5,
+              "source_round_units": 12
+            }
+          }
+        },
+        "middle": {
+          "source_round_units": 32,
+          "rounds": 12,
+          "tiers": {
+            "0": 9,
+            "1": 12,
+            "2": 11
+          },
+          "association": {
+            "D": {
+              "pearson": 0.5069911130410799,
+              "spearman": 0.36950146627565983,
+              "spearman_cluster95": [
+                -0.2506113148634753,
+                0.7938344672149645
+              ],
+              "benefit_auc": 0.6057142857142858,
+              "source_round_units": 32
+            },
+            "M": {
+              "pearson": -0.2021719527560008,
+              "spearman": -0.12101210934645139,
+              "spearman_cluster95": [
+                -0.7900286806408738,
+                0.534620506938181
+              ],
+              "benefit_auc": 0.5542857142857143,
+              "source_round_units": 32
+            },
+            "U": {
+              "pearson": -0.2133219428972043,
+              "spearman": -0.13568024381268792,
+              "spearman_cluster95": [
+                -0.7842552130405867,
+                0.5550655766041022
+              ],
+              "benefit_auc": 0.5542857142857143,
+              "source_round_units": 32
+            },
+            "permuted_U": {
+              "pearson": 0.11513589165228585,
+              "spearman": 0.15291530181051585,
+              "spearman_cluster95": [
+                -0.37061630478913765,
+                0.5583996823501539
+              ],
+              "benefit_auc": 0.6,
+              "source_round_units": 32
+            }
+          }
+        },
+        "late": {
+          "source_round_units": 22,
+          "rounds": 10,
+          "tiers": {
+            "0": 4,
+            "1": 10,
+            "2": 8
+          },
+          "association": {
+            "D": {
+              "pearson": 0.5278708938693601,
+              "spearman": 0.20271033314511575,
+              "spearman_cluster95": [
+                -0.6449680432556668,
+                0.7436090548229102
+              ],
+              "benefit_auc": 0.75,
+              "source_round_units": 22
+            },
+            "M": {
+              "pearson": 0.5992652965273132,
+              "spearman": 0.13382269904009034,
+              "spearman_cluster95": [
+                -0.64393965130721,
+                0.6809259393524605
+              ],
+              "benefit_auc": 0.5694444444444444,
+              "source_round_units": 22
+            },
+            "U": {
+              "pearson": 0.5380780988102547,
+              "spearman": 0.12365894974590627,
+              "spearman_cluster95": [
+                -0.650386422826113,
+                0.69051237567561
+              ],
+              "benefit_auc": 0.5694444444444444,
+              "source_round_units": 22
+            },
+            "permuted_U": {
+              "pearson": -0.18483779616309262,
+              "spearman": -0.20383963862224733,
+              "spearman_cluster95": [
+                -0.8163433424886766,
+                0.44596961021758574
+              ],
+              "benefit_auc": 0.5138888888888888,
+              "source_round_units": 22
+            }
+          }
+        }
+      },
+      "bins": [
+        {
+          "scope": "common",
+          "lower": 0,
+          "upper": 0.1,
+          "n": 56,
+          "mean": 0.008838262971063052,
+          "ci95": [
+            0.0008370295682580001,
+            0.02659363432840521
+          ]
+        },
+        {
+          "scope": "common",
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 6,
+          "mean": -0.005608906997022806,
+          "ci95": [
+            -0.046532511711120605,
+            0.015303588440129889
+          ]
+        },
+        {
+          "scope": "common",
+          "lower": 0.2,
+          "upper": 1.0,
+          "n": 4,
+          "mean": 0.010248163594645253,
+          "ci95": [
+            -0.013899505138397217,
+            0.02905365436204842
+          ]
+        },
+        {
+          "scope": "all",
+          "lower": 0,
+          "upper": 0.1,
+          "n": 60,
+          "mean": 0.002121648515057371,
+          "ci95": [
+            2.8808471232258702e-05,
+            0.005821682025813278
+          ]
+        },
+        {
+          "scope": "all",
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 6,
+          "mean": 0.004670853430401341,
+          "ci95": [
+            -0.0068585278590520245,
+            0.016662807238114703
+          ]
+        },
+        {
+          "scope": "all",
+          "lower": 0.2,
+          "upper": 1.0,
+          "n": 4,
+          "mean": 0.007529876022812184,
+          "ci95": [
+            0.001263870887698666,
+            0.021250077965212798
+          ]
+        }
+      ],
+      "decomposition_max_error": 6.938893903907228e-18,
+      "source_tier_counts": {
+        "2": 24,
+        "1": 26,
+        "0": 16
+      },
+      "score_round_spearman": -0.581524707428734,
+      "common_sample_fraction_mean": 0.22242539769228165,
+      "current_gain_vs_evaluation_gain": {
+        "source_own_training_mean": 0.7474383342396843,
+        "source_own_evaluation_mean": 0.8094544328793769
+      },
+      "incremental": {
+        "leave_round": {
+          "status": "exploratory_only_few_independent_rounds",
+          "fold_kind": "round",
+          "models": {
+            "controls": {
+              "weighted_mse": 0.001720802484792784,
+              "reduction_vs_controls": 0.0
+            },
+            "current_D": {
+              "weighted_mse": 0.0017448061227799123,
+              "reduction_vs_controls": -0.013949095378031576
+            },
+            "D_plus_memory": {
+              "weighted_mse": 0.0017252333310018375,
+              "reduction_vs_controls": -0.002574872042672027
+            },
+            "D_M_plus_reliability": {
+              "weighted_mse": 0.0018345601928092348,
+              "reduction_vs_controls": -0.06610735922440815
+            },
+            "D_M_plus_permuted": {
+              "weighted_mse": 0.001801664513649328,
+              "reduction_vs_controls": -0.04699088336467696
+            }
+          },
+          "pairs": 325,
+          "source_round_units": 66,
+          "rounds": 28,
+          "warning": "weighted dependent responses; not independent validation of a score"
+        },
+        "receiver_groups": {
+          "status": "exploratory_only_few_independent_rounds",
+          "fold_kind": "receiver",
+          "models": {
+            "controls": {
+              "weighted_mse": 0.0015272643865166004,
+              "reduction_vs_controls": 0.0
+            },
+            "current_D": {
+              "weighted_mse": 0.0015428948923000886,
+              "reduction_vs_controls": -0.010234315630929115
+            },
+            "D_plus_memory": {
+              "weighted_mse": 0.0015198879998809616,
+              "reduction_vs_controls": 0.004829803340378358
+            },
+            "D_M_plus_reliability": {
+              "weighted_mse": 0.0015130136096103792,
+              "reduction_vs_controls": 0.009330916789544516
+            },
+            "D_M_plus_permuted": {
+              "weighted_mse": 0.0015105125859879087,
+              "reduction_vs_controls": 0.010968500723636568
+            }
+          },
+          "pairs": 325,
+          "source_round_units": 66,
+          "rounds": 28,
+          "warning": "weighted dependent responses; not independent validation of a score"
+        },
+        "leave_stage": {
+          "status": "exploratory_only_few_independent_rounds",
+          "fold_kind": "stage",
+          "models": {
+            "controls": {
+              "weighted_mse": 0.0016371347872249377,
+              "reduction_vs_controls": 0.0
+            },
+            "current_D": {
+              "weighted_mse": 0.0018027176878135465,
+              "reduction_vs_controls": -0.10114188634967788
+            },
+            "D_plus_memory": {
+              "weighted_mse": 0.07294910362998916,
+              "reduction_vs_controls": -43.55900894613765
+            },
+            "D_M_plus_reliability": {
+              "weighted_mse": 0.06007491655960855,
+              "reduction_vs_controls": -35.69515609123418
+            },
+            "D_M_plus_permuted": {
+              "weighted_mse": 0.06301100327803699,
+              "reduction_vs_controls": -37.488586138252685
+            }
+          },
+          "pairs": 325,
+          "source_round_units": 66,
+          "rounds": 28,
+          "warning": "weighted dependent responses; not independent validation of a score"
+        }
+      },
+      "same_input_full": {
+        "V2": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": 1.344558419524995e-05,
+            "cluster95": [
+              -2.3391097228037714e-05,
+              6.289152188008632e-05
+            ],
+            "positive_responses": 52,
+            "negative_responses": 35
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": 2.457296421890508e-05,
+            "cluster95": [
+              -3.407517997259857e-05,
+              0.00011668202710840023
+            ],
+            "positive_responses": 52,
+            "negative_responses": 35
+          }
+        },
+        "no_sm": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": -3.6117174215688e-05,
+            "cluster95": [
+              -0.00015960455372194553,
+              3.4300719212266714e-05
+            ],
+            "positive_responses": 37,
+            "negative_responses": 50
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": -6.600724942867118e-05,
+            "cluster95": [
+              -0.000357839623637547,
+              6.082387313596286e-05
+            ],
+            "positive_responses": 37,
+            "negative_responses": 50
+          }
+        },
+        "no_rm": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": 2.8196653864201267e-05,
+            "cluster95": [
+              -2.100754931712535e-05,
+              0.0001313962348604713
+            ],
+            "positive_responses": 52,
+            "negative_responses": 35
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": 5.1531815682850594e-05,
+            "cluster95": [
+              -4.2994039255727245e-05,
+              0.0002742066458027986
+            ],
+            "positive_responses": 52,
+            "negative_responses": 35
+          }
+        },
+        "permuted": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": -2.3732670984778192e-05,
+            "cluster95": [
+              -8.564111344508303e-05,
+              2.2852770589745165e-05
+            ],
+            "positive_responses": 41,
+            "negative_responses": 46
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": -4.337350214459463e-05,
+            "cluster95": [
+              -0.00015821486211251918,
+              4.3213617865518786e-05
+            ],
+            "positive_responses": 41,
+            "negative_responses": 46
+          }
+        },
+        "A07_L2_matched": {
+          "all": {
+            "rounds": 53,
+            "responses": 159,
+            "mean_utility": 2.4456528810687687e-05,
+            "cluster95": [
+              -2.0324320514265087e-06,
+              8.226025456039863e-05
+            ],
+            "positive_responses": 62,
+            "negative_responses": 25
+          },
+          "active": {
+            "rounds": 29,
+            "responses": 87,
+            "mean_utility": 4.469641472298094e-05,
+            "cluster95": [
+              -4.348966718261069e-06,
+              0.0001474503802165201
+            ],
+            "positive_responses": 62,
+            "negative_responses": 25
+          }
+        }
+      }
+    }
+  },
+  "semantic_valid_rounds": 304,
+  "applied_nonneutral_rounds": 304,
+  "applied_fallback_reasons": {
+    "first_round_native": 1,
+    "no_fair_common_category_support": 194,
+    "source_blend": 304,
+    "one_current_tier": 1
+  },
+  "sampled_virtual_v2_active_rounds": 29,
+  "receiver_forward_examples": 356200,
+  "diagnostic_seconds": 199.57290761685
+}

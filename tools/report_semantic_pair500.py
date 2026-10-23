@@ -7,7 +7,8 @@ import math
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from tools.analyze_semantic_a07_iv_e import write_csv,mean,points_from,associations,incremental,interval,cluster_weights
+csv.field_size_limit(64*1024*1024)  # Real per-round category diagnostics exceed csv's128KiB default.
+from tools.analyze_semantic_a07_iv_e import write_csv,mean,points_from,associations,incremental,interval,cluster_weights,point_weights,corr
 import numpy as np
 from semcons_a07_v2.pair500 import verify_pair,sampled_rounds
 
@@ -78,14 +79,31 @@ def analyze(run,out,protocol):
         for r in matched:
             fraction=r['common_sample_fraction'];other=r['noncommon_utility']
             if other is not None:errors.append(abs(r['utility']-fraction*r['common_utility']-(1-fraction)*other))
+        bins=[];rng=np.random.default_rng(protocol['analysis_seed'])
+        for scope,pts in [('common',pp),('all',aa)]:
+            for lo,hi in ((0,.1),(.1,.2),(.2,1.)):
+                selected=[p for p in pts if lo<=p['U']<hi or hi==1 and p['U']==1]
+                draws=[]
+                for _ in range(protocol['bootstrap_repetitions']):
+                    w=point_weights(selected,rng)
+                    if len(w) and w.sum():draws.append(float(np.average([p['utility'] for p in selected],weights=w)))
+                bins.append(dict(scope=scope,lower=lo,upper=hi,n=len(selected),
+                    mean=mean([p['utility'] for p in selected]),ci95=interval(draws)))
+        stage_of=lambda r:next((i for i,(a,b) in enumerate(protocol['stages'].values()) if a<=r['round']<=b),-1)
+        prediction_reports={}
+        for label,kind,fn in [('leave_round','round',None),('receiver_groups','receiver',None),('leave_stage','stage',stage_of)]:
+            v=incremental(matched,kind,fn);predictions=v.pop('predictions',[])
+            write_csv(out/f'predictions_{part}_{label}.csv',predictions);prediction_reports[label]=v
         result['cohorts'][part]=dict(source_round_units=len(pp),rounds=len({p['round'] for p in pp}),
             pairs=len(matched),common_association=associations(pp,protocol),all_association=associations(aa,protocol),
-            stages=stage,decomposition_max_error=max(errors,default=0),
+            stages=stage,bins=bins,decomposition_max_error=max(errors,default=0),
+            source_tier_counts=dict(Counter(p['source_tier'] for p in pp)),
+            score_round_spearman=corr([p['U'] for p in pp],[p['round'] for p in pp],spearman=True),
             common_sample_fraction_mean=mean([r['common_sample_fraction'] for r in matched]),
             current_gain_vs_evaluation_gain=dict(
                 source_own_training_mean=mean([r['source_own_training_gain'] for r in matched]),
                 source_own_evaluation_mean=mean([r['source_own_evaluation_gain'] for r in matched if r['source_own_evaluation_gain'] is not None])),
-            incremental_leave_round=incremental(matched,'round'),incremental_receiver_groups=incremental(matched,'receiver'),
+            incremental=prediction_reports,
             same_input_full=utility_summary([r for r in f8 if r['cohort']==part],protocol))
     write_csv(out/'figure7_source_round.csv',points)
     semantic=[json.loads(l) for l in (run/'semantic_v2_rounds.jsonl').read_text().splitlines()]
@@ -107,27 +125,51 @@ def draw(out,performance):
     plt.rcParams.update({'font.family':'DejaVu Serif','font.size':8,'pdf.fonttype':42,'ps.fonttype':42,
         'axes.spines.top':False,'axes.spines.right':False,'savefig.dpi':300})
     points=list(csv.DictReader((out/'active/figure7_source_round.csv').open()))
-    fig,ax=plt.subplots(1,2,figsize=(7.2,3),layout='constrained')
+    fig,ax=plt.subplots(1,3,figsize=(7.2,3.05),layout='constrained')
     for a,scope in zip(ax,('common','all')):
         for g,color in enumerate(('#3579A8','#DC8B2C','#3A8B66')):
             values=[r for r in points if r['scope']==scope and r['cohort']=='confirmation' and int(r['source_tier'])==g]
             a.scatter([float(r['U']) for r in values],[float(r['utility']) for r in values],s=15,alpha=.65,c=color,label=['Low','Middle','High'][g])
         a.axhline(0,color='.5',lw=.7,ls='--');a.set(xlabel='Frozen complementarity U',ylabel='Recipient CE decrease',title=scope.capitalize()+' evaluation classes')
         a.legend(frameon=False,fontsize=7)
+    s=json.loads((out/'active/diagnostic_summary.json').read_text())['cohorts']['confirmation']
+    for a,scope,key in zip(ax[:2],('common','all'),('common_association','all_association')):
+        rho=s[key]['U']['spearman'];a.text(.97,.03,f"rho={rho:.3f}\nn={s[key]['U']['source_round_units']}" if rho is not None else 'rho undefined',
+            transform=a.transAxes,ha='right',va='bottom',fontsize=7,bbox=dict(facecolor='white',alpha=.8,edgecolor='none'))
+    for offset,scope,color in [(-.07,'common','#3579A8'),(.07,'all','#DC8B2C')]:
+        for i,b in enumerate([v for v in s['bins'] if v['scope']==scope]):
+            if b['mean'] is None:continue
+            lo,hi=b['ci95'];ax[2].plot([i+offset,i+offset],[lo,hi],color=color,lw=1)
+            ax[2].scatter(i+offset,b['mean'],s=22,c=color,label=scope if i==0 else None)
+    ax[2].axhline(0,color='.5',lw=.7,ls='--');ax[2].set_xticks([0,1,2],['[0,.1)','[.1,.2)','[.2,1]'])
+    ax[2].set(xlabel='Fixed U interval',ylabel='Mean utility; cluster95% interval',title='Grouped means (all cases)');ax[2].legend(frameon=False,fontsize=7)
+    for i,b in enumerate([v for v in s['bins'] if v['scope']=='common']):
+        ax[2].text(i,.97,f"n={b['n']}",transform=ax[2].get_xaxis_transform(),ha='center',va='top',fontsize=7)
     for ext in ('png','pdf'):fig.savefig(out/f'figure7_semantic_utility.{ext}')
     plt.close(fig)
     f8=list(csv.DictReader((out/'active/figure8_raw.csv').open()))
-    fig,ax=plt.subplots(1,2,figsize=(7.2,3),layout='constrained')
+    fig,panels=plt.subplots(2,2,figsize=(7.2,5.0),layout='constrained');ax=panels.flatten()
     rows=list(csv.DictReader((out/'active/figure8_source_shares.csv').open()))
     for g in range(3):
         selected=[r for r in rows if r['method']=='V2' and int(r['tier'])==g]
         ax[0].scatter([int(r['round']) for r in selected],[100*float(r['delta_pi']) for r in selected],s=9,alpha=.45,label=['Low','Middle','High'][g])
     ax[0].set(xlabel='Round (fixed diagnostic windows)',ylabel='Regional tier-share change (pp)',title='Same-input V2 share adjustment');ax[0].legend(frameon=False,fontsize=7)
+    methods=['V2','no_sm','no_rm','permuted','A07_L2_matched']
+    for i,method in enumerate(methods):
+        v=s['same_input_full'][method]['active'];lo,hi=v['cluster95']
+        if v['mean_utility'] is not None:
+            ax[1].plot([i,i],[lo,hi],color='#3579A8',lw=1)
+            ax[1].scatter(i,v['mean_utility'],color='#3579A8',s=22)
+    ax[1].axhline(0,color='.5',lw=.7,ls='--');ax[1].set_xticks(range(5),['V2','No anchor','No rho','Shuffled','L2 only'],rotation=15)
+    ax[1].set(ylabel='CE(A07) - CE(counterfactual)',title='Same-input Full utility; active rounds')
+    for mode,values in performance.items():
+        ax[2].plot([r['round'] for r in values],[r['full_accuracy'] for r in values],lw=.7,label='A07' if mode=='neutral' else 'V2')
+    ax[2].set(xlabel='Round',ylabel='Official Full test Accuracy (%)',title='Two actual training trajectories');ax[2].legend(frameon=False,fontsize=7)
     for method in ('V2','permuted','A07_L2_matched'):
         selected=[r for r in f8 if r['method']==method and r['cohort']=='confirmation'];group=defaultdict(list)
         for r in selected:group[int(r['round'])].append(float(r['utility_vs_a07']))
-        ax[1].plot(sorted(group),[mean(group[r]) for r in sorted(group)],'.',ms=3,label=method)
-    ax[1].axhline(0,color='.5',lw=.7,ls='--');ax[1].set(xlabel='Round',ylabel='CE(A07) − CE(counterfactual)',title='Paired Full-probe utility');ax[1].legend(frameon=False,fontsize=7)
+        ax[3].plot(sorted(group),[mean(group[r]) for r in sorted(group)],'.',ms=3,label=method.replace('A07_L2_matched','L2 only'))
+    ax[3].axhline(0,color='.5',lw=.7,ls='--');ax[3].set(xlabel='Round',ylabel='CE(A07) - CE(counterfactual)',title='All fixed-window recipient means');ax[3].legend(frameon=False,fontsize=7)
     for ext in ('png','pdf'):fig.savefig(out/f'figure8_aggregation_behavior.{ext}')
     plt.close(fig)
     fig,ax=plt.subplots(1,2,figsize=(7.2,3),layout='constrained')
@@ -138,9 +180,9 @@ def draw(out,performance):
 
 
 def main():
-    p=argparse.ArgumentParser(__doc__);p.add_argument('root',type=Path);opt=p.parse_args()
+    p=argparse.ArgumentParser(__doc__);p.add_argument('root',type=Path);p.add_argument('--output',type=Path);opt=p.parse_args()
     protocol=json.loads((ROOT/'configs/semantic_a07_pair500.json').read_text());root=opt.root
-    verification=verify_pair(root,500);out=root/'report';out.mkdir(exist_ok=False)
+    verification=verify_pair(root,500);out=opt.output or root/'report';out.mkdir(parents=True,exist_ok=False)
     results={};performance={};table=[]
     for mode in ('neutral','active'):
         path=root/mode/'training/a07'/f'{mode}_500_seed1'
@@ -159,7 +201,7 @@ def main():
     text+=['','Three separate questions must be read separately: score association (source-tier/round units), same-input counterfactual utility, and whole-trajectory Accuracy. CSVs preserve neutral and adverse cases. Memory ablations retain the full-V2 validity mask, so they do not establish the effect of removing all history. Adapter remains auxiliary. No score was tuned.','']
     for mode,s in results.items():
         c=s['cohorts']['confirmation'];u=c['common_association']['U'];v=c['same_input_full']['V2']['active']
-        text += [f"## {mode}",f"Independent semantic source-round units: {c['source_round_units']} across {c['rounds']} rounds. Matched-class Spearman={u['spearman']}, clustered95={u['spearman_cluster95']}. All-class Spearman={c['all_association']['U']['spearman']}.",
+        text += [f"## {mode}",f"Distinct semantic source-round units: {c['source_round_units']} across {c['rounds']} rounds; temporally and physically dependent. Matched-class Spearman={u['spearman']}, clustered95={u['spearman_cluster95']}. All-class Spearman={c['all_association']['U']['spearman']}.",
             f"Same-input V2 active-round Full CE utility={v['mean_utility']}, clustered95={v['cluster95']}. Applied nonneutral rounds={s['applied_nonneutral_rounds']}/500. See diagnostic_summary.json for current/memory/reliability ablations and held-out-round/receiver-group prediction errors.",'']
     text+=['These observations do not establish multi-seed generalization. Temporal and physical-client dependence, training-side evaluation bias and source-versus-region attribution remain explicit limitations. No further run is scheduled.']
     (out/'IV_E_500_REPORT.md').write_text('\n'.join(text),encoding='utf-8')

@@ -1,0 +1,311 @@
+{
+  "original_scalar_files_verified": 37,
+  "trajectories": {
+    "neutral": {
+      "past_only_score_replay_rounds": 500,
+      "replayed_tier_commits": true,
+      "source_weight_formula_replayed": true,
+      "primary_paired_control_comparisons": {
+        "no_sm": {
+          "mean_v2_minus_control_utility": 9.187249806518281e-05,
+          "cluster95": [
+            -0.0001492476510797831,
+            0.00030099650248320765
+          ]
+        },
+        "no_rm": {
+          "mean_v2_minus_control_utility": -3.9349385740896546e-05,
+          "cluster95": [
+            -0.000168299346591033,
+            6.585740547091631e-05
+          ]
+        },
+        "permuted": {
+          "mean_v2_minus_control_utility": -5.880196007088108e-06,
+          "cluster95": [
+            -0.0003172131350253801,
+            0.00021022018907234058
+          ]
+        },
+        "A07_L2_matched": {
+          "mean_v2_minus_control_utility": -1.9672647318801782e-05,
+          "cluster95": [
+            -0.0001758116752153296,
+            7.737384269731512e-05
+          ]
+        }
+      },
+      "primary_class_decomposition": {
+        "common": {
+          "units": 74,
+          "mean_utility": 0.014370778379121932,
+          "U_spearman": 0.2861818728225851
+        },
+        "noncommon": {
+          "units": 74,
+          "mean_utility": 0.0019620228549629905,
+          "U_spearman": 0.47634775012124436
+        }
+      },
+      "current_class_eligibility_counts": {
+        "0": 191,
+        "22": 5,
+        "35": 2,
+        "28": 1,
+        "43": 4,
+        "4": 13,
+        "5": 20,
+        "13": 10,
+        "7": 23,
+        "38": 1,
+        "39": 1,
+        "9": 17,
+        "6": 24,
+        "8": 30,
+        "24": 1,
+        "10": 24,
+        "37": 3,
+        "49": 6,
+        "11": 6,
+        "1": 5,
+        "41": 5,
+        "52": 2,
+        "23": 1,
+        "3": 10,
+        "57": 2,
+        "17": 5,
+        "25": 2,
+        "51": 1,
+        "12": 10,
+        "2": 9,
+        "14": 7,
+        "62": 2,
+        "20": 4,
+        "64": 1,
+        "44": 4,
+        "58": 1,
+        "53": 3,
+        "46": 1,
+        "42": 5,
+        "56": 3,
+        "65": 3,
+        "61": 1,
+        "55": 1,
+        "21": 2,
+        "72": 1,
+        "54": 3,
+        "33": 1,
+        "19": 3,
+        "15": 3,
+        "50": 2,
+        "59": 2,
+        "36": 1,
+        "48": 2,
+        "47": 3,
+        "60": 2,
+        "16": 1,
+        "30": 1,
+        "27": 1,
+        "45": 1,
+        "18": 1
+      },
+      "eligible_rounds_per_tier": {
+        "1": 298,
+        "2": 304,
+        "0": 226
+      },
+      "rho_summary": {
+        "min": 0.02157843856232352,
+        "mean": 0.6293079143568333,
+        "max": 0.7783040594036378
+      },
+      "category_u_summary": {
+        "min": 0.0,
+        "mean": 0.019233034669212275,
+        "max": 0.4986200286884622
+      },
+      "maximum_absolute_regional_share_change": 0.0,
+      "applied_modified_l2_mean_all_rounds": 0.0,
+      "applied_modified_l2_max": 0.0,
+      "sampled_v2_active_update_l2_ratio_a07_mean": 0.9998531268385533,
+      "sampled_v2_active_update_cosine_a07_mean": 0.9999977830041031,
+      "sampled_v2_active_difference_l2_mean": 0.000784922097664332,
+      "diagnostic_seconds": 191.00370670913253,
+      "diagnostic_forward_examples": 356200,
+      "hypothetical_receiver_feedback_bytes": 546192,
+      "hypothetical_region_downlink_bytes": 4724236408,
+      "costs": {
+        "pre_measurement_seconds": 118.96452667017002,
+        "post_measurement_seconds": 712.3177014562534,
+        "native_local_train_seconds": 7748.93881485553,
+        "probe_examples": 479774.0,
+        "backbone_forward_examples": 959548.0,
+        "adapter_backward_examples": 1439322.0,
+        "logical_upload_bytes": 1504571264.0,
+        "decision_message_json_bytes": 19913856.0,
+        "memory_commit_seconds": 43.15330086054746
+      },
+      "final_storage": {
+        "adapter_bytes": 211553280,
+        "tier_anchor_json_bytes": 51102,
+        "tier_history_json_bytes": 2002437
+      },
+      "training_manifest_commit": "49b5b5f86fe61815aa47b09445b27a0c6db2fbee",
+      "configuration_sha256": "ff372cb77c1c7f0adff1bd001cfb335fb76eb8944af676cc80ea7881fc7b1e9c",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41"
+    },
+    "active": {
+      "past_only_score_replay_rounds": 500,
+      "replayed_tier_commits": true,
+      "source_weight_formula_replayed": true,
+      "primary_paired_control_comparisons": {
+        "no_sm": {
+          "mean_v2_minus_control_utility": 8.135530213983916e-05,
+          "cluster95": [
+            -7.762233797046734e-05,
+            0.00024764897506994514
+          ]
+        },
+        "no_rm": {
+          "mean_v2_minus_control_utility": -3.4739417248092015e-05,
+          "cluster95": [
+            -0.00014823360880870462,
+            4.3620195632559664e-05
+          ]
+        },
+        "permuted": {
+          "mean_v2_minus_control_utility": -8.32849832870302e-06,
+          "cluster95": [
+            -0.0002605696844735343,
+            0.00020748330140475755
+          ]
+        },
+        "A07_L2_matched": {
+          "mean_v2_minus_control_utility": -3.080385543538431e-05,
+          "cluster95": [
+            -0.00020501163782057024,
+            4.4696296228460144e-05
+          ]
+        }
+      },
+      "primary_class_decomposition": {
+        "common": {
+          "units": 74,
+          "mean_utility": 0.018156787487111862,
+          "U_spearman": 0.24405017560281167
+        },
+        "noncommon": {
+          "units": 74,
+          "mean_utility": 0.001036399138550533,
+          "U_spearman": 0.4193978349958143
+        }
+      },
+      "current_class_eligibility_counts": {
+        "0": 191,
+        "22": 5,
+        "35": 2,
+        "28": 1,
+        "43": 4,
+        "4": 13,
+        "5": 20,
+        "13": 10,
+        "7": 23,
+        "38": 1,
+        "39": 1,
+        "9": 17,
+        "6": 24,
+        "8": 30,
+        "24": 1,
+        "10": 24,
+        "37": 3,
+        "49": 6,
+        "11": 6,
+        "1": 5,
+        "41": 5,
+        "52": 2,
+        "23": 1,
+        "3": 10,
+        "56": 4,
+        "17": 5,
+        "25": 2,
+        "51": 1,
+        "12": 10,
+        "2": 9,
+        "14": 7,
+        "62": 2,
+        "20": 4,
+        "64": 1,
+        "44": 4,
+        "58": 1,
+        "53": 3,
+        "46": 1,
+        "42": 5,
+        "65": 3,
+        "61": 1,
+        "55": 1,
+        "21": 2,
+        "72": 1,
+        "54": 3,
+        "33": 1,
+        "19": 3,
+        "15": 3,
+        "50": 2,
+        "59": 2,
+        "36": 1,
+        "48": 2,
+        "47": 3,
+        "60": 2,
+        "16": 1,
+        "30": 1,
+        "27": 1,
+        "57": 1,
+        "45": 1,
+        "18": 1
+      },
+      "eligible_rounds_per_tier": {
+        "1": 298,
+        "2": 304,
+        "0": 226
+      },
+      "rho_summary": {
+        "min": 0.05087836756440615,
+        "mean": 0.6295677141702724,
+        "max": 0.7789051306611878
+      },
+      "category_u_summary": {
+        "min": 0.0,
+        "mean": 0.019208248399311092,
+        "max": 0.502826541778648
+      },
+      "maximum_absolute_regional_share_change": 0.00630655998462798,
+      "applied_modified_l2_mean_all_rounds": 0.00036188035550250615,
+      "applied_modified_l2_max": 0.00832304666254995,
+      "sampled_v2_active_update_l2_ratio_a07_mean": 0.9998379099989427,
+      "sampled_v2_active_update_cosine_a07_mean": 0.9999975001194558,
+      "sampled_v2_active_difference_l2_mean": 0.0008138089169446246,
+      "diagnostic_seconds": 199.57290761685,
+      "diagnostic_forward_examples": 356200,
+      "hypothetical_receiver_feedback_bytes": 546192,
+      "hypothetical_region_downlink_bytes": 4724236408,
+      "costs": {
+        "pre_measurement_seconds": 116.81296389305498,
+        "post_measurement_seconds": 700.8508684013505,
+        "native_local_train_seconds": 7713.914495792822,
+        "probe_examples": 479774.0,
+        "backbone_forward_examples": 959548.0,
+        "adapter_backward_examples": 1439322.0,
+        "logical_upload_bytes": 1504571264.0,
+        "decision_message_json_bytes": 19913419.0,
+        "memory_commit_seconds": 42.72469995939173
+      },
+      "final_storage": {
+        "adapter_bytes": 211553280,
+        "tier_anchor_json_bytes": 51085,
+        "tier_history_json_bytes": 2002828
+      },
+      "training_manifest_commit": "49b5b5f86fe61815aa47b09445b27a0c6db2fbee",
+      "configuration_sha256": "68a92160eecb4f8eb74623ad88ddea21b5c714b7714974eec5ec2c47b08f9632",
+      "partition_sha256": "41ab2d3486663ce0100e183ab00565de137f91af07632c236c2ddf60d890ba41"
+    }
+  }
+}

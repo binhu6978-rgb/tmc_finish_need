@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/tools/report_semantic_pair500.py", line 168, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/tools/report_semantic_pair500.py", line 147, in main
+    results[mode]=analyze(path,out/mode,protocol)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/tools/report_semantic_pair500.py", line 62, in analyze
+    write_csv(out/'figure8_source_shares.csv',shares(records,run))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/home/hh/TMC_re_e03_scope_components400_20261019/tools/report_semantic_pair500.py", line 17, in shares
+    metrics={int(r['round']):json.loads(r['metrics_json']) for r in csv.DictReader((path/'method_diagnostics.csv').open())}
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hh/miniconda3/envs/hh/lib/python3.12/csv.py", line 116, in __next__
+    row = next(self.reader)
+          ^^^^^^^^^^^^^^^^^
+_csv.Error: field larger than field limit (131072)

@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "rounds": 500,
+  "initial_models_equal": true,
+  "first_round_models_equal": true,
+  "all_schedules_and_training_rng_equal": true,
+  "models_after_semantic_activation_expected_to_differ": true,
+  "neutral": {
+    "rounds": 500,
+    "diagnostic_rounds": 53,
+    "physical_receivers": 91,
+    "figure7_rows": 1326,
+    "figure8_rows": 1908,
+    "recovery": {
+      "round": 500,
+      "bytes": 260316716,
+      "contains_memories": true,
+      "selection": "fixed interval/latest, never selected by test"
+    }
+  },
+  "active": {
+    "rounds": 500,
+    "diagnostic_rounds": 53,
+    "physical_receivers": 91,
+    "figure7_rows": 1326,
+    "figure8_rows": 1908,
+    "recovery": {
+      "round": 500,
+      "bytes": 260316716,
+      "contains_memories": true,
+      "selection": "fixed interval/latest, never selected by test"
+    }
+  }
+}

@@ -88,11 +88,11 @@ def associations(points,protocol):
     return result
 
 
-def incremental(rows,fold_kind):
+def incremental(rows,fold_kind,fold_getter=None):
     # Raw responses are weighted inversely by repeated source-round count.
     counts=Counter((r['round'],r['source_tier']) for r in rows)
     weights=np.array([1/counts[r['round'],r['source_tier']] for r in rows])
-    folds=np.array([r['round'] if fold_kind=='round' else r['receiver']%5 for r in rows])
+    folds=np.array([fold_getter(r) if fold_getter else r['round'] if fold_kind=='round' else r['receiver']%5 for r in rows])
     if len(set(folds))<3:return dict(status='unable_to_judge',reason='fewer_than_three_nonempty_group_folds')
     def features(r):
         return [math.log1p(r['source_delta_l2']),r['direction_cosine'] or 0.,float(r['direction_cosine'] is None),
