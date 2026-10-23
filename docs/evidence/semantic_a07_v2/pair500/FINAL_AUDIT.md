@@ -18,6 +18,7 @@ Configuration identities differ as intended by applied lambda: neutral `ff372cb7
 - Both complete500-round Semantic/ Reliability histories replayed to exact U and tier commits using only previous committed state; source fusion shares match frozen formula.
 - Final checkpoints:500 rows, finite Full, exact final logged Full hash,1530 Adapter states,300 tier/class anchors and histories, all Python/NumPy/Torch/CUDA RNG streams.
 - Figure7/8 PDF one page each,7.2in width, rendered via Poppler and visually inspected. Every outcome retained, including large common-class outlier and adverse utility.
+- Postprocessing local291 tests passed in18.69s; Linux291 passed in14.79s. Independent Linux/local report computations agree over1185 numeric fields, maximum absolute difference5.68e-14, nonnumeric structure identical. See results/cross_platform_verification.json and post_tests_linux.log.
 
 ## Repairs after training, not algorithm changes
 
@@ -43,4 +44,4 @@ Recovery-helper review additionally found that the generic CPU copy loses `defau
 
 Reviewer-facing evidence: R1/R3 receive actual source-update utility records, effect/negative-control statistics and the explicit source-level attribution limit. R2 receives measured simulator costs, logical communication proxies, test-oracle labeling and the lack of matching full-algorithm convergence proof. Multi-seed generalization, SGD-independent utility data, causal Adapter benefit and robust double-Memory advantage remain unresolved. No additional seed, dataset, mechanism or training is scheduled.
 
-See [Chinese research report](../../../../SEMANTIC_A07_PAIR500_RESULTS.md), [scalar results](results/), [original failed report log](results/original_report_failure.log), and [full source evidence index](results/scalar_evidence_index.json). Checkpoints and83.5MB original scalar archive remain on the authorized server, with a verified local scalar copy; they are excluded from Git.
+See [Chinese research report](../../../SEMANTIC_A07_PAIR500_RESULTS.md), [scalar results](results/), [original failed report log](results/original_report_failure.log), and [full source evidence index](results/scalar_evidence_index.json). Checkpoints and83.5MB original scalar archive remain on the authorized server, with a verified local scalar copy; they are excluded from Git.

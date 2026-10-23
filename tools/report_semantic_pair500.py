@@ -130,7 +130,7 @@ def draw(out,performance):
         for g,color in enumerate(('#3579A8','#DC8B2C','#3A8B66')):
             values=[r for r in points if r['scope']==scope and r['cohort']=='confirmation' and int(r['source_tier'])==g]
             a.scatter([float(r['U']) for r in values],[float(r['utility']) for r in values],s=15,alpha=.65,c=color,label=['Low','Middle','High'][g])
-        a.axhline(0,color='.5',lw=.7,ls='--');a.set(xlabel='Frozen complementarity U',ylabel='Recipient CE decrease',title=scope.capitalize()+' evaluation classes')
+        a.axhline(0,color='.5',lw=.7,ls='--');a.set(xlabel='Frozen complementarity U',ylabel='Recipient CE decrease',title=('(a) Common' if scope=='common' else '(b) All')+' evaluation classes')
         a.legend(frameon=False,fontsize=7)
     s=json.loads((out/'active/diagnostic_summary.json').read_text())['cohorts']['confirmation']
     for a,scope,key in zip(ax[:2],('common','all'),('common_association','all_association')):
@@ -142,7 +142,7 @@ def draw(out,performance):
             lo,hi=b['ci95'];ax[2].plot([i+offset,i+offset],[lo,hi],color=color,lw=1)
             ax[2].scatter(i+offset,b['mean'],s=22,c=color,label=scope if i==0 else None)
     ax[2].axhline(0,color='.5',lw=.7,ls='--');ax[2].set_xticks([0,1,2],['[0,.1)','[.1,.2)','[.2,1]'])
-    ax[2].set(xlabel='Fixed U interval',ylabel='Mean utility; cluster95% interval',title='Grouped means (all cases)');ax[2].legend(frameon=False,fontsize=7)
+    ax[2].set(xlabel='Fixed U interval',ylabel='Mean utility; cluster95% interval',title='(c) Fixed bins; valid scores');ax[2].legend(frameon=False,fontsize=7)
     for i,b in enumerate([v for v in s['bins'] if v['scope']=='common']):
         ax[2].text(i,.97,f"n={b['n']}",transform=ax[2].get_xaxis_transform(),ha='center',va='top',fontsize=7)
     for ext in ('png','pdf'):fig.savefig(out/f'figure7_semantic_utility.{ext}')
@@ -153,7 +153,7 @@ def draw(out,performance):
     for g in range(3):
         selected=[r for r in rows if r['method']=='V2' and int(r['tier'])==g]
         ax[0].scatter([int(r['round']) for r in selected],[100*float(r['delta_pi']) for r in selected],s=9,alpha=.45,label=['Low','Middle','High'][g])
-    ax[0].set(xlabel='Round (fixed diagnostic windows)',ylabel='Regional tier-share change (pp)',title='Same-input V2 share adjustment');ax[0].legend(frameon=False,fontsize=7)
+    ax[0].set(xlabel='Round (fixed diagnostic windows)',ylabel='Regional tier-share change (pp)',title='(a) Same-input V2 share adjustment');ax[0].legend(frameon=False,fontsize=7)
     methods=['V2','no_sm','no_rm','permuted','A07_L2_matched']
     for i,method in enumerate(methods):
         v=s['same_input_full'][method]['active'];lo,hi=v['cluster95']
@@ -161,15 +161,15 @@ def draw(out,performance):
             ax[1].plot([i,i],[lo,hi],color='#3579A8',lw=1)
             ax[1].scatter(i,v['mean_utility'],color='#3579A8',s=22)
     ax[1].axhline(0,color='.5',lw=.7,ls='--');ax[1].set_xticks(range(5),['V2','No anchor','No rho','Shuffled','L2 only'],rotation=15)
-    ax[1].set(ylabel='CE(A07) - CE(counterfactual)',title='Same-input Full utility; active rounds')
+    ax[1].set(ylabel='CE(A07) - CE(counterfactual)',title='(b) Full utility; V2-active rounds')
     for mode,values in performance.items():
         ax[2].plot([r['round'] for r in values],[r['full_accuracy'] for r in values],lw=.7,label='A07' if mode=='neutral' else 'V2')
-    ax[2].set(xlabel='Round',ylabel='Official Full test Accuracy (%)',title='Two actual training trajectories');ax[2].legend(frameon=False,fontsize=7)
+    ax[2].set(xlabel='Round',ylabel='Official Full test Accuracy (%)',title='(c) Two actual training trajectories');ax[2].legend(frameon=False,fontsize=7)
     for method in ('V2','permuted','A07_L2_matched'):
         selected=[r for r in f8 if r['method']==method and r['cohort']=='confirmation'];group=defaultdict(list)
         for r in selected:group[int(r['round'])].append(float(r['utility_vs_a07']))
         ax[3].plot(sorted(group),[mean(group[r]) for r in sorted(group)],'.',ms=3,label=method.replace('A07_L2_matched','L2 only'))
-    ax[3].axhline(0,color='.5',lw=.7,ls='--');ax[3].set(xlabel='Round',ylabel='CE(A07) - CE(counterfactual)',title='All fixed-window recipient means');ax[3].legend(frameon=False,fontsize=7)
+    ax[3].axhline(0,color='.5',lw=.7,ls='--');ax[3].set(xlabel='Round',ylabel='CE(A07) - CE(counterfactual)',title='(d) All fixed-window recipient means');ax[3].legend(frameon=False,fontsize=7)
     for ext in ('png','pdf'):fig.savefig(out/f'figure8_aggregation_behavior.{ext}')
     plt.close(fig)
     fig,ax=plt.subplots(1,2,figsize=(7.2,3),layout='constrained')

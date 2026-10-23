@@ -1,0 +1,23 @@
+{
+  "training_completed": true,
+  "trajectories": 2,
+  "rounds_each": 500,
+  "frozen_training_commit": "49b5b5f86fe61815aa47b09445b27a0c6db2fbee",
+  "original_report_failed": true,
+  "report_failure_cause": "CSV field limit128KiB, after both training processes exited0",
+  "original_failure_record_preserved": true,
+  "offline_report_repaired": true,
+  "server_repaired_report": "/home/hh/TMC_re_e03_scope_components400_20261019/runs/semantic_a07_pair500_seed1_20261022/report_repaired",
+  "local_post_tests": {"passed": 291, "seconds": 18.69},
+  "linux_post_tests": {"passed": 291, "seconds": 14.79},
+  "cross_platform_numeric_fields": 1185,
+  "maximum_absolute_numeric_difference": 5.684341886080802e-14,
+  "final_pdfs_rendered_and_visually_checked": true,
+  "pdf_pages_each": 1,
+  "pdf_width_inches": 7.2,
+  "all_prior_evidence_preserved": true,
+  "training_retries": 0,
+  "additional_fl_experiments": 0,
+  "scientific_decision": "No-Go for frozen V2; retain A07 performance reference",
+  "completion_automation_deleted": true
+}

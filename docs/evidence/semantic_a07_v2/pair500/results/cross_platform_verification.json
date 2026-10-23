@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "numeric_fields": 1185,
+  "maximum_absolute_difference": 5.684341886080802e-14,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-10,
+  "non_numeric_structure_equal": true
+}
