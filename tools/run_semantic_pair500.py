@@ -17,7 +17,9 @@ from semcons_a07_v2.pair500 import pair_loop,sampled_rounds,verify_pair
 def main():
     p=argparse.ArgumentParser(__doc__)
     p.add_argument('--mode',choices=('neutral','active'))
-    p.add_argument('--rounds',type=int,choices=(2,500))
+    p.add_argument('--rounds',type=int,choices=(2,500,1000))
+    p.add_argument('--protocol',type=Path,default=ROOT/'configs/semantic_a07_pair500.json')
+    p.add_argument('--execute1000',action='store_true')
     p.add_argument('--output-root',type=Path);p.add_argument('--prepared',type=Path)
     p.add_argument('--dataset-root',type=Path);p.add_argument('--no-diagnostic',action='store_true')
     p.add_argument('--pilot-proof',type=Path);p.add_argument('--resume',type=Path)
@@ -34,12 +36,14 @@ def main():
         result=verify_pair(opt.verify_pair,500)
         (opt.verify_pair/'paired_verification.json').write_text(json.dumps(result,indent=2));print(result);return
     if not all((opt.mode,opt.rounds,opt.output_root,opt.prepared,opt.dataset_root)):p.error('Missing run arguments')
-    if opt.rounds==500 and (not opt.pilot_proof or not json.loads(opt.pilot_proof.read_text())['success']):
+    if opt.rounds in (500,1000) and (not opt.pilot_proof or not json.loads(opt.pilot_proof.read_text())['success']):
         raise ValueError('Real two-round diagnostic regression must pass first')
-    protocol=json.loads((ROOT/'configs/semantic_a07_pair500.json').read_text())
+    protocol=json.loads(opt.protocol.read_text())
+    if opt.rounds>2 and opt.rounds!=protocol['rounds']:raise ValueError('Round budget differs from frozen protocol')
+    if opt.rounds==1000 and (not opt.execute1000 or opt.mode!='active'):raise ValueError('Authorized1000 is a single active V2 run')
     cfg=json.loads((ROOT/'configs/semcons_semantic_a07_v2.json').read_text())
     assert cfg['semantic_lambda']==protocol['semantic_lambda']==.2
-    cfg['diagnostic_rounds']={'pair500':sampled_rounds(protocol)} if not opt.no_diagnostic else {}
+    cfg['diagnostic_rounds']={('pair500' if protocol['rounds']==500 else 'activation1000'):sampled_rounds(protocol)} if not opt.no_diagnostic else {}
     root=opt.output_root.resolve();root.mkdir(parents=True,exist_ok=False)
     args,condition,users=make_args('A07',root/'training',opt.prepared)
     args.epochs=opt.rounds;args.method_run_name=f'{opt.mode}_{opt.rounds}_seed1'
@@ -48,7 +52,8 @@ def main():
     args.device=base.torch.device('cuda:0');path=base.prepare_output(args)
     files=[ROOT/v for v in ('capability_final40.py','native_group_aggregation.py','semcons_scope.py',
         'models/Update.py','models/Fed.py','models/resnet.py','models/test.py','Algorithm/Training_AdaptiveFL.py',
-        'adapterfl_methods.py','tools/run_semantic_pair500.py','configs/semantic_a07_pair500.json')]
+        'adapterfl_methods.py','tools/run_semantic_pair500.py')]
+    files.append(opt.protocol.resolve())
     files+=list((ROOT/'semcons_a07').glob('*.py'))+list((ROOT/'semcons_a07_v2').glob('*.py'))
     source={str(v.relative_to(ROOT)):hashlib.sha256(v.read_bytes()).hexdigest() for v in files}
     identity=dict(source=source,mode=opt.mode,epochs=opt.rounds,cfg=cfg,protocol=protocol,
